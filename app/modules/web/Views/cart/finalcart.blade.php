@@ -181,7 +181,7 @@
 							
 								<!-- <a href="/site/index" class="cart-continue-shopping">Continue Shopping</a> -->
 								<!-- <input type="submit" value="Checkout" class="cart-checkout">					 -->
-							<a href="#" class="cart-checkout">Pay Now</a>					
+							<a href="{{ route('pay-now') }}" class="cart-checkout">Pay Now</a>
 							
 						</div>
 

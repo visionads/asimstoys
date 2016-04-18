@@ -10,7 +10,7 @@
                 </div>
                 <div id="header_right">
                     <ul id="header_links">
-                        <li id="header_link_contact"><a class="link-contact" href="#" title="Contact">My account</a></li>
+                        <li id="header_link_contact"><a class="link-contact" href="{{URL::to('/')}}/myaccount" title="Contact">My account</a></li>
                         <li><a class="link-mycart" href="{{URL::to('/')}}/mycart" title="My cart">My cart</a></li>
                         @if(Session::has('user_id'))
                             <li class="last"><a class="link-login" href="{{Url::to('/')}}/customerlogout" title="Login" class="login" rel="nofollow">Logout</a></li>

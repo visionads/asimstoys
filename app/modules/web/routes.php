@@ -77,12 +77,23 @@ Route::any('mycart',[
 		'uses' => 'CartController@mycart'
 	]);
 
+
 Route::any('remove_cart',[
 		'as' => 'remove_cart',
 		'uses' => 'CartController@remove_cart'
 	]);
 
-Route::any('order-checkout',[
+/*---------Shajjad Start---------------*/
+
+Route::any('myaccount',[
+	'as' => 'myaccount',
+	'uses' => 'AccountsController@myaccount'
+]);
+
+/*---------Shajjad End---------------*/
+
+
+	Route::any('order-checkout',[
 		'as' => 'order-checkout',
 		'uses' => 'OrderController@ordercheckout'
 	]);
@@ -144,6 +155,23 @@ Route::any('{product_slug}',[
 		'as' => 'product',
 		'uses' => 'ProductController@index'
 	]);
+
+/*---------Shajjad Start---------------*/
+
+Route::any("order/paynow", [
+	"as"   => "pay-now",
+	"uses" => "OrderController@paynow"
+]);
+
+
+
+
+
+
+
+
+/*---------Shajjad End---------------*/
+
 
 Route::any('{main_slug}/{sub_slug}',[
 		'as' => 'product_category',

@@ -216,4 +216,32 @@ class OrderController extends Controller
                 'delivery_data' => $delivery_data
             ]);
     }
+
+
+    public function paynow(Request $request){
+
+        $title ="mycart | Asim's Toy";
+        $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
+
+        $product_id = $request->session()->get('product_id');
+        $quantity = $request->session()->get('quantity');
+        $color = $request->session()->get('color');
+        $user_id = $request->session()->get('user_id');
+        $deliver_id = $request->session()->get('deliver_id');
+
+        $user_data = DB::table('customer')->where('id',$user_id)->first();
+        $delivery_data = DB::table('deliverydetails')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
+
+        $product = DB::table('product')->where('id',$product_id)->first();
+
+        return view('web::cart.paycart',[
+            'title' => $title,
+            'productgroup_data' => $productgroup_data,
+            'product' => $product,
+            'quantity' => $quantity,
+            'color' => $color,
+            'user_data' => $user_data,
+            'delivery_data' => $delivery_data
+        ]);
+    }
 }
