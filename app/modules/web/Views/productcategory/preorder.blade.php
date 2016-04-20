@@ -4,7 +4,7 @@
 	<div class="pos-new-product home-new-product-container">
 
 		<div class="pos-new-product-title title_block">
-			<h4>Pre order</h4>
+			<h4>{{$header}}</h4>
 			
 		</div>
 

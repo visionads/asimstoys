@@ -16,22 +16,79 @@ use Input;
 class OrderController extends Controller
 {
 
+    public function update_cart(Request $request){
+
+        if(isset($_POST)){
+            
+            $quantity= (int) $_POST['quantity'];
+            $product_id= (int) $_POST['product_id'];
+            $product_index= (int) $_POST['product_index'];
+            $color= $_POST['color'];
+
+            $product_cart1 = $request->session()->get('product_cart');
+            unset($product_cart1[$product_index]);
+
+            $product_cart_2 = array( 
+                    array('product_id' => $product_id,
+                            'color' => $color,
+                            'quantity' => $quantity
+                    ) 
+                );
+
+            $result = array_merge($product_cart1, $product_cart_2);
+
+            $set_array_value = array_values($result);
+            $request->session()->set('product_cart', $set_array_value);
+
+            return redirect('mycart');
+        }
+    }
+
+    public function remove_cart(Request $request){
+
+        if(isset($_POST)){
+            $product_index= (int) $_POST['product_index'];
+            $product_cart1 = $request->session()->get('product_cart');
+            unset($product_cart1[$product_index]);
+            $set_array_value = array_values($product_cart1);
+            $request->session()->set('product_cart', $set_array_value);
+
+            return redirect('mycart');
+        }
+    }
 
 	public function add_to_cart(Request $request){
 
 		if(isset($_POST)){
-			$product_id = $_POST['product_id'];
+
+            $product_id = (int) $_POST['product_id'];
+			
 			if(isset($_POST['color'])){
-				$color = $_POST['color'];	
+				$color = (int) $_POST['color'];
 			}else{
 				$color = '';
 			}
 			
-			$quantity = $_POST['quantity'];
+            $quantity = (int) $_POST['quantity'];
 
-			$request->session()->set('product_id', $product_id);
-			$request->session()->set('color', $color);
-			$request->session()->set('quantity', $quantity);
+            $product_cart1 = $request->session()->get('product_cart');
+
+            $product_cart_2 = array( 
+                array('product_id' => $product_id,
+                        'color' => $color,
+                        'quantity' => $quantity
+                ) 
+            );
+
+            if($request->session()->has('product_cart')){
+
+                $result = array_merge($product_cart1, $product_cart_2);
+            }else{
+                $result = $product_cart_2;
+            }
+
+            $request->session()->set('product_cart', $result);
+
 
 			return redirect('mycart');
 		}
@@ -195,23 +252,19 @@ class OrderController extends Controller
 
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
-        $product_id = $request->session()->get('product_id');
-        $quantity = $request->session()->get('quantity');
-        $color = $request->session()->get('color');
+        $product_cart = $request->session()->get('product_cart');
+
         $user_id = $request->session()->get('user_id');
         $deliver_id = $request->session()->get('deliver_id');
 
         $user_data = DB::table('customer')->where('id',$user_id)->first();
         $delivery_data = DB::table('deliverydetails')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
 
-        $product = DB::table('product')->where('id',$product_id)->first();
 
         return view('web::cart.finalcart',[
                 'title' => $title,
                 'productgroup_data' => $productgroup_data,
-                'product' => $product,
-                'quantity' => $quantity,
-                'color' => $color,
+                'product_cart_r' => $product_cart,
                 'user_data' => $user_data,
                 'delivery_data' => $delivery_data
             ]);

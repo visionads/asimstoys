@@ -24,6 +24,7 @@ return array(
     'App\\MenuType' => $baseDir . '/app/Models/MenuType.php',
     'App\\Modules\\Admin\\Controllers\\TestController' => $baseDir . '/app/modules/admin_m/Controllers/TestController.php',
     'App\\Modules\\ServiceProvider' => $baseDir . '/app/modules/ServiceProvider.php',
+    'App\\Modules\\Web\\Controllers\\AccountsController' => $baseDir . '/app/modules/web/Controllers/AccountsController.php',
     'App\\Modules\\Web\\Controllers\\CartController' => $baseDir . '/app/modules/web/Controllers/CartController.php',
     'App\\Modules\\Web\\Controllers\\OrderController' => $baseDir . '/app/modules/web/Controllers/OrderController.php',
     'App\\Modules\\Web\\Controllers\\ProductCategoryController' => $baseDir . '/app/modules/web/Controllers/ProductCategoryController.php',

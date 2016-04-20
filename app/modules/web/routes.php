@@ -26,6 +26,16 @@ Route::any('/', [
     'uses' => 'WwwController@home_page'
 ]);
 
+Route::any('order/update_cart',[
+		'as' => 'update_cart',
+		'uses' => 'OrderController@update_cart'
+	]);
+
+Route::any('order/remove_cart',[
+		'as' => 'remove_cart',
+		'uses' => 'OrderController@remove_cart'
+	]);
+
 Route::any('special', [
     'as' => 'special',
     'uses' => 'WwwController@special'
@@ -149,6 +159,11 @@ Route::post('order/add_to_cart_update',[
 Route::any('pre-order',[
 		'as' => 'pre-order',
 		'uses' => 'ProductCategoryController@preorder'
+	]);
+
+Route::any('lay-by',[
+		'as' => 'lay-by',
+		'uses' => 'ProductCategoryController@layby'
 	]);
 
 Route::any('{product_slug}',[

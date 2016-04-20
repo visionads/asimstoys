@@ -19,18 +19,13 @@ class CartController extends Controller
 
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
-        $product_id = $request->session()->get('product_id');
-        $quantity = $request->session()->get('quantity');
-        $color = $request->session()->get('color');
+        $product_cart = $request->session()->get('product_cart');
 
-        $product = DB::table('product')->where('id',$product_id)->first();
 
         return view('web::cart.cart1',[
                 'title' => $title,
                 'productgroup_data' => $productgroup_data,
-                'product' => $product,
-                'quantity' => $quantity,
-                'color' => $color
+                'product_cart_r' => $product_cart
             ]);
 	}
 

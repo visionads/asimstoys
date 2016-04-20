@@ -58,10 +58,11 @@
 
 						</div>
 
-						@if(!empty($product))
+						<div class="cart-item-container">
 
-							<div class="cart-item-container">
-							<table class="table table-striped cart-table">
+							@if(!empty($product_cart_r))
+
+								<table class="table table-striped cart-table">
 								<thead>
 									<tr>
 										<td>Item</td>
@@ -72,59 +73,69 @@
 								</thead>
 
 								<tbody>
-									
-									<!-- <form method="post" action="{{URL::to('/')}}/order/add_to_cart_update" > -->
-									<!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
-									<tr>
-										<td>
-											<div class="added-images">
-												<img src="{{URL::to('')}}/{{$product->image}}">
-											</div>
-											<div class="added-item-container">
-												<a class="product-name" href="#">
-													{{ $product->title }}				
-												</a>
-											</div>
-										</td>
-										<td>
-											<input class="cart-quantity" type="text" name="quantity" value="{{$quantity}}">
-										</td>
-										<td>
-											<div class="unit-price">
-												$ {{$product->sell_rate}}					
-											</div>
-										</td>
-										<td class="text-align-right">
-											<div class="linetotal">
-												
-												<span class="line_total">
-													$ {{$product->sell_rate * $quantity}}					
-												</span>
-											</div>
-										</td>
-									</tr>
-									<tr class="sub-total-tr">
-										<td>
-											&nbsp;
-										</td>
-										<td>
-											&nbsp;
-										</td>
-										<td>Sub-Total:</td>
-										<td class="text-align-right">$ {{$product->sell_rate * $quantity}}</td>
-									</tr>
-								<!-- </form> -->
+									<?php
+										$total_value = 0;
+
+										$count = 0;
+									?>
+									@foreach($product_cart_r as $product_cart)
+										<?php
+											$product_id = $product_cart['product_id'];
+											$product = DB::table('product')->where('id',$product_id)->first();
+										?>
+										<tr>
+											
+											<td>
+												<div class="added-images">
+													<img src="{{Url::to('')}}/{{$product->thumb}}">
+												</div>
+												<div class="added-item-container">
+													<a class="product-name" href="#">
+														{{$product->title}}
+													</a>
+												</div>
+											</td>
+											<td>
+												<input class="cart-quantity" type="number" min="1" name="product_quantity" value="{{$product_cart['quantity']}}">
+											</td>
+											<td>
+												<div class="unit-price">
+													${{$product->sell_rate}}
+												</div>
+											</td>
+											<td class="text-align-right">
+												<div class="linetotal">
+													
+													<span class="line_total">
+														${{$product_cart['quantity']*$product->sell_rate}}				
+														<?php
+															$total_value+=$product_cart['quantity']*$product->sell_rate;
+														?>
+													</span>
+												</div>
+											</td>	
+											
+										</tr>
+										<?php $count++;?>
+									@endforeach
+										<tr class="sub-total-tr">
+											<td>
+												&nbsp;</td>
+											<td>
+											</td>
+											<td>Total:</td>
+											<td class="text-align-right">${{$total_value}}</td>
+											
+										</tr>
 								</tbody>
 							</table>
+
+
+							@else
+								<div class="empty_cart">Your Cart is empty</div>
+							@endif
+							
 						</div>
-
-
-						@else
-
-							<div class="description">
-								<p>No product yet.</p>
-							</div>
-						@endif
 						
 						<div class="col-md-12 margin-top-30 margin-bottom-30">
 							<div class="col-md-6">
@@ -179,7 +190,7 @@
 
 						<div class="col-md-12 margin-top-30 margin-bottom-30">
 							
-								<!-- <a href="/site/index" class="cart-continue-shopping">Continue Shopping</a> -->
+								<a href="{{Url::to('')}}/mycart" class="cart-continue-shopping">Edit Cart</a>
 								<!-- <input type="submit" value="Checkout" class="cart-checkout">					 -->
 							<a href="{{ route('pay-now') }}" class="cart-checkout">Pay Now</a>
 							

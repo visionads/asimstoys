@@ -58,83 +58,110 @@
 
 						</div>
 
-						@if(!empty($product))
+						<div class="cart-item-container">
 
-							<div class="cart-item-container">
-							<table class="table table-striped cart-table">
+							@if(!empty($product_cart_r))
+
+								<table class="table table-striped cart-table">
 								<thead>
 									<tr>
 										<td>Item</td>
 										<td>Qty</td>
 										<td>Unit Price</td>
 										<td class="text-align-right">Line Total</td>
+										<td></td>
 									</tr>
 								</thead>
 
 								<tbody>
-									
-									<form method="post" action="{{URL::to('/')}}/order/add_to_cart_update" >
-									<input type="hidden" name="_token" value="{{ csrf_token() }}">
-									<tr>
-										<td>
-											<div class="added-images">
-												<img src="{{URL::to('')}}/{{$product->image}}">
-											</div>
-											<div class="added-item-container">
-												<a class="product-name" href="#">
-													{{ $product->title }}				
-												</a>
-											</div>
-										</td>
-										<td>
-											<input class="cart-quantity" type="text" name="quantity" value="{{$quantity}}">
-										</td>
-										<td>
-											<div class="unit-price">
-												$ {{$product->sell_rate}}					
-											</div>
-										</td>
-										<td class="text-align-right">
-											<div class="linetotal">
-												<a href="{{URL::to('')}}/remove_cart" class="remove_cart">
-													<img src="{{URL::to('')}}/web/images/delete.gif">
-												</a>
-												<span class="line_total">
-													$ {{$product->sell_rate * $quantity}}					
-												</span>
-											</div>
-										</td>
-									</tr>
-									<tr class="sub-total-tr">
-										<td>
-											&nbsp;
-										</td>
-										<td>										
-											<input type="submit" value="Update Basket" class="update-basket">			
-										</td>
-										<td>Sub-Total:</td>
-										<td class="text-align-right">$ {{$product->sell_rate * $quantity}}</td>
-									</tr>
-								</form>
+									<?php
+										$total_value = 0;
+
+										$count = 0;
+									?>
+									@foreach($product_cart_r as $product_cart)
+										<?php
+											$product_id = $product_cart['product_id'];
+											$product = DB::table('product')->where('id',$product_id)->first();
+										?>
+										<tr>
+											<form method="post" action="{{URL::to('/')}}/order/update_cart">
+											<td>
+												<div class="added-images">
+													<img src="{{Url::to('')}}/{{$product->thumb}}">
+												</div>
+												<div class="added-item-container">
+													<a class="product-name" href="#">
+														{{$product->title}}
+													</a>
+												</div>
+											</td>
+											<td>
+												<input class="cart-quantity" type="number" min="1" name="quantity" value="{{$product_cart['quantity']}}">
+											</td>
+											<td>
+												<div class="unit-price">
+													${{$product->sell_rate}}
+												</div>
+											</td>
+											<td class="text-align-right">
+												<div class="linetotal">
+													
+													<span class="line_total">
+														${{$product_cart['quantity']*$product->sell_rate}}				
+														<?php
+															$total_value+=$product_cart['quantity']*$product->sell_rate;
+														?>
+													</span>
+												</div>
+											</td>	
+											<td>
+												<div class="delete_product">
+													<input type="hidden" name="product_id" value="{{$product_id}}">
+													<input type="hidden" name="color" value="{{$product_cart['color']}}">
+													<input type="hidden" name="_token" value="{{ csrf_token() }}">
+													<input type="hidden" name="product_index" value="{{$count}}">
+													<input type="submit" name="update_product" class="product_update" value="">
+												</form>
+													<form method="post" action="{{URL::to('/')}}/order/remove_cart">
+														<input type="hidden" name="_token" value="{{ csrf_token() }}">
+														<input type="hidden" name="product_index" value="{{$count}}">
+														<input type="submit" name="remove_product" class="product_remove_cross" value="">
+													</form>
+													
+												</div>
+											</td>
+										</tr>
+										<?php $count++;?>
+									@endforeach
+										<tr class="sub-total-tr">
+											<td>
+												&nbsp;</td>
+											<td>
+											</td>
+											<td>Total:</td>
+											<td class="text-align-right">${{$total_value}}</td>
+											<td></td>
+										</tr>
 								</tbody>
 							</table>
+
+
+							@else
+								<div class="empty_cart">Your Cart is empty</div>
+							@endif
+							
 						</div>
-
-
-						@else
-
-							<div class="description">
-								<p>No product yet.</p>
-							</div>
-						@endif
 						
 							
 
 						<div class="col-md-12 margin-top-30 margin-bottom-30">
 							
-								<!-- <a href="/site/index" class="cart-continue-shopping">Continue Shopping</a> -->
+								<a href="{{Url::to('')}}" class="cart-continue-shopping">Continue Shopping</a>
 								<!-- <input type="submit" value="Checkout" class="cart-checkout">					 -->
-								<a href="{{URL::to('/')}}/order-checkout" class="cart-checkout">Checkout</a>					
+								@if(Session::has('product_cart') && count(Session::get('product_cart')) > 0)
+									<a href="{{URL::to('/')}}/order-checkout" class="cart-checkout">Checkout</a>
+								@endif					
 							
 						</div>
 

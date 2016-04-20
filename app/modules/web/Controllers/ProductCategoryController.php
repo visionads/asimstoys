@@ -21,13 +21,34 @@ class ProductCategoryController extends Controller
 		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
 		$title ="Pre order | Asim's Toy";
+		$header = 'Pre order';
 
 		return view('web::productcategory.preorder',[
             'title' => $title,
+            'header' => $header,
             'productdata' => $productdata,
             'productgroup_data' => $productgroup_data
         ]);
 	}
+
+	public function layby(){
+
+		$productdata = DB::table('product')->orderBy('sort_order','asc')->get();
+		
+		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
+
+		$title ="Lay by | Asim's Toy";
+
+		$header = 'Lay by';
+
+		return view('web::productcategory.preorder',[
+            'title' => $title,
+            'header' => $header,
+            'productdata' => $productdata,
+            'productgroup_data' => $productgroup_data
+        ]);
+	}
+
 	public function couple($main_slug,$sub_slug){
 
 		$product_group = DB::table('groups')

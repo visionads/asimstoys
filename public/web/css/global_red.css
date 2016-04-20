@@ -5718,6 +5718,29 @@ a.email_us:hover{
 	float: left;
 }
 
+.product_remove_cross {
+    background: url('../images/close.png');
+    width: 20px;
+    background-repeat: no-repeat;
+    border: none;
+    outline: none;
+    height: 20px;
+    cursor: pointer;
+    margin-top: 15px;
+    float: right;
+}
+
+.product_update{
+     background: url('../images/edit.png');
+    width: 20px;
+    background-repeat: no-repeat;
+    border: none;
+    outline: none;
+    height: 20px;
+    cursor: pointer;
+    margin-top: 17px;
+    float: left;
+}
 
 
 

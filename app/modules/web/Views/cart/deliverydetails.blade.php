@@ -101,7 +101,7 @@
 										
 									</div>
 									<div class="form-group">
-										<input type="submit" class="form-control register_btn" name="submit" value="Register">
+										<input type="submit" class="form-control register_btn" name="submit" value="Submit">
 									</div>
 
 								</div>
