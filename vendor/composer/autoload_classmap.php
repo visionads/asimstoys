@@ -58,6 +58,8 @@ return array(
     'CreateMediaTable' => $baseDir . '/database/migrations/2015_12_06_122601_create_media_table.php',
     'CreateMenuTable' => $baseDir . '/database/migrations/2015_12_03_134653_create_menu_table.php',
     'CreateMenuTypeTable' => $baseDir . '/database/migrations/2015_12_03_140939_create_menu_type_table.php',
+    'CreateOrderdetailsTable' => $baseDir . '/database/migrations/2016_04_20_130140_create_orderdetails_table.php',
+    'CreateOrderoverheadTable' => $baseDir . '/database/migrations/2016_04_20_125918_create_orderoverhead_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateProduct' => $baseDir . '/database/migrations/2016_01_04_102630_create_product.php',
     'CreateProductCategory' => $baseDir . '/database/migrations/2016_01_04_095645_create_product_category.php',
