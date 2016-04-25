@@ -25,6 +25,17 @@
     </ul>
 </li>
 
+<li class="sub-menu">
+    <a href="javascript:;">
+        <i class="icon-bookmark"></i>
+        <span>Order History</span>
+    </a>
+    <ul class="sub">
+        <li><a  href={{URL::to('order_paid/index')}}>Order (Paid)</a></li>
+        <li><a  href={{URL::to('lay_by/index')}}>Lay By</a></li>
+    </ul>
+</li>
+
 
 
 <li class="sub-menu">

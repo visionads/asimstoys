@@ -123,7 +123,7 @@
 												&nbsp;</td>
 											<td>
 											</td>
-											<td>Total:</td>
+											<td>Total: <input type="hidden" name="total_value" value="{{$total_value}}"></td>
 											<td class="text-align-right">${{$total_value}}</td>
 											
 										</tr>
@@ -192,7 +192,7 @@
 							
 								<a href="{{Url::to('')}}/mycart" class="cart-continue-shopping">Edit Cart</a>
 								<!-- <input type="submit" value="Checkout" class="cart-checkout">					 -->
-							<a href="{{ route('pay-now') }}" class="cart-checkout">Pay Now</a>
+							<a href="{{ route('pay-now') }}" class="cart-checkout">Proceed to Payment Method</a>
 							
 						</div>
 

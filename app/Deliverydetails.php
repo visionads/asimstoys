@@ -1,23 +1,34 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: etsb
+ * Date: 10/26/15
+ * Time: 1:13 PM
+ */
 
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 
-class Deliverydetails extends Model
+class DeliveryDetails extends Model
 {
-     protected $table = 'deliverydetails';
+
+    protected $table = 'delivery_details';
 
     protected $fillable = [
-        'email',
         'first_name',
         'last_name',
-        'user_id',
         'suburb',
         'postcode',
         'state',
-        'address',
         'country',
-        'telephone'
+        'telephone',
+        'updated_at',
+        'created_at',
+        'address',
+        'user_id',
+        'email',
     ];
 }

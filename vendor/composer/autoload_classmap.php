@@ -30,6 +30,8 @@ return array(
     'App\\Modules\\Web\\Controllers\\ProductCategoryController' => $baseDir . '/app/modules/web/Controllers/ProductCategoryController.php',
     'App\\Modules\\Web\\Controllers\\ProductController' => $baseDir . '/app/modules/web/Controllers/ProductController.php',
     'App\\Modules\\Web\\Controllers\\WwwController' => $baseDir . '/app/modules/web/Controllers/WwwController.php',
+    'App\\OrderDetail' => $baseDir . '/app/Models/OrderDetail.php',
+    'App\\OrderHead' => $baseDir . '/app/Models/OrderHead.php',
     'App\\Skills' => $baseDir . '/app/Models/Skills.php',
     'App\\SliderImage' => $baseDir . '/app/Models/SliderImage.php',
     'App\\SocialIcon' => $baseDir . '/app/Models/SocialIcon.php',

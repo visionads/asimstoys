@@ -93,14 +93,73 @@ Route::any('remove_cart',[
 		'uses' => 'CartController@remove_cart'
 	]);
 
-/*---------Shajjad Start---------------*/
+
+    Route::any("payment_process_secure", [
+        "as"   => "payment_process_secure",
+        "uses" => "OrderController@payment_process_secure"
+    ]);
+
+    Route::any("payment_method_complete", [
+        "as"   => "payment_method_complete",
+        "uses" => "OrderController@payment_method_complete"
+    ]);
+
+    Route::any("e_way_payment", [
+        "as"   => "e_way_payment",
+        "uses" => "OrderController@e_way_payment"
+    ]);
+
+
+
+
+    //order History
+    Route::any("details_of_lay_by/{order_head_id}", [
+        "as"   => "details_of_lay_by",
+        "uses" => "AccountsController@details_of_lay_by"
+    ]);
+
+
+    Route::any("details_of_order_summery/{order_head_id}", [
+        "as"   => "details_of_order_summery",
+        "uses" => "AccountsController@details_of_order_summery"
+    ]);
+
+    Route::any("order_summery_lists", [
+        "as"   => "order_summery_lists",
+        "uses" => "AccountsController@order_summery_lists"
+    ]);
+
+
+    Route::any("lay_by_order_lists", [
+        "as"   => "lay_by_order_lists",
+        "uses" => "AccountsController@lay_by_order_lists"
+    ]);
+
+
+    Route::any("lay_by_pay_option/{order_head_id}", [
+        "as"   => "lay_by_pay_option",
+        "uses" => "AccountsController@lay_by_pay_option"
+    ]);
+
+
+    //Bank Deposit
+    Route::any("bank_partial_payment_submit", [
+        "as"   => "bank_partial_payment_submit",
+        "uses" => "AccountsController@bank_partial_payment_submit"
+    ]);
+
+
+
+
+
+/*--------- Start---------------*/
 
 Route::any('myaccount',[
 	'as' => 'myaccount',
 	'uses' => 'AccountsController@myaccount'
 ]);
 
-/*---------Shajjad End---------------*/
+/*--------- End---------------*/
 
 
 	Route::any('order-checkout',[
@@ -171,7 +230,7 @@ Route::any('{product_slug}',[
 		'uses' => 'ProductController@index'
 	]);
 
-/*---------Shajjad Start---------------*/
+/*--------- Start---------------*/
 
 Route::any("order/paynow", [
 	"as"   => "pay-now",
@@ -185,7 +244,10 @@ Route::any("order/paynow", [
 
 
 
-/*---------Shajjad End---------------*/
+
+
+
+/*--------- End---------------*/
 
 
 Route::any('{main_slug}/{sub_slug}',[

@@ -2,10 +2,10 @@
 -- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 20, 2016 at 09:09 AM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.15
+-- Host: localhost
+-- Generation Time: Apr 23, 2016 at 07:14 PM
+-- Server version: 5.7.9
+-- PHP Version: 5.6.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `asimstoy`
+-- Database: `asimstoys`
 --
 
 -- --------------------------------------------------------
@@ -483,15 +483,16 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`id`, `email`, `first_name`, `last_name`, `password`, `suburb`, `postcode`, `state`, `country`, `telephone`, `updated_at`, `created_at`, `address`) VALUES
 (20, 'mithi', 'mithu', 'mi', 'i', 'w', 'w', 'w', 'w', 'w', '2016-03-28 00:35:28', '0000-00-00 00:00:00', ''),
-(21, 'mithun.cse521@gmail.com', '323', '34', '36a3dfda6161ead53a41830162a07f51583f9e9b', 'we', 'sdsds', 'ACT', 'Australia', '0', '2016-04-20 05:06:04', '2016-03-05 13:40:33', 'we');
+(21, 'mithun.cse521@gmail.com', '323', '34', '36a3dfda6161ead53a41830162a07f51583f9e9b', 'we', 'sdsds', 'ACT', 'Australia', '0', '2016-04-20 05:06:04', '2016-03-05 13:40:33', 'we'),
+(22, 'selimppc@gmail.com', 'Selim', 'Reza', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-22 03:45:58', '2016-04-22 03:45:50', 'Dhaka');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `deliverydetails`
+-- Table structure for table `delivery_details`
 --
 
-CREATE TABLE `deliverydetails` (
+CREATE TABLE `delivery_details` (
   `id` int(255) NOT NULL,
   `first_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `last_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -508,14 +509,29 @@ CREATE TABLE `deliverydetails` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `deliverydetails`
+-- Dumping data for table `delivery_details`
 --
 
-INSERT INTO `deliverydetails` (`id`, `first_name`, `last_name`, `suburb`, `postcode`, `state`, `country`, `telephone`, `updated_at`, `created_at`, `address`, `user_id`, `email`) VALUES
+INSERT INTO `delivery_details` (`id`, `first_name`, `last_name`, `suburb`, `postcode`, `state`, `country`, `telephone`, `updated_at`, `created_at`, `address`, `user_id`, `email`) VALUES
 (20, 'Mithun', 'Adhiakry', 'Mipur', '1213', 'NSW', 'Australia', '01732017886', '2016-03-01 19:32:57', '2016-03-01 19:32:57', 'Dhaka', 19, 'mithun.cse521@gmail.com'),
 (21, 'Mithun', 'Adhiakry', 'Mipur', '1213', 'NSW', 'Australia', '01732017886', '2016-03-01 19:38:17', '2016-03-01 19:38:17', 'Dhaka', 19, 'mithun.cse521@gmail.com'),
 (22, '323', '34', 'we', 'sdsds', 'ACT', 'Australia', '0', '2016-04-20 18:50:46', '2016-04-20 18:50:46', 'we', 21, 'mithun.cse521@gmail.com'),
-(23, '323', '34', 'we', 'sdsds', 'ACT', 'Australia', '0', '2016-04-20 19:00:38', '2016-04-20 19:00:38', 'we', 21, 'mithun.cse521@gmail.com');
+(23, '323', '34', 'we', 'sdsds', 'ACT', 'Australia', '0', '2016-04-20 19:00:38', '2016-04-20 19:00:38', 'we', 21, 'mithun.cse521@gmail.com'),
+(24, 'Selim', 'Reza', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-22 03:50:22', '2016-04-22 03:50:22', 'Dhaka', 22, 'selimppc@gmail.com'),
+(25, 'Selim', 'Reza', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-22 05:30:06', '2016-04-22 05:30:06', 'Dhaka', 22, 'selimppc@gmail.com'),
+(26, 'Selim', 'Reza', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-22 09:17:50', '2016-04-22 09:17:50', 'Dhaka', 22, 'selimppc@gmail.com'),
+(27, 'Selim', 'Reza', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-22 09:19:08', '2016-04-22 09:19:08', 'Dhaka', 22, 'selimppc@gmail.com'),
+(28, 'Selim', 'Reza', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-22 10:30:19', '2016-04-22 10:30:19', 'Dhaka', 22, 'selimppc@gmail.com'),
+(29, 'Selim', 'Reza', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-22 10:59:56', '2016-04-22 10:59:56', 'Dhaka', 22, 'selimppc@gmail.com'),
+(30, 'Selim', 'Reza', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-23 04:17:33', '2016-04-23 04:17:33', 'Dhaka', 22, 'selimppc@gmail.com'),
+(31, 'Selim', 'Reza', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-23 04:18:09', '2016-04-23 04:18:09', 'Dhaka', 22, 'selimppc@gmail.com'),
+(32, 'Selim', 'Reza', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-23 11:56:33', '2016-04-23 11:56:33', 'Dhaka', 22, 'selimppc@gmail.com'),
+(33, 'Selim', 'Reza', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-23 11:59:59', '2016-04-23 11:59:59', 'Dhaka', 22, 'selimppc@gmail.com'),
+(34, 'Selim', 'Reza', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-23 12:03:25', '2016-04-23 12:03:25', 'Dhaka', 22, 'selimppc@gmail.com'),
+(35, 'Selim', 'Reza', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-23 12:05:00', '2016-04-23 12:05:00', 'Dhaka', 22, 'selimppc@gmail.com'),
+(36, 'Selim', 'Reza', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-23 12:06:19', '2016-04-23 12:06:19', 'Dhaka', 22, 'selimppc@gmail.com'),
+(37, 'Selim', 'Reza', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-23 14:16:53', '2016-04-23 14:16:53', 'Dhaka', 22, 'selimppc@gmail.com'),
+(38, 'Selim', 'Reza', 'Dhaka', '1290', 'ACT', 'Australia', '1234567890', '2016-04-23 14:18:22', '2016-04-23 14:18:22', 'Dhaka', 22, 'selimppc@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -721,10 +737,10 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_details`
+-- Table structure for table `order_detail`
 --
 
-CREATE TABLE `order_details` (
+CREATE TABLE `order_detail` (
   `id` int(10) UNSIGNED NOT NULL,
   `order_head_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -737,23 +753,135 @@ CREATE TABLE `order_details` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`id`, `order_head_id`, `product_id`, `product_variation_id`, `qty`, `color`, `price`, `status`, `created_at`, `updated_at`) VALUES
+(1, 13, 5, 0, 1, '0', 150.00, '1', '2016-04-22 10:07:51', '2016-04-22 10:07:51'),
+(2, 13, 5, 1, 1, '1', 150.00, '1', '2016-04-22 10:07:51', '2016-04-22 10:07:51'),
+(3, 14, 5, 0, 1, '0', 150.00, '1', '2016-04-22 10:20:34', '2016-04-22 10:20:34'),
+(4, 14, 5, 1, 1, '1', 150.00, '1', '2016-04-22 10:20:34', '2016-04-22 10:20:34'),
+(5, 15, 3, 2, 1, '2', 130.00, '1', '2016-04-22 10:33:55', '2016-04-22 10:33:55'),
+(6, 16, 3, 2, 1, '2', 130.00, '1', '2016-04-22 11:00:01', '2016-04-22 11:00:01'),
+(7, 17, 5, 1, 1, '1', 150.00, '1', '2016-04-23 04:17:36', '2016-04-23 04:17:36'),
+(8, 18, 4, 0, 1, '', 200.00, '1', '2016-04-23 04:18:11', '2016-04-23 04:18:11'),
+(9, 19, 5, 1, 1, '1', 150.00, '1', '2016-04-23 11:56:48', '2016-04-23 11:56:48'),
+(10, 20, 4, 0, 1, '', 200.00, '1', '2016-04-23 12:00:03', '2016-04-23 12:00:03'),
+(11, 21, 4, 0, 1, '', 200.00, '1', '2016-04-23 12:03:27', '2016-04-23 12:03:27'),
+(12, 22, 5, 1, 1, '1', 150.00, '1', '2016-04-23 12:05:04', '2016-04-23 12:05:04'),
+(13, 23, 5, 1, 1, '1', 150.00, '1', '2016-04-23 12:06:22', '2016-04-23 12:06:22'),
+(14, 24, 5, 1, 1, '1', 150.00, '1', '2016-04-23 14:16:56', '2016-04-23 14:16:56'),
+(15, 25, 5, 1, 1, '1', 150.00, '1', '2016-04-23 14:18:24', '2016-04-23 14:18:24');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_overhead`
+-- Table structure for table `order_head`
 --
 
-CREATE TABLE `order_overhead` (
+CREATE TABLE `order_head` (
   `id` int(10) UNSIGNED NOT NULL,
-  `invoice_id` int(11) NOT NULL,
+  `invoice_no` varchar(24) COLLATE utf8_unicode_ci NOT NULL,
+  `invoice_type` enum('layby','eway') COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `total_discount_price` double(8,2) NOT NULL,
   `vat` int(11) NOT NULL,
   `net_amount` int(11) NOT NULL,
-  `status` enum('0','1','2','3') COLLATE utf8_unicode_ci NOT NULL,
+  `status` enum('open','partial-payment','done','delivered') COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `order_head`
+--
+
+INSERT INTO `order_head` (`id`, `invoice_no`, `invoice_type`, `user_id`, `total_discount_price`, `vat`, `net_amount`, `status`, `created_at`, `updated_at`) VALUES
+(1, '0', NULL, 22, 0.00, 0, 300, 'open', '2016-04-22 09:53:59', '2016-04-22 09:53:59'),
+(2, '0', NULL, 22, 0.00, 0, 300, 'open', '2016-04-22 09:54:56', '2016-04-22 09:54:56'),
+(3, 'INV-0000001', NULL, 22, 0.00, 0, 300, 'open', '2016-04-22 09:56:05', '2016-04-22 09:56:05'),
+(4, 'INV-0000001', NULL, 22, 0.00, 0, 300, 'open', '2016-04-22 09:58:49', '2016-04-22 09:58:49'),
+(5, 'INV-0000002', NULL, 22, 0.00, 0, 300, 'open', '2016-04-22 09:59:06', '2016-04-22 09:59:06'),
+(6, 'INV-0000003', NULL, 22, 0.00, 0, 300, 'open', '2016-04-22 10:05:41', '2016-04-22 10:05:41'),
+(7, 'INV-0000004', NULL, 22, 0.00, 0, 300, 'open', '2016-04-22 10:05:59', '2016-04-22 10:05:59'),
+(8, 'INV-0000005', NULL, 22, 0.00, 0, 300, 'open', '2016-04-22 10:06:14', '2016-04-22 10:06:14'),
+(9, 'INV-0000006', NULL, 22, 0.00, 0, 300, 'open', '2016-04-22 10:06:31', '2016-04-22 10:06:31'),
+(10, 'INV-0000007', NULL, 22, 0.00, 0, 300, 'open', '2016-04-22 10:06:50', '2016-04-22 10:06:50'),
+(11, 'INV-0000008', NULL, 22, 0.00, 0, 300, 'open', '2016-04-22 10:07:12', '2016-04-22 10:07:12'),
+(12, 'INV-0000009', NULL, 22, 0.00, 0, 300, 'open', '2016-04-22 10:07:28', '2016-04-22 10:07:28'),
+(13, 'INV-0000010', NULL, 22, 0.00, 0, 300, 'open', '2016-04-22 10:07:51', '2016-04-22 10:07:51'),
+(14, 'INV-0000011', NULL, 22, 0.00, 0, 300, 'open', '2016-04-22 10:20:34', '2016-04-22 10:20:34'),
+(15, 'INV-0000012', NULL, 22, 0.00, 0, 130, 'open', '2016-04-22 10:33:55', '2016-04-22 10:33:55'),
+(16, 'INV-0000013', 'layby', 22, 0.00, 0, 130, 'open', '2016-04-22 11:00:01', '2016-04-22 11:00:01'),
+(17, 'INV-0000014', 'layby', 22, 0.00, 0, 150, 'open', '2016-04-23 04:17:36', '2016-04-23 04:17:36'),
+(18, 'INV-0000015', 'layby', 22, 0.00, 0, 200, 'open', '2016-04-23 04:18:11', '2016-04-23 04:18:11'),
+(19, 'INV-0000016', 'eway', 22, 0.00, 0, 150, 'open', '2016-04-23 11:56:48', '2016-04-23 11:56:48'),
+(20, 'INV-0000017', 'layby', 22, 0.00, 0, 200, 'open', '2016-04-23 12:00:03', '2016-04-23 12:00:03'),
+(21, 'INV-0000018', 'layby', 22, 0.00, 0, 200, 'open', '2016-04-23 12:03:27', '2016-04-23 12:03:27'),
+(22, 'INV-0000019', NULL, 22, 0.00, 0, 150, 'open', '2016-04-23 12:05:04', '2016-04-23 12:05:04'),
+(23, 'INV-0000020', 'eway', 22, 0.00, 0, 150, 'open', '2016-04-23 12:06:22', '2016-04-23 12:06:22'),
+(24, 'INV-0000021', NULL, 22, 0.00, 0, 150, 'open', '2016-04-23 14:16:56', '2016-04-23 14:16:56'),
+(25, 'INV-0000022', 'layby', 22, 0.00, 0, 150, 'open', '2016-04-23 14:18:24', '2016-04-23 14:18:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_invoice_setup`
+--
+
+CREATE TABLE `order_invoice_setup` (
+  `id` int(11) NOT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  `code` varchar(45) DEFAULT NULL,
+  `title` varchar(64) DEFAULT NULL,
+  `last_number` int(11) DEFAULT NULL,
+  `increment` int(11) DEFAULT NULL,
+  `status` enum('active') DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `created_at` varchar(45) DEFAULT NULL,
+  `updated_at` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `order_invoice_setup`
+--
+
+INSERT INTO `order_invoice_setup` (`id`, `type`, `code`, `title`, `last_number`, `increment`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'invoice-no', 'INV-', 'Invoice no for order', 22, 1, 'active', 1, 1, NULL, '2016-04-23 20:18:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_payment_transaction`
+--
+
+CREATE TABLE `order_payment_transaction` (
+  `id` int(11) NOT NULL,
+  `order_head_id` int(11) DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `payment_type` enum('paypal','eway','bank') DEFAULT NULL,
+  `amount` decimal(20,2) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  `transaction_no` varchar(45) DEFAULT NULL,
+  `gateway_name` varchar(64) DEFAULT NULL,
+  `gateway_address` text,
+  `status` enum('pending','approved','cancel') DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `order_payment_transaction`
+--
+
+INSERT INTO `order_payment_transaction` (`id`, `order_head_id`, `customer_id`, `payment_type`, `amount`, `date`, `transaction_no`, `gateway_name`, `gateway_address`, `status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 25, 22, 'bank', '50.00', '2016-04-23 21:49:22', 'NA-001', 'Dhaka Bank', 'Uttara', '', NULL, NULL, '2016-04-23 15:49:22', '2016-04-23 15:49:22'),
+(2, 25, 22, 'bank', '50.00', '2016-04-23 21:51:51', 'NA-001', 'Dhaka Bank', 'Uttara', '', NULL, NULL, '2016-04-23 15:51:51', '2016-04-23 15:51:51'),
+(3, 25, 22, 'bank', '50.00', '2016-04-23 23:10:40', 'BA-0101', 'Dhaka', 'Dhaka', '', NULL, NULL, '2016-04-23 17:10:40', '2016-04-23 17:10:40');
 
 -- --------------------------------------------------------
 
@@ -1091,9 +1219,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `address`, `phone_number`, `state`, `country_id`, `image`, `type`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin', 'admin@admin.com', '$2y$10$YqJPCkLk81tDaHCVo0lc6e5J9AnR.Xmzkdsdi4uvdZV1M.PTMgHlu', 'Dhaka', '01785987645', 'Dhaka', 19, NULL, 'admin', 'active', 'rfWomuVznksHBnpH17eRVOrS853lghFE4XbeEcgRMMnio4tftpSf4ZPLLzcQ', '2015-12-24 02:55:47', '2016-03-19 12:11:20'),
-(2, 'admin', 'admin', 'almasbd@gmail.com', '$2y$10$J1uaZkQoh9PvvY08beAGceWLgjXWsMpysJgCdWI8RQk744aP7TTEW', 'Dhaka', '01785987645', 'Dhaka', 19, NULL, 'admin', 'active', 'fioyugpuiesiorgjhprauehrigpi', '2015-12-24 02:55:47', '2015-12-24 02:55:47'),
-(3, 'admin', 'admin', 'tanintjt@gmail.com', '$2y$10$EnoS2cbt.MlZresFSNczaO.tlqTUP/uZnfuz6G7YVr2ifGcSdoXPe', 'Dhaka', '01785987645', 'Dhaka', 19, NULL, 'admin', 'active', 'fioyugpuiesiorgjhprauehrigpi', '2015-12-24 02:55:47', '2015-12-24 02:55:47');
+(1, 'admin', 'admin', 'admin@admin.com', '$2y$10$YqJPCkLk81tDaHCVo0lc6e5J9AnR.Xmzkdsdi4uvdZV1M.PTMgHlu', 'Dhaka', '01785987645', 'Dhaka', 19, NULL, 'admin', 'active', 'rfWomuVznksHBnpH17eRVOrS853lghFE4XbeEcgRMMnio4tftpSf4ZPLLzcQ', '2015-12-24 02:55:47', '2016-03-19 12:11:20');
 
 -- --------------------------------------------------------
 
@@ -1295,9 +1421,9 @@ ALTER TABLE `customer`
   ADD UNIQUE KEY `customer_email_unique` (`email`);
 
 --
--- Indexes for table `deliverydetails`
+-- Indexes for table `delivery_details`
 --
-ALTER TABLE `deliverydetails`
+ALTER TABLE `delivery_details`
   ADD UNIQUE KEY `customer_id_unique` (`id`);
 
 --
@@ -1335,16 +1461,30 @@ ALTER TABLE `menu_type`
   ADD UNIQUE KEY `menu_type_slug_unique` (`slug`);
 
 --
--- Indexes for table `order_details`
+-- Indexes for table `order_detail`
 --
-ALTER TABLE `order_details`
+ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `order_overhead`
+-- Indexes for table `order_head`
 --
-ALTER TABLE `order_overhead`
+ALTER TABLE `order_head`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_invoice_setup`
+--
+ALTER TABLE `order_invoice_setup`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_payment_transaction`
+--
+ALTER TABLE `order_payment_transaction`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_hd_id_idx` (`order_head_id`),
+  ADD KEY `customer_id_idx` (`customer_id`);
 
 --
 -- Indexes for table `password_resets`
@@ -1514,12 +1654,12 @@ ALTER TABLE `crud`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
--- AUTO_INCREMENT for table `deliverydetails`
+-- AUTO_INCREMENT for table `delivery_details`
 --
-ALTER TABLE `deliverydetails`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+ALTER TABLE `delivery_details`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `gal_image`
 --
@@ -1546,15 +1686,25 @@ ALTER TABLE `menu`
 ALTER TABLE `menu_type`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `order_details`
+-- AUTO_INCREMENT for table `order_detail`
 --
-ALTER TABLE `order_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `order_detail`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
--- AUTO_INCREMENT for table `order_overhead`
+-- AUTO_INCREMENT for table `order_head`
 --
-ALTER TABLE `order_overhead`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `order_head`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+--
+-- AUTO_INCREMENT for table `order_invoice_setup`
+--
+ALTER TABLE `order_invoice_setup`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `order_payment_transaction`
+--
+ALTER TABLE `order_payment_transaction`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `product`
 --

@@ -164,6 +164,7 @@ class WwwController extends Controller
     public function logout(Request $request){
 
         $request->session()->pull('user_id');
+        $request->session()->flush();
 
         return redirect('/');
     }

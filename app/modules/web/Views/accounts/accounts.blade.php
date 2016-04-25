@@ -4,27 +4,36 @@
     <div class="pos-new-product home-text-container">
         <div class="description">
 
-            <div class="cart_container">
-
+            
                     <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="nav nav-pills bs-tabdrop-example">
-                                <li class="active"><a href="#bs-tabdrop-tab1" data-toggle="tab">Section 1</a></li>
-                                <li><a href="#bs-tabdrop-tab2" data-toggle="tab">Section 2</a></li>
-                                <li><a href="#bs-tabdrop-tab3" data-toggle="tab">Section 3</a></li>
+                        <div class="col-sm-12">
+
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="{{route('myaccount')}}" >Profile</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="{{route('order_summery_lists')}}" >Order History</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="{{route('lay_by_order_lists')}}">Lay by Order</a>
+                                </li>
                             </ul>
+
+                            <div class="tab-content ">
+                                <div role="tabpanel" class="tab-pane article-page-tab active" id="profile">
+                                    @include('web::accounts.profile')
+                                </div>
+
+                            </div>
+
                         </div>
+                        
                     </div>
 
-                <div class="col-md-12 margin-top-30 margin-bottom-30">
+                
 
-                    <!-- <a href="/site/index" class="cart-continue-shopping">Continue Shopping</a> -->
-                    <!-- <input type="submit" value="Checkout" class="cart-checkout">					 -->
-                    {{--<a href="{{URL::to('/')}}/order-checkout" class="cart-checkout">Checkout</a>--}}
-
-                </div>
-
-            </div>
+            
 
         </div>
     </div>

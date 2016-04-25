@@ -102,7 +102,7 @@
 										<label>color</label>
 										<select name="color">
 											@foreach($product_variation_r as $product_variation)
-												<option value="{{$product_variation->title}}">{{$product_variation->title}}</option>
+												<option value="{{$product_variation->id}}">{{$product_variation->title}}</option>
 											@endforeach
 											
 										</select>

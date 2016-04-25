@@ -5248,12 +5248,23 @@ padding: 8px;
 }
 
 .tab-content>.tab-pane {
- 	    border: 1px solid #ddd;
+ 	
     border-top: none;
     float: left;
     width: 100%;
-    padding: 25px 10px 25px 15px;
+    padding: 0px 25px;
     margin-bottom: 20px;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #ffc947;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus,.nav-tabs>li>a:hover{
+	    border: 1px solid #ffc947;
+    border-bottom: 1px solid #fff;
+    background: #ffc947;
+    color: #fff;
 }
 
 .hot_line{
@@ -5653,11 +5664,20 @@ a.email_us:hover{
 }
 
 .modal-header{
-	background: #ffc947;
+	    background: #ffc947;
+    color: #fff;
+    font-size: 15px;
+    height: 30px;
+    padding: 0px 15px;
+    line-height: 30px;
+}
+
+.text-align-right{
+	text-align: right;
 }
 
 .modal-header .close {
-    margin-top: -10px;
+    margin-top: 4px;
 }
 
 .modal-content{
@@ -5742,6 +5762,10 @@ a.email_us:hover{
     float: left;
 }
 
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+	border-bottom: 1px solid rgba(200,200,200,.2);
+	border-top: none;
+}
 
 
 /* Fixed Mobile*/

@@ -56,43 +56,50 @@
                         </div>
                     </div>
 
-                </div>
 
-                {!! Form::open(['route' => 'payment_method_complete']) !!}
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                <div class="col-md-12 margin-top-30 margin-bottom-30">
-                    <div class="col-md-2">
-                    </div>
-                    <div class="col-md-8">
-                        <div><span class="panel-title">Choose Your Payment Method</span></div>
-                        <br><br>
-                        <div class="radio" style="margin-top: 0;">
-                            <label>
-                                <input type="radio" name="payment_method" id="r1" value="e_way" checked="checked" class="px">
-                                <span class="lbl">eWay Payment </span> <br>
-                                <i>For Paypal Or credit card by eWay Payment gateway system</i> <br> <br>
-                            </label>
-                        </div> <!-- / .radio -->
 
-                        <div class="radio" style="margin-inside: 0;">
-                            <label>
-                                <input type="radio" name="payment_method" id="r2" value="lay_by" class="px">
-                                <span class="lbl">Lay By Process</span> <br>
-                                <i>You may pay partially by Credit Card or Bank </i> <br>
-                            </label>
-                        </div>
-
-                    </div>
-                    <div class="col-md-2">
-                    </div>
-                </div>
-                <div class="col-md-3 pull-right margin-top-30 margin-bottom-30">
-                    <input type="submit" class="form-control register_btn" name="submit" value="Proceed to Pay">
-                </div>
-
-                {!! Form::close() !!}
             </div>
+
+                <div class="col-md-12" style="padding: 10% 30%; text-align: center">
+                    <style>
+                        .eway-button span{
+                            padding: 10%;
+                            width: 200px;
+                            text-align: center;
+                            height: 70px;
+                            color: lightyellow;
+                        }
+                    </style>
+
+                    <script src="https://secure.ewaypayments.com/scripts/eCrypt.js"
+                            class="eway-paynow-button"
+                            data-publicapikey="epk-4AABBD0F-8893-4863-8776-ABF469799708"
+
+                            data-amount='{{$total_price}}'
+                            data-currency="AUD"
+                            data-buttoncolor="#ffc947"
+                            data-buttonsize="100"
+                            data-buttonerrorcolor="#f2dede"
+                            data-buttonprocessedcolor="#dff0d8"
+                            data-buttondisabledcolor="#f5f5f5"
+                            data-buttontextcolor="#000000"
+
+                            data-invoiceref='{{$invoice_number}}'
+                            data-invoicedescription="Asims Toys Payment "
+                            data-email= '{{@$customer_data->email}}'
+                            data-phone='{{@$customer_data->telephone}}'
+                            data-allowedit="true"
+                            data-resulturl="http://localhost/~selimreza/asimstoys/public/myaccount"
+                    >
+                    </script>
+
+                </div>
+
+
+
+
+
         </div>
     </div>
 @stop
