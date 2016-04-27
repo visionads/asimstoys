@@ -28,6 +28,7 @@ class OrderPaymentController extends Controller
 
         $data = OrderHead::with('relCustomer')
             ->where('order_head.invoice_type','eway')
+            ->where('status', '!=', 'cancel')
             ->orderBy('order_head.id','desc')
             ->get();
 
@@ -39,20 +40,16 @@ class OrderPaymentController extends Controller
     public function order_show($order_head_id){
 
         $order = OrderHead::with('relOrderDetail')->where('invoice_type', 'eway')->where('id', $order_head_id)->get();
-
-
-
-
-        $delivery_data = DeliveryDetails::where('user_id',Session::get('user_id'))->orderBy('id','desc')->first();
+       
+        $customer_data = Customer::where('id',$order[0]->user_id)->first();
 
         $title = 'Invoice Detail';
 
-        return view('order_payment.order_paid_index',[
-            'order' => $order,
-            'title' => $title,
-            'get_customer_data' => $get_customer_data,
-            'delivery_data' => $delivery_data,
+        return view('order_payment.order_details',[
+            'order_data' => $order,
+            'title' => $title,         
             'order_head_id'=>$order_head_id,
+            'customer_data' => $customer_data
         ]);
 
 
@@ -73,4 +70,40 @@ class OrderPaymentController extends Controller
         return view('order_payment.lay_by_index',['pageTitle' => $pageTitle,'data' => $data]);
     }
 
+
+    public function approve($id)
+    {
+       
+        try {
+            $model = OrderHead::where('id',$id)->first();
+            $model->status = 'approved';
+            if ($model->save()) {
+
+              
+                Session::flash('flash_message', " Successfully Saved.");
+                return redirect()->back();
+            }
+        } catch(\Exception $e) {
+            Session::flash('flash_message_error',$e->getMessage() );
+            return redirect()->back();
+        }
+    }
+
+     public function cancel($id)
+    {
+       
+        try {
+            $model = OrderHead::where('id',$id)->first();
+            $model->status = 'cancel';
+            if ($model->save()) {
+
+              
+                Session::flash('flash_message', " Successfully Saved.");
+                return redirect()->back();
+            }
+        } catch(\Exception $e) {
+            Session::flash('flash_message_error',$e->getMessage() );
+            return redirect()->back();
+        }
+    }
 }

@@ -4659,3 +4659,10 @@ tr.odd.gradeX td.sorting_1, tr.even.gradeX td.sorting_1, table.display tr.even.g
         background: #fff;
     padding: 20px;
 }
+
+.text-default-light {
+    color: #969c9c;
+}
+.text-light {
+    font-weight: 300;
+}

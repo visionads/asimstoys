@@ -9,7 +9,9 @@
     <div class="row">
         <div class="col-lg-12">
             <section class="panel">
-
+                <header class="panel-heading">
+                    Order Paid
+                </header>
                 @if(Session::has('flash_message'))
                     <div class="alert alert-success">
                         <p>{{ Session::get('flash_message') }}</p>
@@ -43,7 +45,7 @@
                                         <td>{{$values->status}}</td>
                                         <td>
                                             <a href="{{ route('order-paid-show', $values->id) }}" data-toggle="modal" data-target="#etsbModal" class="btn btn-info btn-xs" title="Details"><i class="icon-eye-open"></i></a>
-                                            <a href="{{ route('order-paid-approve', $values->id) }}" data-toggle="modal" data-target="#etsbModal" class="btn btn-primary btn-xs" title="Approved"><i class="icon-edit"></i></a>
+                                            <a href="{{ route('order-paid-approve', $values->id) }}" class="btn btn-info btn-xs" onclick="return confirm('Are you sure to Approved?')" title="Approved"><i class="icon-exclamation"></i></a>
                                             <a href="{{ route('order-paid-cancel', $values->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Cancel?')" title="Cancel"><i class="icon-trash"></i></a>
                                         </td>
                                     </tr>
