@@ -60,23 +60,51 @@ class ProductCategoryController extends Controller
 							->where('product_group_id',$product_group->id)
 							->first();
 
+
+
 		$productdata = DB::table('product')
 						->where('product_group_id',$product_group->id)
 						->where('product_subgroup_id',$product_subgroup->id)
 						->where('preorder','0')
 						->orderBy('sort_order','asc')
 						->get();
+
+
 			
 		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
 		$title =$product_subgroup->title . " | Asim's Toy";
 
-		return view('web::productcategory.all',[
-            'title' => $title,
-            'productdata' => $productdata,
-            'product_subgroup' => $product_subgroup,
-            'productgroup_data' => $productgroup_data
-        ]);
+		if($product_subgroup->slug == 'number-plates' || $product_subgroup->slug == 'gift-card'){
+			
+			$productdata = DB::table('product')
+						->where('product_group_id',$product_group->id)
+						->where('product_subgroup_id',$product_subgroup->id)
+						->where('preorder','0')
+						->orderBy('sort_order','asc')
+						->first();
+
+			$product_variation = DB::table('product_variation')->where('product_id',$productdata->id)->get();
+
+			return view('web::productcategory.number_plates',[
+	            'title' => $title,
+	            'productdata' => $productdata,
+	            'product_subgroup' => $product_subgroup,
+	            'productgroup_data' => $productgroup_data,
+	            'product_variation_r' => $product_variation
+	        ]);
+
+		}else{
+
+			return view('web::productcategory.all',[
+	            'title' => $title,
+	            'productdata' => $productdata,
+	            'product_subgroup' => $product_subgroup,
+	            'productgroup_data' => $productgroup_data
+	        ]);
+
+		}
+		
 
 	}
 

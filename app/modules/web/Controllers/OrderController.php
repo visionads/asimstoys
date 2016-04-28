@@ -79,6 +79,12 @@ class OrderController extends Controller
 			}else{
 				$color = '';
 			}
+
+            if(isset($_POST['background'])){
+                $background = (int) $_POST['background'];
+            }else{
+                $background = '';
+            }
 			
             $quantity = (int) $_POST['quantity'];
 
@@ -87,7 +93,8 @@ class OrderController extends Controller
             $product_cart_2 = array( 
                 array('product_id' => $product_id,
                         'color' => $color,
-                        'quantity' => $quantity
+                        'quantity' => $quantity,
+                        'background' => $background
                 ) 
             );
 

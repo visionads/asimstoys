@@ -10,7 +10,7 @@
 	<div class="col-md-12">
     	<div class="row">
     		<div class="form-group">
-	            {!! Form::label('title', 'Color:', ['class' => 'control-label']) !!}
+	            {!! Form::label('title', 'Color/Gift card price:', ['class' => 'control-label']) !!}
 	            <small class="required">(Required)</small>
 	            {!! Form::text('title', null, ['id'=>'title', 'class' => 'form-control','required','onkeyup'=>"sel_url()"]) !!}
 	        </div>
