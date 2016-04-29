@@ -266,11 +266,23 @@ class AccountsController extends Controller
     public function partial_lay_by_redirect_eway($invoice_no, $amount, $customer_id){
 
         $order_head = OrderHead::where('invoice_no', $invoice_no)->first();
-        $order_head->status = 'done';
+        $customer = Customer::where('id', $customer_id)->first();
+
+        //Order Payment Transaction
+        $order_trn = new OrderPaymentTransaction();
+        $order_trn->order_head_id = $order_head->id;
+        $order_trn->customer_id = $customer->id;
+        $order_trn->payment_type ='eway';
+        $order_trn->amount = $amount;
+        $order_trn->date = date('Y-m-d H:i:s');
+        $order_trn->transaction_no = 'eway';
+        $order_trn->gateway_name = 'eway';
+        $order_trn->gateway_address ='eway';
+        $order_trn->status = 'approved';
 
         try{
-            if($order_head->save()){
-                $customer = Customer::where('id', $customer_id)->first();
+            if($order_trn->save()){
+
                 $to_email = $customer->email;
                 $to_name = $customer->first_name." ". $customer->last_name;
 
