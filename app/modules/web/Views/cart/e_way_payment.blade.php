@@ -76,7 +76,7 @@
                             class="eway-paynow-button"
                             data-publicapikey="epk-4AABBD0F-8893-4863-8776-ABF469799708"
 
-                            data-amount='{{$total_price}}'
+                            data-amount='{{$eway_total_price_format}}'
                             data-currency="AUD"
                             data-buttoncolor="#ffc947"
                             data-buttonsize="100"
@@ -85,12 +85,12 @@
                             data-buttondisabledcolor="#f5f5f5"
                             data-buttontextcolor="#000000"
 
-                            data-invoiceref='{{$invoice_number}}'
+                            data-invoiceref="{{$invoice_number}}"
                             data-invoicedescription="Asims Toys Payment "
                             data-email= '{{@$customer_data->email}}'
                             data-phone='{{@$customer_data->telephone}}'
                             data-allowedit="true"
-                            data-resulturl="http://localhost/~selimreza/asimstoys/public/myaccount"
+                            data-resulturl="{{route('redirect_e_way_d', [$invoice_number, $total_price, $customer_data->id])}}"
                     >
                     </script>
 

@@ -13,10 +13,17 @@ use App\ProductGroup;
 use DB;
 use Session;
 use App\OrderPaymentTransaction;
+use Illuminate\Support\Facades\Input;
 
 
 class AccountsController extends Controller
 {
+    protected function isGetRequest()
+    {
+        return Input::server("REQUEST_METHOD") == "GET";
+    }
+
+
 
     public function myaccount(Request $request){
 
@@ -169,7 +176,10 @@ class AccountsController extends Controller
     }
 
 
-
+    /**
+     * @param $order_head_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function lay_by_pay_option($order_head_id){
 
         $order_data = OrderHead::where('id', $order_head_id)->first();
@@ -203,6 +213,86 @@ class AccountsController extends Controller
 
     }
 
+
+    public function step_final_payment_for_layby(){
+
+        if($this->isGetRequest()){
+            $payable_amount = abs(Input::get('amount'));
+            $order_head_id = Input::get('order_head_id');
+
+
+            $order_data = OrderHead::where('id', $order_head_id)->first();
+            $title = 'Invoice Detail';
+
+            $customer_data = DB::table('customer')->where('id',Session::get('user_id'))->first();
+
+            $total_amount = DB::table('order_detail')
+                ->select(DB::raw('SUM(price) as total_amount'))
+                ->groupBy('order_head_id')
+                ->where('order_head_id', $order_head_id)
+                ->first();
+
+            $paid_amount = DB::table('order_payment_transaction')
+                ->select(DB::raw('SUM(amount) as paid_amount'))
+                ->groupBy('order_head_id')
+                ->where('order_head_id', $order_head_id)
+                ->first();
+
+            $due_amount = @$total_amount->total_amount - @$paid_amount->paid_amount;
+
+            return view('web::accounts.final_step_lay_option',[
+                'title' => $title,
+                'order_data'=>$order_data,
+                'total_amount'=>$total_amount,
+                'paid_amount'=>$paid_amount,
+                'due_amount'=>$due_amount,
+                'customer_data'=>$customer_data,
+                'amount'=>$payable_amount.'.00',
+                'payable_amount'=>$payable_amount.'00',
+            ]);
+        }else{
+            return redirect()->back();
+        }
+
+    }
+
+
+    /**
+     * @param $invoice_no
+     * @param $amount
+     * @param $customer_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function partial_lay_by_redirect_eway($invoice_no, $amount, $customer_id){
+
+        $order_head = OrderHead::where('invoice_no', $invoice_no)->first();
+        $order_head->status = 'done';
+
+        try{
+            if($order_head->save()){
+                $customer = Customer::where('id', $customer_id)->first();
+                $to_email = $customer->email;
+                $to_name = $customer->first_name." ". $customer->last_name;
+
+                $subject = " Payment of invoice # ".$invoice_no. " | Asims Toys ";
+                $body = "Dear ".$to_name. " Your Payment is approved !";
+
+                $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
+
+                Session::flash('flash_message', "The Amount : ".$amount ." is DONE. Please check your email");
+            }
+        }catch(\exception $e){
+            Session::flash('flash_message', "Payment Declined");
+        }
+
+        return redirect()->route('lay_by_order_lists');
+    }
+
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function bank_partial_payment_submit(Request $request){
 
         $input_data = $request->all();

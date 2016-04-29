@@ -22,6 +22,7 @@ use Eway\Rapid\Enum\TransactionType;
 use Eway\Rapid\Model\Response\CreateTransactionResponse;
 use Eway\Rapid;
 use Eway\Rapid\Client;
+use App\Helpers\SendMailer;
 
 
 class OrderController extends Controller
@@ -427,7 +428,7 @@ class OrderController extends Controller
 
     public function payment_method_complete(Request $request){
 
-        $title = null;
+        $title = "Complete the Payment by Eway Payment Gateway";
         $input_data = $request->all();
 
         if($input_data['payment_method']=='e_way'){
@@ -446,7 +447,8 @@ class OrderController extends Controller
                 'title' => $title,
                 'invoice_number' => $invoice_number,
                 'user_id' => $user_id,
-                'total_price' => $total_price.'00',
+                'eway_total_price_format' => $total_price.'00',
+                'total_price' => $total_price,
                 'customer_data' => $customer_data,
             ]);
 
@@ -462,6 +464,40 @@ class OrderController extends Controller
 
     }
 
+    /**
+     * @param $invoice_no
+     * @param $amount
+     * @param $customer_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function redirect_e_way_d($invoice_no, $amount, $customer_id){
+
+        $order_head = OrderHead::where('invoice_no', $invoice_no)->first();
+        $order_head->status = 'done';
+
+        try{
+            if($order_head->save()){
+                $customer = Customer::where('id', $customer_id)->first();
+                $to_email = $customer->email;
+                $to_name = $customer->first_name." ". $customer->last_name;
+
+                $subject = " Payment of invoice # ".$invoice_no. " | Asims Toys ";
+                $body = "Dear ".$to_name. " Your Payment is approved !";
+
+                $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
+
+                Session::flash('flash_message', "The Amount : ".$amount ." is DONE. Please check your email");
+            }
+        }catch(\exception $e){
+            Session::flash('flash_message', "Payment Declined");
+        }
+
+        return redirect()->route('order_summery_lists');
+    }
+
+    /**
+     * @param Request $request
+     */
     public function e_way_payment(Request $request){
 
         $invoice_number = $request->session()->get('invoice_no');

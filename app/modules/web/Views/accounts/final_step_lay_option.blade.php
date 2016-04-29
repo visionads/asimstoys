@@ -53,15 +53,41 @@
                                 <h3> Secure eWay Payment </h3>
                                 <small>You may pay amount should be getter than AUD 50.00 or more. </small><br>
 
-                                {!! Form::open(['method' =>'GET','route'=>'step_final_payment_for_layby']) !!}
-                                <label for="amount">Amount (Partial or Full Payment)</label>
-                                <input type="text" name="amount" id="edValue" value="50.00" class="form-control" placeholder="50 or more "><br>
-                                <input type="hidden" name="order_head_id" value="{{$order_data->id}}">
+                                <input type="text" name="amount" id="edValue" value="{{$amount}}" class="form-control" placeholder="50.00 or more " readonly><br>
 
-                                <input type="submit" value="Go To Eway Payment" style="background-color: #ff7722; padding: 7px 15px; text-align: right; color: white;" class="pull-right">
+                                <div style="padding: 20%; text-align: center">
+                                    <style>
+                                        .eway-button span{
+                                            padding: 10%;
+                                            width: 200px;
+                                            text-align: center;
+                                            height: 70px;
+                                            color: lightyellow;
+                                        }
+                                    </style>
 
-                                {!! Form::close() !!}
+                                    <script src="https://secure.ewaypayments.com/scripts/eCrypt.js"
+                                            class="eway-paynow-button"
+                                            data-publicapikey="epk-4AABBD0F-8893-4863-8776-ABF469799708"
 
+                                            data-amount="{{$payable_amount}}"
+                                            data-currency="AUD"
+                                            data-buttoncolor="#ffc947"
+                                            data-buttonsize="100"
+                                            data-buttonerrorcolor="#f2dede"
+                                            data-buttonprocessedcolor="#dff0d8"
+                                            data-buttondisabledcolor="#f5f5f5"
+                                            data-buttontextcolor="#000000"
+
+                                            data-invoiceref='{{$order_data->invoice_no}}'
+                                            data-invoicedescription="Asims Toys Payment "
+                                            data-email= '{{@$customer_data->email}}'
+                                            data-phone='{{@$customer_data->telephone}}'
+                                            data-allowedit="true"
+                                            data-resulturl="{{route('partial_lay_by_redirect_eway', [$order_data->invoice_no, $payable_amount, $customer_data->id])}}"}}
+                                    >
+                                    </script>
+                                </div>
 
                             </div>
 

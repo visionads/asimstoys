@@ -104,6 +104,11 @@ Route::any('remove_cart',[
         "uses" => "OrderController@payment_method_complete"
     ]);
 
+    Route::any("redirect_e_way_d/{invoice_no}/{amount}/{customer_id}", [
+        "as"   => "redirect_e_way_d",
+        "uses" => "OrderController@redirect_e_way_d"
+    ]);
+
     Route::any("e_way_payment", [
         "as"   => "e_way_payment",
         "uses" => "OrderController@e_way_payment"
@@ -139,6 +144,16 @@ Route::any('remove_cart',[
     Route::any("lay_by_pay_option/{order_head_id}", [
         "as"   => "lay_by_pay_option",
         "uses" => "AccountsController@lay_by_pay_option"
+    ]);
+
+    Route::any("step_final_payment_for_layby", [
+        "as"   => "step_final_payment_for_layby",
+        "uses" => "AccountsController@step_final_payment_for_layby"
+    ]);
+
+    Route::any("partial_lay_by_redirect_eway/{invoice_no}/{amount}/{customer_id}", [
+        "as"   => "partial_lay_by_redirect_eway",
+        "uses" => "AccountsController@partial_lay_by_redirect_eway"
     ]);
 
 
