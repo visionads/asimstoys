@@ -1,11 +1,12 @@
-<div class="modal-dialog"  style="width: 75%;">
+
+<div class="modal-dialog" id="print_page" style="width: 75%;">
 	<div class="modal-content" style="float: left;width: 100%;" >
-	    <button style="padding: 10px;position: relative;z-index: 99;" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <button style="padding: 10px;position: relative;z-index: 99;" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	    <div class="modal-body">
 	      
 	      	<div class="col-xs-8">
-				<a href="{{URL::to('')}}" id="header_logo">
-					<img class="logo" src="http://localhost/asimtoys/public/web/images/logo.png" width="auto" height="auto">
+				<a href="#" id="header_logo">
+                    {!! HTML::image('web/images/logo.png', 'Asims Toys') !!}
 				</a>
 			</div>
 			<div class="col-xs-4 text-right" style="margin-bottom:20px;">
@@ -34,12 +35,12 @@
 				<div class="col-xs-4">
 					<div class="well">
 						<div class="clearfix">
-							<div class="pull-left"> INVOICE NO : </div>
+							<div class="pull-left"> INVOICE NO #  </div>
 							<div class="pull-right"> {{$order_data[0]->invoice_no}} </div>
 						</div>
 						<div class="clearfix">
 							<div class="pull-left"> INVOICE DATE : </div>
-							<!-- <div class="pull-right"> 10/02/14 </div> -->
+                            <div class="pull-right"> {{$order_data[0]->created_at}} </div>
 						</div>
 					</div>
 				</div><!--end .col -->
@@ -94,6 +95,8 @@
 								@endforeach
 							@endif
 
+                            <tr><td colspan="5" style="border-top: 0px"></td></tr>
+                            <tr><td colspan="5" style="border-top: 0px"></td></tr>
 							<tr>
 								<td colspan="3" >
 									&nbsp;
@@ -105,7 +108,7 @@
 								<td colspan="3" >
 									&nbsp;
 								</td>
-								<td class="text-right"><strong>Shipping free</strong></td>
+								<td class="text-right"><strong>Shipping fee</strong></td>
 								<td class="text-right">$ 0.00</td>
 							</tr>
 							<tr>

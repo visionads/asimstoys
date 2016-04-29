@@ -39,7 +39,7 @@ class OrderPaymentController extends Controller
 
     public function order_show($order_head_id){
 
-        $order = OrderHead::with('relOrderDetail')->where('invoice_type', 'eway')->where('id', $order_head_id)->get();
+        $order = OrderHead::with('relOrderDetail')->where('id', $order_head_id)->get();
        
         $customer_data = Customer::where('id',$order[0]->user_id)->first();
 
@@ -80,7 +80,7 @@ class OrderPaymentController extends Controller
             if ($model->save()) {
 
               
-                Session::flash('flash_message', " Successfully Saved.");
+                Session::flash('flash_message', " Successfully Approved.");
                 return redirect()->back();
             }
         } catch(\Exception $e) {
@@ -98,7 +98,7 @@ class OrderPaymentController extends Controller
             if ($model->save()) {
 
               
-                Session::flash('flash_message', " Successfully Saved.");
+                Session::flash('flash_message', " Successfully Canceled.");
                 return redirect()->back();
             }
         } catch(\Exception $e) {

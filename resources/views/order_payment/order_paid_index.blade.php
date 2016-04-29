@@ -10,7 +10,8 @@
         <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
-                    Order Paid
+                    Order Paid </br>
+                    <i> all paid order history</i>
                 </header>
                 @if(Session::has('flash_message'))
                     <div class="alert alert-success">
@@ -30,7 +31,8 @@
                             <tr>
                                 <th> Invoice No# </th>
                                 <th> User Name </th>
-                                <th> Amount</th>
+                                <th> Total Amount</th>
+                                <th> Date</th>
                                 <th> Status</th>
                                 <th> Action </th>
                             </tr>
@@ -39,13 +41,19 @@
                             @if(isset($data))
                                 @foreach($data as $values)
                                     <tr class="gradeX">
-                                        <td>{{$values->invoice_no}}</td>
-                                        <td>{{$values->relCustomer->first_name}}</td>
+                                        <td>
+                                            <a href="{{ route('order-paid-show', $values->id) }}" data-toggle="modal" data-target="#etsbModal" class="btn" title="{{$values->invoice_no}} Invoice Details">
+                                                {{$values->invoice_no}}
+                                            </a>
+
+                                        </td>
+                                        <td>{{$values->relCustomer->last_name}} {{$values->relCustomer->first_name}}</td>
                                         <td>{{$values->net_amount}}</td>
+                                        <td>{{$values->created_at}}</td>
                                         <td>{{$values->status}}</td>
                                         <td>
                                             <a href="{{ route('order-paid-show', $values->id) }}" data-toggle="modal" data-target="#etsbModal" class="btn btn-info btn-xs" title="Details"><i class="icon-eye-open"></i></a>
-                                            <a href="{{ route('order-paid-approve', $values->id) }}" class="btn btn-info btn-xs" onclick="return confirm('Are you sure to Approved?')" title="Approved"><i class="icon-exclamation"></i></a>
+                                            <a href="{{ route('order-paid-approve', $values->id) }}" class="btn btn-info btn-xs" onclick="return confirm('Are you sure to Approve?')" title="Approved"><i class="icon-check"></i></a>
                                             <a href="{{ route('order-paid-cancel', $values->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Cancel?')" title="Cancel"><i class="icon-trash"></i></a>
                                         </td>
                                     </tr>
