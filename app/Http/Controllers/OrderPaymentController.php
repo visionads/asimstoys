@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\DeliveryDetails;
+use App\Helpers\SendMailer;
 use App\OrderHead;
 use App\OrderPaymentTransaction;
 use Illuminate\Http\Request;
@@ -154,6 +155,18 @@ class OrderPaymentController extends Controller
             $model->status = 'cancel';
             if ($model->save()) {
 
+                $order_head = OrderHead::where('id', $model->order_head_id)->first();
+                $invoice_no = $order_head->invoice_no;
+
+                $customer = Customer::where('id', $order_head->user_id)->first();
+                $to_email = $customer->email;
+                $to_name = $customer->first_name." ". $customer->last_name;
+
+                $subject = "Cancel Payment of invoice # ".$invoice_no. " | Asims Toys ";
+                $body = "Dear ".$to_name. " Your Payment is canceled !";
+
+                $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
+
                 Session::flash('flash_message', " Successfully Canceled.");
                 return redirect()->back();
             }
@@ -171,11 +184,23 @@ class OrderPaymentController extends Controller
     public function approve_lay_by_transaction($order_trn_id)
     {
 
+
         try {
             $model = OrderPaymentTransaction::where('id',$order_trn_id)->first();
             $model->status = 'approved';
             if ($model->save()) {
 
+                $order_head = OrderHead::where('id', $model->order_head_id)->first();
+                $invoice_no = $order_head->invoice_no;
+
+                $customer = Customer::where('id', $order_head->user_id)->first();
+                $to_email = $customer->email;
+                $to_name = $customer->first_name." ". $customer->last_name;
+
+                $subject = "Approved Payment of invoice # ".$invoice_no. " | Asims Toys ";
+                $body = "Dear ".$to_name. " Your Payment is approved !";
+
+                $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
 
                 Session::flash('flash_message', " Successfully Approved.");
                 return redirect()->back();
