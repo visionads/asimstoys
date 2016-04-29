@@ -36,4 +36,8 @@ class OrderHead extends Model
         return $this->belongsTo('App\Customer', 'user_id', 'id');
     }
 
+    public function relOrderPaymentTransaction(){
+        return $this->HasMany('App\OrderPaymentTransaction', 'order_head_id');
+    }
+
 }

@@ -48,8 +48,9 @@
 
 			<div class="row">
 				<div class="col-md-12">
-				
-					<table class="table">
+
+                    <h5 style="background: orange; padding: 5px; color: black">PRODUCT HISTORY </h5>
+                    <table  class="table" style="background: #efefef">
 						<thead>
 							<tr>
 								<th>Product Name</th>

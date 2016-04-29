@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-class orderPaymentTransaction extends Model
+class OrderPaymentTransaction extends Model
 {
 
     protected $table = 'order_payment_transaction';

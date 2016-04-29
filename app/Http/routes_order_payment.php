@@ -41,3 +41,18 @@ Route::any("lay_by/index", [
     "as"   => "lay-by-index",
     "uses" => "OrderPaymentController@lay_by_index"
 ]);
+
+Route::any("lay-by-order-show/{order_head_id}", [
+    "as"   => "lay-by-order-show",
+    "uses" => "OrderPaymentController@lay_by_order_show"
+]);
+
+
+Route::any("cancel-lay-by-payment/{ord_trn_id}", [
+    "as"   => "cancel-lay-by-payment",
+    "uses" => "OrderPaymentController@cancel_lay_by_payment"
+]);
+Route::any("approve-lay-by-transaction/{ord_trn_id}", [
+    "as"   => "approve-lay-by-transaction",
+    "uses" => "OrderPaymentController@approve_lay_by_transaction"
+]);

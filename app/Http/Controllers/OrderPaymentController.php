@@ -106,4 +106,87 @@ class OrderPaymentController extends Controller
             return redirect()->back();
         }
     }
+
+
+
+    public function lay_by_order_show($order_head_id){
+        $title = 'Invoice Detail';
+
+        $order = OrderHead::with('relOrderDetail', 'relOrderPaymentTransaction')->where('id', $order_head_id)->get();
+        $customer_data = Customer::where('id',$order[0]->user_id)->first();
+
+        $total_amount = DB::table('order_detail')
+            ->select(DB::raw('SUM(price) as total_amount'))
+            ->groupBy('order_head_id')
+            ->where('order_head_id', $order_head_id)
+            ->first();
+
+        $paid_amount = DB::table('order_payment_transaction')
+            ->select(DB::raw('SUM(amount) as paid_amount'))
+            ->groupBy('order_head_id')
+            ->where('order_head_id', $order_head_id)
+            ->first();
+
+        $due_amount = @$total_amount->total_amount - @$paid_amount->paid_amount;
+
+        return view('order_payment.lay_by_order_details',[
+            'order_data' => $order,
+            'title' => $title,
+            'order_head_id'=>$order_head_id,
+            'customer_data' => $customer_data,
+
+            'total_amount'=>$total_amount,
+            'paid_amount'=>$paid_amount,
+            'due_amount'=>$due_amount,
+        ]);
+    }
+
+
+    /**
+     * @param $order_trn_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function cancel_lay_by_payment($order_trn_id)
+    {
+
+        try {
+            $model = OrderPaymentTransaction::where('id',$order_trn_id)->first();
+            $model->status = 'cancel';
+            if ($model->save()) {
+
+                Session::flash('flash_message', " Successfully Canceled.");
+                return redirect()->back();
+            }
+        } catch(\Exception $e) {
+            Session::flash('flash_message_error',$e->getMessage() );
+            return redirect()->back();
+        }
+    }
+
+
+    /**
+     * @param $order_trn_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function approve_lay_by_transaction($order_trn_id)
+    {
+
+        try {
+            $model = OrderPaymentTransaction::where('id',$order_trn_id)->first();
+            $model->status = 'approved';
+            if ($model->save()) {
+
+
+                Session::flash('flash_message', " Successfully Approved.");
+                return redirect()->back();
+            }
+        } catch(\Exception $e) {
+            Session::flash('flash_message_error',$e->getMessage() );
+            return redirect()->back();
+        }
+    }
+
+
+
+
 }
