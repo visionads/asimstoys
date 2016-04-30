@@ -19,7 +19,14 @@
 			<div class="col-md-6">
 				<div class="product_details">
 					<div class="availability_container">
-						<p><span class="current_price"> Price $<?php echo $productdata->sell_rate; ?></span></p>
+						<p>
+                            <span class="current_price">
+                                Price $
+                                <span>
+                                    <?php echo $productdata->sell_rate; ?>
+                                </span>
+                            </span>
+                        </p>
 					</div>
 					<?php echo $productdata->short_description; ?>
 					<a class="email_us" href="#" data-toggle="modal" data-target="#myModal" >

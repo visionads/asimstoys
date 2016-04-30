@@ -8,6 +8,7 @@
 
 namespace App\Helpers;
 
+use PHPMailer;
 
 class SendMailer
 {
@@ -23,7 +24,7 @@ class SendMailer
     public static function send_mail_by_php_mailer($to_email, $to_name, $subject, $body){
 
         //prepare the mail with PHPMailer
-        $mail = new \PHPMailer();
+        $mail = new PHPMailer();
         $mail->CharSet = "UTF-8";
         $mail->Encoding = "base64";
         //supply with your header info, body etc...

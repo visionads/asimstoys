@@ -51,7 +51,7 @@
 
                     <div class="pos-footer-2">
                         <div class="container">
-                            <a class="developer_company" href="http://www.visionads.com.au/" target="_blank">Seo & Website by VisionsAds</a>
+                            <a class="developer_company" href="http://www.visionads.com.au/" target="_blank" title="Vision Ads">SEO & Website by VisionsAds</a>
                         </div>
                     </div>
                 </div>
