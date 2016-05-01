@@ -16,8 +16,8 @@
 							<a href="{{URL::to('')}}/pre-order">{{$productgroup->title}}</a>
 						@elseif($productgroup->id == '5')
 							<a href="{{URL::to('')}}/lay-by-instruction">{{$productgroup->title}}</a>
-						@elseif($productgroup->id == '8')
-							<a href="{{URL::to('')}}/lay-by">{{$productgroup->title}}</a>
+						{{--@elseif($productgroup->id == '8')
+							<a href="{{URL::to('')}}/lay-by">{{$productgroup->title}}</a>--}}
 						@else
 							<a href="#">{{$productgroup->title}}</a>
 						@endif
