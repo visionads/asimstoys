@@ -43,16 +43,23 @@
 								<div class="width50">
 									@if($product_subgroup->slug =='number-plates')
 										<label>color</label>
+                                        <select name="color" >
+                                            @foreach($product_variation_r as $product_variation)
+                                                <option value="{{$product_variation->slug}}">{{$product_variation->title}}</option>
+                                            @endforeach
+
+                                        </select>
 									@else
 										<label>Price</label>
+                                        <select name="color" onchange="getval(this);">
+                                            @foreach($product_variation_r as $product_variation)
+                                                <option value="{{$product_variation->slug}}">{{$product_variation->title}}</option>
+                                            @endforeach
+
+                                        </select>
 									@endif
 									
-									<select name="color" onchange="getval(this);">
-										@foreach($product_variation_r as $product_variation)
-											<option value="{{$product_variation->slug}}">{{$product_variation->title}}</option>
-										@endforeach
-										
-									</select>
+
 								</div>
 							@endif
 
