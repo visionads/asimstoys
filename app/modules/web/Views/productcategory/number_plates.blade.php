@@ -22,7 +22,7 @@
 						<p>
                             <span class="current_price">
                                 Price $
-                                <span>
+                                <span id="current-price-change">
                                     <?php echo $productdata->sell_rate; ?>
                                 </span>
                             </span>
@@ -47,9 +47,9 @@
 										<label>Price</label>
 									@endif
 									
-									<select name="color">
+									<select name="color" onchange="getval(this);">
 										@foreach($product_variation_r as $product_variation)
-											<option value="{{$product_variation->id}}">{{$product_variation->title}}</option>
+											<option value="{{$product_variation->slug}}">{{$product_variation->title}}</option>
 										@endforeach
 										
 									</select>
@@ -98,5 +98,13 @@
 	</div>
 
 </div>
+
+
+    <script>
+        function getval(sel) {
+            var value = sel.value;
+            document.getElementById('current-price-change').innerHTML =value;
+        }
+    </script>
 
 @stop
