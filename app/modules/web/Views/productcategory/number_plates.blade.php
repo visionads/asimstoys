@@ -67,6 +67,12 @@
 									<option value="Pink">Pink</option>			
 								</select>
 							</div>
+
+                            <div class="width100">
+                                <label>Text for Plate</label>
+                                <input type="text" name="text_of_number_plate" required="required" style="padding: 10px; margin-left: -0px; margin-top: -0px; background: #efefef; border: 1px solid #efefef; width: 93%; color: black;" placeholder="type your text">
+
+                            </div>
 							@endif
 
 							<div class="width50">
@@ -79,6 +85,8 @@
 									<option value="5">5</option>			
 								</select>
 							</div>
+
+
 						</div>
 
 						<input type="submit" name="submit" value="Buy Now">

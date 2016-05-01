@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a91ae024-64d1-4af0-94e5-a5f773291283" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/modules/web/Views/layout/web_sidemenu.blade.php" afterPath="$PROJECT_DIR$/app/modules/web/Views/layout/web_sidemenu.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/modules/web/Views/productcategory/number_plates.blade.php" afterPath="$PROJECT_DIR$/app/modules/web/Views/productcategory/number_plates.blade.php" />
     </list>
     <ignored path="off_the_wall.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,22 +34,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="number_plates.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="number_plates.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/modules/web/Views/productcategory/number_plates.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614">
-              <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web_sidemenu.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/modules/web/Views/layout/web_sidemenu.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46092504">
-              <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
-              <folding />
+            <state vertical-scroll-proportion="0.5119617">
+              <caret line="72" column="97" selection-start-line="72" selection-start-column="97" selection-end-line="72" selection-end-column="97" />
+              <folding>
+                <element signature="e#2666#2799#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,9 +112,9 @@
         <option value="$PROJECT_DIR$/app/modules/web/Views/productcategory/preorder.blade.php" />
         <option value="$PROJECT_DIR$/app/modules/web/Views/product/details.blade.php" />
         <option value="$PROJECT_DIR$/app/modules/web/Views/layout/web_footer.blade.php" />
-        <option value="$PROJECT_DIR$/app/modules/web/Views/productcategory/number_plates.blade.php" />
         <option value="$PROJECT_DIR$/app/Helpers/SendMailer.php" />
         <option value="$PROJECT_DIR$/app/modules/web/Views/layout/web_sidemenu.blade.php" />
+        <option value="$PROJECT_DIR$/app/modules/web/Views/productcategory/number_plates.blade.php" />
       </list>
     </option>
   </component>
@@ -752,13 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/storage/framework/sessions/8806531c4639fb85e06fafea79d0d94e30794390">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.051908396">
-          <caret line="0" column="194" selection-start-line="0" selection-start-column="194" selection-end-line="0" selection-end-column="194" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db_source/asimstoys.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33282444">
@@ -825,19 +810,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/web/Views/productcategory/number_plates.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/modules/web/Views/layout/web_sidemenu.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46092504">
           <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modules/web/Views/productcategory/number_plates.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5119617">
+          <caret line="72" column="97" selection-start-line="72" selection-start-column="97" selection-end-line="72" selection-end-column="97" />
+          <folding>
+            <element signature="e#2666#2799#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
