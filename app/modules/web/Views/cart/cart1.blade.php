@@ -76,7 +76,6 @@
 								<tbody>
 									<?php
 										$total_value = 0;
-
 										$count = 0;
 									?>
 									@foreach($product_cart_r as $product_cart)

@@ -32,6 +32,7 @@ class CartController extends Controller
 	public function remove_cart(Request $request){
 
 		$product_id = $request->session()->pull('product_id');
+        $product_price = $request->session()->pull('product_price');
         $quantity = $request->session()->pull('quantity');
         $color = $request->session()->pull('color');
 
