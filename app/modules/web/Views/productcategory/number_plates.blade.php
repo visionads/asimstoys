@@ -37,6 +37,7 @@
 
 					<form method="post" action="{{URL::to('/')}}/order/add_to_cart" class="<?php if(!empty($product_variation_r)){echo 'product_details_buynow_form';}else{echo 'product_details_buynow_form product_details_buynow_form_up';} ?>">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="price_amount" value="{{@$productdata->sell_rate}}" id="price-amount">
 						<div class="form-group">
 							<input type="hidden" name="product_id" value="{{$productdata->id}}">
 							@if(!empty($product_variation_r))
@@ -111,6 +112,7 @@
         function getval(sel) {
             var value = sel.value;
             document.getElementById('current-price-change').innerHTML =value;
+            document.getElementById('price-amount').value =value;
         }
     </script>
 

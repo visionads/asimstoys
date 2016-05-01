@@ -97,6 +97,7 @@
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<div class="form-group">
 								<input type="hidden" name="product_id" value="{{$product->id}}">
+                                <input type="hidden" name="price_amount" value="{{@$product->sell_rate}}" id="price-amount">
 								@if(!empty($product_variation_r))
 									<div class="width50">
 										<label>color</label>
