@@ -17,6 +17,15 @@
     'uses' => 'UserController@web_master'
 ]);*/
 
+Route::any('xml_data', [
+    'as' => 'xml_data',
+    'uses' => 'HomeController@xml_data'
+]);
+
+
+
+
+/* ========= Start From Here =============  */
 Route::any('admin', [
     'as' => 'admin',
     'uses' => 'UserController@user_login'
