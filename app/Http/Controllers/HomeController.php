@@ -67,9 +67,9 @@ class HomeController extends Controller
         $XmlString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
                   <PRICEREQUEST>
                        <LOGIN>
-                           <COMPANY>asimstoys@gmail.com</COMPANY>
+                           <COMPANY>30014705</COMPANY>
                            <PASSWORD>Jafking1981</PASSWORD>
-                           <APPID>PC</APPID>
+                           <APPID>30014705</APPID>
                        </LOGIN>
                        <PRICECHECK>
                            <RATEID>rate1</RATEID>
@@ -93,7 +93,7 @@ class HomeController extends Controller
         $tnt = TntExpress::sendToTNTServer($XmlString);
 
         print_r($tnt);
-        
+
 
         echo "OK";
     }
