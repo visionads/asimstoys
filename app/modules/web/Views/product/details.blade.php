@@ -189,9 +189,10 @@
 									<?php
 										if(!empty($product->videos)){
 									?>
-											<a target="_blank" class="fancybox-media" href="<?php echo $product->videos; ?>">
-												<img src="{{URL::to('/')}}/web/images/youtube.jpg">
-											</a>
+
+                                        <iframe width="420" height="345"
+                                                src="{{ $product->videos }}">
+                                        </iframe>
 									<?php
 										}else{
 											echo 'No Video yet.';
