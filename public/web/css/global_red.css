@@ -93,7 +93,8 @@ a {cursor:pointer; font:12px/20px Arial;}
 body{
 	font:normal 12px/20px Arial;
 	color:#222;
-	background:url(../img/bg_main.jpg) repeat !important;
+	/*background:url(../img/bg_main.jpg) repeat !important;*/
+	background-color: #09439B;
 }
 body.content_only {
 	background: #FFF;
