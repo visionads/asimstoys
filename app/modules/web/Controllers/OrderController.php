@@ -77,15 +77,21 @@ class OrderController extends Controller
             $product_price = $_POST['price_amount'];
 
 			if(isset($_POST['color'])){
-				$color = (int) $_POST['color'];
+				$color = $_POST['color'];
 			}else{
 				$color = '';
 			}
 
             if(isset($_POST['background'])){
-                $background = (int) $_POST['background'];
+                $background = $_POST['background'];
             }else{
                 $background = '';
+            }
+
+            if(isset($_POST['text_of_number_plate'])){
+                $plate_text = $_POST['text_of_number_plate'];
+            }else{
+                $plate_text = '';
             }
 			
             $quantity = (int) $_POST['quantity'];
@@ -93,12 +99,14 @@ class OrderController extends Controller
             $product_cart1 = $request->session()->get('product_cart');
 
             $product_cart_2 = array( 
-                array('product_id' => $product_id,
+                array(
+                        'product_id' => $product_id,
                         'color' => $color,
                         'quantity' => $quantity,
                         'background' => $background,
                         'product_price' => $product_price,
-                ) 
+                        'plate_text' => $plate_text,
+                )
             );
 
             if($request->session()->has('product_cart')){
@@ -343,6 +351,8 @@ class OrderController extends Controller
         $product_id = $request->session()->get('product_id');
         $quantity = $request->session()->get('quantity');
         $color = $request->session()->get('color');
+        $background = @$request->session()->get('background');
+        $plate_text = @$request->session()->get('plate_text');
         $user_id = $request->session()->get('user_id');
         $deliver_id = $request->session()->get('deliver_id');
 
@@ -382,7 +392,9 @@ class OrderController extends Controller
                         $model_order_dt->product_id =$products['product_id'];
                         $model_order_dt->product_variation_id = $products['color'];
                         $model_order_dt->qty = $products['quantity'];
-                        $model_order_dt->color = $products['color'];
+                        $model_order_dt->color = @$products['color'];
+                        $model_order_dt->background_color = @$products['background'];
+                        $model_order_dt->plate_text = @$products['plate_text'];
                         $model_order_dt->price = $product->sell_rate;
                         $model_order_dt->status =1;
                         $model_order_dt->save();

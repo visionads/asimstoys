@@ -70,6 +70,8 @@
                         <td>Variation </td>
                         <td>Quantity</td>
                         <td>Color</td>
+                        <td>Background Color</td>
+                        <td>Plate Text</td>
                         <td>Price</td>
                     </tr>
                     </thead>
@@ -80,7 +82,9 @@
                             <td>{{\App\Product::findOrFail($order_dt->product_id)->title}}</td>
                             <td>{{ $order_dt->product_variation_id}}</td>
                             <td>{{$order_dt->qty}}</td>
-                            <td>{{$order_dt->product_variation_id}}</td>
+                            <td>{{@$order_dt->product_variation_id}}</td>
+                            <td>{{@$order_dt->background_color}}</td>
+                            <td>{{@$order_dt->plate_text}}</td>
                             <td>{{$order_dt->price}}</td>
                         </tr>
                     @endforeach
