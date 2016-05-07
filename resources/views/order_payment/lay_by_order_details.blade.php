@@ -63,7 +63,9 @@
 								<th>Invoice # </th>
 								<th>Product Name</th>
 								<th>Color</th>
-								<th>Qty</th>								
+								<th>Background Color</th>
+								<th>Plate Text</th>
+								<th>Qty</th>
 								<th class="text-right">Price</th>
 								<th class="text-right">Total</th>
 
@@ -90,6 +92,12 @@
 										</td>
 										<td>
 											{{@$product_variation->title}}
+										</td>
+										<td>
+											{{@$orderdetails->background_color}}
+										</td>
+										<td>
+											{{@$orderdetails->plate_text}}
 										</td>
 										<td>
 											{{@$orderdetails->qty}}
