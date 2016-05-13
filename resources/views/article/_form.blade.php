@@ -17,8 +17,8 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('desc', 'Description', ['class' => 'control-label']) !!}
-    {!! Form::textarea('desc', null, ['id'=>'desc', 'class' => 'form-control','required']) !!}
+    {!! Form::label('desc', 'Specification', ['class' => 'control-label']) !!}
+    {!! Form::textarea('desc', null, ['id'=>'desc', 'class' => 'form-control wysihtml5','required']) !!}
 {{--    {!! Form::textarea('desc', null, ['id'=>'desc', 'class' => 'wysihtml5 form-control','required']) !!}--}}
 </div>
 

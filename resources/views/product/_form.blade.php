@@ -113,7 +113,7 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('Short Description', 'Short Description', ['class' => 'control-label']) !!}
+        {!! Form::label('Short Specification', 'Short Description', ['class' => 'control-label']) !!}
         {!! Form::textarea('short_description', null, ['id'=>'short_description', 'class' => 'form-control', 'cols'=>'30' , 'rows'=>'5']) !!}
     </div>
 
