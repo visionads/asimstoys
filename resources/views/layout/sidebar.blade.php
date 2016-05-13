@@ -49,7 +49,7 @@
     </ul>
 </li>
 
-<li class="sub-menu">
+{{--<li class="sub-menu">
     <a href="{{URL::to('menu/index')}}">
         <i class="icon-sitemap"></i>
         <span>Menu</span>
@@ -58,7 +58,7 @@
         <li><a  href={{URL::to('menu_type/index')}}>Menu Type</a></li>
         <li><a  href={{URL::to('menu/index')}}>Menu</a></li>
     </ul>
-</li>
+</li>--}}
 
 {{--<li class="sub-menu">--}}
     {{--<a href={{URL::to('team/index')}}>--}}
@@ -87,7 +87,7 @@
 {{--</li>--}}
 
 
-<li class="sub-menu">
+{{--<li class="sub-menu">
     <a href="{{URL::to('blog_cat/index')}}">
         <i class="icon-inbox"></i>
         <span>Blog</span>
@@ -96,7 +96,7 @@
         <li><a  href={{URL::to('blog_cat/index')}}>Blog Cat</a></li>
         <li><a  href={{URL::to('blog_item/index')}}>Blog Item</a></li>
     </ul>
-</li>
+</li>--}}
 
 {{--<li class="sub-menu">--}}
     {{--<a href={{URL::to('media/index')}}>--}}
