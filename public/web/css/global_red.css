@@ -2336,7 +2336,7 @@ button.button span, .top-cart-icon, .toplink .form-search,
 .home-banner .img5:hover .des,
 .products-list li.item:hover .add-to-links { -moz-opacity:1; -webkit-opacity:1; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";/*IE8*/ opacity:1;}
 
-img:hover{ -moz-opacity:0.8; -webkit-opacity:0.8; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";/*IE8*/ opacity:0.8;}
+img:hover{ -moz-opacity:0.8; -webkit-opacity:0.8; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";/*IE8*/ opacity:1;}
 
 .content_sortPagiBar ul.pagination .pagination_previous span,
 .content_sortPagiBar ul.pagination .pagination_previous a:hover,
@@ -4734,15 +4734,23 @@ left: -100%;
 .bx-controls-direction .bx-next:hover {background-position: 0 0; background-color: #333333;}
 
 .newproductslider-item:hover {z-index: 999;}
-.newproductslider-item .item-inner { text-align:center; border-right:1px solid #dcdcdc;border-top:1px solid #dcdcdc;border-bottom:1px solid #dcdcdc; float:left;}
-    .home-new-product-container ul li.newproductslider-item:first-child .item-inner{
-        margin-left: 4px;
-    border-left: 1px solid #dcdcdc;
-    }
-  .home-new-product-container ul li.newproductslider-item.newproductslider-item .item-inner{
-  	margin-left: 2px;
-  	    margin-bottom: 10px;
-  }
+.newproductslider-item .item-inner {
+	text-align:center;
+	border-right:1px solid #dcdcdc;
+	border-top:1px solid #dcdcdc;
+	border-bottom:1px solid #dcdcdc;
+	border-left:1px solid #dcdcdc;
+	float:left;
+}
+.home-new-product-container ul li.newproductslider-item:first-child .item-inner{
+	margin-left: 4px;
+	border-left: 1px solid #dcdcdc;
+}
+.home-new-product-container ul li.newproductslider-item.newproductslider-item .item-inner{
+	margin-left: 2px;
+  	margin-bottom: 10px;
+  	margin: 2%;
+}
 .newproductslider-item .item-inner:hover {position: relative; -webkit-box-shadow: 0px 2px 15px rgba(50, 50, 50, 0.75);
 -moz-box-shadow: 0px 2px 15px rgba(50, 50, 50, 0.75);
 box-shadow: 0px 2px 15px rgba(50, 50, 50, 0.75);}

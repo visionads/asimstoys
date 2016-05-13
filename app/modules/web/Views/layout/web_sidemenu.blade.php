@@ -45,15 +45,15 @@
 														<a href="{{Url::to('/')}}/{{$productgroup->slug}}/{{$product_subgroup->slug}}/by-voltage">By Voltage</a>
 													</li>
 												</ul>
-											<?php endif;?>
+											<?php endif; ?>
 										</li>
 									@endforeach
 								</ul>
 
-						<?php endif;?>
+						<?php endif; ?>
 					</li>
 				@endforeach
-			@endif;
+			@endif
 			
 			
 		</ul>
