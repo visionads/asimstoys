@@ -94,7 +94,8 @@ body{
 	font:normal 12px/20px Arial;
 	color:#222;
 	/*background:url(../img/bg_main.jpg) repeat !important;*/
-	background-color: #09439B;
+	/*background-color: #09439B;*/
+	background-color: #007FFF;
 }
 body.content_only {
 	background: #FFF;
