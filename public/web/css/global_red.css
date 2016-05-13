@@ -4741,11 +4741,14 @@ left: -100%;
 .newproductslider-item:hover {z-index: 999;}
 .newproductslider-item .item-inner {
 	text-align:center;
-	border-right:1px solid #dcdcdc;
-	border-top:1px solid #dcdcdc;
-	border-bottom:1px solid #dcdcdc;
-	border-left:1px solid #dcdcdc;
+	border-right:1px solid #efefef;
+	border-top:1px solid #efefef;
+	border-bottom:1px solid #efefef;
+	border-left:1px solid #efefef;
 	float:left;
+	-webkit-box-shadow: 0px 0px 1px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow: 0px 0px 1px rgba(50, 50, 50, 0.75);
+	box-shadow: 0px 0px 1px rgba(50, 50, 50, 0.75);
 }
 .home-new-product-container ul li.newproductslider-item:first-child .item-inner{
 	margin-left: 4px;
@@ -4756,9 +4759,13 @@ left: -100%;
   	margin-bottom: 10px;
   	margin: 2%;
 }
-.newproductslider-item .item-inner:hover {position: relative; -webkit-box-shadow: 0px 2px 15px rgba(50, 50, 50, 0.75);
--moz-box-shadow: 0px 2px 15px rgba(50, 50, 50, 0.75);
-box-shadow: 0px 2px 15px rgba(50, 50, 50, 0.75);}
+.newproductslider-item .item-inner:hover {
+	position: relative;
+	-webkit-box-shadow: 0px 2px 15px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow: 0px 2px 15px rgba(50, 50, 50, 0.75);
+	box-shadow: 0px 2px 15px rgba(50, 50, 50, 0.75);
+}
+
 .newproductslider-item:hover .action {background: #3d3d3d;}
 .newproductslider-item:hover .action a.ajax_add_to_cart_button{background: url(../img/icon_add_to_cart_hover2.png) 50% no-repeat;}
 .newproductslider-item:hover .action a.wishlist_button {background: url(../img/icon_wishlist_hover.png) 50% no-repeat;}
@@ -4775,7 +4782,9 @@ box-shadow: 0px 2px 15px rgba(50, 50, 50, 0.75);}
 .newproductslider-item .action {  text-align: center;width:100%; float:left; border-top:1px solid #dcdcdc;}
 .newproductslider-item .action a.product_image {display:inline;}
 .action a.ajax_add_to_cart_button{width:50%;float:left;background: url(../img/icon_add_to_cart.png) 50% no-repeat; text-indent:-9999px; padding:10px;  border-right:1px solid #dcdcdc; }
-.newproductslider-item .action a.ajax_add_to_cart_button:hover {background: url(../img/icon_add_to_cart_hover_red.png) 50% no-repeat;}
+.newproductslider-item .action a.ajax_add_to_cart_button:hover {
+	background: url(../img/icon_add_to_cart_hover_red.png) 50% no-repeat;
+}
 .action a.ajax_add_to_cart_button span{ }
 .action a.wishlist_button {background: url(../img/icon_wishlist.png) 50% no-repeat; text-indent: -9999px; width: 50%;
 float: left;}
