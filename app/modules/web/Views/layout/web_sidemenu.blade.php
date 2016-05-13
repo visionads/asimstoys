@@ -9,7 +9,7 @@
 				<a>Product</a>
 			</li>
 
-			@if(!empty($productgroup_data)):
+			@if(!empty($productgroup_data))
 				@foreach($productgroup_data as $productgroup):
 					<li>
 						@if($productgroup->id == '4')
