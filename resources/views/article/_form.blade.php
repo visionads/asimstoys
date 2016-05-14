@@ -5,6 +5,9 @@
         @endforeach
     </ul>
 @endif
+
+
+
 <div class="form-group">
     {!! Form::label('title', 'Title:', ['class' => 'control-label']) !!}
      <small class="required">(Required)</small>
@@ -18,7 +21,7 @@
 
 <div class="form-group">
     {!! Form::label('desc', 'Specification', ['class' => 'control-label']) !!}
-    {!! Form::textarea('desc', null, ['id'=>'desc', 'class' => 'form-control wysihtml5','required']) !!}
+    {!! Form::textarea('desc', null, ['id'=>'desc', 'class' => 'form-control','required']) !!}
 {{--    {!! Form::textarea('desc', null, ['id'=>'desc', 'class' => 'wysihtml5 form-control','required']) !!}--}}
 </div>
 

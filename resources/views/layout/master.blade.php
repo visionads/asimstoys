@@ -119,8 +119,6 @@
 <script type="text/javascript" src="{{ URL::asset('etsb/js/jquery.validate.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('etsb/js/form-validation-script.js') }}"></script>
 
-
-
 <!--Advanced Feature plugins-->
 <script type="text/javascript" src="{{ URL::asset('etsb/assets/fuelux/js/spinner.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('etsb/assets/bootstrap-fileupload/bootstrap-fileupload.js') }}"></script>

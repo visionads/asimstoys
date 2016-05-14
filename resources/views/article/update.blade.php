@@ -52,7 +52,7 @@
                       
                         <div class="form-group">
                             {!! Form::label('desc', 'Description', ['class' => 'control-label']) !!}
-                            {!! Form::textarea('desc', null, ['id'=>'desc', 'class' => 'form-control']) !!}
+                            {!! Form::textarea('desc', null, ['id'=>'desc', 'class' => 'wysihtml5 form-control']) !!}
                         </div>
                         <div class="form-group last">
                             <label class="control-label col-md-3">Featured Image</label>
@@ -128,7 +128,7 @@
                         </div>
                         <div class="form-group">
                             {!! Form::label('meta_desc', 'Meta Desc:', ['class' => 'control-label']) !!}
-                            {!! Form::textarea('meta_desc', null, ['id'=>'meta_desc', 'class' => 'form-control']) !!}
+                            {!! Form::textarea('meta_desc', null, ['id'=>'meta_desc', 'class' => 'wysihtml5 form-control']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('status', 'Status:', ['class' => 'control-label']) !!}

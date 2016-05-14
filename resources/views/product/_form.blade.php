@@ -114,17 +114,17 @@
 
     <div class="form-group">
         {!! Form::label('Short Specification', 'Short Description', ['class' => 'control-label']) !!}
-        {!! Form::textarea('short_description', null, ['id'=>'short_description', 'class' => 'form-control', 'cols'=>'30' , 'rows'=>'5']) !!}
+        {!! Form::textarea('short_description', null, ['id'=>'short_description', 'class' => 'wysihtml5 form-control', 'cols'=>'30' , 'rows'=>'5']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('Specification', 'Full Description', ['class' => 'control-label']) !!}
-        {!! Form::textarea('long_description', null, ['id'=>'long_description', 'class' => 'form-control', 'cols'=>'30' , 'rows'=>'10']) !!}
+        {!! Form::textarea('long_description', null, ['id'=>'long_description', 'class' => 'wysihtml5 form-control', 'cols'=>'30' , 'rows'=>'10']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('Features', 'Features', ['class' => 'control-label']) !!}
-        {!! Form::textarea('features', null, ['id'=>'features', 'class' => 'form-control', 'cols'=>'30' , 'rows'=>'5']) !!}
+        {!! Form::textarea('features', null, ['id'=>'features', 'class' => 'wysihtml5 form-control', 'cols'=>'30' , 'rows'=>'5']) !!}
     </div>
 
     <div class="form-group">

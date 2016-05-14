@@ -29,8 +29,6 @@
                 </div>
             @endif
 
-
-
             <div class="col-lg-12">
                 <section class="panel">
                     <header class="panel-heading">
@@ -51,7 +49,7 @@
                
                 <div class="form-group">
                     {!! Form::label('desc', 'Description', ['class' => 'control-label']) !!}
-                    {!! Form::textarea('desc', null, ['id'=>'desc', 'class' => 'form-control', 'cols'=>'60' , 'rows'=>'16']) !!}
+                    {!! Form::textarea('desc', null, ['id'=>'desc', 'class' => 'wysihtml5 form-control', 'cols'=>'60' , 'rows'=>'16']) !!}
                     {{--{!! Form::textarea('desc', null, ['id'=>'desc', 'class' => 'form-control wysihtml5', 'cols'=>'60' , 'rows'=>'16']) !!}--}}
                 </div>
                 <div class="form-group last">
@@ -130,7 +128,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('meta_desc', 'Meta Desc:', ['class' => 'control-label']) !!}
-                    {!! Form::textarea('meta_desc', null, ['id'=>'meta_desc', 'class' => 'form-control']) !!}
+                    {!! Form::textarea('meta_desc', null, ['id'=>'meta_desc', 'class' => 'wysihtml5 form-control']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('status', 'Status:', ['class' => 'control-label']) !!}

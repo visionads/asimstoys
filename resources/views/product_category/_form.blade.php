@@ -56,7 +56,7 @@
 
     <div class="form-group">
         {!! Form::label('description', 'Description', ['class' => 'control-label']) !!}
-        {!! Form::textarea('description', null, ['id'=>'desc', 'class' => 'form-control', 'cols'=>'15' , 'rows'=>'5']) !!}
+        {!! Form::textarea('description', null, ['id'=>'desc', 'class' => 'wysihtml5 form-control', 'cols'=>'15' , 'rows'=>'5']) !!}
     </div>
 
     <div class="form-group last">
