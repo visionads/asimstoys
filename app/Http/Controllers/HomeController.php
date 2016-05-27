@@ -67,9 +67,9 @@ class HomeController extends Controller
         $XmlString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
                   <PRICEREQUEST>
                        <LOGIN>
-                           <COMPANY>CIT00000000000079384</COMPANY>
-                           <PASSWORD>Jafking1981</PASSWORD>
-                           <APPID>CIT30014705</APPID>
+                           <COMPANY>Asim</COMPANY>
+                           <PASSWORD>tnt12345</PASSWORD>
+                           <APPID>IN</APPID>
                        </LOGIN>
                        <PRICECHECK>
                            <RATEID>rate1</RATEID>
