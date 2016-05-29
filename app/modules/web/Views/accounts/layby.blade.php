@@ -32,7 +32,9 @@
                                 <tr>
                                     <td>#</td>
                                     <td>Invoice No#</td>
-                                    <td>Amount</td>
+                                    <td>Bill Amount</td>
+                                    <td>Paid Amount</td>
+                                    <td>Due Amount</td>
                                     <td>Status</td>
                                     <td>Action</td>
                                 </tr>
@@ -46,7 +48,18 @@
                                             {{$get_order->invoice_no}}
                                         </td>
                                         <td>
-                                            {{$get_order->net_amount}}
+                                            <b>{{$get_order->net_amount}}</b>
+                                        </td>
+                                        <td>
+                                            <?php
+                                                $paid_amount = \App\OrderPaymentTransaction::where('order_head_id', $get_order->id)->select(DB::raw('SUM(amount) as paid_amount'))->groupBy('order_head_id')->first();
+                                                $due_amount = $get_order->net_amount-(isset($paid_amount->paid_amount)?$paid_amount->paid_amount:'0.00') ;
+                                            ?>
+                                            <b>{{isset($paid_amount->paid_amount)?$paid_amount->paid_amount:'0.00'}}</b>
+                                        </td>
+
+                                        <td>
+                                            <b>{{$due_amount}}</b>
                                         </td>
                                         <td>
                                             {{$get_order->status}}
