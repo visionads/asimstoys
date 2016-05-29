@@ -206,7 +206,7 @@ class AccountsController extends Controller
             'total_amount'=>$total_amount,
             'paid_amount'=>$paid_amount,
             'due_amount'=>$due_amount,
-            'customer_data'=>$customer_data,
+            'customer_data'=>$customer_data
         ]);
 
 

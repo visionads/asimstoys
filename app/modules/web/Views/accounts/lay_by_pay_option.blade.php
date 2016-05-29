@@ -26,7 +26,7 @@
                     <div class="col-md-12">
                         <div class="col-md-6">
                             <div>
-                                <span class="panel-title">Choose Payment Method (<a href="{{route('details_of_lay_by', $order_data->id)}}"> {{@$order_data->invoice_no}} </a> ) </span><br>
+                                <span class="panel-title"> Payment for the Invoice (<a href="{{route('details_of_lay_by', $order_data->id)}}"> {{@$order_data->invoice_no}} </a> ) </span><br>
                                 <small style="color: blue">Invoice Bill is : {{@$total_amount->total_amount}}</small>  |
                                 <small style="color: green">Paid Amount is : {{isset($paid_amount->paid_amount)?$paid_amount->paid_amount: "0.00"}}</small> |
                                 <small style="color: red">Due Amount is : {{@$due_amount}}</small>
@@ -35,17 +35,17 @@
                             <div class="radio" style="margin-top: 0;">
                                 <label>
                                     <input type="radio" name="payment_method" id="r1" value="e_way" checked="checked" class="px">
-                                    <span class="lbl">eWay Payment </span><br>
-                                    <i>For Paypal and credit card by eWay Payment gateway system</i>
+                                    <span class="lbl">Pay Now </span><br>
+                                    <i>pay using your Credit Card. We accept VISA | MasterCard | Amex |</i>
                                 </label><br><br>
                             </div> <!-- / .radio -->
-                            <div class="radio" style="margin-inside: 0;">
+                            {{--<div class="radio" style="margin-inside: 0;">
                                 <label>
                                     <input type="radio" name="payment_method" id="r2" value="lay_by" class="px">
                                     <span class="lbl">Bank Process</span><br>
                                     <i>You can deposit the amount in the bank account and then fill out the form in next page </i>
                                 </label>
-                            </div>
+                            </div>--}}
 
                         </div>
                         <div class="col-md-6">
@@ -58,7 +58,10 @@
                                 <input type="text" name="amount" id="edValue" value="50.00" class="form-control" placeholder="50 or more "><br>
                                 <input type="hidden" name="order_head_id" value="{{$order_data->id}}">
 
-                                <input type="submit" value="Go To Eway Payment" style="background-color: #ff7722; padding: 7px 15px; text-align: right; color: white;" class="pull-right">
+                                <input type="checkbox" value="1" name="agree" required="required" checked="checked"> I agree with <a href="{{URL::to('terms-condition')}}" style="text-decoration: underline">Terms and Condition</a> <br>
+
+
+                                <input type="submit" value="Go for Pay" style="background-color: #ff7722; padding: 7px 15px; text-align: right; color: white;" class="pull-right">
 
                                 {!! Form::close() !!}
 

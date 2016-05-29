@@ -71,7 +71,7 @@
                             <label>
                                 <input type="radio" name="payment_method" id="r1" value="e_way" checked="checked" class="px">
                                 <span class="lbl">Pay Now  </span> <br>
-                                <i>Pay using your Credit Card. We accept VISA | MasterCard | Amex | American Express </i> <br> <br>
+                                <i>Pay using your Credit Card. We accept VISA | MasterCard  | American Express </i> <br> <br>
                             </label>
                         </div> <!-- / .radio -->
 

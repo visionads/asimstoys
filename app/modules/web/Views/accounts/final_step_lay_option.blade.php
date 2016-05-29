@@ -26,7 +26,7 @@
                     <div class="col-md-12">
                         <div class="col-md-6">
                             <div>
-                                <span class="panel-title">Choose Payment Method (<a href="{{route('details_of_lay_by', $order_data->id)}}"> {{@$order_data->invoice_no}} </a> ) </span><br>
+                                <span class="panel-title"> Payment for the Invoice (<a href="{{route('details_of_lay_by', $order_data->id)}}"> {{@$order_data->invoice_no}} </a> ) </span><br>
                                 <small style="color: blue">Invoice Bill is : {{@$total_amount->total_amount}}</small>  |
                                 <small style="color: green">Paid Amount is : {{isset($paid_amount->paid_amount)?$paid_amount->paid_amount: "0.00"}}</small> |
                                 <small style="color: red">Due Amount is : {{@$due_amount}}</small>
@@ -35,27 +35,27 @@
                             <div class="radio" style="margin-top: 0;">
                                 <label>
                                     <input type="radio" name="payment_method" id="r1" value="e_way" checked="checked" class="px">
-                                    <span class="lbl">eWay Payment </span><br>
-                                    <i>For Paypal and credit card by eWay Payment gateway system</i>
+                                    <span class="lbl">Pay now  </span><br>
+                                    <i>pay using your Credit Card. Its Secure. </i>
                                 </label><br><br>
                             </div> <!-- / .radio -->
-                            <div class="radio" style="margin-inside: 0;">
+                            {{--<div class="radio" style="margin-inside: 0;">
                                 <label>
                                     <input type="radio" name="payment_method" id="r2" value="lay_by" class="px">
                                     <span class="lbl">Bank Process</span><br>
                                     <i>You can deposit the amount in the bank account and then fill out the form in next page </i>
                                 </label>
-                            </div>
+                            </div>--}}
 
                         </div>
                         <div class="col-md-6">
                             <div class="col-md-12" id="e-way-button">
                                 <h3> Secure eWay Payment </h3>
-                                <small>You may pay amount should be getter than AUD 50.00 or more. </small><br>
+                                <small>CC data will not be stored into our system. we will not use any data here </small><br>
 
                                 <input type="text" name="amount" id="edValue" value="{{$amount}}" class="form-control" placeholder="50.00 or more " readonly><br>
 
-                                <div style="padding: 20%; text-align: center">
+                                <div style="padding: 10%; text-align: center">
                                     <style>
                                         .eway-button span{
                                             padding: 10%;
