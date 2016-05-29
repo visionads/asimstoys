@@ -150,7 +150,7 @@
                                     {{$get_customer_data->first_name}} {{$get_customer_data->last_name}}
                                 </p>
                                 <p style="margin:0;">
-                                    {{$get_customer_data->address}}
+                                    Address: <br> {{$get_customer_data->address}}
                                 </p>
                                 <p style="margin:0;">
                                     {{$get_customer_data->suburb}} {{$get_customer_data->state}} {{$get_customer_data->postcode}}
@@ -174,7 +174,7 @@
                                     {{$delivery_data->first_name}} {{$delivery_data->last_name}}
                                 </p>
                                 <p style="margin:0;">
-                                    {{$delivery_data->address}}
+                                    Address: <br> {{$delivery_data->address}}
                                 </p>
                                 <p style="margin:0;">
                                     {{$delivery_data->suburb}} {{$delivery_data->state}} {{$delivery_data->postcode}}
