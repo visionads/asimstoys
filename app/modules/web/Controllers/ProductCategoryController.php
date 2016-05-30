@@ -16,7 +16,7 @@ class ProductCategoryController extends Controller
 	public function preorder(){
 
 
-		$productdata = DB::table('product')->where('preorder','1')->orderBy('sort_order','asc')->get();
+		$productdata = DB::table('product')->where('preorder','1')->where('status','active')->orderBy('sort_order','asc')->get();
 		
 		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
@@ -33,7 +33,7 @@ class ProductCategoryController extends Controller
 
 	public function layby(){
 
-		$productdata = DB::table('product')->orderBy('sort_order','asc')->get();
+		$productdata = DB::table('product')->where('status','active')->orderBy('sort_order','asc')->get();
 		
 		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
@@ -66,8 +66,10 @@ class ProductCategoryController extends Controller
 						->where('product_group_id',$product_group->id)
 						->where('product_subgroup_id',$product_subgroup->id)
 						->where('preorder','0')
+						->where('status','active')
 						->orderBy('sort_order','asc')
 						->get();
+
 
 
 			

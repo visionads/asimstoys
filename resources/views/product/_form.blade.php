@@ -45,13 +45,13 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('Sell Rate', 'Sell Rate:', ['class' => 'control-label']) !!}
+            {!! Form::label('Buy now rate', 'Buy now rate:', ['class' => 'control-label']) !!}
             <small class="required">(Required)</small>
             {!! Form::text('sell_rate', null, ['id'=>'sell_rate', 'class' => 'form-control','required']) !!}
         </div>
 
         <div class="form-group">
-            {!! Form::label('Cost Price', 'Cost Price:', ['class' => 'control-label']) !!}
+            {!! Form::label('Preorder / Special rate', 'Preorder / Special rate:', ['class' => 'control-label']) !!}
             
             {!! Form::text('cost_price', null, ['id'=>'cost_price', 'class' => 'form-control']) !!}
         </div>

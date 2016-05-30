@@ -44,7 +44,22 @@
 									}
 								?>
 								</span></p>
-							<p>@if(!empty($product->cost_price)):Was <span class="previous_price">$<?php echo $product->cost_price;?></span>@endif Now<span class="current_price"> $<?php echo $product->sell_rate; ?></span></p>
+							<p>
+								@if(!empty($product->cost_price))
+									@if($product->preorder == '1')
+										Buy now &nbsp;
+									@else
+										Was &nbsp;
+									@endif
+								 <span class="previous_price">$<?php echo $product->cost_price;?></span>
+								@endif
+
+									@if($product->preorder == '1')
+										Pre order &nbsp;
+									@else
+										Buy now &nbsp;
+									@endif
+								 	<span class="current_price"> $<?php echo $product->sell_rate; ?></span></p>
 						</div>
 						<?php echo $product->short_description; ?>
 

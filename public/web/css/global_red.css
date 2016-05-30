@@ -878,7 +878,7 @@ div.pt_menu .itemMenu a.level3:hover {
 	font-size:14px;
 	color:#fff
 }
-#footer a { }
+#footer a { text-align: center; }
 #footer a:hover {text-decoration: none}
 #footer ul {list-style-type:none}
 #footer li { line-height: 25px;}
@@ -4545,7 +4545,7 @@ tr.subitem > td:first-child + td {
 
 }
 .footer-logo a img{
-	width: 100%;
+	
 }
 a.developer_company{
 	float: right;
@@ -5116,6 +5116,7 @@ img.downa_arrow_btn{
 	color: rgb(205,92,92);
     font-size: 20px;
     font-weight: bold;
+    margin-right: 15px;
 }
 
 .product_details .current_price{
