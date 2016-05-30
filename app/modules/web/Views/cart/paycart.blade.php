@@ -70,16 +70,16 @@
                         <div class="radio" style="margin-top: 0;">
                             <label>
                                 <input type="radio" name="payment_method" id="r1" value="e_way" checked="checked" class="px">
-                                <span class="lbl">eWay Payment </span> <br>
-                                <i>For Paypal Or credit card by eWay Payment gateway system</i> <br> <br>
+                                <span class="lbl">Pay Now  </span> <br>
+                                <i>Pay using your Credit Card. We accept VISA | MasterCard  | American Express </i> <br> <br>
                             </label>
                         </div> <!-- / .radio -->
 
                         <div class="radio" style="margin-inside: 0;">
                             <label>
                                 <input type="radio" name="payment_method" id="r2" value="lay_by" class="px">
-                                <span class="lbl">Lay By Process</span> <br>
-                                <i>You may pay partially by Credit Card or Bank </i> <br>
+                                <span class="lbl">Partial Payment (Lay By)</span> <br>
+                                <i>You may pay partially by Credit Card  </i> <br>
                             </label>
                         </div>
 

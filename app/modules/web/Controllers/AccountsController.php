@@ -112,7 +112,6 @@ class AccountsController extends Controller
             $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
             $get_layby_history = DB::table('order_head')
-                //->join('order_detail', 'order_head.id', '=', 'order_detail.order_head_id')
                 ->where('order_head.user_id',Session::get('user_id'))
                 ->where('order_head.invoice_type','layby')
                 ->orderBy('order_head.id','desc')
@@ -207,7 +206,7 @@ class AccountsController extends Controller
             'total_amount'=>$total_amount,
             'paid_amount'=>$paid_amount,
             'due_amount'=>$due_amount,
-            'customer_data'=>$customer_data,
+            'customer_data'=>$customer_data
         ]);
 
 

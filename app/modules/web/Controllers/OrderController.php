@@ -442,7 +442,7 @@ class OrderController extends Controller
 
     public function payment_method_complete(Request $request){
 
-        $title = "Complete the Payment by Eway Payment Gateway";
+        $title = "Complete the Payment ";
         $input_data = $request->all();
 
         if($input_data['payment_method']=='e_way'){
@@ -470,9 +470,11 @@ class OrderController extends Controller
             // Update Invoice
             $invoice_number = $request->session()->get('invoice_no');
             DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'layby']);
+            $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
 
-            Session::flash('flash_message', "Successfully Added Layby Process.");
-            return redirect()->route('lay_by_order_lists');
+            Session::flash('flash_message', "Successfully Added Lay-by Process.");
+            #return redirect()->route('lay_by_order_lists');
+            return redirect()->route('details_of_lay_by', $order_head->id);
         }
 
 

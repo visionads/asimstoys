@@ -36,6 +36,10 @@
                                 {{$order->invoice_no}}
                             </div>
                         </h3>
+                        <div>
+                            <small><strong>Date</strong></small><br>
+                            {{$order->created_at}}
+                        </div>
                     </div>
                     <div class="col-md-3">
                         <address>
@@ -46,19 +50,26 @@
                     </div>
 
                     <div class="col-md-6 pull-right">
-                        <div class="invoice-date">
-                            <small><strong>Date</strong></small><br>
-                            {{$order->created_at}}
+
+                        <div class="col-md-12">
+                            <div class="pull-right">
+                                <h2 style="color: darkblue">Total Amount : {{@$total_amount->total_amount}}</h2>
+                                <h2 style="color: green">Paid Amount : {{@$paid_amount->paid_amount }}</h2>
+                                <h2 style="color: red">Due Amount : {{@$due_amount}}</h2>
+                            </div>
                         </div>
-                        <div class="pull-right">
-                            <h2 style="color: darkblue">Total Amount : {{@$total_amount->total_amount}}</h2>
-                            <h2 style="color: green">Paid Amount : {{@$paid_amount->paid_amount }}</h2>
-                            <h2 style="color: red">Due Amount : {{@$due_amount}}</h2>
-                        </div>
+                        @if(@$total_amount->total_amount != @$paid_amount->paid_amount)
+                            <div class="col-md-12 pull-right" style="padding: 20px">
+                                <a href="{{ route('lay_by_pay_option', ['order_head_id'=>$order_head_id]) }}" class="cart-checkout" style="width: 55%; text-align: center; box-shadow: 3px 3px 3px #888888">Want to Pay Now ? </a>
+
+                            </div>
+                        @endif
 
                     </div>
                 </div> <!-- / .invoice-header -->
 
+                <p> &nbsp; </p>
+                <p> &nbsp; </p>
                 <p> &nbsp; </p>
 
                 <h3 style="color: green;">Invoice History </h3>
@@ -139,7 +150,7 @@
                                     {{$get_customer_data->first_name}} {{$get_customer_data->last_name}}
                                 </p>
                                 <p style="margin:0;">
-                                    {{$get_customer_data->address}}
+                                    Address: <br> {{$get_customer_data->address}}
                                 </p>
                                 <p style="margin:0;">
                                     {{$get_customer_data->suburb}} {{$get_customer_data->state}} {{$get_customer_data->postcode}}
@@ -163,7 +174,7 @@
                                     {{$delivery_data->first_name}} {{$delivery_data->last_name}}
                                 </p>
                                 <p style="margin:0;">
-                                    {{$delivery_data->address}}
+                                    Address: <br> {{$delivery_data->address}}
                                 </p>
                                 <p style="margin:0;">
                                     {{$delivery_data->suburb}} {{$delivery_data->state}} {{$delivery_data->postcode}}
@@ -181,12 +192,7 @@
             </div>
 
 
-            @if(@$total_amount->total_amount != @$paid_amount->paid_amount)
-            <div class="col-md-12 margin-top-30 margin-bottom-30">
-                <a href="{{ route('lay_by_pay_option', ['order_head_id'=>$order_head_id]) }}" class="cart-checkout">Want to Pay Now ? </a>
 
-            </div>
-            @endif
 
 
         </div>
