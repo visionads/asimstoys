@@ -5117,6 +5117,8 @@ img.downa_arrow_btn{
 	    width: 100%;
     float: left;
     padding: 20px 0px 30px 20px;
+    height: 300px;
+    overflow: auto;
 }
 
 .product_details .previous_price{
@@ -5277,6 +5279,7 @@ padding: 8px;
     float: left;
     background: #fff;
     margin-top: 25px;
+
 }
 
 .tab-content>.tab-pane {
@@ -5689,6 +5692,8 @@ p.no_gallery_yet{
 a.email_us{
 	float: right;
 	outline: none;
+	margin-top: 15px;
+    margin-right: 25px;
 }
 
 a.email_us:hover{
@@ -5798,6 +5803,7 @@ a.email_us:hover{
 	border-bottom: 1px solid rgba(200,200,200,.2);
 	border-top: none;
 }
+
 
 
 /* Fixed Mobile*/

@@ -30,7 +30,7 @@ class OrderPaymentController extends Controller
         $data = OrderHead::with('relCustomer')
             ->where('order_head.invoice_type','eway')
             ->where('status', '!=', 'cancel')
-            ->orderBy('order_head.id','desc')
+            ->orderBy('order_head.invoice_no','desc')
             ->get();
 
 
