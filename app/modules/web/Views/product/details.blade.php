@@ -51,6 +51,8 @@
 
 										@if($product->preorder == '1')
 											Pre order &nbsp;
+										@elseif($product->product_group_id == '9')
+											Special Rate &nbsp;
 										@else
 											Buy now &nbsp;
 										@endif
