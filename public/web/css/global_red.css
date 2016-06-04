@@ -640,7 +640,7 @@ div.star_hover a, div.star a:hover { background-position: 0 -32px }
 #header_links li a:hover {color:#ffc947;}
 
 .pt_custommenu div.pt_menu .parentMenu a,
-.pt_custommenu div.pt_menu .parentMenu span.block-title { color:#4b4b4b; cursor: pointer;}
+.pt_custommenu div.pt_menu .parentMenu span.block-title { color:#fff; cursor: pointer;}
 
 .pt_custommenu div.pt_menu .parentMenu a:hover {
 	background: #ffc947;
@@ -2076,7 +2076,12 @@ div.popup {background-color:  #ffc947}
 	text-align: center;
 	padding:5px 20px;
 }
-.pt_custommenu .act {background: #ffc947;}
+.pt_custommenu .act {background: #FF6002;}
+.pt_custommenu .act2 {background: #F9D500;}
+.pt_custommenu .act3 {background: #BDC921;}
+.pt_custommenu .act4 {background: #70AA3C;}
+.pt_custommenu .act5 {background: #19AA4D;}
+.pt_custommenu .act6 {background: #0E2223;}
 .pt_custommenu .active {background: #ffc947;}
 
 #our_price_display{font-family: OleoScriptSwashCapsRegular; color:#da2626}
@@ -5012,7 +5017,32 @@ ul.left-menu-product li a{
     padding: 8px 20px;
     font-size: 14px;
     background: #fff;
+    color: #fff;
     border-bottom: 1px solid rgba(0,0,0,.2);
+}
+
+ul.left-menu-product li a.sidemenu-3{
+	background: #FF6002;
+}
+
+ul.left-menu-product li a.sidemenu-4{
+	background: #F9D500;
+}
+
+ul.left-menu-product li a.sidemenu-9{
+	background: #BDC921;
+}
+
+ul.left-menu-product li a.sidemenu-5{
+	background: #70AA3C;
+}
+
+ul.left-menu-product li a.sidemenu-6{
+	background: #19AA4D;
+}
+
+ul.left-menu-product li a.sidemenu-7{
+	background: #0E2223;
 }
 
 ul.left-menu-product li a:hover{

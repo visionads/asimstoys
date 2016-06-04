@@ -40,31 +40,31 @@
                     </div>
                 </div>
 
-                <div id="pt_menu3" class="pt_menu nav-1">
+                <div id="pt_menu3" class="pt_menu nav-1 act2">
                     <div class="parentMenu">
                         <a href="{{Url::to('/')}}/special"><span>Special</span></a>
                     </div>
                 </div>
 
-                <div id="pt_menu3" class="pt_menu nav-1">
+                <div id="pt_menu3" class="pt_menu nav-1 act3">
                     <div class="parentMenu">
                         <a href="{{Url::to('/')}}/terms-condition"><span>Terms & Condition</span></a>
                     </div>
                 </div>
 
-                <div id="pt_menu3" class="pt_menu nav-1">
+                <div id="pt_menu3" class="pt_menu nav-1 act4">
                     <div class="parentMenu">
                         <a href="{{Url::to('/')}}/warranty"><span>Warranty</span></a>
                     </div>
                 </div>
 
-                <div id="pt_menu3" class="pt_menu nav-1">
+                <div id="pt_menu3" class="pt_menu nav-1 act5">
                     <div class="parentMenu">
                         <a href="{{Url::to('/')}}/faq"><span>FAQ</span></a>
                     </div>
                 </div>
 
-                <div id="pt_menu3" class="pt_menu nav-1">
+                <div id="pt_menu3" class="pt_menu nav-1 act6">
                     <div class="parentMenu">
                         <a href="{{Url::to('/')}}/contact"><span>Contact</span></a>
                     </div>
