@@ -5021,6 +5021,10 @@ ul.left-menu-product li a{
     border-bottom: 1px solid rgba(0,0,0,.2);
 }
 
+ul.left-menu-product li ul li a{
+	color: #000;
+}
+
 ul.left-menu-product li a.sidemenu-3{
 	background: #FF6002;
 }
