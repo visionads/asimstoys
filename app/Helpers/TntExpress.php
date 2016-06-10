@@ -48,8 +48,17 @@ class TntExpress
         return $output;
     }
 
+    /**
+     * @param $user_data
+     * @param $delivery_data
+     * @param $product_cart
+     * @return string
+     */
+    public static function output_xml_data($user_data, $delivery_data, $product_cart){
 
-    public static function output_xml_data(){
+        #print_r($user_data);
+        #print_r($delivery_data);
+        #print_r($product_cart);
 
         $XmlString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
                   <PRICEREQUEST>
@@ -61,7 +70,6 @@ class TntExpress
 
                        <PRICECHECK>
                            <RATEID>rate1</RATEID>
-
 
                                <ORIGINCOUNTRY>AU</ORIGINCOUNTRY>
                                <ORIGINTOWNNAME>Blacktown</ORIGINTOWNNAME>
@@ -75,7 +83,7 @@ class TntExpress
 
                            <CONTYPE>D</CONTYPE>
                            <CURRENCY>AUD</CURRENCY>
-                           <WEIGHT>0.2</WEIGHT>
+                           <WEIGHT>1</WEIGHT>
                            <VOLUME>0.1</VOLUME>
                            <ACCOUNT/>
                            <ITEMS>1</ITEMS>

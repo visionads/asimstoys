@@ -338,7 +338,7 @@ class OrderController extends Controller
         if(Session::has('freight_calculation')){
             $request->session()->forget('freight_calculation');
         }
-        $freight_calculation = TntExpress::output_xml_data();
+        $freight_calculation = TntExpress::output_xml_data($user_data, $delivery_data, $product_cart);
         $request->session()->set('freight_calculation', $freight_calculation);
 
 
