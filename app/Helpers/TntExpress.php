@@ -63,19 +63,18 @@ class TntExpress
                            <RATEID>rate1</RATEID>
 
 
-                               <ORIGINCOUNTRY>GB</ORIGINCOUNTRY>
-                               <ORIGINTOWNNAME>Atherstone</ORIGINTOWNNAME>
-                               <ORIGINPOSTCODE>CV9 2RY</ORIGINPOSTCODE>
+                               <ORIGINCOUNTRY>AU</ORIGINCOUNTRY>
+                               <ORIGINTOWNNAME>Blacktown</ORIGINTOWNNAME>
+                               <ORIGINPOSTCODE>2148</ORIGINPOSTCODE>
                                <ORIGINTOWNGROUP/>
 
-                               <DESTCOUNTRY>ES</DESTCOUNTRY>
-                               <DESTTOWNNAME>Alicante</DESTTOWNNAME>
-                               <DESTPOSTCODE>03006</DESTPOSTCODE>
+                               <DESTCOUNTRY>BD</DESTCOUNTRY>
+                               <DESTTOWNNAME>Dhaka</DESTTOWNNAME>
+                               <DESTPOSTCODE>1230</DESTPOSTCODE>
                                <DESTTOWNGROUP/>
 
-
-                           <CONTYPE>N</CONTYPE>
-                           <CURRENCY>GBP</CURRENCY>
+                           <CONTYPE>D</CONTYPE>
+                           <CURRENCY>AUD</CURRENCY>
                            <WEIGHT>0.2</WEIGHT>
                            <VOLUME>0.1</VOLUME>
                            <ACCOUNT/>
@@ -88,6 +87,9 @@ class TntExpress
         $xml = simplexml_load_string($tnt);
         //rate
         $result = (array) $xml->PRICE->RATE;
+
+        #dd($result);
+
         if($result){
             $tnt_cost =$result[0];
         }else{

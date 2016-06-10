@@ -333,7 +333,12 @@ class OrderController extends Controller
         $user_data = DB::table('customer')->where('id',$user_id)->first();
         $delivery_data = DB::table('delivery_details')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
 
+        //Freight Calculation if session the forget first
+        if(Session::has('freight_calculation')){
+            $request->session()->forget('freight_calculation');
+        }
         $freight_calculation = TntExpress::output_xml_data();
+        $request->session()->set('freight_calculation', $freight_calculation);
 
 
         return view('web::cart.finalcart',[
@@ -359,6 +364,7 @@ class OrderController extends Controller
         $plate_text = @$request->session()->get('plate_text');
         $user_id = $request->session()->get('user_id');
         $deliver_id = $request->session()->get('deliver_id');
+        $freight_calculation = $request->session()->get('freight_calculation');
 
         $user_data = DB::table('customer')->where('id',$user_id)->first();
         $delivery_data = DB::table('delivery_details')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
@@ -380,7 +386,9 @@ class OrderController extends Controller
                 'user_id'=>$user_id,
                 'total_discount_price'=>0,
                 'vat'=>0,
-                'net_amount'=>$total_price,
+                'freight_amount' => $freight_calculation,
+                'sub_total' => $total_price,
+                'net_amount'=>$total_price+$freight_calculation,
                 'status'=> 1,
             ];
 
@@ -403,6 +411,7 @@ class OrderController extends Controller
                         $model_order_dt->status =1;
                         $model_order_dt->save();
                     }
+                    #$request->session()->forget('freight_calculation');
                     $request->session()->forget('product_cart');
                     $request->session()->set('invoice_no', $gen_number[0]);
                     $request->session()->set('total_price', $total_price);
@@ -455,6 +464,7 @@ class OrderController extends Controller
             $user_id = $request->session()->get('user_id');
             $total_price = $request->session()->get('total_price');
             $customer_data = $request->session()->get('customer_data');
+            $freight_calculation = $request->session()->get('freight_calculation');
 
             // Update Invoice
             DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'eway']);
@@ -465,8 +475,8 @@ class OrderController extends Controller
                 'title' => $title,
                 'invoice_number' => $invoice_number,
                 'user_id' => $user_id,
-                'eway_total_price_format' => $total_price.'00',
-                'total_price' => $total_price,
+                'eway_total_price_format' => ($total_price+$freight_calculation)*100,
+                'total_price' => $total_price+$freight_calculation,
                 'customer_data' => $customer_data,
             ]);
 
@@ -494,6 +504,8 @@ class OrderController extends Controller
 
         $order_head = OrderHead::where('invoice_no', $invoice_no)->first();
         $order_head->status = 'done';
+
+
 
         try{
             if($order_head->save()){

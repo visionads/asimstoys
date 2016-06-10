@@ -125,7 +125,7 @@
 											<td>
 											</td>
 											<td>Total: <input type="hidden" name="total_value" value="{{$total_value}}"></td>
-											<td class="text-align-right">${{$total_value}}</td>
+											<td class="text-align-right">${{$total_value + $freight_calculation}}</td>
 											
 										</tr>
 								</tbody>

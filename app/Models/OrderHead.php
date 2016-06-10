@@ -22,6 +22,8 @@ class OrderHead extends Model
         'user_id',
         'total_discount_price',
         'vat',
+        'freight_amount',
+        'sub_total',
         'net_amount',
         'status',
     ];
