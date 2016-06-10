@@ -2,6 +2,7 @@
 
 namespace App\Modules\Web\Controllers;
 use App\Helpers\GenerateNumber;
+use App\Helpers\TntExpress;
 use App\OrderDetail;
 use App\OrderHead;
 use Illuminate\Http\Request;
@@ -332,13 +333,16 @@ class OrderController extends Controller
         $user_data = DB::table('customer')->where('id',$user_id)->first();
         $delivery_data = DB::table('delivery_details')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
 
+        $freight_calculation = TntExpress::output_xml_data();
+
 
         return view('web::cart.finalcart',[
                 'title' => $title,
                 'productgroup_data' => $productgroup_data,
                 'product_cart_r' => $product_cart,
                 'user_data' => $user_data,
-                'delivery_data' => $delivery_data
+                'delivery_data' => $delivery_data,
+                'freight_calculation' => $freight_calculation,
             ]);
     }
 

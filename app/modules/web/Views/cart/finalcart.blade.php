@@ -117,6 +117,7 @@
 											
 										</tr>
 										<?php $count++;?>
+
 									@endforeach
 										<tr class="sub-total-tr">
 											<td>
@@ -129,7 +130,7 @@
 										</tr>
 								</tbody>
 							</table>
-
+							<h4><span class="pull-right" style="color: orangered;">TNT Express Shipping Cost: <b>$ {{$freight_calculation}} &nbsp;</b></span></h4>
 
 							@else
 								<div class="empty_cart">Your Cart is empty</div>
