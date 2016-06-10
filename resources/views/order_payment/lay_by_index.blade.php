@@ -34,6 +34,7 @@
                                 <th> Invoice No# </th>
                                 <th> User Name </th>
                                 <th> Total Amount</th>
+                                <th> Due Amount</th>
                                 <th> Date</th>
                                 <th> Status</th>
                                 <th> Action </th>
@@ -48,6 +49,9 @@
                                             </td>
                                         <td>{{$values->relCustomer->first_name}} {{$values->relCustomer->last_name}}</td>
                                         <td>{{$values->net_amount}}</td>
+                                        <td>
+                                            {{$values->net_amount - $values->relOrderPaymentTransaction->sum('amount')}}
+                                        </td>
                                         <td>{{$values->created_at}}</td>
                                         <td>{{$values->status}}</td>
                                         <td>

@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>{{$title?$title:''}}</title>
+        <link rel="icon" type="image/png" sizes="16x16" href="{{URL::to('')}}/web/images/favicon.png">
 
         <link href="{{ URL::asset('web/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all"/>
         <link href="{{ URL::asset('web/css/bootstrap-responsive.css') }}" rel="stylesheet" type="text/css" media="all" />

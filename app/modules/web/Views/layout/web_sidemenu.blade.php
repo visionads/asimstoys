@@ -10,16 +10,16 @@
 			</li>
 
 			@if(!empty($productgroup_data))
-				@foreach($productgroup_data as $productgroup):
+				@foreach($productgroup_data as $productgroup)
 					<li>
 						@if($productgroup->id == '4')
-							<a href="{{URL::to('')}}/pre-order">{{$productgroup->title}}</a>
+							<a class="sidemenu-{{$productgroup->id}}" href="{{URL::to('')}}/pre-order">{{$productgroup->title}}</a>
 						@elseif($productgroup->id == '5')
-							<a href="{{URL::to('')}}/lay-by-instruction">{{$productgroup->title}}</a>
+							<a class="sidemenu-{{$productgroup->id}}" href="{{URL::to('')}}/lay-by-instruction">{{$productgroup->title}}</a>
 						{{--@elseif($productgroup->id == '8')
-							<a href="{{URL::to('')}}/lay-by">{{$productgroup->title}}</a>--}}
+							<a class="sidemenu-{{$productgroup->id}}" href="{{URL::to('')}}/lay-by">{{$productgroup->title}}</a>--}}
 						@else
-							<a href="#">{{$productgroup->title}}</a>
+							<a class="sidemenu-{{$productgroup->id}}" href="#">{{$productgroup->title}}</a>
 						@endif
 						
 
