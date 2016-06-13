@@ -63,6 +63,14 @@
                         <td>{{$data->is_price_vary}}</td>
                     </tr>
                     <tr>
+                        <th> Weight</th>
+                        <td>{{$data->weight}}</td>
+                    </tr>
+                    <tr>
+                        <th> Volume</th>
+                        <td>{{$data->volume}}</td>
+                    </tr>
+                    <tr>
                         <th> Is featured? </th>
                         <td>{{$data->is_featured}}</td>
                     </tr>

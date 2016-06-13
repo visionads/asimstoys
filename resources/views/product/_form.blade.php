@@ -90,6 +90,16 @@
         </div>
 
         <div class="form-group">
+            {!! Form::label('Weight', 'Weight:', ['class' => 'control-label']) !!}
+            {!! Form::text('weight', null, ['id'=>'weight', 'class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('Volume', 'Volume:', ['class' => 'control-label']) !!}
+            {!! Form::text('volume', null, ['id'=>'volume', 'class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
             {!! Form::label('status', 'Status:', ['class' => 'control-label']) !!}
             <small class="required">(Required)</small>
             {!! Form::Select('status',array('active'=>'Active','inactive'=>'Inactive'),Input::old('status'),['class'=>'form-control ','required']) !!}

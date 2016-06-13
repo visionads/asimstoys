@@ -36,7 +36,9 @@ class Product extends Model
         'features',
         'videos',
         'sort_order',
-        'preorder'
+        'preorder',
+        'weight',
+        'volume'
     ];
 
      public function relCatProduct(){

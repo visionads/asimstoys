@@ -88,15 +88,25 @@
 									</div>
 
 									<div class="form-group">
+										<label>Please select state</label>
+										{!! Form::Select('state',
+											array('New South Wales'=>'New South Wales',
+												  'Australian Capital Territory'=>'Australian Capital Territory',
+												  'Victoria' => 'Victoria',
+												  'Queensland' => 'Queensland',
+												  'South Australia' => 'South Australia',
+												  'Western Australia' => 'Western Australia',
+												  'Tasmania' => 'Tasmania',
+												  'Northern Territory' => 'Northern Territory'),Input::old('state'),['class'=>'form-control ','required']) !!}
+										
+									</div>
+
+									<div class="form-group">
 										<label>Post code</label>
 										{!! Form::text('postcode', $data->postcode, ['id'=>'post_code', 'class' => 'form-control','required']) !!}
 									</div>
 
-									<div class="form-group">
-										<label>Country</label>
-										{!! Form::Select('country',array('Australia'=>'Australia'),Input::old('country'),['class'=>'form-control ','required']) !!}
-										
-									</div>
+									
 									<div class="form-group">
 										<input type="submit" class="form-control register_btn" name="submit" value="Submit">
 									</div>
@@ -118,16 +128,16 @@
 										<label>Suburb</label>
 										{!! Form::text('suburb', $data->suburb, ['id'=>'suburb', 'class' => 'form-control','required']) !!}
 									</div>
-									<div class="form-group">
-										<label>Please select state</label>
-										<select class="form-control " required="required" name="state">
-											<option value="{{$data->state}}">{{$data->state}}</option>
-										</select>
-										
-									</div>
+									
 									<div class="form-group">
 										<label>Telephone</label>
 										{!! Form::text('telephone', $data->telephone, ['id'=>'telephone', 'class' => 'form-control','required']) !!}
+									</div>
+
+									<div class="form-group">
+										<label>Country</label>
+										{!! Form::Select('country',array('Australia'=>'Australia'),Input::old('country'),['class'=>'form-control ','required']) !!}
+										
 									</div>
 								</div>
 							</div>

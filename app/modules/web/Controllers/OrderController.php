@@ -76,6 +76,8 @@ class OrderController extends Controller
 
             $product_id = (int) $_POST['product_id'];
             $product_price = $_POST['price_amount'];
+            $weight = $_POST['weight'];
+            $volume = $_POST['volume'];
 
 			if(isset($_POST['color'])){
 				$color = $_POST['color'];
@@ -107,6 +109,8 @@ class OrderController extends Controller
                         'background' => $background,
                         'product_price' => $product_price,
                         'plate_text' => $plate_text,
+                        'volume' => $volume,
+                        'weight' => $weight
                 )
             );
 
