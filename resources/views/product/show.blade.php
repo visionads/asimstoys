@@ -63,11 +63,11 @@
                         <td>{{$data->is_price_vary}}</td>
                     </tr>
                     <tr>
-                        <th> Weight</th>
+                        <th> Weight (kg)</th>
                         <td>{{$data->weight}}</td>
                     </tr>
                     <tr>
-                        <th> Volume</th>
+                        <th> Volume (meter)</th>
                         <td>{{$data->volume}}</td>
                     </tr>
                     <tr>

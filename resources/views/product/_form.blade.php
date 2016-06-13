@@ -90,12 +90,12 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('Weight', 'Weight:', ['class' => 'control-label']) !!}
+            {!! Form::label('Weight', 'Weight (kg):', ['class' => 'control-label']) !!}
             {!! Form::text('weight', null, ['id'=>'weight', 'class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">
-            {!! Form::label('Volume', 'Volume:', ['class' => 'control-label']) !!}
+            {!! Form::label('Volume', 'Volume (meter):', ['class' => 'control-label']) !!}
             {!! Form::text('volume', null, ['id'=>'volume', 'class' => 'form-control']) !!}
         </div>
 
