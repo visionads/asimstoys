@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Filter;
 use App\Helpers\PostSearch;
+use App\Helpers\RttExpress;
+use App\Helpers\RttTntExpress;
 use App\Menu;
 use App\SenderEmail;
 use App\User;
@@ -63,7 +65,7 @@ class HomeController extends Controller
 
     public function xml_data(){
 
-        $res = TntExpress::output_xml_data();
+        $res = RttTntExpress::rtt_call();
         print_r($res);
 
 
