@@ -133,6 +133,7 @@
 
                             <h5>Tnt Express delivery cost</h5>
                             @if(isset($freight_calculation))
+                                {{$freight_calculation}}<br>
                             {{--@foreach($freight_calculation as $fc)--}}
                                         <input type="radio" name="fc" id="r1" value="15.00" /><label for="r1"> Road Express || Cost is <b>15.00</b></label><br>
                                         <input type="radio" name="fc" id="r2" value="19.00" /><label for="r2"> Over Night Express || Cost is <b>19.00</b></label><br>
