@@ -10,6 +10,7 @@ namespace App\Helpers;
 
 use App\Helpers\TntEnquiry;
 use DOMDocument;
+use Faker\Provider\DateTime;
 
 class RttTntExpress
 {
@@ -21,22 +22,33 @@ class RttTntExpress
      */
     public static function rtt_call($user_data, $delivery_data, $product_cart){
 
+        //date
+        $tomorrow = date("Y-m-d", strtotime("+1 day"));
+
+        //call Enquiry Class
         $enquiry = new TntEnquiry();
-        var_dump($enquiry->setShipDate("2016-08-19"));
+        $enquiry->setShipDate($tomorrow);
 
         $deliveryAddress = array(
-            'suburb'=>'Blacktown',
-            'postCode'=>'2148',
+            'suburb'=>$delivery_data->suburb,
+            'postCode'=>$delivery_data->postcode,
             'state'=>'vic'
         );
+        //Set Delivery address
         $enquiry->setDeliveryAddress($deliveryAddress);
 
-        //dom data
-        $numberOfPackages=2;
-        $packWeight=5;
-        $length=22;
-        $width=33;
-        $height=10;
+        //calculate product data
+        $weight = null;
+        foreach ($product_cart as $key=>$values){
+            $weight+=$values['weight'];
+        }
+
+        //product data
+        $numberOfPackages=1;
+        $packWeight= $weight>0 ? $weight : 1;
+        $length=1;
+        $width=1;
+        $height=1;
         $dimensionUnit="cm";
         $weightUnit="kg";
 
@@ -52,6 +64,7 @@ class RttTntExpress
         //rate
         $result = (array) $xml->ratedTransitTimeResponse->ratedProducts;
 
+        //make the object or array
         if($result){
             $arr=[];
             foreach($result['ratedProduct'] as $value){
@@ -66,7 +79,7 @@ class RttTntExpress
             $tnt_cost = "no data found !";
         }
 
-        print_r($tnt_cost);exit();
+        #print_r($tnt_cost);exit();
         return $tnt_cost;
 
     }

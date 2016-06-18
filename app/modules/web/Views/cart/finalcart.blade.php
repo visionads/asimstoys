@@ -125,12 +125,22 @@
 											<td>
 											</td>
 											<td>Total: <input type="hidden" name="total_value" value="{{$total_value}}"></td>
-											<td class="text-align-right">${{$total_value + $freight_calculation}}</td>
+											<td class="text-align-right">${{$total_value }}</td>
 											
 										</tr>
 								</tbody>
 							</table>
-							<h4><span class="pull-right" style="color: orangered;">TNT Express Shipping Cost: <b>$ {{$freight_calculation}} &nbsp;</b></span></h4>
+
+                            <h5>Tnt Express delivery cost</h5>
+                            @if(isset($freight_calculation))
+                            {{--@foreach($freight_calculation as $fc)--}}
+                                        <input type="radio" name="fc" id="r1" value="15.00" /><label for="r1"> Road Express || Cost is <b>15.00</b></label><br>
+                                        <input type="radio" name="fc" id="r2" value="19.00" /><label for="r2"> Over Night Express || Cost is <b>19.00</b></label><br>
+                            {{--@endforeach--}}
+                            @endif
+                            <p>&nbsp;</p>
+							<h4><span class="pull-right" style="color: orangered;">TNT Express Shipping Cost: <b>$ {{$total_value}} &nbsp;</b></span></h4>
+
 
 							@else
 								<div class="empty_cart">Your Cart is empty</div>

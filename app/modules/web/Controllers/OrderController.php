@@ -2,6 +2,7 @@
 
 namespace App\Modules\Web\Controllers;
 use App\Helpers\GenerateNumber;
+use App\Helpers\RttTntExpress;
 use App\Helpers\TntExpress;
 use App\OrderDetail;
 use App\OrderHead;
@@ -342,7 +343,9 @@ class OrderController extends Controller
         if(Session::has('freight_calculation')){
             $request->session()->forget('freight_calculation');
         }
-        $freight_calculation = TntExpress::output_xml_data($user_data, $delivery_data, $product_cart);
+
+        //Freight Calculation for RTT TNT Express
+        $freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_cart);
         $request->session()->set('freight_calculation', $freight_calculation);
 
 
