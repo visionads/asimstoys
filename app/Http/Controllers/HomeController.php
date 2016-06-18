@@ -65,7 +65,11 @@ class HomeController extends Controller
 
     public function xml_data(){
 
-        $res = RttTntExpress::rtt_call();
+        $user_data=null;
+        $delivery_data=null;
+        $product_cart=null;
+        
+        $res = RttTntExpress::rtt_call($user_data, $delivery_data, $product_cart);
         print_r($res);
 
 

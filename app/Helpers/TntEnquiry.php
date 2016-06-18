@@ -226,7 +226,7 @@ class TntEnquiry
         
     }  
   
-    public function addItem($dom,$numberOfPackages=1,$packWeight=1,$lenght=1,$width=1,$height=1,$dimensionUnit="cm",$weightUnit="kg"){
+    public function addItem($dom,$numberOfPackages=1,$packWeight=1,$length=1,$width=1,$height=1,$dimensionUnit="cm",$weightUnit="kg"){
         /*This function does not access the dom by ref.  This allows for the base XML to be reused in loops */
       
         /* set package lines */
@@ -246,7 +246,7 @@ class TntEnquiry
         $dimensions = $this->addNodeWithAttribute($dom,$packageLine,"dimensions","unit",$dimensionUnit);
       
         /* add dimensions */
-        $this->addNodeElement($dom,$dimensions,"length",ceil($lenght));
+        $this->addNodeElement($dom,$dimensions,"length",ceil($length));
         $this->addNodeElement($dom,$dimensions,"width",ceil($width));
         $this->addNodeElement($dom,$dimensions,"height",ceil($height));
        
