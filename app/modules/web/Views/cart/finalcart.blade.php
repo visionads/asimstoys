@@ -125,29 +125,26 @@
 											<td>
 											</td>
 											<td>Total: <input type="hidden" name="total_value" value="{{$total_value}}"></td>
-											<td class="text-align-right">${{$total_value }}</td>
-											
+											<td class="text-align-right" >${{$total_value }}</td>
+                                            <input type="hidden" id="total-amount-cart-in" value="{{$total_value }}">
 										</tr>
 								</tbody>
 							</table>
 
-                            <h5>Tnt Express delivery cost</h5>
-                            @if(isset($freight_calculation))
+                            <h5><b style="color: orangered;">Tnt Express delivery cost</b></h5>
+                            <div id="freight-cal">
+                                <?php $init_amount = isset($freight_calculation)?$freight_calculation[0]['price'][0]: 0.00; ?>
+                                @if(isset($freight_calculation))
 
-                                <?php
-                                    $init_amount = $freight_calculation[0]['price'][0];
-                                    $sub_total =    round($init_amount.".00" + $total_value, 2) ;
-                                    ?>
-                                
-                            @foreach($freight_calculation as $fc)
+                                    @foreach($freight_calculation as $fc)
 
-                               <input type="radio" name="fc" id="{{$fc['code'][0]}}" value="{{$fc['price'][0]}}" {{$fc['code'][0]==76 ? "checked": null}} /><label for="{{$fc['code'][0]}}"> {{$fc['description'][0]}} || Cost is <b>{{$fc['price'][0]}}</b></label><br>
+                                       <input type="radio" name="fc" id="{{$fc['code'][0]}}" value="{{$fc['price'][0]}}" {{$fc['code'][0]==76 ? 'checked': null}} /><label for="{{$fc['code'][0]}}"> {{$fc['description'][0]}} || Cost is <b>{{$fc['price'][0]}}</b></label><br>
 
-                            @endforeach
-                            @endif
+                                    @endforeach
+                                @endif
+                            </div>
                             <p>&nbsp;</p>
-							<h4><span class="pull-right" style="color: orangered;">Total Cost (including TNT express): <b>$ {{ round($init_amount.".00" + $total_value, 2) }} &nbsp;</b></span></h4>
-
+							<h4><span class="pull-right" style="color: orangered;">Total Cost : <b>$ <span id="final-amount-cart">{{ round($init_amount.".00" + $total_value, 2) }} </span> &nbsp;</b></span></h4>
 
 							@else
 								<div class="empty_cart">Your Cart is empty</div>
@@ -218,4 +215,15 @@
 
 		</div>
 	</div>
+
+
+    <script>
+        $('#freight-cal input').on('change', function() {
+            total_amt_cart = $('#total-amount-cart-in').val();
+            total_amt_cart_in = Math.round(total_amt_cart * 100) / 100;
+            fc_amt = $('input[name=fc]:checked', '#freight-cal').val();
+            sum1 = Math.round((parseFloat(total_amt_cart_in) + parseFloat(fc_amt) ) * 100) / 100;
+            $('#final-amount-cart').html(sum1);
+        });
+    </script>
 @stop

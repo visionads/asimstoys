@@ -64,7 +64,7 @@ class RttTntExpress
 
 
         //rate
-        $result = (array) $xml->ratedTransitTimeResponse->ratedProducts;
+        $result = (array)$xml->ratedTransitTimeResponse->ratedProducts;
 
         //make the object or array
         if($result){
@@ -72,11 +72,11 @@ class RttTntExpress
             foreach($result['ratedProduct'] as $value){
                 $arr [] = [
                     'code'=>$value->product->code,
-                    'description'=>$value->product->description,
+                    'description'=> $value->product->description,
                     'price'=>$value->quote->price,
                 ];
             }
-            $tnt_cost = $arr;
+            $tnt_cost =  $arr;
         }else{
             $tnt_cost = "no data found !";
         }
