@@ -41,11 +41,13 @@ class ProductController extends Controller
 	}
 
 
-    public function freight_cal_by_product()
+    public function freight_cal_by_product(Request $request)
     {
         // Getting all post data
-        if (Request::ajax()) {
-            $data = Input::all();
+        if ($request->ajax()) {
+            #$id = $_GET['id'];
+            print_r("OK");
+            exit();
 
             $user_data= null;
             $delivery_data= null;
@@ -55,6 +57,9 @@ class ProductController extends Controller
             $freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_cart);
 
             die;
+        }else{
+            print_r("does not ajax");
+            exit();
         }
     }
 }

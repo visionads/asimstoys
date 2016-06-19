@@ -166,12 +166,14 @@
                                     <div role="tabpanel" class="tab-pane" id="freight-panel">
                                         {{--Freight Panel--}}
 
-                                        {!! Form::open(array('url'=>'freight-cal-by-product','method'=>'POST', 'id'=>'myform')) !!}
-                                        {!! Form::text('email','',array('class'=>'form-control','placeholder' => 'Email')) !!}
+                                        {!! Form::open(array('url' => 'freight-cal-by-product', 'id'=>'fc-base-search')) !!}
 
+                                            <input type="text" name="keywords" id="knowledge_base">
+                                            <button class="btn btn-info btn-flat" type="submit">Calculate</button>
 
-                                        {!! Form::button('Login', array('class'=>'freight-send-btn submit')) !!}
                                         {!! Form::close() !!}
+
+
 
                                         {{--END Freight --}}
                                     </div>
@@ -182,20 +184,7 @@
 
 					</div>
 
-                    <script type="text/javascript">
-                        //$(document).ready(function(){
-                            $('.freight-send-btn').click(function(){
-                                $.ajax({
-                                    url: 'freight-cal-by-product',
-                                    type: "post",
-                                    data: {'email':$('input[name=email]').val(), '_token': $('input[name=_token]').val()},
-                                    success: function(data){
-                                        alert(data);
-                                    }
-                                });
-                            });
-                        //});
-                    </script>
+
 
 					<div id="gallery_01">
 
@@ -320,9 +309,9 @@
 	</div>
 
 	<script>
-	
+
 	$("#zoom_01").elevateZoom({
-		gallery:'gallery_01', 
+		gallery:'gallery_01',
 		cursor: 'crosshair',
 		galleryActiveClass: 'active',
 		imageCrossfade: true,
@@ -342,9 +331,28 @@
 		// zoomWindowFadeOut: 750,
 		// zoomWindowWidth:410,
 		// zoomWindowHeight:378
-  //  }); 
+  //  });
 </script>
 
+<script>
+    //$(function(){
+        $( '#fc-base-search').on('submit', function(e) {
+            e.preventDefault();
+            var keyword = $('#knowledge_base').val();
+
+            $.ajax({
+                url: 'freight-cal-by-product',
+                type: 'POST',
+                dataType: 'json',
+                data: { keyword:  keyword, _token:'{{csrf_token()}}', },
+                success: function(response)
+                {
+                    console.log(response);
+                }
+            });
+        });
+    //});
+</script>
 
 
 @stop
