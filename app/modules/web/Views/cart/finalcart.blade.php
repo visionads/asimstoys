@@ -134,13 +134,19 @@
                             <h5>Tnt Express delivery cost</h5>
                             @if(isset($freight_calculation))
 
+                                <?php
+                                    $init_amount = $freight_calculation[0]['price'][0];
+                                    $sub_total =    round($init_amount.".00" + $total_value, 2) ;
+                                    ?>
+                                
                             @foreach($freight_calculation as $fc)
+
                                <input type="radio" name="fc" id="{{$fc['code'][0]}}" value="{{$fc['price'][0]}}" {{$fc['code'][0]==76 ? "checked": null}} /><label for="{{$fc['code'][0]}}"> {{$fc['description'][0]}} || Cost is <b>{{$fc['price'][0]}}</b></label><br>
 
                             @endforeach
                             @endif
                             <p>&nbsp;</p>
-							<h4><span class="pull-right" style="color: orangered;">TNT Express Shipping Cost: <b>$ {{$total_value}} &nbsp;</b></span></h4>
+							<h4><span class="pull-right" style="color: orangered;">Total Cost (including TNT express): <b>$ {{ round($init_amount.".00" + $total_value, 2) }} &nbsp;</b></span></h4>
 
 
 							@else
