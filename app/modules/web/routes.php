@@ -245,6 +245,11 @@ Route::any('{product_slug}',[
 		'uses' => 'ProductController@index'
 	]);
 
+Route::any('freight-cal-by-product',[
+		'as' => 'freight-cal-by-product',
+		'uses' => 'ProductController@freight_cal_by_product'
+	]);
+
 /*--------- Start---------------*/
 
 Route::any("order/paynow", [

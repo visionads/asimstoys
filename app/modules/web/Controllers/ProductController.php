@@ -39,4 +39,22 @@ class ProductController extends Controller
             ]);
 
 	}
+
+
+    public function freight_cal_by_product()
+    {
+        // Getting all post data
+        if (Request::ajax()) {
+            $data = Input::all();
+
+            $user_data= null;
+            $delivery_data= null;
+            $product_cart= null;
+
+            //Freight Calculation for RTT TNT Express
+            $freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_cart);
+
+            die;
+        }
+    }
 }
