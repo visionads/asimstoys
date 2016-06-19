@@ -133,11 +133,11 @@
 
                             <h5>Tnt Express delivery cost</h5>
                             @if(isset($freight_calculation))
-                                {{$freight_calculation}}<br>
-                            {{--@foreach($freight_calculation as $fc)--}}
-                                        <input type="radio" name="fc" id="r1" value="15.00" /><label for="r1"> Road Express || Cost is <b>15.00</b></label><br>
-                                        <input type="radio" name="fc" id="r2" value="19.00" /><label for="r2"> Over Night Express || Cost is <b>19.00</b></label><br>
-                            {{--@endforeach--}}
+
+                            @foreach($freight_calculation as $fc)
+                               <input type="radio" name="fc" id="{{$fc['code'][0]}}" value="{{$fc['price'][0]}}" {{$fc['code'][0]==76 ? "checked": null}} /><label for="{{$fc['code'][0]}}"> {{$fc['description'][0]}} || Cost is <b>{{$fc['price'][0]}}</b></label><br>
+
+                            @endforeach
                             @endif
                             <p>&nbsp;</p>
 							<h4><span class="pull-right" style="color: orangered;">TNT Express Shipping Cost: <b>$ {{$total_value}} &nbsp;</b></span></h4>

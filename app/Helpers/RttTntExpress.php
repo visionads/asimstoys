@@ -61,6 +61,8 @@ class RttTntExpress
         //xml output
         $xml = simplexml_load_string($output);
 
+
+
         //rate
         $result = (array) $xml->ratedTransitTimeResponse->ratedProducts;
 

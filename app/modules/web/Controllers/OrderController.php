@@ -346,6 +346,7 @@ class OrderController extends Controller
 
         //Freight Calculation for RTT TNT Express
         $freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_cart);
+        #print_r($freight_calculation);exit();
         $request->session()->set('freight_calculation', $freight_calculation);
 
 
