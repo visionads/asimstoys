@@ -166,9 +166,11 @@
                                     <div role="tabpanel" class="tab-pane" id="freight-panel">
                                         {{--Freight Panel--}}
 
+                                        <div id="freight-result"></div>
                                         {!! Form::open(array('url' => 'freight-cal-by-product', 'id'=>'fc-base-search')) !!}
 
-                                            <input type="text" name="keywords" id="knowledge_base">
+                                            <input type="text" name="suburb" id="suburb-val" value="Brighton">
+                                            <input type="text" name="postcode" id="postcode-val" value="3186">
                                             <button class="btn btn-info btn-flat" type="submit">Calculate</button>
 
                                         {!! Form::close() !!}
@@ -338,16 +340,17 @@
     //$(function(){
         $( '#fc-base-search').on('submit', function(e) {
             e.preventDefault();
-            var keyword = $('#knowledge_base').val();
+            var suburb = $('#suburb-val').val();
+            var postcode = $('#postcode-val').val();
 
             $.ajax({
                 url: 'freight-cal-by-product',
                 type: 'POST',
                 dataType: 'json',
-                data: { keyword:  keyword, _token:'{{csrf_token()}}', },
+                data: { suburb:suburb, postcode:postcode, _token:'{{csrf_token()}}', },
                 success: function(response)
                 {
-                    console.log(response);
+                    $("#freight-result").html(response.code);
                 }
             });
         });

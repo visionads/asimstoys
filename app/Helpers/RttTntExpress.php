@@ -39,8 +39,10 @@ class RttTntExpress
 
         //calculate product data
         $weight = null;
-        foreach ($product_cart as $key=>$values){
-            $weight+=$values['weight'];
+        if($product_cart){
+            foreach ($product_cart as $key=>$values){
+                $weight+=$values['weight'];
+            }
         }
 
         //product data
@@ -61,10 +63,11 @@ class RttTntExpress
         //xml output
         $xml = simplexml_load_string($output);
 
-
-
         //rate
-        $result = (array)$xml->ratedTransitTimeResponse->ratedProducts;
+        $result = null;
+        if($xml){
+            $result = (array)$xml->ratedTransitTimeResponse->ratedProducts;
+        }
 
         //make the object or array
         if($result){

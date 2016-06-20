@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Modules\Web\Controllers;
+use App\Helpers\RttTntExpress;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\UserRequest;
@@ -8,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\ProductGroup;
 use DB;
+use Illuminate\Support\Facades\Response;
 
 
 class ProductController extends Controller
@@ -45,21 +47,18 @@ class ProductController extends Controller
     {
         // Getting all post data
         if ($request->ajax()) {
-            #$id = $_GET['id'];
-            print_r("OK");
-            exit();
 
             $user_data= null;
-            $delivery_data= null;
+            $delivery_data= (object)$request->all();
             $product_cart= null;
 
             //Freight Calculation for RTT TNT Express
             $freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_cart);
 
-            die;
+            return Response::json($freight_calculation);
+
         }else{
-            print_r("does not ajax");
-            exit();
+            return Response::json("does not ajax");
         }
     }
 }
