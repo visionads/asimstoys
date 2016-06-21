@@ -1,6 +1,9 @@
 @extends('web::layout.web_master')
 
 @section('content')
+    <style>
+        #sf-resetcontent{display: none;}
+    </style>
 	<div class="pos-new-product home-text-container">
 		<div class="description">
 
