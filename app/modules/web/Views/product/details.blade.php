@@ -28,17 +28,21 @@
 
 					<div class="col-md-6">
 
-                        <div class="col-md-12">
-                            <div class="product_details_tab" style="background: none;">
+                        <div class="col-md-12" style="padding: 0px; margin: 0px;">
+                            <div class="product_details_tab" style="background: none; ">
                                 <!-- Nav tabs -->
                                 <ul class="nav nav-tabs" role="tablist" >
-                                    <li role="presentation" class="active"><a href="#product-details-of" aria-controls="messages" role="tab" data-toggle="tab" style="color: black">Product Details</a></li>
-                                    <li role="presentation"><a href="#freight-panel" aria-controls="settings" role="tab" data-toggle="tab" style="color: black">Freight Calculation </a></li>
+                                    <li role="presentation" class="{{\Session::has('active_fc')?'':'active'}}">
+                                        <a href="#product-details-of" aria-controls="messages" role="tab" data-toggle="tab" style="color: black; border-bottom: 0px;">Product Details</a>
+                                    </li>
+                                    <li role="presentation" class="{{\Session::get('active_fc')}}">
+                                        <a href="#freight-panel" aria-controls="settings" role="tab" data-toggle="tab" style="color: black; border-bottom: 0px;">Freight Calculation </a>
+                                    </li>
                                 </ul>
 
                                 <!-- Tab panes -->
                                 <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="product-details-of" style="padding: 0px;">
+                                    <div role="tabpanel" class="tab-pane {{\Session::has('active_fc')?'':'active'}}" id="product-details-of" style="padding: 0px;">
                                         {{--
                                             Product area
                                         --}}
@@ -163,17 +167,36 @@
                                         End Product Area.
                                         --}}
                                     </div>
-                                    <div role="tabpanel" class="tab-pane" id="freight-panel">
+                                    <div role="tabpanel" class="tab-pane {{\Session::get('active_fc')}}" id="freight-panel">
                                         {{--Freight Panel--}}
 
-                                        <div id="freight-result"></div>
-                                        {!! Form::open(array('url' => 'freight-cal-by-product', 'id'=>'fc-base-search')) !!}
+                                        <small> Shipping Cost and method (TNT Express) for this product <b>{{$product->title}}</b> </small>
+                                        @if(\Session::has('cal'))
+                                            <div id="freight-result" style="font-size: 13px; color: blue; font-weight: bold;">
+                                                <br>
+                                                {{\Session::get('cal')}}
+                                                <p>&nbsp;</p>
+                                            </div>
+                                        @endif
 
-                                            <input type="text" name="suburb" id="suburb-val" value="Brighton">
-                                            <input type="text" name="postcode" id="postcode-val" value="3186">
-                                            <button class="btn btn-info btn-flat" type="submit">Calculate</button>
+                                        <div>
+                                            {!! Form::open(array('url' => 'freight-cal-by-product', 'id'=>'fc-base-search')) !!}
 
-                                        {!! Form::close() !!}
+                                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                <div class="form-group">
+                                                    <input type="text" name="suburb" value="Brighton" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" name="postcode"  value="3186" class="form-control">
+                                                </div>
+                                                <div class="form-group" style="text-align: center">
+                                                    <button class="btn btn-info btn-flat" type="submit" style="width: 90%">
+                                                        Freight Calculation
+                                                    </button>
+                                                </div>
+
+                                            {!! Form::close() !!}
+                                        </div>
 
 
 
@@ -336,7 +359,7 @@
   //  });
 </script>
 
-<script>
+ {{--<script>
     //$(function(){
         $( '#fc-base-search').on('submit', function(e) {
             e.preventDefault();
@@ -347,15 +370,17 @@
                 url: 'freight-cal-by-product',
                 type: 'POST',
                 dataType: 'json',
-                data: { suburb:suburb, postcode:postcode, _token:'{{csrf_token()}}', },
-                success: function(response)
+                data: { suburb:suburb, postcode:postcode, _token:'{{csrf_token()}}' },
+                success: function(data)
                 {
-                    $("#freight-result").html(response.code);
+                    //$("#freight-result").html(response.code);
+                    alert('OK');
+
                 }
             });
         });
     //});
-</script>
+ </script>--}}
 
 
 @stop

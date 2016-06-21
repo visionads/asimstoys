@@ -40,8 +40,13 @@ class RttTntExpress
         //calculate product data
         $weight = null;
         if($product_cart){
-            foreach ($product_cart as $key=>$values){
-                $weight+=$values['weight'];
+            if(isset($product_cart->created_at)){
+                $weight = $product_cart->weight;
+            }else{
+                foreach ($product_cart as $values){
+
+                    $weight+=$values['weight'];
+                }
             }
         }
 
@@ -73,12 +78,14 @@ class RttTntExpress
         if($result){
             $arr=[];
             foreach($result['ratedProduct'] as $value){
+
                 $arr [] = [
                     'code'=>$value->product->code,
                     'description'=> $value->product->description,
                     'price'=>$value->quote->price,
                 ];
             }
+
             $tnt_cost =  $arr;
         }else{
             $tnt_cost = "no data found !";
