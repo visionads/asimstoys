@@ -39,6 +39,9 @@ class RttTntExpress
 
         //calculate product data
         $weight = null;
+        $length = null;
+        $width = null;
+        $height = null;
         if($product_cart){
             if(isset($product_cart->created_at)){
                 $weight = $product_cart->weight;
@@ -46,6 +49,9 @@ class RttTntExpress
                 foreach ($product_cart as $values){
 
                     $weight+=$values['weight'];
+                    $length+=$values['length'];
+                    $width+=$values['width'];
+                    $height+=$values['height'];
                 }
             }
         }
@@ -53,9 +59,9 @@ class RttTntExpress
         //product data
         $numberOfPackages=1;
         $packWeight= $weight>0 ? $weight : 1;
-        $length=1;
-        $width=1;
-        $height=1;
+        $length=$length>0 ? $length : 1;
+        $width=$width>0 ? $width : 1;
+        $height=$height>0 ? $height : 1;
         $dimensionUnit="cm";
         $weightUnit="kg";
 
