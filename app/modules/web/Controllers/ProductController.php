@@ -61,7 +61,7 @@ class ProductController extends Controller
         }
         else
         {
-            $cal = $freight_calculation." TNT server may down !";
+            $cal = $freight_calculation;
         }
         $active_fc = 'active';
 

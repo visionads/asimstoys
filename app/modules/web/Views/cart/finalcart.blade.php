@@ -149,7 +149,7 @@
 
                                         @endforeach
                                     @else
-                                        <div style="color: blue; font-size: 14px;">{{"No Data found! TNT server may down. "}}</div>
+                                        <div style="color: blue; font-size: 14px;">{{"No Data found ! Collection date ( Tomorrow) falls on a weekend or on a public holiday. "}}</div>
                                     @endif
                                 @endif
                             </div>

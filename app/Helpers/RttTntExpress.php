@@ -94,7 +94,7 @@ class RttTntExpress
 
             $tnt_cost =  $arr;
         }else{
-            $tnt_cost = "no data found !";
+            $tnt_cost = "No Data found ! Collection date ( Tomorrow) falls on a weekend or on a public holiday.";
         }
 
         #print_r($tnt_cost);exit();
