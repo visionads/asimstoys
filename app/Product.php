@@ -38,6 +38,9 @@ class Product extends Model
         'sort_order',
         'preorder',
         'weight',
+        'length',
+        'width',
+        'height',
         'volume'
     ];
 

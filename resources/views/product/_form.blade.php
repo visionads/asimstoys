@@ -51,7 +51,7 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('Preorder / Special rate', 'Preorder / Special rate:', ['class' => 'control-label']) !!}
+            {!! Form::label('Pre-order / Special rate', 'Preorder / Special rate:', ['class' => 'control-label']) !!}
             
             {!! Form::text('cost_price', null, ['id'=>'cost_price', 'class' => 'form-control']) !!}
         </div>
@@ -91,12 +91,24 @@
 
         <div class="form-group">
             {!! Form::label('Weight', 'Weight (kg):', ['class' => 'control-label']) !!}
-            {!! Form::text('weight', null, ['id'=>'weight', 'class' => 'form-control']) !!}
+            <small class="required">(Required)</small>
+            {!! Form::text('weight', null, ['id'=>'weight', 'class' => 'form-control', 'required']) !!}
         </div>
 
         <div class="form-group">
-            {!! Form::label('Volume', 'Volume (meter):', ['class' => 'control-label']) !!}
-            {!! Form::text('volume', null, ['id'=>'volume', 'class' => 'form-control']) !!}
+            {!! Form::label('Length', 'Length (cm):', ['class' => 'control-label']) !!}
+            <small class="required">(Required)</small>
+            {!! Form::text('length', null, ['id'=>'length', 'class' => 'form-control', 'required']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('Width', 'Width (cm):', ['class' => 'control-label']) !!}
+            <small class="required">(Required)</small>
+            {!! Form::text('width', null, ['id'=>'width', 'class' => 'form-control', 'required']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('Height', 'Height (cm):', ['class' => 'control-label']) !!}
+            <small class="required">(Required)</small>
+            {!! Form::text('height', null, ['id'=>'height', 'class' => 'form-control', 'required']) !!}
         </div>
 
         <div class="form-group">

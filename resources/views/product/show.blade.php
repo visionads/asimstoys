@@ -66,9 +66,18 @@
                         <th> Weight (kg)</th>
                         <td>{{$data->weight}}</td>
                     </tr>
+
                     <tr>
-                        <th> Volume (meter)</th>
-                        <td>{{$data->volume}}</td>
+                        <th> Length (cm)</th>
+                        <td>{{$data->length}}</td>
+                    </tr>
+                    <tr>
+                        <th> Width (cm)</th>
+                        <td>{{$data->width}}</td>
+                    </tr>
+                    <tr>
+                        <th> Height (cm)</th>
+                        <td>{{$data->height}}</td>
                     </tr>
                     <tr>
                         <th> Is featured? </th>
