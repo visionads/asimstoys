@@ -49,9 +49,9 @@ class RttTntExpress
                 foreach ($product_cart as $values){
 
                     $weight+=$values['weight'];
-                    $length+=$values['length'];
-                    $width+=$values['width'];
-                    $height+=$values['height'];
+                    $length+=isset($values['length'])?$values['length']:0;
+                    $width+=isset($values['width'])?$values['width']:0;
+                    $height+=isset($values['width'])?$values['height']:0;
                 }
             }
         }

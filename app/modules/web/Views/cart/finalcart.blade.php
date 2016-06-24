@@ -136,14 +136,21 @@
 
                             <h5><b style="color: orangered;">Tnt Express delivery cost</b></h5>
                             <div id="freight-cal">
-                                <?php $init_amount = isset($freight_calculation)?$freight_calculation[0]['price'][0]: 0.00; ?>
+
                                 @if(isset($freight_calculation))
+                                    <?php $init_amount =0; ?>
+                                    @if(count($freight_calculation)>1)
 
-                                    @foreach($freight_calculation as $fc)
+                                        <?php $init_amount = isset($freight_calculation)?$freight_calculation[0]['price'][0]: 0.00; ?>
 
-                                       <input type="radio" name="fc" id="{{$fc['code'][0]}}" value="{{$fc['price'][0]}}" {{$fc['code'][0]==76 ? 'checked': null}} /><label for="{{$fc['code'][0]}}"> {{$fc['description'][0]}} || Cost is <b>{{$fc['price'][0]}}</b></label><br>
+                                        @foreach($freight_calculation as $fc)
 
-                                    @endforeach
+                                           <input type="radio" name="fc" id="{{$fc['code'][0]}}" value="{{$fc['price'][0]}}" {{$fc['code'][0]==76 ? 'checked': null}} /><label for="{{$fc['code'][0]}}"> {{$fc['description'][0]}} || Cost is <b>{{$fc['price'][0]}}</b></label><br>
+
+                                        @endforeach
+                                    @else
+                                        <div style="color: blue; font-size: 14px;">{{"No Data found! TNT server may down. "}}</div>
+                                    @endif
                                 @endif
                             </div>
                             <p>&nbsp;</p>
