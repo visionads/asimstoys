@@ -55,9 +55,16 @@ class ProductController extends Controller
 
         //Freight Calculation for RTT TNT Express
         $freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_data);
-
+        if(count($freight_calculation)>1)
+        {
+            $cal = "Shipping method : ".$freight_calculation[0]['description'][0]." and Cost :".$freight_calculation[0]['price'][0];
+        }
+        else
+        {
+            $cal = $freight_calculation." TNT server may down !";
+        }
         $active_fc = 'active';
-        $cal = "Shipping method : ".$freight_calculation[0]['description'][0]." and Cost :".$freight_calculation[0]['price'][0];
+
 
         return redirect()->back()->with('cal', $cal)->with('active_fc', $active_fc);
 
