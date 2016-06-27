@@ -83,10 +83,16 @@
                             </label>
                         </div>
 
+                        <div style="padding: 4%">
+                            <input type="radio" value="1" id="i_agree" checked="checked">
+                            <label for="i_agree">I agree with Terms and Condition. <a href="{{URL::to('terms-condition')}}"> Click Here for more details. </a></label>
+                        </div>
+
                     </div>
                     <div class="col-md-2">
                     </div>
                 </div>
+
                 <div class="col-md-3 pull-right margin-top-30 margin-bottom-30">
                     <input type="submit" class="form-control register_btn" name="submit" value="Proceed to Pay">
                 </div>

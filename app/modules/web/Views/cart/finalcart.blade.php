@@ -134,20 +134,29 @@
 								</tbody>
 							</table>
 
-                            <h5><b style="color: orangered;">Tnt Express delivery cost</b></h5>
+                            <h5><b style="color: #ff7722;">Select Pick-up Process :</b></h5>
                             <div id="freight-cal">
 
                                 @if(isset($freight_calculation))
                                     <?php $init_amount =0; ?>
                                     @if(count($freight_calculation)>1)
 
-                                        <?php $init_amount = isset($freight_calculation)?$freight_calculation[0]['price'][0]: 0.00; ?>
+                                        <?php
+                                            $init_amount = isset($freight_calculation)?$freight_calculation[0]['price'][0]: 0.00;
+                                                $code = isset($freight_calculation)? $freight_calculation[0]['code'][0]:0;
+                                                $description = isset($freight_calculation)? $freight_calculation[0]['description'][0]:"";
+                                            ?>
 
-                                        @foreach($freight_calculation as $fc)
+                                        {{--@foreach($freight_calculation as $fc)
 
                                            <input type="radio" name="fc" id="{{$fc['code'][0]}}" value="{{$fc['price'][0]}}" {{$fc['code'][0]==76 ? 'checked': null}} /><label for="{{$fc['code'][0]}}"> {{$fc['description'][0]}} || Cost is <b>{{$fc['price'][0]}}</b></label><br>
 
-                                        @endforeach
+                                        @endforeach--}}
+
+                                            <input type="radio" name="fc" id="{{$code}}" value="{{$init_amount}}" {{$code==76 ? 'checked': null}} /><label for="{{$code}}"> {{$description}} || Cost is <b>{{$init_amount}}</b></label><br>
+                                            <input type="radio" name="fc" id="0" value="0"  /><label for="0"> Pick up by Myself</label>
+
+
                                     @else
                                         <div style="color: blue; font-size: 14px;">{{"No Data found ! Collection date ( Tomorrow) falls on a weekend or on a public holiday. "}}</div>
                                     @endif
