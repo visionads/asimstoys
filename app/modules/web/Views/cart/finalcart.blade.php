@@ -220,7 +220,11 @@
 									</div>
 								</div>
 							</div>
-						</div>	
+						</div>
+                <div style="padding: 1%">
+                    <input type="checkbox" value="1" id="i_agree" checked="checked" required="required">
+                    <label for="i_agree">I agree with Terms and Condition. <a href="{{URL::to('terms-condition')}}"> Click Here for more details. </a></label>
+                </div>
 
 						<div class="col-md-12 margin-top-30 margin-bottom-30">
 							
