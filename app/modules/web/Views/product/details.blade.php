@@ -184,10 +184,10 @@
 
                                                 <input type="hidden" name="product_id" value="{{$product->id}}">
                                                 <div class="form-group">
-                                                    <input type="text" name="suburb" value="Brighton" class="form-control">
+                                                    <input type="text" name="suburb" required="required" placeholder="type your suburb" class="form-control">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" name="postcode"  value="3186" class="form-control">
+                                                    <input type="text" name="postcode" required="required" placeholder="type your post code" class="form-control">
                                                 </div>
                                                 <div class="form-group" style="text-align: center">
                                                     <button class="btn btn-info btn-flat" type="submit" style="width: 90%">
