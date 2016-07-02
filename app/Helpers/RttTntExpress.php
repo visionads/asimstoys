@@ -21,9 +21,20 @@ class RttTntExpress
      * @return array|string
      */
     public static function rtt_call($user_data, $delivery_data, $product_cart){
+        
 
         //date
         $tomorrow = date("Y-m-d", strtotime("+1 day"));
+
+        $date1 = strtotime($tomorrow);
+        $date2 = date("l", $date1);
+        $date3 = strtolower($date2);
+        //ignore sunday and make the day Monday
+        if ($date3 == "sunday")
+        {
+            $tomorrow = date("Y-m-d", strtotime("+2 day"));
+        }
+
 
         //call Enquiry Class
         $enquiry = new TntEnquiry();
@@ -94,7 +105,8 @@ class RttTntExpress
 
             $tnt_cost =  $arr;
         }else{
-            $tnt_cost = "No Data found ! Collection date ( Tomorrow) falls on a weekend or on a public holiday.";
+            $tnt_cost = "No Data found ! ";
+
         }
 
         #print_r($tnt_cost);exit();

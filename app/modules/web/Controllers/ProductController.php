@@ -19,7 +19,24 @@ class ProductController extends Controller
 
 	public function index($product_slug){
 
-		$product = DB::table('product')->where('slug',$product_slug)->first();
+
+        /*$tomorrow = date("Y-m-d", strtotime("+1 day"));
+
+        $date1 = strtotime($tomorrow);
+        $date2 = date("l", $date1);
+        $date3 = strtolower($date2);
+
+        if ($date3 == "sunday")
+        {
+            echo date("Y-m-d", strtotime("+2 day"));
+        }
+        else
+        {
+            echo $tomorrow;
+        }
+        exit();*/
+
+        $product = DB::table('product')->where('slug',$product_slug)->first();
 		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 		$related_product_r = DB::table('product')->where('product_subgroup_id',$product->product_subgroup_id)->whereNotIn('id',[$product->id])->get();
 
