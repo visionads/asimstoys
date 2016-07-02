@@ -363,6 +363,7 @@ class OrderController extends Controller
 
     public function paynow(Request $request)
     {
+        $input_data = $request->all();
 
         $title ="mycart | Asim's Toy";
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
@@ -373,7 +374,7 @@ class OrderController extends Controller
         $plate_text = @$request->session()->get('plate_text');
         $user_id = $request->session()->get('user_id');
         $deliver_id = $request->session()->get('deliver_id');
-        $freight_calculation = $request->session()->get('freight_calculation');
+        $freight_calculation = $input_data['freight_calculation'];//$request->session()->get('freight_calculation');
 
         $user_data = DB::table('customer')->where('id',$user_id)->first();
         $delivery_data = DB::table('delivery_details')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
@@ -396,8 +397,8 @@ class OrderController extends Controller
                 'total_discount_price'=>0,
                 'vat'=>0,
                 'freight_amount' => $freight_calculation,
-                'sub_total' => $total_price,
-                'net_amount'=>$total_price+$freight_calculation,
+                'sub_total' => $total_price, //$total_price,
+                'net_amount'=> $input_data['total_amount'], //$total_price+$freight_calculation,
                 'status'=> 1,
             ];
 
@@ -478,14 +479,16 @@ class OrderController extends Controller
             // Update Invoice
             DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'eway']);
 
+            $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
+
            # $request->session()->forget('product_cart');
 
             return view('web::cart.e_way_payment',[
                 'title' => $title,
                 'invoice_number' => $invoice_number,
                 'user_id' => $user_id,
-                'eway_total_price_format' => ($total_price+$freight_calculation)*100,
-                'total_price' => $total_price+$freight_calculation,
+                'eway_total_price_format' => $order_head->net_amount *100, //($total_price+$freight_calculation)*100,
+                'total_price' => $order_head->net_amount, //$total_price+$freight_calculation,
                 'customer_data' => $customer_data,
             ]);
 

@@ -170,7 +170,8 @@
 							@endif
 							
 						</div>
-						
+
+                {!! Form::open(['route' => 'pay-now']) !!}
 						<div class="col-md-12 margin-top-30 margin-bottom-30">
 							<div class="col-md-6">
 								<div class="row">
@@ -221,21 +222,26 @@
 								</div>
 							</div>
 						</div>
-                <div style="padding: 1%">
-                    <input type="checkbox" value="1" id="i_agree" checked="checked" required="required">
-                    <label for="i_agree">I agree with Terms and Condition. <a href="{{URL::to('terms-condition')}}"> Click Here for more details. </a></label>
-                </div>
+                            <div style="padding: 1%">
+                                <input type="checkbox" value="1" id="i_agree" checked="checked" required="required">
+                                <label for="i_agree">I agree with Terms and Condition. <a href="{{URL::to('terms-condition')}}"> Click Here for more details. </a></label>
+                            </div>
 
-						<div class="col-md-12 margin-top-30 margin-bottom-30">
-							
-								<a href="{{Url::to('')}}/mycart" class="cart-continue-shopping">Edit Cart</a>
-								<!-- <input type="submit" value="Checkout" class="cart-checkout">					 -->
-							<a href="{{ route('pay-now') }}" class="cart-checkout">Proceed to Payment Method</a>
-							
-						</div>
+                            <div class="col-md-12 margin-top-30 margin-bottom-30">
 
-					</div>	
+                                    <a href="{{Url::to('')}}/mycart" class="cart-continue-shopping">Edit Cart</a>
+                                    <!-- <input type="submit" value="Checkout" class="cart-checkout">					 -->
+                                {{--<a href="{{ route('pay-now') }}" class="cart-checkout">Proceed to Payment Method</a>--}}
 
+                                <input type="hidden" name="total_amount" value="{{ round($init_amount.".00" + $total_value, 2) }}" id="total-net-amount-cart">
+                                <input type="hidden" name="freight_calculation" value="{{ round($init_amount.".00", 2) }}" id="freight-amount">
+
+                                <input type="submit" value="Proceed to Payment Method" class="cart-checkout">
+
+                            </div>
+
+					</div>
+                {!! Form::close() !!}
 		</div>
 	</div>
 
@@ -247,6 +253,8 @@
             fc_amt = $('input[name=fc]:checked', '#freight-cal').val();
             sum1 = Math.round((parseFloat(total_amt_cart_in) + parseFloat(fc_amt) ) * 100) / 100;
             $('#final-amount-cart').html(sum1);
+            $('#total-net-amount-cart').val(sum1);
+            $('#freight-amount').val(fc_amt);
         });
     </script>
 @stop
