@@ -15,7 +15,7 @@
 
 							<div class="main_open_image">
 								@if(!empty($product_single_gallery))
-									<img id="zoom_01" src="{{URL::to('')}}/{{$product_single_gallery->image}}" data-zoom-image="{{URL::to('')}}/{{$product_single_gallery->image}}"/>
+									<img id="zoom_01" src="{{URL::to('')}}/{{$product_single_gallery->image}}" data-zoom-image="{{URL::to('')}}/{{$product_single_gallery->image}}" width="100%" height="350px" />
 								@else
 									<p class="no_gallery_yet">No gallery yet.</p>
 								@endif

@@ -20,6 +20,7 @@ class ProductController extends Controller
 	public function index($product_slug){
 
 
+
         /*$tomorrow = date("Y-m-d", strtotime("+1 day"));
 
         $date1 = strtotime($tomorrow);
