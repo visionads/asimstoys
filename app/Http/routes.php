@@ -121,6 +121,7 @@ Route::group(['middleware' => 'auth'], function()
     @include('routes_blog_cat.php');
     @include('routes_blog_item.php');
     @include('routes_menu.php');
+    @include('coupon_code.php');
     @include('routes_menu_type.php');
     @include('routes_blog_comment.php');
     @include('routes_media.php');

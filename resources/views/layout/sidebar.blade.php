@@ -28,6 +28,16 @@
 <li class="sub-menu">
     <a href="javascript:;">
         <i class="icon-bookmark"></i>
+        <span>Coupon Code</span>
+    </a>
+    <ul class="sub">
+        <li><a  href={{URL::to('coupon/index')}}>Coupon Code</a></li>
+    </ul>
+</li>
+
+<li class="sub-menu">
+    <a href="javascript:;">
+        <i class="icon-bookmark"></i>
         <span>Order History</span>
     </a>
     <ul class="sub">
