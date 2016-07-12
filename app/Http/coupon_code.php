@@ -22,24 +22,24 @@ Route::any("coupon/store", [
     "uses" => "CouponCodeController@store"
 ]);
 
-Route::any("coupon/show/{slug}/{id}", [
+Route::any("coupon/show/{id}", [
     "as"   => "coupon-show",
     "uses" => "CouponCodeController@show"
 ]);
 
-Route::any("coupon/edit/{slug}/{id}", [
+Route::any("coupon/edit/{id}", [
     "as"   => "coupon-edit",
     "uses" => "CouponCodeController@edit"
 ]);
 
-Route::any("coupon/update/{slug}/{id}", [
+Route::any("coupon/update/{id}", [
     "as"   => "coupon-update",
     "uses" => "CouponCodeController@update"
 ]);
 
-Route::any("coupon/delete/{slug}/{id}", [
+Route::any("coupon/delete/{id}", [
     "as"   => "coupon-delete",
-    "uses" => "CouponCodeController@delete"
+    "uses" => "CouponCodeController@destroy"
 ]);
 
 

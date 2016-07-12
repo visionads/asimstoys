@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class CouponCodeController extends Controller
 {
@@ -110,7 +111,7 @@ class CouponCodeController extends Controller
     {
         $data = CouponCode::where('id',$id)->first();
 
-        return view('menu.update', [
+        return view('coupon_code.update', [
             'data' => $data,
         ]);
 

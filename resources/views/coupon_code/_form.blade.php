@@ -8,31 +8,31 @@
 <div class="form-group">
     {!! Form::label('code', 'Coupon Code:', ['class' => 'control-label']) !!}
     <small class="required">(Required)</small>
-    {!! Form::text('code', Input::old('code'), ['class' => 'form-control','required']) !!}
+    {!! Form::text('code', Input::old('code'), ['class' => 'form-control','required'=>'required']) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('title', 'Title:', ['class' => 'control-label']) !!}
     <small class="required">(Required)</small>
-    {!! Form::text('title', Input::old('title'), ['class' => 'form-control','required']) !!}
+    {!! Form::text('title', Input::old('title'), ['class' => 'form-control','required'=>'required']) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('value', 'Value (%):', ['class' => 'control-label']) !!}
     <small class="required">(Required)</small>
-    {!! Form::text('value', Input::old('value'), ['class' => 'form-control','required']) !!}
+    {!! Form::text('value', Input::old('value'), ['class' => 'form-control','required'=>'required']) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('expiry_date', 'Expiry Date:', ['class' => 'control-label']) !!}
-    <small class="required">(Required)</small>
-    {!! Form::text('expiry_date', Input::old('expiry_date'), ['class' => 'form-control','required']) !!}
+    <small class="required">(Required) (Date format: 2016-12-30) </small>
+    {!! Form::text('expiry_date', Input::old('expiry_date'), ['class' => 'form-control','required'=>'required', 'placeholder'=>'2016-12-30']) !!}
 </div>
 
 <div class="form-group">
     {!! Form::label('status', 'Status:', ['class' => 'control-label']) !!}
     <small class="required">(Required)</small>
-    {!! Form::text('status', 'open', ['class' => 'form-control','required']) !!}
+    {!! Form::text('status', 'open', ['class' => 'form-control','required'=>'required']) !!}
 </div>
 
 

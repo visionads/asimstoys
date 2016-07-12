@@ -25,8 +25,7 @@
         "classmap": [
             "database",
             "app/Models",
-            "app/modules",
-            "rtt-tnt-api"
+            "app/modules"
         ],
         "psr-4": {
             "App\\": "app/",

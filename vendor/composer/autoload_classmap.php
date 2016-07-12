@@ -17,6 +17,7 @@ return array(
     'App\\CatSlider' => $baseDir . '/app/Models/CatSlider.php',
     'App\\CentralSettings' => $baseDir . '/app/Models/CentralSettings.php',
     'App\\Country' => $baseDir . '/app/Models/Country.php',
+    'App\\CouponCode' => $baseDir . '/app/Models/CouponCode.php',
     'App\\Crud' => $baseDir . '/app/Models/Crud.php',
     'App\\GalImage' => $baseDir . '/app/Models/GalImage.php',
     'App\\Media' => $baseDir . '/app/Models/Media.php',
