@@ -137,7 +137,14 @@ class OrderController extends Controller
 	}
 
 	public function ordercheckout(Request  $request){
-        
+        $input = $request->all();
+        $coupon_code = $input['coupon_code'];
+        if($coupon_code){
+            $request->session()->set('coupon_code', $coupon_code);
+        }
+
+        print_r($input['coupon_code']);
+        exit();
 		return redirect('customerlogin');
 	}
 
@@ -327,7 +334,7 @@ class OrderController extends Controller
 
     public function orderconfirm(Request $request){
 
-        $title ="mycart | Asim's Toy";
+        $title ="My Cart | Asim's Toy";
 
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 

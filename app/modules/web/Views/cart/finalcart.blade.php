@@ -171,6 +171,7 @@
 							
 						</div>
 
+
                 {!! Form::open(['route' => 'pay-now']) !!}
 						<div class="col-md-12 margin-top-30 margin-bottom-30">
 							<div class="col-md-6">

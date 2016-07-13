@@ -151,21 +151,40 @@
 							@endif
 							
 						</div>
-						
-							
+
+            @if(Session::has('product_cart') && count(Session::get('product_cart')) > 0)
+            {!! Form::open(['route' => 'order-checkout']) !!}
+						<div class="col-md-12">
+						    <div class="col-md-8">
+                                <span class="pull-right">
+                                    <b> Enter Your Coupon Code </b>
+                                    <br>
+                                    <small>A coupon code which you recievded from Asim's Toys</small>
+                                </span>
+						    </div>
+
+                            <div class="col-md-4">
+                                <span class="pull-right">
+                                    <input type="text" name="coupon_code" class="form-control" placeholder="enter your coupon code here">
+                                </span>
+                            </div>
+                        </div>
 
 						<div class="col-md-12 margin-top-30 margin-bottom-30">
-							
-								<a href="{{Url::to('')}}" class="cart-continue-shopping">Continue Shopping</a>
-								<!-- <input type="submit" value="Checkout" class="cart-checkout">					 -->
-								@if(Session::has('product_cart') && count(Session::get('product_cart')) > 0)
-									<a href="{{URL::to('/')}}/order-checkout" class="cart-checkout">Checkout</a>
-								@endif					
-							
+                            <a href="{{Url::to('')}}" class="cart-continue-shopping">Continue Shopping</a>
+                            <input type="submit" class="cart-checkout" value="Checkout">
+                            {{--<a href="{{URL::to('/')}}/order-checkout" class="cart-checkout">Checkout</a>--}}
 						</div>
+					</div>
 
-					</div>	
+            {!! Form::close() !!}
+            @else
 
+                        <div class="col-md-12 margin-top-30 margin-bottom-30">
+                            <a href="{{Url::to('')}}" class="cart-continue-shopping">Continue Shopping</a>
+                        </div>
+
+            @endif
 		</div>
 	</div>
 @stop
