@@ -134,6 +134,15 @@
 								</tbody>
 							</table>
 
+                            <p>
+                                <span class="pull-right">
+                                    {{ Session::has('coupon_status')? Session::get('coupon_status'):null }} <br>
+                                    @if(Session::has('coupon_code'))
+                                        Your Coupon Code is :
+                                    @endif
+                                    {{ Session::has('coupon_code')? Session::get('coupon_code'):null }}
+                                </span>
+                            </p>
                             <h5><b style="color: #ff7722;">Select Pick-up Process :</b></h5>
                             <div id="freight-cal">
 
@@ -164,6 +173,9 @@
                             </div>
                             <p>&nbsp;</p>
 							<h4><span class="pull-right" style="color: orangered;">Total Cost : <b>$ <span id="final-amount-cart">{{ round($init_amount.".00" + $total_value, 2) }} </span> &nbsp;</b></span></h4>
+
+
+
 
 							@else
 								<div class="empty_cart">Your Cart is empty</div>

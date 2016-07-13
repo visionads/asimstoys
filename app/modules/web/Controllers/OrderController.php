@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Modules\Web\Controllers;
+use App\CouponCode;
 use App\Helpers\GenerateNumber;
 use App\Helpers\RttTntExpress;
 use App\Helpers\TntExpress;
@@ -139,12 +140,24 @@ class OrderController extends Controller
 	public function ordercheckout(Request  $request){
         $input = $request->all();
         $coupon_code = $input['coupon_code'];
+        $today = date('Y-m-d');
+
         if($coupon_code){
-            $request->session()->set('coupon_code', $coupon_code);
+
+            $coupon_exists = CouponCode::where('code','=', $coupon_code)->where('expiry_date', '>', $today)->exists();
+            if($coupon_exists){
+                $coupon_data = CouponCode::where('code','=', $coupon_code)->first();
+
+                $request->session()->set('coupon_value', $coupon_data['value']);
+                $request->session()->set('coupon_code', $coupon_code);
+                $request->session()->forget('coupon_status');
+                $request->session()->set('coupon_status', 'Your Coupon code is Valid ! Your discount will be added into the payment ');
+            }else{
+                $request->session()->forget('coupon_status');
+                $request->session()->set('coupon_status', ' Coupon code is invalid ! Please try again !');
+            }
         }
 
-        print_r($input['coupon_code']);
-        exit();
 		return redirect('customerlogin');
 	}
 
@@ -350,10 +363,8 @@ class OrderController extends Controller
         if(Session::has('freight_calculation')){
             $request->session()->forget('freight_calculation');
         }
-
         //Freight Calculation for RTT TNT Express
         $freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_cart);
-
         $request->session()->set('freight_calculation', $freight_calculation);
 
 
@@ -383,6 +394,7 @@ class OrderController extends Controller
         $deliver_id = $request->session()->get('deliver_id');
         $freight_calculation = $input_data['freight_calculation'];//$request->session()->get('freight_calculation');
 
+
         $user_data = DB::table('customer')->where('id',$user_id)->first();
         $delivery_data = DB::table('delivery_details')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
 
@@ -398,14 +410,20 @@ class OrderController extends Controller
                 $total_price += $product->sell_rate;
             }
 
+            //coupon code
+            $coupon_value = $request->session()->get('coupon_value');
+            $discount_price = ($total_price * $coupon_value)/100;
+            $total_discount_price = $discount_price? $discount_price: 0;
+
+
             $order_head_data = [
                 'invoice_no'=>$gen_number[0],
                 'user_id'=>$user_id,
-                'total_discount_price'=>0,
+                'total_discount_price'=>$total_discount_price,
                 'vat'=>0,
                 'freight_amount' => $freight_calculation,
-                'sub_total' => $total_price, //$total_price,
-                'net_amount'=> $input_data['total_amount'], //$total_price+$freight_calculation,
+                'sub_total' => $total_price - $total_discount_price, //$total_price,
+                'net_amount'=> $input_data['total_amount'] - $total_discount_price, //$total_price+$freight_calculation,
                 'status'=> 1,
             ];
 
@@ -460,12 +478,22 @@ class OrderController extends Controller
         $total_price = $request->session()->get('total_price');
         $customer_data = $request->session()->get('customer_data');
 
+        $coupon_value = $request->session()->get('coupon_value');
+        $discount_price = ($total_price * $coupon_value)/100;
+        $net_amount = $total_price - $discount_price;
+
+        //setter
+        $request->session()->set('net_amount', $net_amount);
+
+
         return view('web::cart.paycart',[
             'title' => $title,
             'invoice_number' => $invoice_number,
             'user_id' => $user_id,
             'total_price' => $total_price,
             'customer_data' => $customer_data,
+            'discount_price' => $discount_price,
+            'net_amount' => $net_amount,
         ]);
 
     }
