@@ -3,7 +3,7 @@
         <div class="row">
             <div class="header-content">
                 <a id="header_logo" href="{{URL::to('/')}}">
-                    <img class="logo" src="{{URL::to('/')}}/web/images/logo.png" width="auto" height="auto">
+                    <img class="logo" src="{{URL::to('/')}}/web/images/logo.png" width="130px" height="70px">
                 </a>
                 <div class="hot_line">
                     Hot Line: 1300 566 662

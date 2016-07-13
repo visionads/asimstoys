@@ -608,7 +608,7 @@ div.star_hover a, div.star a:hover { background-position: 0 -32px }
 		HEADER
 ************************************************************************************************ */
 #page .container-inner {background: #fff;}
-#header {  width:100%; float:left; background: #fff;padding-bottom:30px;}
+#header {  width:100%; float:left; padding-bottom:30px;}
 
 .header-content { position: relative;}
 #header_logo {
@@ -925,7 +925,7 @@ div.pt_menu .itemMenu a.level3:hover {
     width: 100%;
 	}
 #footer .pos-footer-2 .footer-static-title h4,#footer .pos-footer-2  .title_block h4 {color:#fff;}	
-#footer .pos-footer-1  {background: #fff; padding:5px 0 40px;margin-top: 30px;}
+#footer .pos-footer-1  { padding:5px 0 40px;margin-top: 30px;}
 #footer .pos-footer-2,#footer .pos-footer-3{background: #3d3d3d;}
 #footer .f-col {margin-top:20px;}
 
@@ -4550,7 +4550,6 @@ tr.subitem > td:first-child + td {
 .footer-logo a {
 	    width: 100%;
     float: left;
-    margin-top: 60px;
 
 }
 .footer-logo a img{

@@ -8,19 +8,21 @@
                                         <div class="f-col f-col1 span3">
                                             
                                             <div class="footer-logo footer-static-content ">
-                                                <a href="#"><img src="{{URL::to('/')}}/web/images/logo.png"></a>                                                
+                                                <a href="#"><img src="{{URL::to('/')}}/web/images/logo.png" width="230px" height="140px"></a>
                                             </div>
                                         </div>
 
                                         <div class="f-col f-col1 span3">
                                             <div class="footer-static-title title_block">
-                                                <h4>Contact details</h4>
+                                                <h4>Social Connect</h4>
                                             </div>
-                                            <div class="footer-static-content footer-contactus">
-                                                <br/>
-                                                <p>Tel: 1300 566 662</p>
-                                                <p>Email: info@asimstoys.com.au</p>
-                                            </div>
+                                            <p>&nbsp;</p>
+                                            <p style="text-align: center; ">
+
+                                                <img src="{{URL::asset('/web/images/twitter_icon.png')}}" alt="Twitter" height="50" width="50">
+                                                <img src="{{URL::asset('/web/images/instagram_icon.png')}}" alt="Instagram" height="50" width="50">
+                                                <img src="{{URL::asset('/web/images/youtube_icon.png')}}" alt="You Tube" height="50" width="50">
+                                            </p>
                                         </div>
 
                                         <div class="f-col f-col1 span3">
@@ -35,13 +37,15 @@
                                             </div>
                                         </div>
 
-                                        <div class="f-col f-col1 span3">
+                                        <div class="f-col f-col1 span3" style="text-align: center">
                                             <div class="footer-static-title title_block">
-                                                <h4>Facebook bpage</h4>
+                                                <h4>Secure Payment </h4><br>
                                             </div>
                                             <div class="footer-static-content footer-youtube">
                                                 <div class="fb-page" data-href="https://www.facebook.com/Asims-Toys-Kids-Ride-On-Toys-869410779777184/" data-tabs="timeline" data-width="280" data-height="50" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
                                             </div>
+                                            <br>
+                                            <img src="{{URL::asset('/web/images/payment.png')}}" alt="Secure Payment" height="100" width="180">
                                         </div>
                                     </div>
                                 </div>
