@@ -862,7 +862,7 @@ div.pt_menu .itemMenu a.level3:hover {
 #footer {
 	color:#fff;
 	position: relative;
-	box-shadow: 1px 0px 1px 2px #d3d3d3;
+	box-shadow: 1px 0px 1px 1px #d3d3d3;
 }
 #footer .container-inner{background: none;}
 	.blockcategories_footer,
