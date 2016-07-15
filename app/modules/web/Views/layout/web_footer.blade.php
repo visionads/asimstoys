@@ -41,9 +41,7 @@
                                             <div class="footer-static-title title_block">
                                                 <h4>Secure Payment </h4><br>
                                             </div>
-                                            <div class="footer-static-content footer-youtube">
-                                                <div class="fb-page" data-href="https://www.facebook.com/Asims-Toys-Kids-Ride-On-Toys-869410779777184/" data-tabs="timeline" data-width="280" data-height="50" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
-                                            </div>
+                                            
                                             <br>
                                             <img src="{{URL::asset('/web/images/payment.png')}}" alt="Secure Payment" height="100" width="180">
                                         </div>
