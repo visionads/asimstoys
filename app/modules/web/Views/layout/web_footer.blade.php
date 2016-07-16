@@ -41,7 +41,7 @@
                                             <div class="footer-static-title title_block">
                                                 <h4>Secure Payment </h4><br>
                                             </div>
-                                            
+
                                             <br>
                                             <img src="{{URL::asset('/web/images/payment.png')}}" alt="Secure Payment" height="100" width="180">
                                         </div>
