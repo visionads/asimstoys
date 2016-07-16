@@ -4,6 +4,8 @@
 	<div class="pos-new-product home-text-container">
 		<h4>{{$product->title}}</h4>
 
+
+
 		<div class="col-md-12">
 			<div class="row">
 
@@ -345,7 +347,7 @@
 		zoomWindowFadeIn: 500,
 		zoomWindowFadeOut: 750,
 		zoomWindowWidth:450,
-		zoomWindowHeight:200
+		zoomWindowHeight:350
 	});
 
 	$("#zoom_01").bind("click", function(e) { var ez = $('#zoom_01').data('elevateZoom');	$.fancybox(ez.getGalleryList()); return false; });
