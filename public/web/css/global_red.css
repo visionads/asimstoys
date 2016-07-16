@@ -2107,8 +2107,10 @@ div.pt_menu .itemSubMenu .itemMenu {border-top: 1px solid #E15151;}
 ul#header_links {
 	list-style-type: none;
 	float: right;
-	border:1px solid #d3d3d3;
+	/*border:1px solid #d3d3d3;*/
 	margin-top:20px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
 }
 #header_links li {
 	float: left;
@@ -2120,15 +2122,12 @@ ul#header_links {
 #header_links li.last { margin: 0; padding:15px 20px 14px}
 #header_links a {
 	text-decoration: none;
-
 	padding: 0;
 	display: block;
-	font-weight: normal;
+	font-weight: bold;
 	font-size: 14px;
 	text-decoration: none;
 	color: #333333;
-	font-size: 12px;
-	
 	}
 
 /*block permanent links right and left columns*/
@@ -5339,8 +5338,8 @@ padding: 8px;
     position: absolute;
     left: 45%;
     top: 35px;
-    color: #ffc947;
-    font-size: 18px;
+    color: #000;
+    font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -6029,8 +6028,11 @@ a.email_us:hover{
     
     #header_right #header_user {float: none;width: 262px;margin: auto; padding-top: 25px;}
     #header_right #header_nav {float: none; margin: auto;}
-    ul#header_links {float:none; border:1px solid #d3d3d3;}
-    #header #cart_block { 
+    ul#header_links {
+        float:none;
+        border:1px solid #d3d3d3;
+    }
+    #header #cart_block {
 	left: 50%;
 	margin-left: -131px;
 	top: 100px;
