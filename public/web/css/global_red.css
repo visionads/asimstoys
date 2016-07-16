@@ -5146,10 +5146,10 @@ img.downa_arrow_btn{
 }
 
 .product_details{
-	    width: 100%;
+    width: 100%;
     float: left;
     padding: 20px 0px 30px 20px;
-    height: 300px;
+    /*height: 300px;*/
     overflow: auto;
 }
 
