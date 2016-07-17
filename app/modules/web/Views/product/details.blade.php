@@ -49,128 +49,164 @@
                                             Product area
                                         --}}
 
+
+                                        <form method="post" action="{{URL::to('/')}}/order/add_to_cart" class="<?php if(!empty($product_variation_r)){echo 'product_details_buynow_form';}else{echo 'product_details_buynow_form product_details_buynow_form_up';} ?>">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
                                         <div class="product_details">
                                             <div class="availability_container">
-                                                <p><span class="avaliablity">Availability:</span><span class="in_stock">
-									<?php
-                                                        if($product->stock_unit_quantity == 0){
-                                                            echo 'Out of Stock';
-                                                        }else{
-                                                            echo 'In Stock (only '. $product->stock_unit_quantity .'left)';
-                                                        }
-                                                        ?>
-									</span></p>
                                                 <p>
-                                                    @if(!empty($product->cost_price))
-                                                        @if($product->preorder == '1' || $product->preorder == '0' )
-                                                            Buy now &nbsp;
-                                                        {{--@else
-                                                            Was &nbsp;--}}
-                                                        {{--@endif--}}
-                                                        <span class="previous_price">
-                                                            $ <?php echo $product->cost_price;?>
-                                                        </span>
-                                                        @endif
-                                                    @endif
+                                                    <span class="avaliablity">Availability:</span><span class="in_stock">
+                                                        <?php
+                                                            if($product->stock_unit_quantity == 0){
+                                                                echo 'Out of Stock';
+                                                            }else{
+                                                                echo 'In Stock (only '. $product->stock_unit_quantity .'left)';
+                                                            }
+                                                        ?>
 
-                                                    @if($product->preorder == '1')
-                                                        Pre order &nbsp;
-                                                    @elseif($product->product_group_id == '9')
-                                                        Special Rate &nbsp;
-                                                    @else
-                                                        Layby   &nbsp;
-                                                    @endif
-                                                    <span class="current_price">
-                                                        $ <?php echo $product->sell_rate; ?>
                                                     </span>
                                                 </p>
+                                                <div>
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            @if(!empty($product->cost_price))
+                                                                @if($product->preorder == '1' || $product->preorder == '0' )
+
+                                                                    <label>
+                                                                        <input type="radio" name="price_asim" value="{{$product->cost_price}}" required="required">
+                                                                        Buy now &nbsp;
+                                                                        <span class="previous_price">
+                                                                        $ <?php echo $product->cost_price;?>
+                                                                </span>
+                                                                    </label>
+
+                                                                {{--@else
+                                                                    Was &nbsp;--}}
+                                                                {{--@endif--}}
+
+                                                                @endif
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            @if($product->preorder == '1')
+                                                                <label>
+                                                                    <input type="radio" name="price_asim" value="{{$product->sell_rate}}" required="required" selected  checked="checked">
+                                                                    Pre order &nbsp;
+                                                            <span class="current_price">
+                                                            $ <?php echo $product->sell_rate; ?>
+                                                    </span>
+                                                                </label>
+
+                                                            @elseif($product->product_group_id == '9')
+                                                                <label>
+                                                                    <input type="radio" name="price_asim" value="{{$product->sell_rate}}" required="required">
+                                                                    Special Rate &nbsp;
+                                                            <span class="current_price">
+                                                            $ <?php echo $product->sell_rate; ?>
+                                                    </span>
+                                                                </label>
+
+                                                            @else
+                                                                <label>
+                                                                    <input type="radio" name="price_asim" value="{{$product->sell_rate}}" required="required">
+                                                                    Layby &nbsp;
+                                                            <span class="current_price">
+                                                            $ <?php echo $product->sell_rate; ?>
+                                                    </span>
+                                                                </label>
+                                                            @endif
+                                                        </div>
+
+                                                    </div>
+                                                </div>
                                             </div>
                                             <?php echo $product->short_description; ?>
 
-
-
-
-                                            <form method="post" action="{{URL::to('/')}}/order/add_to_cart" class="<?php if(!empty($product_variation_r)){echo 'product_details_buynow_form';}else{echo 'product_details_buynow_form product_details_buynow_form_up';} ?>">
-                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <input type="hidden" name="weight" value="{{$product->weight}}">
-                                                <input type="hidden" name="volume" value="{{$product->volume}}">
-                                                <div class="form-group">
-                                                    <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                    <input type="hidden" name="price_amount" value="{{@$product->sell_rate}}" id="price-amount">
-                                                    @if(!empty($product_variation_r))
-                                                        <div class="width50">
-                                                            <label>color</label>
-                                                            <select name="color">
-                                                                @foreach($product_variation_r as $product_variation)
-                                                                    <option value="{{$product_variation->title}}">{{$product_variation->title}}</option>
-                                                                @endforeach
-
-                                                            </select>
-                                                        </div>
-
-                                                    @endif
-
+                                            <input type="hidden" name="weight" value="{{$product->weight}}">
+                                            <input type="hidden" name="volume" value="{{$product->volume}}">
+                                            <div class="form-group">
+                                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                <input type="hidden" name="price_amount" value="{{@$product->sell_rate}}" id="price-amount">
+                                                @if(!empty($product_variation_r))
                                                     <div class="width50">
-                                                        <label>Quantity</label>
-                                                        <select name="quantity">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
+                                                        <label>color</label>
+                                                        <select name="color">
+                                                            @foreach($product_variation_r as $product_variation)
+                                                                <option value="{{$product_variation->title}}">{{$product_variation->title}}</option>
+                                                            @endforeach
+
                                                         </select>
                                                     </div>
 
+                                                @endif
 
-                                                    <input type="submit" name="submit" value="Add to Cart">
+                                                <div class="width50">
+                                                    <label>Quantity</label>
+                                                    <select name="quantity">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                </div>
+
+                                                <div style="text-align: center; ">
+                                                    <p>&nbsp; </p>
+                                                    <input type="submit" name="submit" class="register_btn" value="Add to Cart" style="padding: 10px; text-align: center; ">
+                                                </div>
 
 
-                                                    <!-- Button trigger modal -->
-                                                    <a class="email_us" href="#" data-toggle="modal" data-target="#myModal" >
-                                                        <img src="{{URL::to('')}}/web/images/ask.png">
-                                                        <br/>
-                                                        EMAIL
-                                                    </a>
+
+                                                <!-- Button trigger modal -->
+                                                <a class="email_us" href="#" data-toggle="modal" data-target="#myModal" >
+                                                    <img src="{{URL::to('')}}/web/images/ask.png">
+                                                    <br/>
+                                                    EMAIL
+                                                </a>
 
 
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form class="email_us_container">
-                                                                        <div class="form-group">
-                                                                            <label>Product Name</label>
-                                                                            {{$product->title}}
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label>Name</label>
-                                                                            <input type="text" name="name">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label>Email</label>
-                                                                            <input type="text" name="email">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label>Message</label>
-                                                                            <textarea name="message" ></textarea>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <input class="submit" type="submit" name="name" value="Send">
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
                                                             </div>
+                                                            <div class="modal-body">
+                                                                <form class="email_us_container">
+                                                                    <div class="form-group">
+                                                                        <label>Product Name</label>
+                                                                        {{$product->title}}
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Name</label>
+                                                                        <input type="text" name="name">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Email</label>
+                                                                        <input type="text" name="email">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Message</label>
+                                                                        <textarea name="message" ></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input class="submit" type="submit" name="name" value="Send">
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </div>
+
                                         </div>
+                                        </form>
                                         {{--
                                         End Product Area.
                                         --}}
