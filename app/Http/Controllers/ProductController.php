@@ -26,7 +26,7 @@ class ProductController extends Controller
     public function index()
     {
        $pageTitle = "Product";
-       $product_group_id = [''=>'Please select group']+ProductGroup::lists('title','id')->all();
+       $product_group_id = [''=>'Please select group']+ProductGroup::where('status', 'active')->lists('title','id')->all();
        $cat_product_id = ProductCategory::lists('title','id');
 
        $data = Product::orderBy('id', 'DESC')->paginate(20);
@@ -64,6 +64,9 @@ class ProductController extends Controller
        $tittle = Input::get('title');
        $slug = str_slug($tittle);
        $input['slug'] = $slug;
+
+        print_r($input);
+        exit();
 
       
         $image=Input::file('image');

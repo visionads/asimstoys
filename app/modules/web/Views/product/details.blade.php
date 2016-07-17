@@ -62,12 +62,15 @@
 									</span></p>
                                                 <p>
                                                     @if(!empty($product->cost_price))
-                                                        @if($product->preorder == '1')
+                                                        @if($product->preorder == '1' || $product->preorder == '0' )
                                                             Buy now &nbsp;
-                                                        @else
-                                                            Was &nbsp;
+                                                        {{--@else
+                                                            Was &nbsp;--}}
+                                                        {{--@endif--}}
+                                                        <span class="previous_price">
+                                                            $ <?php echo $product->cost_price;?>
+                                                        </span>
                                                         @endif
-                                                        <span class="previous_price">$<?php echo $product->cost_price;?></span>
                                                     @endif
 
                                                     @if($product->preorder == '1')
@@ -75,9 +78,12 @@
                                                     @elseif($product->product_group_id == '9')
                                                         Special Rate &nbsp;
                                                     @else
-                                                        Buy now &nbsp;
+                                                        Layby   &nbsp;
                                                     @endif
-                                                    <span class="current_price"> $<?php echo $product->sell_rate; ?></span></p>
+                                                    <span class="current_price">
+                                                        $ <?php echo $product->sell_rate; ?>
+                                                    </span>
+                                                </p>
                                             </div>
                                             <?php echo $product->short_description; ?>
 
@@ -116,7 +122,7 @@
                                                     </div>
 
 
-                                                    <input type="submit" name="submit" value="Buy Now">
+                                                    <input type="submit" name="submit" value="Add to Cart">
 
 
                                                     <!-- Button trigger modal -->
