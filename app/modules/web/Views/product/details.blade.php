@@ -75,7 +75,7 @@
                                                                 @if($product->preorder == '1' || $product->preorder == '0' )
 
                                                                     <label>
-                                                                        <input type="radio" name="price_asim" value="{{$product->cost_price}}" required="required">
+                                                                        <input type="radio" name="price_asim" value="{{$product->cost_price}}" required="required" checked="checked">
                                                                         Buy now &nbsp;
                                                                         <span class="previous_price">
                                                                         $ <?php echo $product->cost_price;?>
@@ -92,7 +92,7 @@
                                                         <div class="col-md-6">
                                                             @if($product->preorder == '1')
                                                                 <label>
-                                                                    <input type="radio" name="price_asim" value="{{$product->sell_rate}}" required="required" selected  checked="checked">
+                                                                    <input type="radio" name="price_asim" value="{{$product->sell_rate}}" required="required">
                                                                     Pre order &nbsp;
                                                             <span class="current_price">
                                                             $ <?php echo $product->sell_rate; ?>

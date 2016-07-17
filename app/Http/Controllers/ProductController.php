@@ -65,9 +65,6 @@ class ProductController extends Controller
        $slug = str_slug($tittle);
        $input['slug'] = $slug;
 
-        print_r($input);
-        exit();
-
       
         $image=Input::file('image');
         if(count($image)>0) {

@@ -76,8 +76,11 @@ class OrderController extends Controller
 
 		if(isset($_POST)){
 
+
+            $input = $request->all();
+
             $product_id = (int) $_POST['product_id'];
-            $product_price = $_POST['price_amount'];
+            $product_price = $input['price_asim']; //$_POST['price_amount'];
             $weight = $_POST['weight'];
             $volume = $_POST['volume'];
 

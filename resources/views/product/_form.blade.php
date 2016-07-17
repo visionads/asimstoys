@@ -51,7 +51,8 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('Pre-order / Special rate', 'Preorder / Special rate:', ['class' => 'control-label']) !!}
+            {!! Form::label('Pre-order / Special-Rate / Lay-By Price', 'Preorder / Special rate:', ['class' => 'control-label']) !!} <br>
+            <small style="color: red"> if you select pre-order then input pre-order price as well as special-price and layby-price</small>
             
             {!! Form::text('cost_price', null, ['id'=>'cost_price', 'class' => 'form-control']) !!}
         </div>
