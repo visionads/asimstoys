@@ -62,7 +62,7 @@ class RttTntExpress
                     $weight+=$values['weight'];
                     $length+=isset($values['length'])?$values['length']:0;
                     $width+=isset($values['width'])?$values['width']:0;
-                    $height+=isset($values['width'])?$values['height']:0;
+                    $height+=isset($values['height'])?$values['height']:0;
                 }
             }
         }
