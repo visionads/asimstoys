@@ -21,7 +21,6 @@ class RttTntExpress
      * @return array|string
      */
     public static function rtt_call($user_data, $delivery_data, $product_cart){
-        
 
         //date
         $tomorrow = date("Y-m-d", strtotime("+1 day"));
@@ -54,18 +53,27 @@ class RttTntExpress
         $width = null;
         $height = null;
         if($product_cart){
-            if(isset($product_cart->created_at)){
-                $weight = $product_cart->weight;
-            }else{
-                foreach ($product_cart as $values){
 
-                    $weight+=$values['weight'];
-                    $length+=isset($values['length'])?$values['length']:0;
-                    $width+=isset($values['width'])?$values['width']:0;
-                    $height+=isset($values['height'])?$values['height']:0;
-                }
-            }
+            /*foreach ($product_cart as $values){
+                $weight+=$values['weight'];
+                $length+=isset($values['length'])?$values['length']:0;
+                $width+=isset($values['width'])?$values['width']:0;
+                $height+=isset($values['height'])?$values['height']:0;
+            }*/
+
+            $weight=$product_cart['weight'];
+            $length=$product_cart['length'];
+            $width=$product_cart['width'];
+            $height=$product_cart['height'];
+
         }
+
+        print "Weight : ".$weight."\n";
+        print "Length : ".$length."\n";
+        print "Width : ".$width."\n";
+        print "Height : ".$height."\n";
+        print "------ \n";
+        print "------ \n";
 
         //product data
         $numberOfPackages=1;
@@ -75,6 +83,16 @@ class RttTntExpress
         $height=$height>0 ? $height : 1;
         $dimensionUnit="cm";
         $weightUnit="kg";
+
+
+        print "Weight : ".$weight."\n";
+        print "Length : ".$length."\n";
+        print "Width : ".$width."\n";
+        print "Height : ".$height."\n";
+        print "Dimension : ".$dimensionUnit."\n";
+        print "Unit : ".$weightUnit."\n";
+        print "------ \n";
+        print "------ \n";
 
         //DOM
         $dom = $enquiry->createBaseXML();

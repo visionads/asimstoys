@@ -226,7 +226,7 @@ class TntEnquiry
         
     }  
   
-    public function addItem($dom,$numberOfPackages=1,$packWeight=1,$length=1,$width=1,$height=1,$dimensionUnit="cm",$weightUnit="kg"){
+    public function addItem($dom,$numberOfPackages,$packWeight,$length,$width,$height,$dimensionUnit,$weightUnit){
         /*This function does not access the dom by ref.  This allows for the base XML to be reused in loops */
       
         /* set package lines */
