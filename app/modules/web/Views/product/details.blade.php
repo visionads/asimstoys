@@ -75,10 +75,10 @@
                                                                 @if($product->preorder == '1' || $product->preorder == '0' )
 
                                                                     <label>
-                                                                        <input type="radio" name="price_asim" value="{{$product->cost_price}}" required="required" checked="checked">
+                                                                        <input type="radio" name="price_asim" value="{{$product->sell_rate}}" required="required" checked="checked">
                                                                         Buy now &nbsp;
                                                                         <span class="previous_price">
-                                                                        $ <?php echo $product->cost_price;?>
+                                                                        $ <?php echo $product->sell_rate;?>
                                                                 </span>
                                                                     </label>
 
@@ -92,28 +92,28 @@
                                                         <div class="col-md-6">
                                                             @if($product->preorder == '1')
                                                                 <label>
-                                                                    <input type="radio" name="price_asim" value="{{$product->sell_rate}}" required="required">
+                                                                    <input type="radio" name="price_asim" value="{{$product->cost_price}}" required="required">
                                                                     Pre order &nbsp;
                                                             <span class="current_price">
-                                                            $ <?php echo $product->sell_rate; ?>
+                                                            $ <?php echo $product->cost_price; ?>
                                                     </span>
                                                                 </label>
 
                                                             @elseif($product->product_group_id == '9')
                                                                 <label>
-                                                                    <input type="radio" name="price_asim" value="{{$product->sell_rate}}" required="required">
+                                                                    <input type="radio" name="price_asim" value="{{$product->cost_price}}" required="required">
                                                                     Special Rate &nbsp;
                                                             <span class="current_price">
-                                                            $ <?php echo $product->sell_rate; ?>
+                                                            $ <?php echo $product->cost_price; ?>
                                                     </span>
                                                                 </label>
 
                                                             @else
                                                                 <label>
-                                                                    <input type="radio" name="price_asim" value="{{$product->sell_rate}}" required="required">
+                                                                    <input type="radio" name="price_asim" value="{{$product->cost_price}}" required="required">
                                                                     Layby &nbsp;
                                                             <span class="current_price">
-                                                            $ <?php echo $product->sell_rate; ?>
+                                                            $ <?php echo $product->cost_price; ?>
                                                     </span>
                                                                 </label>
                                                             @endif
