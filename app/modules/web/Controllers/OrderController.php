@@ -204,7 +204,7 @@ class OrderController extends Controller
                 $model = Deliverydetails::where('id',$deliver_id)->first();
                 $model->update($input);
             }else{
-                $model = new DeliveryDetails();
+                $model = new Deliverydetails();
                 $delivery = $model->create($input);
                 $lastInsertedId= $delivery->id;
                 $request->session()->set('deliver_id', $lastInsertedId);
