@@ -172,7 +172,7 @@ class OrderController extends Controller
          DB::beginTransaction();
         try {
             
-            $delivery = Deliverydetails::create($input);
+            $delivery = DeliveryDetails::create($input);
             DB::commit();
             Session::flash('flash_message', 'Successfully added!');
             $lastInsertedId= $delivery->id;
@@ -201,10 +201,10 @@ class OrderController extends Controller
         DB::beginTransaction();
         try {
             if(isset($deliver_id)) {
-                $model = Deliverydetails::where('id',$deliver_id)->first();
+                $model = DeliveryDetails::where('id',$deliver_id)->first();
                 $model->update($input);
             }else{
-                $model = new Deliverydetails();
+                $model = new DeliveryDetails();
                 $delivery = $model->create($input);
                 $lastInsertedId= $delivery->id;
                 $request->session()->set('deliver_id', $lastInsertedId);
