@@ -4,8 +4,16 @@
             <div class="header-content">
                 <a id="header_logo" href="{{URL::to('/')}}">
                     <img class="logo" src="{{URL::to('/')}}/web/images/logo.png" width="130px" height="70px">
+                    <span style="font-size: 20px; font-weight: bold; ">
+                        &nbsp;
+                        <span style="color: red"> Asim's </span>
+                        <span style="color: blue"> Toys </span> -
+                        <span style="color: deeppink"> Kids </span>
+                        <span style="color: yellow"> Ride </span> On
+                        <span style="color: green"> Toys </span>
+                    </span>
                 </a>
-                <div class="hot_line">
+                <div class="hot_line" >
                     Hot Line: 1300 566 662
                 </div>
                 <div id="header_right">

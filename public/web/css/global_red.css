@@ -2076,11 +2076,11 @@ div.popup {background-color:  #ffc947}
 	text-align: center;
 	padding:5px 20px;
 }
-.pt_custommenu .act {background: #FF6002;}
-.pt_custommenu .act2 {background: #F9D500;}
-.pt_custommenu .act3 {background: #BDC921;}
-.pt_custommenu .act4 {background: #70AA3C;}
-.pt_custommenu .act5 {background: #19AA4D;}
+.pt_custommenu .act {background: red;}
+.pt_custommenu .act2 {background: blue;}
+.pt_custommenu .act3 {background: pink;}
+.pt_custommenu .act4 {background: orange; }
+.pt_custommenu .act5 {background: green;}
 .pt_custommenu .act6 {background: #0E2223;}
 .pt_custommenu .active {background: #ffc947;}
 
@@ -5024,11 +5024,11 @@ ul.left-menu-product li ul li a{
 }
 
 ul.left-menu-product li a.sidemenu-3{
-	background: #FF6002;
+	background: red;
 }
 
 ul.left-menu-product li a.sidemenu-4{
-	background: #F9D500;
+	background: blue;
 }
 
 ul.left-menu-product li a.sidemenu-9{
@@ -5036,15 +5036,15 @@ ul.left-menu-product li a.sidemenu-9{
 }
 
 ul.left-menu-product li a.sidemenu-5{
-	background: #70AA3C;
+	background: pink;
 }
 
 ul.left-menu-product li a.sidemenu-6{
-	background: #19AA4D;
+	background: orange;
 }
 
 ul.left-menu-product li a.sidemenu-7{
-	background: #0E2223;
+	background: green;
 }
 
 ul.left-menu-product li a:hover{
@@ -5329,8 +5329,8 @@ padding: 8px;
 
 .hot_line{
     position: absolute;
-    left: 45%;
-    top: 35px;
+    left: 50%;
+    top: 40px;
     color: #000;
     font-size: 20px;
     font-weight: bold;
