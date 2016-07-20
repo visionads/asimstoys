@@ -106,6 +106,7 @@ Route::group(['middleware' => 'auth'], function()
     @include('routes_crud.php');
     @include('routes_team.php');
     @include('routes_skills.php');
+    @include('routes_brand.php');
     @include('routes_testimonial.php');
     @include('routes_social_icon.php');
     @include('routes_cat_gallery.php');

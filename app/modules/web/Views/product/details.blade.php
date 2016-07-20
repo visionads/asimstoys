@@ -251,7 +251,7 @@
                                         {{--END Freight --}}
                                     </div>
 
-                                    
+
                                     @endif
                                 </div>
                             </div>
