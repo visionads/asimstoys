@@ -210,7 +210,11 @@
                                         {{--
                                         End Product Area.
                                         --}}
+
                                     </div>
+
+                                    @if($product->product_group_id !=7)
+
                                     <div role="tabpanel" class="tab-pane {{\Session::get('active_fc')}}" id="freight-panel">
                                         {{--Freight Panel--}}
 
@@ -246,6 +250,9 @@
 
                                         {{--END Freight --}}
                                     </div>
+
+                                    
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -270,6 +277,10 @@
 			</div>
 		</div>
 	</div>
+
+
+
+
 
 
 	<div class="pos-new-product home-text-container">

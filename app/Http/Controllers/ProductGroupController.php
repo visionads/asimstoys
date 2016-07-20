@@ -23,7 +23,10 @@ class ProductGroupController extends Controller
         $pageTitle = "ProductGroup";
 
         $data = ProductGroup::orderBy('id', 'DESC')->paginate(20);
-        return view('product_group.index',['pageTitle' => $pageTitle,'data' => $data]);
+        return view('product_group.index',[
+            'pageTitle' => $pageTitle,
+            'data' => $data
+        ]);
     }
 
     /**
