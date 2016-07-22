@@ -2078,10 +2078,10 @@ div.popup {background-color:  #ffc947}
 }
 .pt_custommenu .act {background: red;}
 .pt_custommenu .act2 {background: blue;}
-.pt_custommenu .act3 {background: pink;}
+.pt_custommenu .act3 {background: #D42E98;}
 .pt_custommenu .act4 {background: orange; }
 .pt_custommenu .act5 {background: green;}
-.pt_custommenu .act6 {background: #0E2223;}
+.pt_custommenu .act6 {background: #89C732;}
 .pt_custommenu .active {background: #ffc947;}
 
 #our_price_display{font-family: OleoScriptSwashCapsRegular; color:#da2626}
@@ -5036,7 +5036,7 @@ ul.left-menu-product li a.sidemenu-9{
 }
 
 ul.left-menu-product li a.sidemenu-5{
-	background: pink;
+	background: #D42E98;
 }
 
 ul.left-menu-product li a.sidemenu-6{
