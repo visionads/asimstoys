@@ -9,6 +9,7 @@
 namespace App\Helpers;
 
 use App\Helpers\TntEnquiry;
+use App\Product;
 use DOMDocument;
 use Faker\Provider\DateTime;
 
@@ -47,33 +48,33 @@ class RttTntExpress
         //Set Delivery address
         $enquiry->setDeliveryAddress($deliveryAddress);
 
+
         //calculate product data
         $weight = null;
         $length = null;
         $width = null;
         $height = null;
+
         if($product_cart){
 
-            /*foreach ($product_cart as $values){
-                $weight+=$values['weight'];
-                $length+=isset($values['length'])?$values['length']:0;
-                $width+=isset($values['width'])?$values['width']:0;
-                $height+=isset($values['height'])?$values['height']:0;
-            }*/
-
-            $weight=$product_cart['weight'];
-            $length=$product_cart['length'];
-            $width=$product_cart['width'];
-            $height=$product_cart['height'];
+            foreach ($product_cart as $values){
+                $product = Product::findOrFail($values['product_id']);
+            }
+            //set value
+            $weight=$product['weight'];
+            $length=$product['length'];
+            $width=$product['width'];
+            $height=$product['height'];
 
         }
 
-        print "Weight : ".$weight."\n";
+        /*print "Weight : ".$weight."\n";
         print "Length : ".$length."\n";
         print "Width : ".$width."\n";
         print "Height : ".$height."\n";
         print "------ \n";
-        print "------ \n";
+        print "------ \n";*/
+
 
         //product data
         $numberOfPackages=1;
@@ -85,14 +86,14 @@ class RttTntExpress
         $weightUnit="kg";
 
 
-        print "Weight : ".$weight."\n";
+        /*print "Weight : ".$weight."\n";
         print "Length : ".$length."\n";
         print "Width : ".$width."\n";
         print "Height : ".$height."\n";
         print "Dimension : ".$dimensionUnit."\n";
         print "Unit : ".$weightUnit."\n";
         print "------ \n";
-        print "------ \n";
+        print "------ \n";*/
 
         //DOM
         $dom = $enquiry->createBaseXML();
