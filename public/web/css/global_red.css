@@ -4768,6 +4768,8 @@ left: -100%;
 	margin-left: 2px;
   	margin-bottom: 10px;
   	margin: 2%;
+    width: 252px;
+    height: 357px;
 }
 .newproductslider-item .item-inner:hover {
 	position: relative;

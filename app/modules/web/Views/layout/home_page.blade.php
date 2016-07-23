@@ -36,15 +36,15 @@
 						<li class="newproductslider-item ajax_block_product first_item last_item_of_line ">
 							<div class="item-inner">
 
-								<a href="{{URL::to('/')}}/{{$featured_product->slug}}" title="Malesuada mi" class="bigpic_15_newproduct123 product_image">
-									<img src="{{URL::to('/')}}/{{$featured_product->image}}"  alt="" />
+								<a href="{{URL::to('/')}}/{{$featured_product->slug}}" title="{{$featured_product->title}}" class="bigpic_15_newproduct123 product_image">
+									<img src="{{URL::to('/')}}/{{$featured_product->image}}"  alt="{{$featured_product->title}}" />
 								</a>
 				
 								<h5 class="s_title_block">
-									<a href="{{URL::to('/')}}/{{$featured_product->slug}}" title="Malesuada mi">{{$featured_product->title}}</a>
+									<a href="{{URL::to('/')}}/{{$featured_product->slug}}" title="{{$featured_product->title}}">{{$featured_product->title}}</a>
 								</h5>
 			                                            
-			                    <p class="price_container"><span class="price">$229.00</span></p>                                            						
+			                    <p class="price_container"><span class="price">${{number_format($featured_product->sell_rate, 2)}}</span></p>
 								<div class="action">						
 									<a class="exclusive ajax_add_to_cart_button" href="#" title="Add to Cart">&nbsp;</a>
 									<a class="lnk_more" href="{{URL::to('/')}}/{{$featured_product->slug}}" title="View">&nbsp;</a>
