@@ -122,7 +122,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <?php echo $product->short_description; ?>
+                                            <div style="height: 200px; overflow: scroll">
+                                                <?php echo $product->short_description; ?>
+
+                                            </div>
+
 
                                             <input type="hidden" name="weight" value="{{$product->weight}}">
                                             <input type="hidden" name="volume" value="{{$product->volume}}">
