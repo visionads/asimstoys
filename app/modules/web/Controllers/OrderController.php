@@ -7,6 +7,7 @@ use App\Helpers\RttTntExpress;
 use App\Helpers\TntExpress;
 use App\OrderDetail;
 use App\OrderHead;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\UserRequest;
@@ -80,9 +81,9 @@ class OrderController extends Controller
             $input = $request->all();
 
             $product_id = (int) $_POST['product_id'];
-            $product_price = $input['price_asim']; //$_POST['price_amount'];
-            $weight = $_POST['weight'];
-            $volume = $_POST['volume'];
+            $product_price = isset($input['price_asim'])? $input['price_asim'] : null; //$_POST['price_amount'];
+            $weight = isset($_POST['weight'])?$_POST['weight']:null;
+            $volume = isset($_POST['volume'])?$_POST['volume']:null;
 
 			if(isset($_POST['color'])){
 				$color = $_POST['color'];
@@ -355,6 +356,9 @@ class OrderController extends Controller
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
         $product_cart = $request->session()->get('product_cart');
+        foreach ($product_cart as $values){
+            $product = Product::findOrFail($values['product_id']);
+        }
 
         $user_id = $request->session()->get('user_id');
         $deliver_id = $request->session()->get('deliver_id');
@@ -366,10 +370,20 @@ class OrderController extends Controller
         if(Session::has('freight_calculation')){
             $request->session()->forget('freight_calculation');
         }
-        //Freight Calculation for RTT TNT Express
-        $freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_cart);
-        $request->session()->set('freight_calculation', $freight_calculation);
 
+        if($product['product_group_id'] !=6 ){
+            if($product['product_group_id'] !=7 ) {
+                //Freight Calculation for RTT TNT Express
+                $freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_cart);
+                $request->session()->set('freight_calculation', $freight_calculation);
+            }else{
+                $freight_calculation = 0;
+                $request->session()->set('freight_calculation', 0);
+            }
+        }else{
+            $freight_calculation = 0;
+            $request->session()->set('freight_calculation', 0);
+        }
 
         return view('web::cart.finalcart',[
                 'title' => $title,

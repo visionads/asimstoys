@@ -167,7 +167,7 @@
 
 
                                     @else
-                                        <div style="color: blue; font-size: 14px;">{{"No Data found ! Collection date ( Tomorrow) falls on a weekend or on a public holiday. "}}</div>
+                                        <div style="color: blue; font-size: 14px;">{{"Freight Charge will not add for this product. "}}</div>
                                     @endif
                                 @endif
                             </div>
