@@ -159,13 +159,13 @@
                                                 </div>
 
 
-
+{{--
                                                 <!-- Button trigger modal -->
                                                 <a class="email_us" href="#" data-toggle="modal" data-target="#myModal" >
                                                     <img src="{{URL::to('')}}/web/images/ask.png">
                                                     <br/>
                                                     EMAIL
-                                                </a>
+                                                </a>--}}
 
 
                                                 <!-- Modal -->
