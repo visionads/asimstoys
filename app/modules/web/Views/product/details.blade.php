@@ -122,7 +122,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="height: 200px; overflow: scroll">
+                                            <div style="height: 200px; overflow: hidden; ">
                                                 <?php echo $product->short_description; ?>
 
                                             </div>
