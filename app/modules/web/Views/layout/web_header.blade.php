@@ -6,11 +6,11 @@
                     <img class="logo" src="{{URL::to('/')}}/web/images/logo.png" width="130px" height="70px">
                     <span style="font-size: 20px; font-weight: bold; ">
                         &nbsp;
-                        <span style="color: red"> Asim's </span>
-                        <span style="color: blue"> Toys </span> -
-                        <span style="color: deeppink"> Kids </span>
-                        <span style="color: yellow"> Ride </span> On
-                        <span style="color: green"> Toys </span>
+                        <span style="color: #CA2F95; text-shadow: 2px 2px #aaa;"> Asim's </span>
+                        <span style="color: #EEC205; text-shadow: 2px 2px #aaa;"> Toys </span> -
+                        <span style="color: #F01B20; text-shadow: 2px 2px #aaa;"> Kids </span>
+                        <span style="color: #7ECE38; text-shadow: 2px 2px #aaa;"> Ride </span> On
+                        <span style="color: #02ADEB; text-shadow: 2px 2px #aaa;"> Toys </span>
                     </span>
                 </a>
                 <div class="hot_line" >
