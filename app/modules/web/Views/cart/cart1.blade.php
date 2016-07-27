@@ -159,7 +159,7 @@
                                 <span class="pull-right">
                                     <b> Enter Your Coupon Code </b>
                                     <br>
-                                    <small>A coupon code which you recievded from Asim's Toys</small>
+                                    <small>A coupon code which you received from Asim's Toys</small>
                                 </span>
 						    </div>
 
