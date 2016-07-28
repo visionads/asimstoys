@@ -608,7 +608,7 @@ div.star_hover a, div.star a:hover { background-position: 0 -32px }
 		HEADER
 ************************************************************************************************ */
 #page .container-inner {background: #fff;}
-#header {  width:100%; float:left; padding-bottom:30px;}
+#header {  width:100%; float:left; padding-bottom:0px; height: 130px; }
 
 .header-content { position: relative;}
 #header_logo {
@@ -924,7 +924,7 @@ div.pt_menu .itemMenu a.level3:hover {
     line-height: 10px;
     width: 100%;
 	}
-#footer .pos-footer-2 .footer-static-title h4,#footer .pos-footer-2  .title_block h4 {color:#fff;}	
+#footer .pos-footer-2 .footer-static-title h4,#footer .pos-footer-2  .title_block h4 {color:#fff;}
 #footer .pos-footer-1  { padding:5px 0 40px;margin-top: 30px;}
 #footer .pos-footer-2,#footer .pos-footer-3{background: #3d3d3d;}
 #footer .f-col {margin-top:20px;}
@@ -4710,7 +4710,7 @@ left: -100%;
 /********************************************* NewProduct Slider *********************************************/
 .title_block h4{    font-size: 18px;
     line-height: 40px;
-    color: #fff;
+    color: #D42E98;
     background: #73DCFF;
     padding: 2px 20px;
 	float: left;
@@ -5334,7 +5334,7 @@ padding: 8px;
 
 .hot_line{
     position: absolute;
-    left: 50%;
+    left: 54%;
     top: 40px;
     color: #000;
     font-size: 20px;

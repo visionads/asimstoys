@@ -1,7 +1,7 @@
 .nav-container {
     float: left;
     width: 100%;
-    background: #fff;
+    background: #73DCFF;
     /*box-shadow: 0px 0px 2px 2px #efefef;*/
 }
 
@@ -375,4 +375,8 @@ div.pt_menu .parentMenu p{
 #gallery_01 a img{
     width: 100px;
     height: 100px;
+}
+
+.nav-tabs>li>a{
+    font-size: 16px;
 }

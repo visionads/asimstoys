@@ -3,8 +3,8 @@
         <div class="row">
             <div class="header-content">
                 <a id="header_logo" href="{{URL::to('/')}}">
-                    <img class="logo" src="{{URL::to('/')}}/web/images/logo.png" width="130px" height="70px">
-                    <span style="font-size: 20px; font-weight: bold; ">
+                    <img class="logo" src="{{URL::to('/')}}/web/images/logo.png" width="190px" height="95px">
+                    <span style="font-size: 25px; font-weight: bold; ">
                         &nbsp;
                         <span style="color: #CA2F95; text-shadow: 2px 2px #aaa;"> Asim's </span>
                         <span style="color: #EEC205; text-shadow: 2px 2px #aaa;"> Toys </span> -
