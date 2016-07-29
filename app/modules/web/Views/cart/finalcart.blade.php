@@ -103,16 +103,16 @@
 											</td>
 											<td>
 												<div class="unit-price">
-													${{$product->sell_rate}}
+													${{$product_cart['product_price']}}
 												</div>
 											</td>
 											<td class="text-align-right">
 												<div class="linetotal">
 													
 													<span class="line_total">
-														${{$product_cart['quantity']*$product->sell_rate}}				
+														${{$product_cart['quantity']*$product_cart['product_price']}}
 														<?php
-															$total_value+=$product_cart['quantity']*$product->sell_rate;
+															$total_value+=$product_cart['quantity']*$product_cart['product_price'];
 														?>
 													</span>
 												</div>

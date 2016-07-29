@@ -91,6 +91,7 @@ class OrderController extends Controller
 				$color = '';
 			}
 
+
             if(isset($_POST['background'])){
                 $background = $_POST['background'];
             }else{
@@ -128,7 +129,6 @@ class OrderController extends Controller
             }
 
             $request->session()->set('product_cart', $result);
-
 
 			return redirect('mycart');
 		}
@@ -423,8 +423,8 @@ class OrderController extends Controller
             //Total Price
             $total_price = 0;
             foreach ($product_cart as $product){
-                $product = DB::table('product')->where('id',$product['product_id'])->first();
-                $total_price += $product->sell_rate;
+                #$product = DB::table('product')->where('id',$product['product_id'])->first();
+                $total_price += $product['product_price']; //$product->sell_rate;
             }
 
             //coupon code
@@ -459,7 +459,7 @@ class OrderController extends Controller
                         $model_order_dt->color = @$products['color'];
                         $model_order_dt->background_color = @$products['background'];
                         $model_order_dt->plate_text = @$products['plate_text'];
-                        $model_order_dt->price = $product->sell_rate;
+                        $model_order_dt->price = @$products['product_price']; //$product->sell_rate;
                         $model_order_dt->status =1;
                         $model_order_dt->save();
                     }
@@ -494,10 +494,16 @@ class OrderController extends Controller
         $user_id = $request->session()->get('user_id');
         $total_price = $request->session()->get('total_price');
         $customer_data = $request->session()->get('customer_data');
+        $freight_calculation = $request->session()->get('freight_calculation');
+
+        $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
+        $freight_amount =isset($order_head->freight_amount) ? $order_head->freight_amount : 0;
+        $sub_total =isset($order_head->sub_total) ? $order_head->sub_total : 0;
+        $net_amount =isset($order_head->net_amount) ? $order_head->net_amount : 0;
 
         $coupon_value = $request->session()->get('coupon_value');
-        $discount_price = ($total_price * $coupon_value)/100;
-        $net_amount = $total_price - $discount_price;
+        $discount_price = ($sub_total * $coupon_value)/100;
+        $net_amount = $net_amount - @$discount_price;
 
         //setter
         $request->session()->set('net_amount', $net_amount);
@@ -507,10 +513,10 @@ class OrderController extends Controller
             'title' => $title,
             'invoice_number' => $invoice_number,
             'user_id' => $user_id,
-            'total_price' => $total_price,
+            'total_price' => @$net_amount,
             'customer_data' => $customer_data,
-            'discount_price' => $discount_price,
-            'net_amount' => $net_amount,
+            'discount_price' => @$discount_price,
+            'net_amount' => @$net_amount,
         ]);
 
     }
