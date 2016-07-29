@@ -2108,7 +2108,7 @@ ul#header_links {
 	list-style-type: none;
 	float: right;
 	/*border:1px solid #d3d3d3;*/
-	margin-top:20px;
+    margin-top: 40px;
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 5px;
 }
@@ -5305,11 +5305,11 @@ padding: 8px;
 }
 
 .product_details_tab{
-	    width: 100%;
+    width: 100%;
     float: left;
     background: #fff;
     margin-top: 25px;
-
+    margin-bottom: 20px;
 }
 
 .tab-content>.tab-pane {
@@ -5335,7 +5335,7 @@ padding: 8px;
 .hot_line{
     position: absolute;
     left: 54%;
-    top: 40px;
+    top: 57px;
     color: #000;
     font-size: 20px;
     font-weight: bold;
@@ -5426,17 +5426,17 @@ input,select{
 }
 
 input.register_btn{
-	 background: #ffc947;
+    background: coral;
     color: #fff;
     text-transform: uppercase;
     font-size: 15px;
     outline: none;
     border: none;
-    margin-bottom: 50px;
 }
 
 input.register_btn:hover{
-	background: rgba(255, 201, 71, .6);		
+	background: rgba(255, 201, 71, .9);
+    color: green;
 }
 
 .login_form input.loginsubmit:hover{

@@ -374,8 +374,9 @@ div.pt_menu .parentMenu p{
     max-height: 230px;
 }
 #gallery_01 a img{
-    width: 100px;
-    height: 100px;
+    width: 95px;
+    height: 80px;
+    margin-bottom: 5px;
 }
 
 .nav-tabs>li>a{

@@ -23,6 +23,15 @@
 								@endif
 								
 							</div>
+                            <div id="gallery_01">
+
+                                @if(!empty($product_gallery_all))
+                                    @foreach($product_gallery_all as $product_gallery)
+                                        <a href="#" data-image="{{URL::to('')}}/{{$product_gallery->image}}" data-zoom-image="{{URL::to('')}}/{{$product_gallery->image}}"> <img id="zoom_01" src="{{URL::to('')}}/{{$product_gallery->image}}" /> </a>
+                                    @endforeach
+                                @endif
+
+                            </div>
 
 						</div>
 					</div>
@@ -38,7 +47,7 @@
                                         <a href="#product-details-of" aria-controls="messages" role="tab" data-toggle="tab" style="color: black; border-bottom: 0px;">Product Details</a>
                                     </li>
                                     <li role="presentation" class="{{\Session::get('active_fc')}}">
-                                        <a href="#freight-panel" aria-controls="settings" role="tab" data-toggle="tab" style="color: black; border-bottom: 0px;">Freight Calculation </a>
+                                        <a href="#freight-panel" aria-controls="settings" role="tab" data-toggle="tab" style="color: white; border-bottom: 0px; background-color: #D42E98; ">Freight Calculation </a>
                                     </li>
                                 </ul>
 
@@ -122,7 +131,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="width: 100%; height: 180px;  overflow: scroll; display: block; border-bottom: 1px solid #efefef; padding-bottom: 10px">
+                                            <div style="width: 100%; border-bottom: 1px solid #efefef; padding-bottom: 10px">
                                                 <?php echo $product->short_description; ?>
 
                                             </div>
@@ -266,15 +275,7 @@
 
 
 
-					<div id="gallery_01">
 
-								@if(!empty($product_gallery_all))
-									@foreach($product_gallery_all as $product_gallery)
-										<a href="#" data-image="{{URL::to('')}}/{{$product_gallery->image}}" data-zoom-image="{{URL::to('')}}/{{$product_gallery->image}}"> <img id="zoom_01" src="{{URL::to('')}}/{{$product_gallery->image}}" /> </a>
-									@endforeach
-								@endif
-								
-							</div>
 				</div>
 
 
