@@ -4498,6 +4498,7 @@ tr.subitem > td:first-child + td {
 .home-youtube{
 	width: 100%;
 	float: left;
+    padding: 7% 0%;
 }
 
 .home-youtube a{
