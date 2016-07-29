@@ -2109,7 +2109,7 @@ ul#header_links {
 	float: right;
 	/*border:1px solid #d3d3d3;*/
 	margin-top:20px;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.6);
     border-radius: 5px;
 }
 #header_links li {
