@@ -97,7 +97,7 @@
 
 						</div>
 
-						<input type="submit" name="submit" value="Buy Now">
+						<input type="submit" name="submit" class="register_btn" value="Add to Cart" style="padding: 10px; text-align: center; margin: 30px;">
 					</form>
 				</div>
 			</div>
