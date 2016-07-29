@@ -90,6 +90,28 @@ a {cursor:pointer; font:12px/20px Arial;}
 /* ************************************************************************************************
 		generic style
 ************************************************************************************************ */
+
+@keyframes animatedBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: -200px 0; }
+}
+@-moz-keyframes animatedBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: -200px 0; }
+}
+@-webkit-keyframes animatedBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: -200px 0; }
+}
+@-ms-keyframes animatedBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: -200px 0; }
+}
+@-o-keyframes animatedBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: -200px 0; }
+}
+
 body{
 	font:normal 12px/20px Arial;
 	color:#222;
@@ -100,6 +122,14 @@ body{
 	background-position: center;
 	/*background-color: #09439B;*/
 	/*background-color: #4DA6FF;*/
+
+    background-position: 0px 0px;
+
+    animation: animatedBackground 50s linear infinite;
+    -moz-animation: animatedBackground 50s linear infinite;
+    -webkit-animation: animatedBackground 50s linear infinite;
+    -ms-animation: animatedBackground 50s linear infinite;
+    -o-animation: animatedBackground 50s linear infinite;
 }
 body.content_only {
 	background: #FFF;
