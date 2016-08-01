@@ -4352,7 +4352,14 @@ div.star_hover a, div.star a:hover { background-position: 0 -12px }
 #categories_block_left li .CLOSE {background-position:0 0}
 #categories_block_left .block_content {border-top:1px solid #f37a6e}
 
-
+.no-product-yet{
+	padding: 60px 20px;
+    min-height: 220px;
+    text-align: center;
+    float: left;
+    width: 100%;
+    font-size: 18px;
+}
 /* footer */
 .blockcategories_footer {
 	padding:15px 10px;

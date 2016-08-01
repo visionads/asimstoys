@@ -31,6 +31,8 @@
 						</li>
 					@endforeach
 				</ul>
+			@else
+				<p class="no-product-yet">No Product Yet.</p>
 			@endif
 		
 

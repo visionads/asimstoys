@@ -54,13 +54,13 @@ class ProductCategoryController extends Controller
 		$product_group = DB::table('groups')
 							->where('slug',$main_slug)
 							->first();
-
+		
 		$product_subgroup = DB::table('product_subgroup')
 							->where('slug',$sub_slug)
 							->where('product_group_id',$product_group->id)
 							->first();
 
-
+		
 
 		$productdata = DB::table('product')
 						->where('product_group_id',$product_group->id)
@@ -116,7 +116,11 @@ class ProductCategoryController extends Controller
 		$product_group = DB::table('groups')->where('slug',$main_slug)->first();
 		$product_subgroup = DB::table('product_subgroup')->where('slug',$sub_slug)->first();
 
-		$productdata = DB::table('product')->where('product_group_id',$product_group->id)->where('product_subgroup_id',$product_subgroup->id)->get();
+		$productdata = DB::table('product')
+			->where('product_group_id',$product_group->id)
+			->where('product_subgroup_id',$product_subgroup->id)
+			->where('preorder','0')
+			->get();
 		
 		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
