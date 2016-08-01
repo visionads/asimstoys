@@ -163,8 +163,8 @@ class WwwController extends Controller
 		$body = "Name ".$name. "<br/><br/>Email ".$email. "<br/><br/>Subject".$subject. "<br/><br/> Message".$message ;
 		
 		
-		//$mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
-		$mail = '';
+		$mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
+		
 		
 		if($mail){			
 			Session::flash('flash_message_success', "Thank you for contacting with us. We will contact as soon as possible");
