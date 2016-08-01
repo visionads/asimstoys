@@ -22,11 +22,14 @@ use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 
 use Session;
+use Input;
 use App\Menu;
 use App\MenuType;
 use DB;
 use App\Events\Event;
 use App\Events\MyWidgets;
+
+use App\Helpers\SendMailer;
 
 
 class WwwController extends Controller
@@ -144,6 +147,34 @@ class WwwController extends Controller
             'productgroup_data' => $productgroup_data
         ]);
     }
+	
+	public function contactsubmit(Requests\ContactRequest $request){
+		
+		$input = $request->all();
+		
+		$name = Input::get('name');
+		$email = Input::get('email');
+		$subject = Input::get('subject');
+		$message = Input::get('message');
+		
+		$to_email = 'mithun.cse521@gmail.coom';
+		$to_name = 'Asims Toys | Contact';
+		
+		$body = "Name ".$name. "<br/><br/>Email ".$email. "<br/><br/>Subject".$subject. "<br/><br/> Message".$message ;
+		
+		
+		//$mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
+		$mail = '';
+		
+		if($mail){			
+			Session::flash('flash_message_success', "Thank you for contacting with us. We will contact as soon as possible");
+		}else{			
+			Session::flash('flash_message_error', "Your message not send");
+		}
+		
+		 return redirect('contact');
+		
+	}
 
     public function login(){
 

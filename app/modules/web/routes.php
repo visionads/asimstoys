@@ -71,6 +71,11 @@ Route::any('contact',[
 		'as' => 'contact',
 		'uses' => 'WwwController@contact'
 	]);
+	
+Route::any('contactsubmit',[
+		'as' => 'contactsubmit',
+		'uses' => 'WwwController@contactsubmit'
+	]);
 
 Route::any('customerlogin',[
 		'as' => 'customerlogin',
