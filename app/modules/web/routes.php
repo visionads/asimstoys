@@ -81,6 +81,21 @@ Route::any('customerlogin',[
 		'as' => 'customerlogin',
 		'uses' => 'WwwController@login'
 	]);
+	
+Route::any('forgotpassword-mail-send',[
+		'as' => 'forgotpassword-mail-send',
+		'uses' => 'WwwController@forgotpasswordmailsend'
+	]);
+	
+Route::any("recoverpassword/{token}", [
+    "as"   => "recoverpassword",
+    "uses" => "WwwController@recoverpassword"
+]);
+
+Route::any("recoverpassword-submit", [
+    "as"   => "recoverpassword-submit",
+    "uses" => "WwwController@recoverpassword_submit"
+]);
 
 Route::any('customerlogout',[
 		'as' => 'customerlogout',
@@ -250,6 +265,11 @@ Route::any('lay-by',[
 		'as' => 'lay-by',
 		'uses' => 'ProductCategoryController@layby'
 	]);
+
+Route::any('forgotpassword',[
+	'as' => 'forgotpassword',
+	'uses' => 'WwwController@forgotpassword'
+]);
 
 Route::any('{product_slug}',[
 		'as' => 'product',

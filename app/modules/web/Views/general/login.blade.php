@@ -31,6 +31,7 @@
 							{!! Form::password('password', null, ['id'=>'password', 'class' => 'form-control','required']) !!}
 							<input type="submit" name="submit" value="submit" class="loginsubmit">
 						</div>
+						<a href="{{URL::to('/')}}/forgotpassword">Forgot password?</a>
 						@if(Session::has('flash_message_error'))
 			                <div class="alert alert-error">
 			                    <p>{{Session::get('flash_message_error')}}</p>

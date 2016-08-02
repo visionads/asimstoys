@@ -26,6 +26,7 @@ use Input;
 use App\Menu;
 use App\MenuType;
 use DB;
+use URL;
 use App\Events\Event;
 use App\Events\MyWidgets;
 
@@ -34,6 +35,8 @@ use App\Helpers\SendMailer;
 
 class WwwController extends Controller
 {
+	
+	
     public function home_page()
     {
         $home_value = "about-the-asims-toy";
@@ -191,6 +194,96 @@ class WwwController extends Controller
                 'productgroup_data' => $productgroup_data
             ]);
     }
+	
+	public function forgotpassword(){
+			
+		$title = "Forgot Password | Asim's Toy";
+		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
+		
+		return view('web::general.forgotpassword',[
+				'title' => $title,
+				'productgroup_data' => $productgroup_data
+		]);
+	}
+	
+	public function recoverpassword_submit(Request $request){
+		
+		$input = $request->all();
+		
+		$password = $input['password'];
+		$email_address = $input['email_address'];
+		
+		$exists_customer = DB::table('customer')->where('email',$email_address)->first();
+		
+		if(!empty($exists_customer)){
+			
+			$password = sha1($password);
+			
+			DB::table('customer')
+				->where('id', $exists_customer->id)
+				->update(['password' => $password]);
+				
+			Session::flash('flash_success', "Congratulation your password is changed.");
+			
+		}
+		
+		return redirect('forgotpassword');
+		
+	}
+	
+	public function forgotpasswordmailsend(Request $request){
+		
+		$input = $request->all();
+		
+		$email = $input['email'];
+		
+		$exists_customer = DB::table('customer')->where('email',$email)->first();
+		
+		if(!empty($exists_customer)){
+			
+			$str = 'abcdefghijklmnopqrst1234567890';
+			$token = str_shuffle($str);
+			
+			DB::table('customer')
+				->where('id', $exists_customer->id)
+				->update(['token' => $token]);
+				
+			
+			$to_name = $exists_customer->first_name . ' '.$exists_customer->last_name;
+			$subject = "Reset Password Mail";
+			$link = URL::to('/').'/recoverpassword/'.$token;
+			
+			$body = "Please <a href=".$link.">click here</a> to recover your password";
+							
+			$mail = SendMailer::send_mail_by_php_mailer($email, $to_name, $subject, $body);
+			
+			Session::flash('flash_message_error', "Please check your email address for further instruction.");
+		}else{
+			Session::flash('flash_message_error', "Your email address not found in our system.");
+		}
+		
+		return redirect('forgotpassword');
+	}
+	
+	public function recoverpassword($token){
+		
+		$token_exits = DB::table('customer')->where('token',$token)->first();
+		
+		if(!empty($token_exits)){
+			
+			$title = "Forgot Password | Asim's Toy";
+			$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
+			
+			return view('web::general.recoverpassword',[
+					'title' => $title,
+					'productgroup_data' => $productgroup_data,
+					'token_exits' => $token_exits
+			]);
+			
+		}else{
+			return redirect('forgotpassword');
+		}
+	}
 
     public function logout(Request $request){
 

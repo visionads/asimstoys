@@ -18,6 +18,7 @@ class Customer extends Model
         'state',
         'address',
         'country',
-        'telephone'
+        'telephone',
+		'token'
     ];
 }
