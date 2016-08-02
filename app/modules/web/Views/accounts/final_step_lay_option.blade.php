@@ -70,7 +70,7 @@
                                             class="eway-paynow-button"
                                             data-publicapikey="epk-4AABBD0F-8893-4863-8776-ABF469799708"
 
-                                            data-amount="{{$payable_amount}}"
+                                            data-amount="{{$payable_amount*100}}"
                                             data-currency="AUD"
                                             data-buttoncolor="#ffc947"
                                             data-buttonsize="100"

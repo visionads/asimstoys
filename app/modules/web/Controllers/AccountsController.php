@@ -14,6 +14,7 @@ use DB;
 use Session;
 use App\OrderPaymentTransaction;
 use Illuminate\Support\Facades\Input;
+use App\Helpers\SendMailer;
 
 
 class AccountsController extends Controller
@@ -107,7 +108,6 @@ class AccountsController extends Controller
 
             $request->session()->set('redirect_value', '');
             $title ="My Accounts | Asim's Toy";
-
 
             $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
@@ -246,8 +246,8 @@ class AccountsController extends Controller
                 'paid_amount'=>$paid_amount,
                 'due_amount'=>$due_amount,
                 'customer_data'=>$customer_data,
-                'amount'=>$payable_amount.'.00',
-                'payable_amount'=>$payable_amount.'00',
+                'amount'=>$payable_amount,
+                'payable_amount'=>$payable_amount,
             ]);
         }else{
             return redirect()->back();

@@ -7,7 +7,7 @@
 	      
 	      	<div class="col-xs-8">
 				<a href="#" id="header_logo">
-                    {!! HTML::image('web/images/logo.png', 'Asims Toys') !!}
+                    {!! HTML::image('web/images/logo.png', 'Asims Toys', ['width'=>150]) !!}
 				</a>
 			</div>
 			<div class="col-xs-4 text-right" style="margin-bottom:20px;">

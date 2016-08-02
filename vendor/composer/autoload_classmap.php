@@ -9,6 +9,7 @@ return array(
     'AddColumnProductcategorysTable' => $baseDir . '/database/migrations/2016_02_21_095323_add_column_productcategorys_table.php',
     'AddImagesToProductTable' => $baseDir . '/database/migrations/2016_01_19_102310_add_images_to_product_table.php',
     'AddIsFeaturedToProductCategoryTable' => $baseDir . '/database/migrations/2016_01_11_104935_add_is_featured_to_product_category_table.php',
+    'AddTokenToCustomerTable' => $baseDir . '/database/migrations/2016_08_02_125244_add_token_to_customer_table.php',
     'App\\Article' => $baseDir . '/app/Models/Article.php',
     'App\\BlogCat' => $baseDir . '/app/Models/BlogCat.php',
     'App\\BlogComment' => $baseDir . '/app/Models/BlogComment.php',
