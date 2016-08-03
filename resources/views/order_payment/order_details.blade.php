@@ -26,21 +26,21 @@
 				<div class="col-xs-4">
 					<h4 class="text-light">Prepared for</h4>
 					<address>
-						<strong>{{$customer_data->first_name}} {{$customer_data->last_name}}</strong><br>
-						{{$customer_data->suburb}}, {{$customer_data->postcode}}<br>
-						{{$customer_data->state}}, {{$customer_data->country}}<br>
-						<abbr title="Phone">P:</abbr> {{$customer_data->telephone}}
+						<strong>{{@$customer_data->first_name}} {{@$customer_data->last_name}}</strong><br>
+						{{@$customer_data->suburb}}, {{@$customer_data->postcode}}<br>
+						{{@$customer_data->state}}, {{@$customer_data->country}}<br>
+						<abbr title="Phone">P:</abbr> {{@$customer_data->telephone}}
 					</address>
 				</div><!--end .col -->
 				<div class="col-xs-4">
 					<div class="well">
 						<div class="clearfix">
 							<div class="pull-left"> INVOICE NO #  </div>
-							<div class="pull-right"> {{$order_data[0]->invoice_no}} </div>
+							<div class="pull-right"> {{@$order_data[0]->invoice_no}} </div>
 						</div>
 						<div class="clearfix">
 							<div class="pull-left"> INVOICE DATE : </div>
-                            <div class="pull-right"> {{$order_data[0]->created_at}} </div>
+                            <div class="pull-right"> {{@$order_data[0]->created_at}} </div>
 						</div>
 					</div>
 				</div><!--end .col -->
@@ -111,7 +111,7 @@
 									&nbsp;
 								</td>
 								<td class="text-right"><strong>Subtotal</strong></td>
-								<td class="text-right">$ {{$total}}</td>
+								<td class="text-right">$ {{@$total}}</td>
 							</tr>
 							<tr>
 								<td colspan="3" >
@@ -132,7 +132,7 @@
 									&nbsp;
 								</td>
 								<td class="text-right"><strong>Total</strong></td>
-								<td class="text-right">$ {{$total}}</td>
+								<td class="text-right">$ {{@$total}}</td>
 							</tr>
 							
 						</tbody>
