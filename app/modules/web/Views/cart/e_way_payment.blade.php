@@ -97,7 +97,13 @@
                                 <p>2- All Our Cars are tested , Asim’s Toys  Will not accept any returns back but if we agree to accept the item Returns please note :
                                 .  Shipping costs are non-refundable.
                                 .  Return postage fee will be at buyer’s expense.</p>
-                                <h5 style="color: red;"> *** If you are not happy with this agreement please do not buy this item *** </h5>
+                                <h5 style="color: red;">
+                                     ***  If you are not happy with this agreement</a> please do not buy this item  ***
+                                </h5>
+                                <p>
+                                    <input type="checkbox" checked="checked"> <a href="{{route('terms-condition')}}">I agree with terms and condition </a>
+                                </p>
+
 
 
                                 <div class="col-md-12" style="padding: 10% 30%; text-align: center">
