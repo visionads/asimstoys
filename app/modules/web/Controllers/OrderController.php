@@ -385,6 +385,8 @@ class OrderController extends Controller
             $request->session()->set('freight_calculation', 0);
         }
 
+
+
         return view('web::cart.finalcart',[
                 'title' => $title,
                 'productgroup_data' => $productgroup_data,
@@ -475,6 +477,17 @@ class OrderController extends Controller
             }catch(\Exception $e){
                 Session::flash('flash_message_error', $e->getMessage());
             }
+
+            //send email
+            $to_email = $customer->email;
+            $to_name = $customer->first_name." ". $customer->last_name;
+
+            $subject = "Approved Payment of invoice # ".$invoice_no. " | Asims Toys ";
+            $body = "Dear ".$to_name. " Your Payment is approved !";
+
+            $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
+
+            
         }else{
             Session::flash('flash_message_error', "No Product is available in cart");
             return redirect()->route('mycart');

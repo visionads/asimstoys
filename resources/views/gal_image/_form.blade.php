@@ -29,7 +29,9 @@
 </div>
 
 <div class="form-group last">
-    <label class="control-label col-md-3">Image Upload<small class="required">(Required)</small></label>
+    <label class="control-label col-md-3">Image Upload<small class="required">(Required)</small><br>
+        <span style="color: orangered">(Image Size: 700 x 900 )</span>
+    </label>
     <div class="col-md-9">
         <div class="fileupload fileupload-new" data-provides="fileupload">
             <div class="fileupload-new thumbnail" style="width: 120px; height: 120px;">

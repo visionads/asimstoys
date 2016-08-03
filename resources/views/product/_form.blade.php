@@ -152,7 +152,10 @@
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-12">Featured Image</label>
+        <label class="control-label col-md-12">Featured Image
+            <span style="color: orangered">(Image Size: 400 x 400 )</span>
+        </label>
+
         <div class="col-md-12">
             <div class="fileupload fileupload-new" data-provides="fileupload">
                 <div class="fileupload-new thumbnail" style="width: 120px; height: 120px;">
