@@ -6,7 +6,7 @@
 	      
 	      	<div class="col-xs-8">
 				<a href="#" id="header_logo">
-                    {!! HTML::image('web/images/logo.png', 'Asims Toys') !!}
+                    {!! HTML::image('web/images/logo.png', 'Asims Toys', array( 'width' => 150)) !!}
 				</a>
 			</div>
 			<div class="col-xs-4 text-right" style="margin-bottom:20px;">
@@ -65,9 +65,9 @@
 						</thead>
 						<tbody>
 
-							@if(!empty($order_data[0]->relOrderDetail))
+							@if(!empty(@$order_data[0]->relOrderDetail))
 								<?php $total = 0; ?>
-								@foreach($order_data[0]->relOrderDetail as $orderdetails)
+								@foreach(@$order_data[0]->relOrderDetail as $orderdetails)
 								<?php
 									$product_id = $orderdetails->product_id;
 									$product = DB::table('product')->where('id',$product_id)->first();
@@ -77,7 +77,7 @@
 								?>
 									<tr>
 										<td>
-											{{$product->title}}
+											{{@$product->title}}
 										</td>
 										<td>
 											{{@$product_variation->title}}
