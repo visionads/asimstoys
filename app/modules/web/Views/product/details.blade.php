@@ -33,6 +33,55 @@
 
                             </div>
 
+
+
+                            {{--Social Share Start--}}
+
+                            <script>
+                                var popupSize = {
+                                    width: 600,
+                                    height: 500
+                                };
+
+                                $(document).on('click', '.social-buttons > a', function(e){
+
+                                    var
+                                            verticalPos = Math.floor(($(window).width() - popupSize.width) / 2),
+                                            horisontalPos = Math.floor(($(window).height() - popupSize.height) / 2);
+
+                                    var popup = window.open($(this).prop('href'), 'social',
+                                            'width='+popupSize.width+',height='+popupSize.height+
+                                            ',left='+verticalPos+',top='+horisontalPos+
+                                            ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
+
+                                    if (popup) {
+                                        popup.focus();
+                                        e.preventDefault();
+                                    }
+
+                                });
+                            </script>
+                            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+                            <div class="social-buttons">
+                                Share :
+                                <a href="https://www.facebook.com/sharer/sharer.php?url={{ urlencode(Request::fullUrl()) }}"
+                                   target="_blank">
+                                    <i class="fa fa-facebook-official"> Facebook</i>
+                                </a>
+                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::fullUrl()) }}"
+                                   target="_blank">
+                                    <i class="fa fa-twitter-square"> Twitter</i>
+                                </a>
+                                <a href="https://plus.google.com/share?url={{ urlencode(Request::fullUrl()) }}"
+                                   target="_blank">
+                                    <i class="fa fa-google-plus-square"> Google Plus</i>
+                                </a>
+                            </div>
+
+
+                            {{--Social Share END--}}
+
 						</div>
 					</div>
 
