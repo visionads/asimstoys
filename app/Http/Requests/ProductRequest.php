@@ -27,7 +27,13 @@ class ProductRequest extends Request
             'title' => 'required|max:256',
             'slug' => 'required',
             'status' => 'required',
-            'product_group_id' => 'required|integer'
+            'product_group_id' => 'required|integer',
+			'sell_rate' => 'required',
+			'cost_price' => 'required',
+			'stock_unit_quantity' => 'required',
+			'brand' => 'required',
+			'voltage' => 'required',
+			'seats' => 'required'
         ];
     }
 }

@@ -51,10 +51,11 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('Pre-order / Special-Rate / Lay-By Price', 'Preorder / Special rate:', ['class' => 'control-label']) !!} <br>
+            {!! Form::label('Pre-order / Special-Rate / Lay-By Price', 'Preorder / Special rate:', ['class' => 'control-label']) !!} 
+			<small class="required">(Required)</small><br>
             <small style="color: red"> if you select pre-order then input pre-order price as well as special-price and layby-price</small>
             
-            {!! Form::text('cost_price', null, ['id'=>'cost_price', 'class' => 'form-control']) !!}
+            {!! Form::text('cost_price', null, ['id'=>'cost_price', 'class' => 'form-control','required']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('Stock Quantity', 'Stock Quantity:', ['class' => 'control-label']) !!}

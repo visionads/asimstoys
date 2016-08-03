@@ -24,10 +24,10 @@ class GalImageController extends Controller
     public function index()
     {
         $pageTitle = "Gallery Image";
-
+		
         $data = GalImage::orderBy('id', 'DESC')->paginate(10);
         $product_id = Product::lists('title','id');
-
+		
         return view('gal_image.index', ['data' => $data, 'pageTitle'=> $pageTitle, 'product_id'=> $product_id]);
     }
 

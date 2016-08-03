@@ -54,7 +54,7 @@
                         @if(isset($data))
                             @foreach($data as $values)
                                 <tr class="gradeX">
-                                    <td>{{$values->relProductGallery->title}}</td>
+                                    <td>{{@$values->relProductGallery->title}}</td>
                                     <td>{{$values->name}}</td>
                                     <td><div><a href="{{ route('gal_image.image.show', $values->slug) }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#imageView"><img src="{{ URL::to($values->image) }}" height="50px" width="50px" alt="{{$values->image}}" /></a></div>
                                     </td>
