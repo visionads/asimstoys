@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Country;
+use App\Customer;
 use App\UserResetPassword;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -150,7 +151,9 @@ class AdminController extends Controller
         if(Auth::user()->type == 'admin'){
 
             $countryList = [''=>'Please Select'] + Country::lists('title', 'id')->all();
-            $user_data = User::with('relCountry')->where('user.id', '!=', Auth::user()->id)->paginate(10);
+            		
+			$user_data = Customer::orderBy('id', 'DESC')->paginate(20);
+			
             return view('user.user_info.user_list',['user_data'=>$user_data,'countryList'=>$countryList]);
         }else{
             Session::flash('flash_message_error','Invalid Request! You do not access to this url.');
@@ -329,7 +332,7 @@ class AdminController extends Controller
     public function show($id)
     {
         $pageTitle = 'Show User detail';
-        $data = User::with('relCountry')->findOrFail($id);
+        $data = Customer::where('id',$id)->first();
         return view('user.user_info.view', ['data' => $data, 'pageTitle'=> $pageTitle]);
     }
 //    Change User Information BY Admin......

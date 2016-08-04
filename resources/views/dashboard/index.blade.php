@@ -43,7 +43,7 @@
         {{--<section class="panel">--}}
             <div class="panel-body progress-panel">
                 <div class="task-progress">
-                    <h1>Welcome To CCMS</h1>
+                    <h1>Welcome To Asim's Toys</h1>
                 </div>
             </div>
         {{--</section>--}}

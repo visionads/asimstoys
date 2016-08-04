@@ -11,6 +11,13 @@
     </a>
 </li>
 
+<li class="sub-menu">
+	<a href={{URL::to('user/user-list')}}>
+		<i class="icon-user-md"></i>
+		<span>Customer List</span>
+	</a>
+</li>
+
 
 <li class="sub-menu">
     <a href="javascript:;">
@@ -138,12 +145,7 @@
 
 @if(Session::has('user_type'))
     @if(Session::get('user_type')=='admin')
-        <li class="sub-menu">
-            <a href={{URL::to('user/user-list')}}>
-                <i class="icon-user-md"></i>
-                <span>User List</span>
-            </a>
-        </li>
+        
         {{--<li class="sub-menu">--}}
             {{--<a href={{URL::to('user/request')}}>--}}
                 {{--<i class="icon-trello"></i>--}}

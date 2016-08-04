@@ -11,10 +11,8 @@
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                <strong>User List</strong>
-                <a class="btn-sm btn-info pull-right" data-toggle="modal" href="#addData">
-                    <strong>Add User</strong>
-                </a>
+                <strong>Customer List</strong>
+                
             </header>
 
 
@@ -42,15 +40,10 @@
                         <thead>
                         <tr>
                             <th> Name </th>
-                            <th> Email ID</th>
-                            <th> Phone Number </th>
-                            <th> Address </th>
-                            <th> State </th>
-                            <th> Country</th>
-                            <th> User Type</th>
-                            <th> Status</th>
-                            <th> Action </th>
-                            <th> Change Status</th>
+                            <th> Email</th>  
+							<th>Phone</th>
+							<th>Address</th>
+                            <th> Action </th>                            
                         </tr>
                         </thead>
                         <tbody>
@@ -59,38 +52,13 @@
                                 <tr class="gradeX">
                                     <td>{{isset($values->first_name)?$values->first_name:''}} {{isset($values->last_name)?$values->last_name:''}}</td>
                                     <td>{{isset($values->email)?$values->email:''}}</td>
-                                    <td>{{isset($values->phone_number)?$values->phone_number:''}}</td>
-                                    <td>{{isset($values->address)?$values->address:''}}</td>
-                                    <td>{{isset($values->state)?$values->state:''}}</td>
-                                    <td>
-                                        @if($values->country_id==0)
-
-                                        @else
-                                            {{isset($values->country_id)?$values->relCountry->title:''}}
-                                        @endif
-                                    </td>
-                                    <td>{{isset($values->type)?ucfirst($values->type):''}}</td>
-                                    {{--<td>{{isset($values->status)?ucfirst($values->status):''}}</td>--}}
-
-                                    <td>
-                                        {{isset($values->status)?ucfirst($values->status):''}}
-                                    </td>
-
+                                    <td>{{$values->telephone}}</td>
+									<td>{{$values->address}}</td>
                                     <td>
                                         <a href="{{ route('user.show.data', $values->id) }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#etsbModal"><i class="icon-eye-open"></i></a>
-                                        <a href="{{ route('user.edit', $values->id) }}" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#etsbModal"><i class="icon-edit"></i></a>
-                                        <a href="{{ route('user.destroy', $values->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Delete?')"><i class="icon-trash"></i></a>
+                                        
                                     </td>
-                                    <td>
-                                        @if($values->status=="invited")
-                                            <a href="{{ route('user.active', $values->id) }}" class="btn btn-primary btn-xs" onclick="return confirm('Are you sure to active user?')" title="Click to Active" ><i style="color: #470580" class="fa fa-check-square-o"></i>Active</a>
-                                            {{--<strong style="color: lightseagreen">{{isset($values->status)?ucfirst($values->status):''}}</strong>--}}
-                                        @elseif($values->status=="active")
-                                            <a href="{{ route('user.inactive', $values->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to inactive user?')" title="Click to Deactive" ><i style="color: #470580" class="fa fa-check-square-o"></i>Deactive</a>
-                                        @else
-                                            <a href="{{ route('user.active', $values->id) }}" class="btn btn-info btn-xs" onclick="return confirm('Are you sure to active user?')" title="Click to Active" ><i style="color: #470580" class="fa fa-check-square-o"></i>Active</a>
-                                        @endif
-                                    </td>
+                                   
                                 </tr>
                             @endforeach
                         @endif

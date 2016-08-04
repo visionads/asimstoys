@@ -2,7 +2,8 @@
     <div class="modal-content">
         <div class="modal-header">
             {{--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--}}
-            <h4 class="modal-title">{{ isset($data->first_name)?$data->first_name:''}}{{isset($data->last_name)?$data->last_name:''}}</h4>
+            <h4 class="modal-title">{{ isset($data->first_name)?$data->first_name:''}} {{isset($data->last_name)?$data->last_name:''}}</h4>
+			<a style="float: right;margin-top: -30px;" href="{{ URL::previous()  }}" class="btn btn-default" type="button"> X </a>
         </div>
 
         <div class="modal-body">
@@ -20,30 +21,31 @@
                         <th class="col-lg-4">Email</th>
                         <td>{{ isset($data->email)?$data->email:'' }}</td>
                     </tr>
+					<tr>
+                        <th class="col-lg-4">Phone Number</th>
+                        <td>{{ isset($data->telephone)?$data->telephone:'' }}</td>
+                    </tr>
                     <tr>
                         <th class="col-lg-4">Address</th>
                         <td>{{ isset($data->address)?$data->address:''}}</td>
                     </tr>
-                    <tr>
-                        <th class="col-lg-4">Phone Number</th>
-                        <td>{{ isset($data->phone_number)?$data->phone_number:'' }}</td>
+					<tr>
+                        <th class="col-lg-4">Suburb</th>
+                        <td>{{ isset($data->suburb)?$data->suburb:''}}</td>
                     </tr>
-                    <tr>
+					<tr>
+                        <th class="col-lg-4">Postcode</th>
+                        <td>{{ isset($data->postcode)?$data->postcode:''}}</td>
+                    </tr>
+					<tr>
                         <th class="col-lg-4">State</th>
                         <td>{{ isset($data->state)?$data->state:''}}</td>
                     </tr>
-                    <tr>
+					<tr>
                         <th class="col-lg-4">Country</th>
-                        <td>{{ isset($data->country_id)?$data->relCountry->title:'' }}</td>
+                        <td>{{ isset($data->country)?$data->country:''}}</td>
                     </tr>
-                    <tr>
-                        <th class="col-lg-4">Status</th>
-                        <td>{{ isset($data->status)?$data->status:'' }}</td>
-                    </tr>
-                    <tr>
-                        <th class="col-lg-4">Type</th>
-                        <td>{{ isset($data->type)?$data->type:''  }}</td>
-                    </tr>
+                   
                 </table>
             </div>
         </div>
