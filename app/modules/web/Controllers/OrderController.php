@@ -453,7 +453,7 @@ class OrderController extends Controller
                     foreach ($product_cart as $products){
 						
 						
-                        $product = DB::table('product')->where('id',$products['product_id'])->first();
+                        #$product = DB::table('product')->where('id',$products['product_id'])->first();
 
                         $model_order_dt = new OrderDetail();
                         $model_order_dt->order_head_id = $order_head->id;
@@ -466,17 +466,13 @@ class OrderController extends Controller
                         $model_order_dt->price = @$products['product_price']; //$product->sell_rate;
                         $model_order_dt->status =1;
                         //$model_order_dt->save();
-						
-						
-						
-						$get_product_data = DB::table('product')->where('id',$product->id)->first();
+
+						#$get_product_data = DB::table('product')->where('id',$product->id)->first();
 						
 						if($model_order_dt->save()){
 							
 							//Remove from product stock
-														
-							$get_product_data = DB::table('product')->where('id',$product->id)->first();							
-							
+							$get_product_data = DB::table('product')->where('id',$products['product_id'])->first();
 							$edited_quantity = $get_product_data->stock_unit_quantity - $products['quantity'];
 														
 							DB::table('product')
