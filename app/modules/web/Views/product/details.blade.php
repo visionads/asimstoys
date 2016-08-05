@@ -117,10 +117,10 @@
                                                 <p>
                                                     <span class="avaliablity">Availability:</span><span class="in_stock">
                                                         <?php
-                                                            if($product->stock_unit_quantity == 0){
+                                                            if($product->stock_unit_quantity <= 0){
                                                                 echo 'Out of Stock';
                                                             }else{
-                                                                echo 'In Stock (only '. $product->stock_unit_quantity .'left)';
+                                                                echo 'In Stock (only '. $product->stock_unit_quantity .' left)';
                                                             }
                                                         ?>
 
@@ -217,7 +217,13 @@
 
                                                 <div style="text-align: center; ">
                                                     <p>&nbsp; </p>
-                                                    <input type="submit" name="submit" class="register_btn" value="Add to Cart" style="padding: 10px; text-align: center; ">
+													<?php
+														if($product->stock_unit_quantity > 0){
+													?>
+														<input type="submit" name="submit" class="register_btn" value="Add to Cart" style="padding: 10px; text-align: center; ">
+													<?php 
+														}
+													?>
                                                 </div>
 
 

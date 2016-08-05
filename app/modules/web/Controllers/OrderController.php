@@ -449,8 +449,11 @@ class OrderController extends Controller
             try{
                 $model = new OrderHead();
                 if($order_head = $model->create($order_head_data)){
-
+					
+					
                     foreach ($product_cart as $products){
+						
+						
                         $product = DB::table('product')->where('id',$products['product_id'])->first();
 
                         $model_order_dt = new OrderDetail();
@@ -463,7 +466,25 @@ class OrderController extends Controller
                         $model_order_dt->plate_text = @$products['plate_text'];
                         $model_order_dt->price = @$products['product_price']; //$product->sell_rate;
                         $model_order_dt->status =1;
-                        $model_order_dt->save();
+                        //$model_order_dt->save();
+						
+						
+						
+						$get_product_data = DB::table('product')->where('id',$product->id)->first();
+						
+						if($model_order_dt->save()){
+							
+							//Remove from product stock
+														
+							$get_product_data = DB::table('product')->where('id',$product->id)->first();							
+							
+							$edited_quantity = $get_product_data->stock_unit_quantity - $products['quantity'];
+														
+							DB::table('product')
+								->where('id', $product->id)
+								->update(['stock_unit_quantity' => $edited_quantity]);
+						
+						}
                     }
                     #$request->session()->forget('freight_calculation');
                     $request->session()->forget('product_cart');
