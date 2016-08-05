@@ -386,7 +386,6 @@ class OrderController extends Controller
         }
 
 
-
         return view('web::cart.finalcart',[
                 'title' => $title,
                 'productgroup_data' => $productgroup_data,

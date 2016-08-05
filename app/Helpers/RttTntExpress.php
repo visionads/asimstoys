@@ -34,6 +34,10 @@ class RttTntExpress
         {
             $tomorrow = date("Y-m-d", strtotime("+2 day"));
         }
+        if ($date3 == "saturday")
+        {
+            $tomorrow = date("Y-m-d", strtotime("+3 day"));
+        }
 
 
         //call Enquiry Class
@@ -104,11 +108,14 @@ class RttTntExpress
         //xml output
         $xml = simplexml_load_string($output);
 
+
         //rate
         $result = null;
         if($xml){
             $result = (array)$xml->ratedTransitTimeResponse->ratedProducts;
         }
+
+
 
         //make the object or array
         if($result){
@@ -127,8 +134,7 @@ class RttTntExpress
             $tnt_cost = "No Data found ! ";
 
         }
-
-        #print_r($tnt_cost);exit();
+        
         return $tnt_cost;
 
     }
