@@ -447,14 +447,10 @@ class OrderController extends Controller
 
             try{
                 $model = new OrderHead();
-                if($order_head = $model->create($order_head_data)){
-					
-					
-                    foreach ($product_cart as $products){
-						
-						
-                        #$product = DB::table('product')->where('id',$products['product_id'])->first();
-
+                if($order_head = $model->create($order_head_data))
+                {
+                    foreach ($product_cart as $products)
+                    {
                         $model_order_dt = new OrderDetail();
                         $model_order_dt->order_head_id = $order_head->id;
                         $model_order_dt->product_id =$products['product_id'];
@@ -469,12 +465,13 @@ class OrderController extends Controller
 
 						#$get_product_data = DB::table('product')->where('id',$product->id)->first();
 						
-						if($model_order_dt->save()){
-							
+						if($model_order_dt->save())
+                        {
 							//Remove from product stock
 							$get_product_data = DB::table('product')->where('id',$products['product_id'])->first();
 							$edited_quantity = $get_product_data->stock_unit_quantity - $products['quantity'];
-														
+
+                            //update stock balance
 							DB::table('product')
 								->where('id', $product->id)
 								->update(['stock_unit_quantity' => $edited_quantity]);

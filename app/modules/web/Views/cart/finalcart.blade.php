@@ -249,7 +249,7 @@
                                 <input type="hidden" name="total_amount" value="{{ round($init_amount.".00" + $total_value, 2) }}" id="total-net-amount-cart">
                                 <input type="hidden" name="freight_calculation" value="{{ round($init_amount.".00", 2) }}" id="freight-amount">
 
-                                <input type="submit" value="Proceed to Payment Method" class="cart-checkout">
+                                <input type="submit" value="Proceed to Payment Method" class="cart-checkout" id="myFormSubmit">
 
                             </div>
 
@@ -269,5 +269,34 @@
             $('#total-net-amount-cart').val(sum1);
             $('#freight-amount').val(fc_amt);
         });
+
+
+        $('#myFormSubmit').click(function(e)
+        {
+            $('#loadingModal').modal('show');
+            return true;
+        });
     </script>
+
+
+    {{--modal--}}
+    <div id="loadingModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p>
+                        Order is processing  ...
+                    </p>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Please wait ....
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <p>&nbsp;</p>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 @stop
