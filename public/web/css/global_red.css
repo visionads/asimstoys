@@ -642,16 +642,14 @@ div.star_hover a, div.star a:hover { background-position: 0 -32px }
 
 .header-content { position: relative;}
 #header_logo {
-	position: absolute;
-	left: 0px;
-	top: 20px;
+	float:left;
+	width:53%;
+	margin-top: 20px;
 	z-index: 1;
 }
-#header_logo img { opacity: 1;}
+#header_logo img { opacity: 1; float:left;}
 #header_right {
-	position:relative;
-	width:100%;
-	float:left;
+	float:right;
 }
 
 #header_right #currencies_block_top p { padding-right:10px; }
@@ -5371,13 +5369,29 @@ padding: 8px;
 }
 
 .hot_line{
-    position: absolute;
-    left: 54%;
-    top: 57px;
+    float:right;
+    margin-top: 43px;
+	width:235px;
     color: #000;
     font-size: 20px;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: uppercase
+}
+
+.hot_line .hot_line_row{
+	width: 100%;
+    float: left;
+    margin-bottom: 8px;
+}
+
+.hot_line .hot_line_row img{
+	margin-top: -4px;
+    width: 18px;
+}
+
+.hot_line .hot_line_row .email{
+	font-size:18px;
+	text-transform:lowercase;
 }
 
 .delivery_text{

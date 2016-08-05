@@ -4,7 +4,7 @@
             <div class="header-content">
                 <a id="header_logo" href="{{URL::to('/')}}">
                     <img class="logo" src="{{URL::to('/')}}/web/images/logo.png" width="190px" height="95px">
-                    <span style="font-size: 25px; font-weight: bold; ">
+                    <span style="font-size: 26px;font-weight: bold;text-align: center;width: 68%;float: left;margin-top: 33px; ">
                         &nbsp;
                         <span style="color: #CA2F95; text-shadow: 2px 2px #aaa;"> Asim's </span>
                         <span style="color: #EEC205; text-shadow: 2px 2px #aaa;"> Toys </span> -
@@ -13,9 +13,7 @@
                         <span style="color: #02ADEB; text-shadow: 2px 2px #aaa;"> Toys </span>
                     </span>
                 </a>
-                <div class="hot_line" >
-                    Hot Line: 1300 566 662
-                </div>
+                
                 <div id="header_right">
                     <ul id="header_links">
                         <li id="header_link_contact"><a class="link-contact" href="{{URL::to('/')}}/myaccount" title="Contact">My account</a></li>
@@ -34,6 +32,17 @@
                         
                     </ul>
                 </div>
+				
+				<div class="hot_line" >
+                    <div class="hot_line_row">
+						<img src="{{URL::to('')}}/web/images/phone-call.png"> <span>1300 566 662</span>
+					</div>
+					<div class="hot_line_row">
+						<img src="{{URL::to('')}}/web/images/envelope.png"> <span class="email">asimstoys@gmail.com</span>
+					</div>
+                </div>
+				
+				
             </div>
         </div>
     </div>
