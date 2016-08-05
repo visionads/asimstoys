@@ -163,7 +163,7 @@
                                         @endforeach--}}
 
                                             <input type="radio" name="fc" id="{{$code}}" value="{{$init_amount}}" {{$code==76 ? 'checked': null}} /><label for="{{$code}}"> {{$description}} || Cost is <b>{{$init_amount}}</b></label><br>
-                                            <input type="radio" name="fc" id="0" value="0"  /><label for="0"> Pick up by Myself</label>
+                                            <input type="radio" name="fc" id="0" value="0"  /><label for="0"> Pick Up (by appointment only)</label>
 
 
                                     @else
