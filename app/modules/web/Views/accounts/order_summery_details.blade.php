@@ -88,7 +88,7 @@
             @endforeach
                 <p>
             <div class="col-md-12 pull-right">
-                <table class="table table-striped cart-table">
+                <table class="table table-striped cart-table" style="text-align: right; background: none;">
                     <tr>
                         <td> Freight Charge </td>
                         <td> {{number_format($order->freight_amount?$order->freight_amount:0, 2)}}  </td>
