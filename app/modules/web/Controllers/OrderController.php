@@ -560,16 +560,19 @@ class OrderController extends Controller
         if($input_data['payment_method']=='e_way')
         {
             $invoice_number = $input_data['invoice_number'];// $request->session()->get('invoice_no');
+            $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
 
-            $user_id = $request->session()->get('user_id');
-            $total_price = $request->session()->get('total_price');
-            $customer_data = $request->session()->get('customer_data');
-            $freight_calculation = $request->session()->get('freight_calculation');
+            $customer = Customer::findOrFail($order_head['user_id']);
+
+            $user_id = $order_head['user_id']; //$request->session()->get('user_id');
+            $total_price = $order_head['net_amount']; //$request->session()->get('total_price');
+            $customer_data = $customer; // $request->session()->get('customer_data');
+            $freight_calculation = $order_head['freight_amount']; //$request->session()->get('freight_calculation');
 
             print "invoice number  ".$invoice_number."/n";
             print "user ".$user_id."/n";
             print "total price  ".$total_price."/n";
-            print "customer data ".$customer_data."/n";
+            print_r($customer_data);
             print "freight calculation  ".$freight_calculation."/n";
             exit();
 
