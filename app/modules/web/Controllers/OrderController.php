@@ -422,11 +422,13 @@ class OrderController extends Controller
             $gen_number = "INV-".random_int(1,9);
 
             //Total Price
-            $total_price = 0;
+            /*$total_price = 0;
             foreach ($product_cart as $product){
                 #$product = DB::table('product')->where('id',$product['product_id'])->first();
                 $total_price += $product['product_price']; //$product->sell_rate;
-            }
+            }*/
+
+            $total_price = 5555;
 
             //coupon code
             $coupon_value = $request->session()->get('coupon_value');
