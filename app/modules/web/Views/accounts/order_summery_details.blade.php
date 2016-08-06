@@ -88,8 +88,9 @@
             @endforeach
                 <p>
             <div class="col-md-12 pull-right">
-                <div style="font-size: 20px; font-weight: bold">Freight Charge {{number_format($order->freight_amount?$order->freight_amount:0, 2)}} </div><br>
-                <div style="font-size: 20px; font-weight: bold">Total Cost {{number_format($order->net_amount,2)}} </div><br>
+                <div style="font-size: 20px; font-weight: bold; text-align: right">Freight Charge {{number_format($order->freight_amount?$order->freight_amount:0, 2)}} </div>
+                <div style="font-size: 20px; font-weight: bold;  text-align: right">Total Cost {{number_format($order->net_amount,2)}} </div>
+                <br>
             </div>
                 </p>
 
