@@ -402,7 +402,7 @@ class OrderController extends Controller
         $input_data = $request->all();
 
         $title ="mycart | Asim's Toy";
-        $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
+        #$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
         $product_id = $request->session()->get('product_id');
         $quantity = $request->session()->get('quantity');
         $color = $request->session()->get('color');
@@ -417,9 +417,9 @@ class OrderController extends Controller
 
         //Store to Order Head and Details
         $product_cart = $request->session()->get('product_cart');
-        if($product_cart){
+        if($product_cart)
+        {
             $gen_number = GenerateNumber::generate_number();
-
 
             //Total Price
             $total_price = 0;
@@ -433,7 +433,6 @@ class OrderController extends Controller
             $discount_price = ($total_price * $coupon_value)/100;
             $total_discount_price = $discount_price? $discount_price: 0;
 
-
             $order_head_data = [
                 'invoice_no'=>$gen_number[0],
                 'user_id'=>$user_id,
@@ -445,14 +444,10 @@ class OrderController extends Controller
                 'status'=> 1,
             ];
 
-
-
-
             try{
                 $model = new OrderHead();
                 if($order_head = $model->create($order_head_data))
                 {
-
                     foreach ($product_cart as $products)
                     {
                         $model_order_dt = new OrderDetail();
