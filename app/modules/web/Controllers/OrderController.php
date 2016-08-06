@@ -445,14 +445,18 @@ class OrderController extends Controller
                 'status'=> 1,
             ];
 
+
+
             try{
                 $model = new OrderHead();
                 if($order_head = $model->create($order_head_data))
                 {
+
                     foreach ($product_cart as $products)
                     {
+
                         $model_order_dt = new OrderDetail();
-                        $model_order_dt->order_head_id = $order_head->id;
+                        $model_order_dt->order_head_id = $order_head['id']; //$order_head->id;
                         $model_order_dt->product_id =$products['product_id'];
                         $model_order_dt->product_variation_id = $products['color'];
                         $model_order_dt->qty = $products['quantity'];
@@ -461,11 +465,11 @@ class OrderController extends Controller
                         $model_order_dt->plate_text = @$products['plate_text'];
                         $model_order_dt->price = @$products['product_price']; //$product->sell_rate;
                         $model_order_dt->status =1;
-                        //$model_order_dt->save();
+                        $model_order_dt->save();
 
 						#$get_product_data = DB::table('product')->where('id',$product->id)->first();
 						
-						if($model_order_dt->save())
+						/*if($model_order_dt = $model_order_dt->save())
                         {
 							//Remove from product stock
 							$get_product_data = DB::table('product')->where('id',$products['product_id'])->first();
@@ -476,7 +480,8 @@ class OrderController extends Controller
 								->where('id', $product->id)
 								->update(['stock_unit_quantity' => $edited_quantity]);
 						
-						}
+						}*/
+
                     }
                     #$request->session()->forget('freight_calculation');
                     $request->session()->forget('product_cart');
@@ -515,12 +520,14 @@ class OrderController extends Controller
         $title ="Secure Payment | Asim's Toy";
 
         $invoice_number = $request->session()->get('invoice_no');
+
         $user_id = $request->session()->get('user_id');
         $total_price = $request->session()->get('total_price');
         $customer_data = $request->session()->get('customer_data');
         $freight_calculation = $request->session()->get('freight_calculation');
 
         $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
+
         $freight_amount =isset($order_head->freight_amount) ? $order_head->freight_amount : 0;
         $sub_total =isset($order_head->sub_total) ? $order_head->sub_total : 0;
         $net_amount =isset($order_head->net_amount) ? $order_head->net_amount : 0;
@@ -531,6 +538,7 @@ class OrderController extends Controller
 
         //setter
         $request->session()->set('net_amount', $net_amount);
+
 
 
         return view('web::cart.paycart',[
@@ -549,6 +557,9 @@ class OrderController extends Controller
 
         $title = "Complete the Payment ";
         $input_data = $request->all();
+
+        print_r($input_data);
+        exit();
 
         if($input_data['payment_method']=='e_way'){
 
@@ -569,8 +580,8 @@ class OrderController extends Controller
                 'title' => $title,
                 'invoice_number' => $invoice_number,
                 'user_id' => $user_id,
-                'eway_total_price_format' => $order_head->net_amount *100, //($total_price+$freight_calculation)*100,
-                'total_price' => $order_head->net_amount, //$total_price+$freight_calculation,
+                'eway_total_price_format' => $order_head['net_amount']*100, //($total_price+$freight_calculation)*100,
+                'total_price' => $order_head['net_amount'], //$total_price+$freight_calculation,
                 'customer_data' => $customer_data,
             ]);
 
