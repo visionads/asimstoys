@@ -414,12 +414,12 @@ class OrderController extends Controller
 
 
         $user_data = DB::table('customer')->where('id',$user_id)->first();
-        $delivery_data = DB::table('delivery_details')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
+        #$delivery_data = DB::table('delivery_details')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
 
         //Store to Order Head and Details
         $product_cart = $request->session()->get('product_cart');
         if($product_cart){
-            $gen_number = GenerateNumber::generate_number();
+            $gen_number = "INV-".random_int(1,9);
 
             //Total Price
             $total_price = 0;
@@ -451,10 +451,8 @@ class OrderController extends Controller
                 $model = new OrderHead();
                 if($order_head = $model->create($order_head_data))
                 {
-
                     foreach ($product_cart as $products)
                     {
-
                         $model_order_dt = new OrderDetail();
                         $model_order_dt->order_head_id = $order_head['id']; //$order_head->id;
                         $model_order_dt->product_id =$products['product_id'];
