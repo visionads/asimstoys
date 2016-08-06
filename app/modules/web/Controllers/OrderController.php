@@ -572,7 +572,7 @@ class OrderController extends Controller
 
             // Update Invoice
             DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'eway']);
-            
+
            # $request->session()->forget('product_cart');
 
             return view('web::cart.e_way_payment',[
@@ -620,7 +620,7 @@ class OrderController extends Controller
                 $subject = " Payment of invoice # ".$invoice_no. " | Asims Toys ";
                 $body = "Dear ".$to_name. " Your Payment is approved !";
 
-                $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
+                #$mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
 
                 Session::flash('flash_message', "The Amount : ".$amount ." is DONE. Please check your email");
             }
