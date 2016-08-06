@@ -451,9 +451,9 @@ class OrderController extends Controller
                 $model = new OrderHead();
                 if($order_head = $model->create($order_head_data))
                 {
-                    foreach ($product_cart as $products)
-                    {
-                        $model_order_dt = new OrderDetail();
+                    #foreach ($product_cart as $products)
+                    #{
+                        /*$model_order_dt = new OrderDetail();
                         $model_order_dt->order_head_id = $order_head['id']; //$order_head->id;
                         $model_order_dt->product_id =$products['product_id'];
                         $model_order_dt->product_variation_id = $products['color'];
@@ -463,7 +463,7 @@ class OrderController extends Controller
                         $model_order_dt->plate_text = $products['plate_text']?$products['plate_text']:null;
                         $model_order_dt->price = $products['product_price']?$products['product_price']:null; //$product->sell_rate;
                         $model_order_dt->status =1;
-                        $model_order_dt->save();
+                        $model_order_dt->save();*/
 
 						#$get_product_data = DB::table('product')->where('id',$product->id)->first();
 						
@@ -480,14 +480,14 @@ class OrderController extends Controller
 						
 						}*/
 
-                    }
+                    #}
                     #$request->session()->forget('freight_calculation');
-                    $request->session()->forget('product_cart');
+                    /*$request->session()->forget('product_cart');
                     $request->session()->set('invoice_no', $gen_number[0]);
                     $request->session()->set('total_price', $total_price);
                     $request->session()->set('customer_data', $user_data);
 
-                    Session::flash('flash_message', 'Success !');
+                    Session::flash('flash_message', 'Success !');*/
 
                 }
             }catch(\Exception $e){
