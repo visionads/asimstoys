@@ -515,6 +515,8 @@ class OrderController extends Controller
         $title ="Secure Payment | Asim's Toy";
 
         $invoice_number = $request->session()->get('invoice_no');
+        print_r($invoice_number);
+        exit();
 
         $user_id = $request->session()->get('user_id');
         $total_price = $request->session()->get('total_price');
