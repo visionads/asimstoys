@@ -525,6 +525,9 @@ class OrderController extends Controller
 
         $order_head = OrderHead::findOrFail($order_head_id);
 
+        print_r($order_head);
+        exit();
+
         $freight_amount =isset($order_head->freight_amount) ? $order_head->freight_amount : 0;
         $sub_total =isset($order_head->sub_total) ? $order_head->sub_total : 0;
         $net_amount =isset($order_head->net_amount) ? $order_head->net_amount : 0;
