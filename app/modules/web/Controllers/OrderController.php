@@ -558,9 +558,6 @@ class OrderController extends Controller
         $title = "Complete the Payment ";
         $input_data = $request->all();
 
-        print_r($input_data);
-        exit();
-
         if($input_data['payment_method']=='e_way'){
 
             $invoice_number = $request->session()->get('invoice_no');
