@@ -450,15 +450,16 @@ class OrderController extends Controller
                 'status'=> 1,
             ];
 
-            print $freight_calculation;
 
-            exit("OK");
 
 
             #try{
                 $model = new OrderHead();
                 if($order_head = $model->create($order_head_data))
                 {
+                    print $freight_calculation;
+
+                    exit("OK");
                     #foreach ($product_cart as $products)
                     #{
                         /*$model_order_dt = new OrderDetail();
