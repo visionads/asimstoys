@@ -24,12 +24,20 @@
 						{!! Form::email('email', null, ['id'=>'email', 'class' => '','required']) !!}
 					</div>
 					<div class="form-group">
+						<label>Phone</label>
+						{!! Form::text('phone', null, ['id'=>'phone', 'class' => '','required']) !!}
+					</div>
+					<div class="form-group">
 						<label>Subject</label>
 						{!! Form::text('subject', null, ['id'=>'subject', 'class' => '','required']) !!}
 					</div>
 					<div class="form-group">
 						<label>Message</label>
 						{!! Form::text('message', null, ['id'=>'message', 'class' => '','required']) !!}
+					</div>
+					<div class="form-group">
+						<label>File Upload</label>
+						{!!Form::file('filename', ['class' => 'field']) !!}
 					</div>
 					<div class="form-group">
 						<input type="submit" name="submit" value="Send" class="submitbtn">

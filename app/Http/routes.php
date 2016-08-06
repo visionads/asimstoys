@@ -118,6 +118,7 @@ Route::group(['middleware' => 'auth'], function()
     @include('routes_product_group.php');
     @include('routes_product_subgroup.php');
     @include('routes_product.php');
+	@include('routes_youtube.php');
     @include('routes_productvariation.php');
     @include('routes_blog_cat.php');
     @include('routes_blog_item.php');
@@ -129,6 +130,7 @@ Route::group(['middleware' => 'auth'], function()
     @include('routes_widget.php');
     @include('routes_order_payment.php');
     @include('routes_state.php');
+	
 
 
 /*Route::get('/', [

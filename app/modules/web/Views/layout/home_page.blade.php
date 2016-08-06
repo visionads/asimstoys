@@ -64,29 +64,21 @@
 		</div>
 
 		<div class="pos-new-product home-text-container">
-			<div class="col-md-4">
-				<div class="home-youtube">
-					<a class="fancybox-media" href="https://www.youtube.com/watch?v=ypNoWgnbIpg">
-						<img src="{{URL::to('/')}}/web/images/youtube.jpg">
-					</a>
-				</div>
-			</div>
-
-			<div class="col-md-4">
-				<div class="home-youtube">
-					<a class="fancybox-media" href="https://www.youtube.com/watch?v=WaS2zOWQM00">
-						<img src="{{URL::to('/')}}/web/images/youtube.jpg">
-					</a>
-				</div>
-			</div>
-
-			<div class="col-md-4">
-				<div class="home-youtube">
-					<a class="fancybox-media" href="https://www.youtube.com/watch?v=ypNoWgnbIpg">
-						<img src="{{URL::to('/')}}/web/images/youtube.jpg">
-					</a>
-				</div>
-			</div>
+		
+			@if(!empty($youtube_link))
+				@foreach($youtube_link as $youtube)
+					
+					<div class="col-md-4">
+						<div class="home-youtube">
+							<a class="fancybox-media" href="{{$youtube->link}}">
+								<img src="{{URL::to('/')}}/web/images/youtube.jpg">
+							</a>
+						</div>
+					</div>
+			
+				@endforeach
+			@endif
+			
 		</div>
 
 	

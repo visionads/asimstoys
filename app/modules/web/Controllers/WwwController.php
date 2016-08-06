@@ -49,13 +49,16 @@ class WwwController extends Controller
         $featured_product_data = Product::where('is_featured','Yes')->where('status','active')->get();
 
         $data = Article::where('slug', $home_value)->where('status', 'active')->first();
+		
+		$youtube_link = DB::table('youtube_link')->where('status','active')->limit(3)->get();
 
         return view('web::layout.home_page', [
             'productgroup_data' => $productgroup_data,
             'slider_data'=>$slider_data,
             'title'=>$title,
             'data'=>$data,
-            'featured_product_data' => $featured_product_data
+            'featured_product_data' => $featured_product_data,
+			'youtube_link' => $youtube_link
         ]);
     }
 
@@ -155,17 +158,30 @@ class WwwController extends Controller
 		
 		$input = $request->all();
 		
+		
 		$name = Input::get('name');
 		$email = Input::get('email');
 		$subject = Input::get('subject');
 		$message = Input::get('message');
+		$phone = Input::get('phone');
+		
+		// Start filename change
+		
+		$filename = $_POST['filename'];
+		$destinationPath = 'http://localhost/asimstoy/public/web/contact_files';
+        move_uploaded_file($filename, "$destinationPath/".$filename);
+		
+		// End image change
+		
 		
 		$to_email = 'mithun.cse521@gmail.coom';
 		$to_name = 'Asims Toys | Contact';
 		
-		$body = "Name ".$name. "<br/><br/>Email ".$email. "<br/><br/>Subject".$subject. "<br/><br/> Message".$message ;
+		$body = "Name ".$name. "<br/><br/>Email ".$email. "<br/><br/>Subject".$subject. "<br/><br/> Phone".$phone. "<br/><br/> Message".$message.
+					"Attachment: ". $filename;
 		
-		
+		echo $body;
+		exit();
 		$mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
 		
 		
