@@ -412,26 +412,21 @@ class OrderController extends Controller
         $deliver_id = $request->session()->get('deliver_id');
         $freight_calculation = $input_data['freight_calculation'];//$request->session()->get('freight_calculation');
 
-
-
-
         $user_data = DB::table('customer')->where('id',$user_id)->first();
         #$delivery_data = DB::table('delivery_details')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
 
         //Store to Order Head and Details
         $product_cart = $request->session()->get('product_cart');
         if($product_cart){
-            $gen_number = "INV-".random_int(1,9);
+            $gen_number = GenerateNumber::generate_number();
 
 
             //Total Price
-            /*$total_price = 0;
+            $total_price = 0;
             foreach ($product_cart as $product){
                 #$product = DB::table('product')->where('id',$product['product_id'])->first();
                 $total_price += $product['product_price']; //$product->sell_rate;
-            }*/
-
-            $total_price = 5555;
+            }
 
             //coupon code
             $coupon_value = $request->session()->get('coupon_value');
@@ -453,16 +448,14 @@ class OrderController extends Controller
 
 
 
-            #try{
+            try{
                 $model = new OrderHead();
                 if($order_head = $model->create($order_head_data))
                 {
-                    print $freight_calculation;
 
-                    exit("OK");
-                    #foreach ($product_cart as $products)
-                    #{
-                        /*$model_order_dt = new OrderDetail();
+                    foreach ($product_cart as $products)
+                    {
+                        $model_order_dt = new OrderDetail();
                         $model_order_dt->order_head_id = $order_head['id']; //$order_head->id;
                         $model_order_dt->product_id =$products['product_id'];
                         $model_order_dt->product_variation_id = $products['color'];
@@ -472,11 +465,11 @@ class OrderController extends Controller
                         $model_order_dt->plate_text = $products['plate_text']?$products['plate_text']:null;
                         $model_order_dt->price = $products['product_price']?$products['product_price']:null; //$product->sell_rate;
                         $model_order_dt->status =1;
-                        $model_order_dt->save();*/
+                        $model_order_dt->save();
 
 						#$get_product_data = DB::table('product')->where('id',$product->id)->first();
 						
-						/*if($model_order_dt = $model_order_dt->save())
+						if($model_order_dt = $model_order_dt->save())
                         {
 							//Remove from product stock
 							$get_product_data = DB::table('product')->where('id',$products['product_id'])->first();
@@ -487,28 +480,28 @@ class OrderController extends Controller
 								->where('id', $product->id)
 								->update(['stock_unit_quantity' => $edited_quantity]);
 						
-						}*/
+						}
 
-                    #}
+                    }
                     #$request->session()->forget('freight_calculation');
-                    /*$request->session()->forget('product_cart');
+                    $request->session()->forget('product_cart');
                     $request->session()->set('invoice_no', $gen_number[0]);
                     $request->session()->set('total_price', $total_price);
                     $request->session()->set('customer_data', $user_data);
 
-                    Session::flash('flash_message', 'Success !');*/
+                    Session::flash('flash_message', 'Success !');
 
                 }
-            #}catch(\Exception $e){
-                #Session::flash('flash_message_error', $e->getMessage());
-            #}
+            }catch(\Exception $e){
+                Session::flash('flash_message_error', $e->getMessage());
+            }
 
             //send email
-            $to_email = $user_data->email;
+            /*$to_email = $user_data->email;
             $to_name = $user_data->first_name." ". $user_data->last_name;
             $subject = "Order placed  # ".$order_head->invoice_no. " | Asims Toys ";
             $body = "Dear ".$user_data->first_name. " Your Order is placed !";
-            $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
+            $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);*/
 
 
         }else{
