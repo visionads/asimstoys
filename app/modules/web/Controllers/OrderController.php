@@ -515,21 +515,15 @@ class OrderController extends Controller
 
     public function payment_process_secure(Request $request, $order_head_id)
     {
-        print_r($order_head_id);
-        exit();
 
         $title ="Secure Payment | Asim's Toy";
-
-        $invoice_number = $request->session()->get('invoice_no');
-        print_r($invoice_number);
-        exit();
 
         $user_id = $request->session()->get('user_id');
         $total_price = $request->session()->get('total_price');
         $customer_data = $request->session()->get('customer_data');
         $freight_calculation = $request->session()->get('freight_calculation');
 
-        $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
+        $order_head = OrderHead::findOrFail($order_head_id);
 
         $freight_amount =isset($order_head->freight_amount) ? $order_head->freight_amount : 0;
         $sub_total =isset($order_head->sub_total) ? $order_head->sub_total : 0;
