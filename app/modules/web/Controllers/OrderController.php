@@ -444,6 +444,9 @@ class OrderController extends Controller
                 'status'=> 1,
             ];
 
+            print_r($order_head_data);
+            exit();
+
             try{
                 $model = new OrderHead();
                 if($order_head = $model->create($order_head_data))
