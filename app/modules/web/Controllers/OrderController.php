@@ -412,7 +412,7 @@ class OrderController extends Controller
         $deliver_id = $request->session()->get('deliver_id');
         $freight_calculation = $input_data['freight_calculation'];//$request->session()->get('freight_calculation');
 
-        exit("OK");
+
 
 
         $user_data = DB::table('customer')->where('id',$user_id)->first();
@@ -422,6 +422,10 @@ class OrderController extends Controller
         $product_cart = $request->session()->get('product_cart');
         if($product_cart){
             $gen_number = "INV-".random_int(1,9);
+
+            print $gen_number;
+
+            exit("OK");
 
             //Total Price
             /*$total_price = 0;
