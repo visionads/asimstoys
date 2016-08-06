@@ -504,15 +504,19 @@ class OrderController extends Controller
             return redirect()->route('mycart');
         }
 
-        print_r($order_head);
-        exit();
-        return redirect()->route('payment_process_secure');
+
+        return redirect()->route('payment_process_secure', array(
+            'order_head_id'=>$order_head->id
+        ));
 
 
     }
 
 
-    public function payment_process_secure(Request $request){
+    public function payment_process_secure(Request $request, $order_head_id)
+    {
+        print_r($order_head_id);
+        exit();
 
         $title ="Secure Payment | Asim's Toy";
 

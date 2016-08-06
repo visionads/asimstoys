@@ -120,7 +120,7 @@ Route::any('remove_cart',[
 	]);
 
 
-    Route::any("payment_process_secure", [
+    Route::any("payment_process_secure/{order_head_id}", [
         "as"   => "payment_process_secure",
         "uses" => "OrderController@payment_process_secure"
     ]);
