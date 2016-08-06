@@ -504,6 +504,8 @@ class OrderController extends Controller
             return redirect()->route('mycart');
         }
 
+        print_r($order_head);
+        exit();
         return redirect()->route('payment_process_secure');
 
 
