@@ -117,22 +117,22 @@
 								<td colspan="3" >
 									&nbsp;
 								</td>
-								<td class="text-right"><strong>Shipping fee</strong></td>
-								<td class="text-right">$ 0.00</td>
+								<td class="text-right"><strong>Freight Charge</strong></td>
+								<td class="text-right">$ {{@$order_data[0]->freight_amount}}</td>
 							</tr>
 							<tr>
 								<td colspan="3" >
 									&nbsp;
 								</td>
-								<td class="text-right"><strong>Vat</strong></td>
-								<td class="text-right">$ 0.00</td>
+								<td class="text-right"><strong>GST</strong></td>
+								<td class="text-right">$ {{@$order_data[0]->vat}}</td>
 							</tr>
 							<tr>
 								<td colspan="3" >
 									&nbsp;
 								</td>
 								<td class="text-right"><strong>Total</strong></td>
-								<td class="text-right">$ {{@$total}}</td>
+								<td class="text-right">$ {{@$order_data[0]->net_amount}}</td>
 							</tr>
 							
 						</tbody>
