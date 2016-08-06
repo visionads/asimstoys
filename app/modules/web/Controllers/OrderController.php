@@ -536,18 +536,15 @@ class OrderController extends Controller
         //setter
         $request->session()->set('net_amount', $net_amount);
 
-        print_r($order_head);exit();
-
-
 
         return view('web::cart.paycart',[
             'title' => $title,
-            'invoice_number' => $invoice_number,
+            'invoice_number' => $order_head['invoice_no'],
             'user_id' => $user_id,
-            'total_price' => @$net_amount,
+            'total_price' => $net_amount,
             'customer_data' => $customer_data,
-            'discount_price' => @$discount_price,
-            'net_amount' => @$net_amount,
+            'discount_price' => $discount_price?$discount_price:0,
+            'net_amount' => $net_amount?$net_amount:0,
         ]);
 
     }
