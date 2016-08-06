@@ -444,9 +444,6 @@ class OrderController extends Controller
                 'status'=> 1,
             ];
 
-            print_r($order_head_data);
-            exit();
-
             try{
                 $model = new OrderHead();
                 if($order_head = $model->create($order_head_data))
@@ -483,7 +480,7 @@ class OrderController extends Controller
                     }
                     #$request->session()->forget('freight_calculation');
                     $request->session()->forget('product_cart');
-                    $request->session()->set('invoice_no', $gen_number[0]);
+                    $request->session()->set('invoice_no', $order_head['invoice_no']);
                     $request->session()->set('total_price', $total_price);
                     $request->session()->set('customer_data', $user_data);
 
@@ -536,6 +533,8 @@ class OrderController extends Controller
 
         //setter
         $request->session()->set('net_amount', $net_amount);
+
+        print_r($order_head);exit();
 
 
 
