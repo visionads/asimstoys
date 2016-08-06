@@ -51,9 +51,9 @@
 
                     </div>
                     <div class="col-md-3 pull-right">
-                        <h2>Bill Amount {{$order->sub_total}} </h2><br>
-                        <h2>Freight Charge Amount {{number_format($order->freight_amount?$order->freight_amount:0, 2)}} </h2><br>
-                            <h2>Total Cost {{number_format($order->net_amount,2)}} </h2><br>
+                        <h4>Bill Amount {{$order->sub_total}} </h4><br>
+                        <h4>Freight Charge {{number_format($order->freight_amount?$order->freight_amount:0, 2)}} </h4><br>
+                            <h4>Total Cost {{number_format($order->net_amount,2)}} </h4><br>
                     </div>
                 </div> <!-- / .invoice-header -->
 
