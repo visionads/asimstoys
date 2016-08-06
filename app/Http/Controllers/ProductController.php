@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\ProductGroup;
+use App\Brand;
 use App\ProductSubgroups;
 use App\ProductCategory;
 use App\Http\Requests;
@@ -27,6 +28,7 @@ class ProductController extends Controller
     {
        $pageTitle = "Product";
        $product_group_id = [''=>'Please select group']+ProductGroup::where('status', 'active')->lists('title','id')->all();
+	   $brand_id = [''=>'Please select']+Brand::lists('title','title')->all();
        $cat_product_id = ProductCategory::lists('title','id');
 
        $data = Product::orderBy('id', 'DESC')->paginate(20);
@@ -34,7 +36,8 @@ class ProductController extends Controller
                 'pageTitle' => $pageTitle,
                 'cat_product_id' => $cat_product_id,
                 'data' => $data,
-                'product_group_id' => $product_group_id
+                'product_group_id' => $product_group_id,
+				'brand_id' => $brand_id
             ]);
     }
 
@@ -136,10 +139,12 @@ class ProductController extends Controller
         $data = Product::where('slug',$slug)->first();
         $product_group_id = ProductGroup::lists('title','id');
         $cat_product_id = ProductCategory::lists('title','id');
+		$brand_id = [''=>'Please select']+Brand::lists('title','title')->all();
         return view('product.update', [
                 'data' => $data,
                 'cat_product_id' => $cat_product_id,
-                'product_group_id' => $product_group_id
+                'product_group_id' => $product_group_id,
+				'brand_id' => $brand_id
         ]);
     }
 

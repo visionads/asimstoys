@@ -15,7 +15,7 @@
             @if(count($product_group_id)>0)
                 {!! Form::select('product_group_id', $product_group_id,Input::old('product_group_id'),['class' => 'form-control','id'=>'product_group_id','required']) !!}
             @else
-                {!! Form::text('product_group_id', 'No Category ID available',['id'=>'product_group_id','class' => 'form-control','required','disabled']) !!}
+                {!! Form::text('product_group_id', 'No Group ID available',['id'=>'product_group_id','class' => 'form-control','required','disabled']) !!}
             @endif
         </div>
 
@@ -62,11 +62,15 @@
             <small class="required">(Required)</small>
             {!! Form::text('stock_unit_quantity', null, ['id'=>'stock_unit_quantity', 'class' => 'form-control','required']) !!}
         </div>
-
-        <div class="form-group">
+		
+		<div class="form-group">
             {!! Form::label('brand', 'Brand:', ['class' => 'control-label']) !!}
             <small class="required">(Required)</small>
-            {!! Form::Select('brand',array(''=>'Please select','Mercedes'=>'Mercedes','Audi'=>'Audi','BMW' => 'BMW','Range Rover' => 'Range Rover','Ford' => 'Ford'),Input::old('brand'),['class'=>'form-control ']) !!}
+            @if(count($brand_id)>0)
+                {!! Form::select('brand', $brand_id,Input::old('brand'),['class' => 'form-control','id'=>'brand','required']) !!}
+            @else
+                {!! Form::text('brand', 'No Brand available',['id'=>'brand','class' => 'form-control','required','disabled']) !!}
+            @endif
         </div>
 
         <div class="form-group">

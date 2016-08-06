@@ -37,9 +37,13 @@ class ProductController extends Controller
         }
         exit();*/
 
-        $product = DB::table('product')->where('slug',$product_slug)->first();
+        $product = DB::table('product')->where('slug',$product_slug)->where('status','active')->first();
 		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
-		$related_product_r = DB::table('product')->where('product_subgroup_id',$product->product_subgroup_id)->whereNotIn('id',[$product->id])->get();
+		$related_product_r = DB::table('product')
+							->where('product_subgroup_id',$product->product_subgroup_id)
+							->whereNotIn('id',[$product->id])
+							->where('status','active')
+							->get();
 
 		$product_single_gallery = DB::table('gal_image')->where('product_id',$product->id)->first();
 		$product_gallery_all = DB::table('gal_image')->where('product_id',$product->id)->get();
