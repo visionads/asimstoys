@@ -56,9 +56,9 @@ class ProductCategoryController extends Controller
         exit;
     }
 
-    public function cat_product_group_ajax(){
+    public function cat_product_group_ajax(Request $request){
 
-         $input_data = Input::all();
+         $input_data = $request->all();
          $group_id = $input_data['product_group_id'];
 
          $subgroup_data = ProductSubgroups::where('product_group_id',$group_id)->get();
