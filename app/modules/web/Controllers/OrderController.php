@@ -450,7 +450,7 @@ class OrderController extends Controller
                 'status'=> 1,
             ];
 
-            print $gen_number;
+            print $freight_calculation;
 
             exit("OK");
 
