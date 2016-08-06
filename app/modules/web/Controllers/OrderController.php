@@ -566,6 +566,9 @@ class OrderController extends Controller
             $customer_data = $request->session()->get('customer_data');
             $freight_calculation = $request->session()->get('freight_calculation');
 
+            print_r("OK");
+            exit();
+
             // Update Invoice
             DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'eway']);
 
