@@ -42,19 +42,14 @@
                         </address>
                     </div>
 
-                    <div class="col-md-3 pull-right">
+                    <div class="col-md-6 pull-right">
                         <div class="invoice-date">
                             <small><strong>Date</strong></small><br>
                             {{$order->created_at}}
                         </div>
 
+                    </div>
 
-                    </div>
-                    <div class="col-md-3 pull-right">
-                        <h6>Bill Amount {{$order->sub_total}} </h6><br>
-                        <h6>Freight Charge {{number_format($order->freight_amount?$order->freight_amount:0, 2)}} </h6><br>
-                            <h6>Total Cost {{number_format($order->net_amount,2)}} </h6><br>
-                    </div>
                 </div> <!-- / .invoice-header -->
 
                 <p> &nbsp; </p>
@@ -91,6 +86,12 @@
                 </table>
 
             @endforeach
+                <p>
+            <div class="col-md-3 pull-right">
+                <h3>Freight Charge {{number_format($order->freight_amount?$order->freight_amount:0, 2)}} </h3><br>
+                <h3>Total Cost {{number_format($order->net_amount,2)}} </h3><br>
+            </div>
+                </p>
 
 
 
