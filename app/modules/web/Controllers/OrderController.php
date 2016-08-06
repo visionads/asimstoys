@@ -412,6 +412,8 @@ class OrderController extends Controller
         $deliver_id = $request->session()->get('deliver_id');
         $freight_calculation = $input_data['freight_calculation'];//$request->session()->get('freight_calculation');
 
+        exit("OK");
+
 
         $user_data = DB::table('customer')->where('id',$user_id)->first();
         #$delivery_data = DB::table('delivery_details')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
