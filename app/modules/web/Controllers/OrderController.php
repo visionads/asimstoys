@@ -458,10 +458,10 @@ class OrderController extends Controller
                         $model_order_dt->product_id =$products['product_id'];
                         $model_order_dt->product_variation_id = $products['color'];
                         $model_order_dt->qty = $products['quantity'];
-                        $model_order_dt->color = @$products['color'];
-                        $model_order_dt->background_color = @$products['background'];
-                        $model_order_dt->plate_text = @$products['plate_text'];
-                        $model_order_dt->price = @$products['product_price']; //$product->sell_rate;
+                        $model_order_dt->color = $products['color']?$products['color']:null;
+                        $model_order_dt->background_color = $products['background']?$products['background']:null;
+                        $model_order_dt->plate_text = $products['plate_text']?$products['plate_text']:null;
+                        $model_order_dt->price = $products['product_price']?$products['product_price']:null; //$product->sell_rate;
                         $model_order_dt->status =1;
                         $model_order_dt->save();
 
