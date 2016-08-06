@@ -559,11 +559,7 @@ class OrderController extends Controller
 
         if($input_data['payment_method']=='e_way')
         {
-            print_r("e_way");
-
             $invoice_number = $input_data['invoice_number'];// $request->session()->get('invoice_no');
-            print_r($invoice_number);
-            exit();
 
             $user_id = $request->session()->get('user_id');
             $total_price = $request->session()->get('total_price');
@@ -588,7 +584,7 @@ class OrderController extends Controller
 
         }else{
             // Update Invoice
-            $invoice_number = $request->session()->get('invoice_no');
+            $invoice_number = $input_data['invoice_number']; //$request->session()->get('invoice_no');
             DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'layby']);
             $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
 
