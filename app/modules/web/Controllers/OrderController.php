@@ -447,7 +447,7 @@ class OrderController extends Controller
 
 
 
-            try{
+            #try{
                 $model = new OrderHead();
                 if($order_head = $model->create($order_head_data))
                 {
@@ -490,9 +490,9 @@ class OrderController extends Controller
                     Session::flash('flash_message', 'Success !');*/
 
                 }
-            }catch(\Exception $e){
-                Session::flash('flash_message_error', $e->getMessage());
-            }
+            #}catch(\Exception $e){
+                #Session::flash('flash_message_error', $e->getMessage());
+            #}
 
             //send email
             $to_email = $user_data->email;
