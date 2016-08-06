@@ -69,10 +69,11 @@ class ProductController extends Controller
         $input = $request->all();
         $product_id = $input['product_id'];
 
-        $product_data = Product::findOrFail($product_id);
+
+        $product_data = Product::where('id',$product_id)->get()->toArray();
 
         $user_data= null;
-        $delivery_data= (object)$request->all();
+        $delivery_data= $request->all();
 
 
         //Freight Calculation for RTT TNT Express

@@ -44,9 +44,11 @@ class RttTntExpress
         $enquiry = new TntEnquiry();
         $enquiry->setShipDate($tomorrow);
 
+        //cast as array
+        $delivery_data_arr = (array)$delivery_data;
         $deliveryAddress = array(
-            'suburb'=>$delivery_data->suburb,
-            'postCode'=>$delivery_data->postcode,
+            'suburb'=>$delivery_data_arr['suburb'],
+            'postCode'=>$delivery_data_arr['postcode'],
             'state'=>'vic'
         );
         //Set Delivery address
@@ -59,17 +61,18 @@ class RttTntExpress
         $width = null;
         $height = null;
 
-        if($product_cart){
-
-            foreach ($product_cart as $values){
-                $product = Product::findOrFail($values['product_id']);
+        if($product_cart)
+        {
+            foreach ($product_cart as $values)
+            {
+                $product_id = isset($values['product_id'])? $values['product_id'] : $values['id'];
+                $product = Product::findOrFail($product_id);
             }
             //set value
             $weight=$product['weight'];
             $length=$product['length'];
             $width=$product['width'];
             $height=$product['height'];
-
         }
 
         /*print "Weight : ".$weight."\n";
@@ -78,7 +81,6 @@ class RttTntExpress
         print "Height : ".$height."\n";
         print "------ \n";
         print "------ \n";*/
-
 
         //product data
         $numberOfPackages=1;
