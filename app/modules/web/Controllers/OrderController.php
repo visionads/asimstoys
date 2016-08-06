@@ -566,7 +566,11 @@ class OrderController extends Controller
             $customer_data = $request->session()->get('customer_data');
             $freight_calculation = $request->session()->get('freight_calculation');
 
-            print_r("OK");
+            print "invoice number  ".$invoice_number."/n";
+            print "user ".$user_id."/n";
+            print "total price  ".$total_price."/n";
+            print "customer data ".$customer_data."/n";
+            print "freight calculation  ".$freight_calculation."/n";
             exit();
 
             // Update Invoice
