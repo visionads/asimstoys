@@ -42,13 +42,18 @@
                         </address>
                     </div>
 
-                    <div class="col-md-6 pull-right">
+                    <div class="col-md-3 pull-right">
                         <div class="invoice-date">
                             <small><strong>Date</strong></small><br>
                             {{$order->created_at}}
                         </div>
 
 
+                    </div>
+                    <div class="col-md-3 pull-right">
+                        Bill Amount {{$order->sub_total}} <br>
+                        Freight Charge Amount {{number_format($order->freight_amount?$order->freight_amount:0, 2)}}<br>
+                        Total Cost {{number_format($order->net_amount,2)}}<br>
                     </div>
                 </div> <!-- / .invoice-header -->
 
