@@ -569,18 +569,10 @@ class OrderController extends Controller
             $customer_data = $customer; // $request->session()->get('customer_data');
             $freight_calculation = $order_head['freight_amount']; //$request->session()->get('freight_calculation');
 
-            print "invoice number  ".$invoice_number."/n";
-            print "user ".$user_id."/n";
-            print "total price  ".$total_price."/n";
-            print_r($customer_data);
-            print "freight calculation  ".$freight_calculation."/n";
-            exit();
 
             // Update Invoice
             DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'eway']);
-
-            $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
-
+            
            # $request->session()->forget('product_cart');
 
             return view('web::cart.e_way_payment',[
