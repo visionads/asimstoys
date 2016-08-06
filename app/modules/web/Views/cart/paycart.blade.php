@@ -63,6 +63,7 @@
 
                 {!! Form::open(['route' => 'payment_method_complete']) !!}
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="invoice_number" value="{{ $invoice_number }}">
 
                 <div class="col-md-12 margin-top-30 margin-bottom-30">
                     <div class="col-md-3" style="border-right: 1px solid #aaaaaa; ">
