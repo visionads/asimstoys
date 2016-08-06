@@ -72,7 +72,7 @@ class ProductController extends Controller
         $product_data = Product::findOrFail($product_id);
 
         $user_data= null;
-        $delivery_data= $request->all();
+        $delivery_data= (object)$request->all();
 
 
         //Freight Calculation for RTT TNT Express
