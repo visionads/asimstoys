@@ -525,9 +525,6 @@ class OrderController extends Controller
 
         $order_head = OrderHead::findOrFail($order_head_id);
 
-        print_r($order_head);
-        exit();
-
         $freight_amount =isset($order_head->freight_amount) ? $order_head->freight_amount : 0;
         $sub_total =isset($order_head->sub_total) ? $order_head->sub_total : 0;
         $net_amount =isset($order_head->net_amount) ? $order_head->net_amount : 0;
@@ -552,10 +549,14 @@ class OrderController extends Controller
 
     }
 
-    public function payment_method_complete(Request $request){
+    public function payment_method_complete(Request $request)
+    {
 
         $title = "Complete the Payment ";
         $input_data = $request->all();
+
+        print_r($input_data);
+        exit();
 
         if($input_data['payment_method']=='e_way'){
 
