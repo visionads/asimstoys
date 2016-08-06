@@ -87,7 +87,7 @@
 
             @endforeach
                 <p>
-            <div class="col-md-12 pull-right">
+            <div class="col-md-4 pull-right">
                 <table class="table table-striped cart-table" style="text-align: right; background: none;">
                     <tr>
                         <td> Freight Charge </td>
