@@ -423,9 +423,6 @@ class OrderController extends Controller
         if($product_cart){
             $gen_number = "INV-".random_int(1,9);
 
-            print $gen_number;
-
-            exit("OK");
 
             //Total Price
             /*$total_price = 0;
@@ -453,6 +450,9 @@ class OrderController extends Controller
                 'status'=> 1,
             ];
 
+            print $gen_number;
+
+            exit("OK");
 
 
             #try{
