@@ -15,6 +15,7 @@ use Session;
 use App\OrderPaymentTransaction;
 use Illuminate\Support\Facades\Input;
 use App\Helpers\SendMailer;
+use App\Product;
 
 
 class AccountsController extends Controller

@@ -90,13 +90,13 @@
                     @foreach($order->relOrderDetail as $order_dt)
                         <tr>
                             <td>{{ \App\OrderHead::findOrFail($order_dt->order_head_id)->invoice_no}}</td>
-                            <td>{{\App\Product::findOrFail($order_dt->product_id)->title}}</td>
-                            {{--<td>{{ isset($order_dt->product_variation_id)?$order_dt->product_variation_id:null}}</td>
+                            <td>{{ \App\Product::findOrFail($order_dt->product_id)->title}}</td>
+                            <td>{{ isset($order_dt->product_variation_id)?$order_dt->product_variation_id:null}}</td>
                             <td>{{isset($order_dt->qty)?$order_dt->qty:null}}</td>
                             <td>{{isset($order_dt->product_variation_id)?$order_dt->product_variation_id:null}}</td>
                             <td>{{isset($order_dt->background_color)?$order_dt->background_color:null}}</td>
                             <td>{{isset($order_dt->plate_text)?$order_dt->plate_text:null}}</td>
-                            <td>{{isset($order_dt->price)?$order_dt->price:null}}</td>--}}
+                            <td>{{isset($order_dt->price)?$order_dt->price:null}}</td>
                         </tr>
                     @endforeach
 
