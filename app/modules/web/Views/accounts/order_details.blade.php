@@ -90,7 +90,7 @@
                     @foreach($order->relOrderDetail as $order_dt)
                         <tr>
                             <td>{{ \App\OrderHead::findOrFail($order_dt->order_head_id)->invoice_no}}</td>
-                            <td>{{ Product::findOrFail($order_dt->product_id)->title}}</td>
+                            <td>{{ $order_dt->product_id //\App\Product::findOrFail($order_dt->product_id)->title}}</td>
                             <td>{{ isset($order_dt->product_variation_id)?$order_dt->product_variation_id:null}}</td>
                             <td>{{isset($order_dt->qty)?$order_dt->qty:null}}</td>
                             <td>{{isset($order_dt->product_variation_id)?$order_dt->product_variation_id:null}}</td>
