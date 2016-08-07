@@ -134,8 +134,8 @@ class AccountsController extends Controller
     }
 
 
-    public function details_of_lay_by($order_head_id){
-
+    public function details_of_lay_by($order_head_id)
+    {
 
         $total_amount = DB::table('order_detail')
             ->select(DB::raw('SUM(price) as total_amount'))
@@ -158,6 +158,8 @@ class AccountsController extends Controller
         $delivery_data = DeliveryDetails::where('user_id',Session::get('user_id'))->orderBy('id','desc')->first();
 
         $title = 'Invoice Detail';
+
+        exit("testing");
 
         return view('web::accounts.order_details',[
             'order' => $order,
