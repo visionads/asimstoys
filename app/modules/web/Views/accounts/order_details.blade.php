@@ -124,8 +124,8 @@
                     <tbody>
                     @foreach($order_pay_trn as $values)
                         <tr>
-                            <td>{{ \App\OrderHead::findOrFail($values->order_head_id)->invoice_no}}</td>
-                            <td>{{\App\Customer::findOrFail($values->customer_id)->first_name}}</td>
+                            <td></td>
+                            <td></td>
                             <td>{{ $values->payment_type }}</td>
                             <td>{{ $values->amount  }}</td>
                             <td>{{ $values->date }}</td>
