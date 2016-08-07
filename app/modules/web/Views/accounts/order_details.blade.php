@@ -171,7 +171,7 @@
                         <div class="billing_address">
                             <div class="header">DELIVERY ADDRESS</div>
                             <div class="details">
-                                <p style="margin:0;">
+                                {{--<p style="margin:0;">
                                     {{$delivery_data->first_name}} {{$delivery_data->last_name}}
                                 </p>
                                 <p style="margin:0;">
@@ -185,7 +185,7 @@
                                 </p>
                                 <p style="margin:0;">
                                     {{$delivery_data->telephone}}
-                                </p>
+                                </p>--}}
                             </div>
                         </div>
                     </div>
