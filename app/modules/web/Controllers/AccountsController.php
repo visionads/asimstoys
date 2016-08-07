@@ -159,7 +159,6 @@ class AccountsController extends Controller
 
         $title = 'Invoice Detail';
 
-        exit("testing");
 
         return view('web::accounts.order_details',[
             'order' => $order,
