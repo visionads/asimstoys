@@ -148,7 +148,7 @@
                             <div class="header">BILLING ADDRESS</div>
                             <div class="details">
                                 <p style="margin:0;">
-                                    {{$get_customer_data->first_name}} {{$get_customer_data->last_name}}
+                                    {{isset($get_customer_data->first_name)?$get_customer_data->first_name:null}} {{isset($get_customer_data->last_name)?$get_customer_data->last_name:null}}
                                 </p>
                                 <p style="margin:0;">
                                     Address: <br> {{$get_customer_data->address}}
