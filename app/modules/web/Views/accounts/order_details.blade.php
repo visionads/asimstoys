@@ -124,8 +124,8 @@
                     <tbody>
                     @foreach($order_pay_trn as $values)
                         <tr>
-                            <td></td>
-                            <td></td>
+                            <td>{{ \App\OrderHead::findOrFail($values->order_head_id)->invoice_no}}</td>
+                            <td>{{\App\Customer::findOrFail($values->customer_id)->first_name}}</td>
                             <td>{{ $values->payment_type }}</td>
                             <td>{{ $values->amount  }}</td>
                             <td>{{ $values->date }}</td>
@@ -140,56 +140,7 @@
                 <p class="pull-right">Paid Amount {{@$paid_amount->paid_amount}}</p>
             @endif
 
-            <div class="col-md-12 margin-top-30 margin-bottom-30">
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="billing_address">
-                            <div class="header">BILLING ADDRESS</div>
-                            <div class="details">
-                                <p style="margin:0;">
-                                    {{$get_customer_data->first_name}} {{$get_customer_data->last_name}}
-                                </p>
-                                <p style="margin:0;">
-                                    Address: <br> {{$get_customer_data->address}}
-                                </p>
-                                <p style="margin:0;">
-                                    {{$get_customer_data->suburb}} {{$get_customer_data->state}} {{$get_customer_data->postcode}}
-                                </p>
-                                <p style="margin:0;">
-                                    {{$get_customer_data->country}}
-                                </p>
-                                <p style="margin:0;">
-                                    {{$get_customer_data->telephone}}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="billing_address">
-                            <div class="header">DELIVERY ADDRESS</div>
-                            <div class="details">
-                                <p style="margin:0;">
-                                    {{$delivery_data->first_name}} {{$delivery_data->last_name}}
-                                </p>
-                                <p style="margin:0;">
-                                    Address: <br> {{$delivery_data->address}}
-                                </p>
-                                <p style="margin:0;">
-                                    {{$delivery_data->suburb}} {{$delivery_data->state}} {{$delivery_data->postcode}}
-                                </p>
-                                <p style="margin:0;">
-                                    {{$delivery_data->country}}
-                                </p>
-                                <p style="margin:0;">
-                                    {{$delivery_data->telephone}}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
 
 
 
