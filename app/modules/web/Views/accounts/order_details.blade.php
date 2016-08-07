@@ -73,35 +73,7 @@
                 <p> &nbsp; </p>
 
                 <h3 style="color: green;">Invoice History </h3>
-                <table class="table table-striped cart-table">
-                    <thead>
-                    <tr>
-                        <td>Order Invoice </td>
-                        <td>Product Name (ID)</td>
-                        <td>Variation </td>
-                        <td>Quantity</td>
-                        <td>Color</td>
-                        <td>Background Color</td>
-                        <td>Plate Text</td>
-                        <td>Price</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($order->relOrderDetail as $order_dt)
-                        <tr>
-                            <td>{{ \App\OrderHead::findOrFail($order_dt->order_head_id)->invoice_no}}</td>
-                            <td>{{\App\Product::findOrFail($order_dt->product_id)->title}}</td>
-                            <td>{{ isset($order_dt->product_variation_id)?$order_dt->product_variation_id:null}}</td>
-                            <td>{{isset($order_dt->qty)?$order_dt->qty:null}}</td>
-                            <td>{{isset($order_dt->product_variation_id)?$order_dt->product_variation_id:null}}</td>
-                            <td>{{isset($order_dt->background_color)?$order_dt->background_color:null}}</td>
-                            <td>{{isset($order_dt->plate_text)?$order_dt->plate_text:null}}</td>
-                            <td>{{isset($order_dt->price)?$order_dt->price:null}}</td>
-                        </tr>
-                    @endforeach
-
-                    </tbody>
-                </table>
+                
                 <p class="pull-right">Total Amount {{isset($total_amount->total_amount)?number_format($total_amount->total_amount,2):null}}</p>
             @endforeach
 
