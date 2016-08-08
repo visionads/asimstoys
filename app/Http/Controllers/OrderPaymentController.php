@@ -122,6 +122,23 @@ class OrderPaymentController extends Controller
     }
 
 
+    public function order_complete($order_head_id)
+    {
+
+        try {
+            $model = OrderHead::findOrFail($order_head_id);
+            $model->status = 'done';
+            if ($model->save()) {
+
+                Session::flash('flash_message', " Successfully Closed as Completed.");
+                return redirect()->back();
+            }
+        } catch(\Exception $e) {
+            Session::flash('flash_message_error',$e->getMessage() );
+            return redirect()->back();
+        }
+    }
+
 
     public function lay_by_order_show($order_head_id){
         $title = 'Invoice Detail';

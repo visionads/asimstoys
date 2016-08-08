@@ -33,6 +33,10 @@ Route::any("order_paid/cancel/{id}", [
     "uses" => "OrderPaymentController@cancel"
 ]);
 
+Route::any("order-complete/{id}", [
+    "as"   => "order-complete",
+    "uses" => "OrderPaymentController@order_complete"
+]);
 
 /*----------Lay BY-------------*/
 
