@@ -552,6 +552,8 @@ class OrderController extends Controller
     public function payment_method_complete(Request $request)
     {
 
+        $request->session()->forget('product_cart');
+        
         $title = "Complete the Payment ";
         $input_data = $request->all();
 
