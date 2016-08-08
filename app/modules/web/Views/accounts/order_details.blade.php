@@ -89,9 +89,11 @@
                     <tbody>
                     @foreach($order->relOrderDetail as $order_dt)
                         <tr>
-                            <td>{{$order_dt->order_head_id}} {{--{ \App\OrderHead::findOrFail($order_dt->order_head_id)->invoice_no}}--}}</td>
-                            <td>{{ $order_dt->product_id }}</td>
-                            {{--//\App\Product::findOrFail($order_dt->product_id)->title--}}
+                            <td>
+                                {{ isset(\App\OrderHead::findOrFail($order_dt->order_head_id)->invoice_no)? \App\OrderHead::findOrFail($order_dt->order_head_id)->invoice_no : $order_dt->order_head_id}}</td>
+                            <td>
+                            {{ isset(\App\Product::findOrFail($order_dt->product_id)->title)?\App\Product::findOrFail($order_dt->product_id)->title :  $order_dt->product_id }}
+                            </td>
                             <td>{{ isset($order_dt->product_variation_id)?$order_dt->product_variation_id:null}}</td>
                             <td>{{isset($order_dt->qty)?$order_dt->qty:null}}</td>
                             <td>{{isset($order_dt->product_variation_id)?$order_dt->product_variation_id:null}}</td>
@@ -117,7 +119,7 @@
                         <td>Payment Type </td>
                         <td>Amount </td>
                         <td>Date </td>
-                        <td>Transactio No# </td>
+                        <td>Transaction No# </td>
                         <td>Gateway Name </td>
                         <td>Status </td>
                     </tr>
@@ -125,14 +127,14 @@
                     <tbody>
                     @foreach($order_pay_trn as $values)
                         <tr>
-                            <td>{{ \App\OrderHead::findOrFail($values->order_head_id)->invoice_no}}</td>
-                            <td>{{\App\Customer::findOrFail($values->customer_id)->first_name}}</td>
-                            <td>{{ $values->payment_type }}</td>
-                            <td>{{ $values->amount  }}</td>
-                            <td>{{ $values->date }}</td>
-                            <td>{{ $values->transaction_no }}</td>
-                            <td>{{ $values->gateway_name }}</td>
-                            <td>{{ $values->status }}</td>
+                            <td>{{ isset(\App\OrderHead::findOrFail($values->order_head_id)->invoice_no)?\App\OrderHead::findOrFail($values->order_head_id)->invoice_no:null}}</td>
+                            <td>{{isset(\App\Customer::findOrFail($values->customer_id)->first_name)?\App\Customer::findOrFail($values->customer_id)->first_name:null}}</td>
+                            <td>{{ isset($values->payment_type)?$values->payment_type:null }}</td>
+                            <td>{{ isset($values->amount)? number_format($values->amount, 2) : null  }}</td>
+                            <td>{{ isset($values->date)?$values->date: null }}</td>
+                            <td>{{ isset($values->transaction_no)?$values->transaction_no:null }}</td>
+                            <td>{{ isset($values->gateway_name)?$values->gateway_name:null }}</td>
+                            <td>{{ isset($values->status)?$values->status:null }}</td>
                         </tr>
                     @endforeach
 
@@ -147,21 +149,24 @@
                         <div class="billing_address">
                             <div class="header">BILLING ADDRESS</div>
                             <div class="details">
-                                {{--<p style="margin:0;">
-                                    {{isset($get_customer_data->first_name)?$get_customer_data->first_name:null}} {{isset($get_customer_data->last_name)?$get_customer_data->last_name:null}}
+                                <p style="margin:0;">
+                                    {{isset($get_customer_data->first_name)?$get_customer_data->first_name:null}}
+                                    {{isset($get_customer_data->last_name)?$get_customer_data->last_name:null}}
                                 </p>
                                 <p style="margin:0;">
-                                    Address: <br> {{$get_customer_data->address}}
+                                    Address: <br> {{isset($get_customer_data->address)?$get_customer_data->address:null}}
                                 </p>
                                 <p style="margin:0;">
-                                    {{$get_customer_data->suburb}} {{$get_customer_data->state}} {{$get_customer_data->postcode}}
+                                    {{isset($get_customer_data->suburb)?$get_customer_data->suburb:null}}
+                                    {{isset($get_customer_data->state)?$get_customer_data->state:null}}
+                                    {{isset($get_customer_data->postcode)?$get_customer_data->postcode:null}}
                                 </p>
                                 <p style="margin:0;">
-                                    {{$get_customer_data->country}}
+                                    {{isset($get_customer_data->country)?$get_customer_data->country:null}}
                                 </p>
                                 <p style="margin:0;">
-                                    {{$get_customer_data->telephone}}
-                                </p>--}}
+                                    {{isset($get_customer_data->telephone)?$get_customer_data->telephone:null}}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -171,21 +176,25 @@
                         <div class="billing_address">
                             <div class="header">DELIVERY ADDRESS</div>
                             <div class="details">
-                                {{--<p style="margin:0;">
-                                    {{$delivery_data->first_name}} {{$delivery_data->last_name}}
+                                <p style="margin:0;">
+                                    {{isset($delivery_data->first_name)?$delivery_data->first_name:null}}
+                                    {{isset($delivery_data->last_name)?$delivery_data->last_name:null}}
                                 </p>
                                 <p style="margin:0;">
-                                    Address: <br> {{$delivery_data->address}}
+                                    Address: <br>
+                                    {{isset($delivery_data->address)?$delivery_data->address:null}}
                                 </p>
                                 <p style="margin:0;">
-                                    {{$delivery_data->suburb}} {{$delivery_data->state}} {{$delivery_data->postcode}}
+                                    {{isset($delivery_data->suburb)?$delivery_data->suburb:null}}
+                                    {{isset($delivery_data->state)?$delivery_data->state:null}}
+                                    {{isset($delivery_data->postcode)?$delivery_data->postcode:null}}
                                 </p>
                                 <p style="margin:0;">
-                                    {{$delivery_data->country}}
+                                    {{isset($delivery_data->country)?$delivery_data->country:null}}
                                 </p>
                                 <p style="margin:0;">
-                                    {{$delivery_data->telephone}}
-                                </p>--}}
+                                    {{isset($delivery_data->telephone)?$delivery_data->telephone:null}}
+                                </p>
                             </div>
                         </div>
                     </div>
