@@ -30,7 +30,8 @@
 						<strong>{{$customer_data->first_name}} {{$customer_data->last_name}}</strong><br>
 						{{$customer_data->suburb}}, {{$customer_data->postcode}}<br>
 						{{$customer_data->state}}, {{$customer_data->country}}<br>
-						<abbr title="Phone">P:</abbr> {{$customer_data->telephone}}
+						<abbr title="Phone">P:</abbr> {{$customer_data->telephone}}<br/>
+						{{@$customer_data->address}}
 					</address>
 				</div><!--end .col -->
 				<div class="col-xs-4">
@@ -41,7 +42,7 @@
 						</div>
 						<div class="clearfix">
 							<div class="pull-left"> TOTAL Amount : </div>
-                            <div class="pull-right"> <b>{{@$total_amount->total_amount}} </b></div>
+                            <div class="pull-right"> <b>{{@$total_amount->total_amount + $order_data[0]->freight_amount}} </b></div>
 						</div>
 						<div class="clearfix">
 							<div class="pull-left"> DUE Amount : </div>
@@ -89,7 +90,7 @@
                                             {{$order_data[0]->invoice_no}}
                                         </td>
 										<td>
-											{{$product->title}}
+											{{@$product->title}}
 										</td>
 										<td>
 											{{@$product_variation->title}}

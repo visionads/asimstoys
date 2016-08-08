@@ -29,7 +29,8 @@
 						<strong>{{@$customer_data->first_name}} {{@$customer_data->last_name}}</strong><br>
 						{{@$customer_data->suburb}}, {{@$customer_data->postcode}}<br>
 						{{@$customer_data->state}}, {{@$customer_data->country}}<br>
-						<abbr title="Phone">P:</abbr> {{@$customer_data->telephone}}
+						<abbr title="Phone">P:</abbr> {{@$customer_data->telephone}}<br/>
+						{{@$customer_data->address}}
 					</address>
 				</div><!--end .col -->
 				<div class="col-xs-4">

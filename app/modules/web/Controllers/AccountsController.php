@@ -137,7 +137,11 @@ class AccountsController extends Controller
 
     public function details_of_lay_by($order_head_id)
     {
-
+		
+		$freight_data = DB::table('order_head')
+						->where(['id' => $order_head_id])
+						->first();
+						
         $total_amount = DB::table('order_detail')
             ->select(DB::raw('SUM(price) as total_amount'))
             ->groupBy('order_head_id')
@@ -150,7 +154,7 @@ class AccountsController extends Controller
             ->where('order_head_id', $order_head_id)
             ->first();
 
-        $due_amount = @$total_amount->total_amount - @$paid_amount->paid_amount;
+        $due_amount = @$total_amount->total_amount + $freight_data->freight_amount - @$paid_amount->paid_amount;
 
         $order = OrderHead::with('relOrderDetail')->where('invoice_type', 'layby')->where('id', $order_head_id)->get();
         $order_pay_trn = OrderPaymentTransaction::where('order_head_id', $order_head_id)->get();
@@ -163,6 +167,7 @@ class AccountsController extends Controller
 
         return view('web::accounts.order_details',[
             'order' => $order,
+			'freight_data' => $freight_data,
             'order_pay_trn' => $order_pay_trn,
             'title' => $title,
             'get_customer_data' => $get_customer_data,

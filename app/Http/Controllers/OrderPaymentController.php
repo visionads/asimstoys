@@ -128,7 +128,7 @@ class OrderPaymentController extends Controller
             ->where('order_head_id', $order_head_id)
             ->first();
 
-        $due_amount = @$total_amount->total_amount - @$paid_amount->paid_amount;
+        $due_amount = @$total_amount->total_amount + $order[0]->freight_amount - @$paid_amount->paid_amount;
 
         return view('order_payment.lay_by_order_details',[
             'order_data' => $order,
