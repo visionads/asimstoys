@@ -139,7 +139,7 @@
 											<td>
 											</td>
 											<td>Total:</td>
-											<td class="text-align-right">${{$total_value}}</td>
+											<td class="text-align-right">${{number_format($total_value, 2)}}</td>
 											<td></td>
 										</tr>
 								</tbody>
