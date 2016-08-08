@@ -42,6 +42,11 @@ Route::any("lay_by/index", [
     "uses" => "OrderPaymentController@lay_by_index"
 ]);
 
+Route::any("pre-order-list", [
+    "as"   => "pre-order-list",
+    "uses" => "OrderPaymentController@pre_order_list"
+]);
+
 Route::any("lay-by-order-show/{order_head_id}", [
     "as"   => "lay-by-order-show",
     "uses" => "OrderPaymentController@lay_by_order_show"

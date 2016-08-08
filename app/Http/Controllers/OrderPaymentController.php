@@ -72,6 +72,19 @@ class OrderPaymentController extends Controller
     }
 
 
+    public function pre_order_list()
+    {
+        $pageTitle = "Lay By Order";
+
+        $data = OrderHead::with('relCustomer')
+            ->where('order_head.invoice_type','pre-order')
+            ->orderBy('order_head.id','desc')
+            ->get();
+
+        return view('order_payment.pre_order_list',['pageTitle' => $pageTitle,'data' => $data]);
+    }
+
+
     public function approve($id)
     {
        
