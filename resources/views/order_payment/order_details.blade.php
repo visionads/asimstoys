@@ -115,8 +115,8 @@
 								<td colspan="2" >
 									&nbsp;
 								</td>
-								<td class="text-right"><strong>Freight Charge</strong></td>
-								<td class="text-right">$ {{number_format(@$order_data[0]->freight_amount,2)}}</td>
+								<td class="text-right" colspan="2"><strong>Freight Charge</strong></td>
+								<td class="text-right" colspan="2">$ {{number_format(@$order_data[0]->freight_amount,2)}}</td>
 							</tr>
 							<tr>
 								<td colspan="4" >
