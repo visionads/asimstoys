@@ -58,7 +58,7 @@
                                             <a href="{{ route('lay-by-order-show', $values->id) }}" data-toggle="modal" data-target="#etsbModal" class="btn btn-info btn-xs" title="Details"><i class="icon-eye-open"></i></a>
                                             <a href="{{ route('order-paid-approve', $values->id) }}" class="btn btn-success btn-xs" onclick="return confirm('Are you sure to Approve?')" title="Approved"><i class="icon-check"></i></a>
                                             <a href="{{ route('order-paid-cancel', $values->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Cancel?')" title="Cancel"><i class="icon-trash"></i></a>
-                                            <a href="{{ route('order-complete', $values->id) }}" class="btn btn-success btn-xs" onclick="return confirm('Are you sure to Close as Complete ?')" title="Close the Order as Completed"><i class="icon-check-square"></i></a>
+                                            <a href="{{ route('order-complete', $values->id) }}" class="btn btn-success btn-xs" onclick="return confirm('Are you sure to Close as Complete ?')" title="Close the Order as Completed"><i class="icon-check-sign"></i></a>
                                         </td>
                                     </tr>
                             @endforeach
