@@ -126,7 +126,7 @@
 								<td class="text-right">$ {{number_format(@$order_data[0]->vat,2)}}</td>
 							</tr>
 							<tr>
-								<td colspan="3" >
+								<td colspan="4" >
 									&nbsp;
 								</td>
 								<td class="text-right"><strong>Total</strong></td>
