@@ -143,7 +143,7 @@ class OrderController extends Controller
 
 	public function ordercheckout(Request  $request){
         $input = $request->all();
-        $coupon_code = $input['coupon_code'];
+        $coupon_code = isset($input['coupon_code'])?$input['coupon_code']:null;
         $today = date('Y-m-d');
 
         if($coupon_code){
@@ -573,7 +573,7 @@ class OrderController extends Controller
             // Update Invoice
             DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'eway']);
 
-           # $request->session()->forget('product_cart');
+           $request->session()->forget('product_cart');
 
             return view('web::cart.e_way_payment',[
                 'title' => $title,
