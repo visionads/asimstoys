@@ -51,7 +51,7 @@
     <ul class="sub">
         <li><a  href={{URL::to('order_paid/index')}}>Order (Paid)</a></li>
         <li><a  href={{URL::to('lay_by/index')}}>Lay-By Order</a></li>
-        <li><a  href={{URL::to('lay_by/index')}}>Pre-Order</a></li>
+        <li><a  href={{URL::to('pre-order-list')}}>Pre-Order</a></li>
     </ul>
 </li>
 
