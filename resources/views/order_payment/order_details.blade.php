@@ -112,7 +112,7 @@
 								<td class="text-right">$ {{number_format(@$total,2)}}</td>
 							</tr>
 							<tr>
-								<td colspan="4" >
+								<td colspan="2" >
 									&nbsp;
 								</td>
 								<td class="text-right"><strong>Freight Charge</strong></td>
