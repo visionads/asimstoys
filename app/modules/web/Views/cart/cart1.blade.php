@@ -100,14 +100,14 @@
 											</td>
 											<td>
 												<div class="unit-price">
-													$ {{$product_cart['product_price']}}
+													$ {{number_format($product_cart['product_price'], 2)}}
 												</div>
 											</td>
 											<td class="text-align-right">
 												<div class="linetotal">
 													
 													<span class="line_total">
-														${{$product_cart['quantity']*$product_cart['product_price']}}
+														${{number_format($product_cart['quantity']*$product_cart['product_price'],2)}}
 														<?php
 															$total_value+=$product_cart['quantity']*$product_cart['product_price'];
 														?>
