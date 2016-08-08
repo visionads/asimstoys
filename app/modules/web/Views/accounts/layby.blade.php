@@ -34,7 +34,7 @@
                                     <td>Invoice No#</td>
                                     <td>Bill Amount</td>
                                     <td>Paid Amount</td>
-                                    <td>Due Amount</td>
+                                    <td>Amount Left</td>
                                     <td>Status</td>
                                     <td>Action</td>
                                 </tr>
