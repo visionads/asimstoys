@@ -45,24 +45,24 @@
                                             {{$count}}
                                         </td>
                                         <td>
-                                            {{$get_order->invoice_no}}
+                                            {{isset($get_order->invoice_no)?$get_order->invoice_no:null}}
                                         </td>
                                         <td>
-                                            <b>{{$get_order->net_amount+$get_order->freight_amount}}</b>
+                                            <b>{{isset($get_order->net_amount)?number_format($get_order->net_amount, 2): 0}}</b>
                                         </td>
                                         <td>
                                             <?php
                                                 $paid_amount = \App\OrderPaymentTransaction::where('order_head_id', $get_order->id)->select(DB::raw('SUM(amount) as paid_amount'))->groupBy('order_head_id')->first();
                                                 $due_amount = $get_order->net_amount+$get_order->freight_amount-(isset($paid_amount->paid_amount)?$paid_amount->paid_amount:'0.00') ;
                                             ?>
-                                            <b>{{isset($paid_amount->paid_amount)?$paid_amount->paid_amount:'0.00'}}</b>
+                                            <b>{{isset($paid_amount->paid_amount)?number_format($paid_amount->paid_amount,2):'0.00'}}</b>
                                         </td>
 
                                         <td>
-                                            <b>{{$due_amount}}</b>
+                                            <b>{{isset($due_amount)?number_format($due_amount, 2):0}}</b>
                                         </td>
                                         <td>
-                                            {{$get_order->status}}
+                                            {{isset($get_order->status)?$get_order->status:null}}
                                         </td>
                                         <td>
                                             <a href="{{URL::to('details_of_lay_by', $get_order->id)}}" title="{{$get_order->invoice_no}}" >
