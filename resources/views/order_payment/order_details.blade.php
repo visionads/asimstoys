@@ -90,13 +90,13 @@
 											{{@$orderdetails->qty}}
 										</td>
 										<td class="text-right">
-											{{$orderdetails->price}}
+											{{number_format($orderdetails->price,2)}}
 										</td>
 										<td class="text-right">
 											<?php
 												$total+= $orderdetails->qty * $orderdetails->price;
 											?>
-											{{$orderdetails->price*$orderdetails->qty}}
+											{{number_format($orderdetails->price*$orderdetails->qty,2)}}
 										</td>
 									</tr>
 								@endforeach
@@ -109,28 +109,28 @@
 									&nbsp;
 								</td>
 								<td class="text-right"><strong>Subtotal</strong></td>
-								<td class="text-right">$ {{@$total}}</td>
+								<td class="text-right">$ {{number_format(@$total,2)}}</td>
 							</tr>
 							<tr>
 								<td colspan="3" >
 									&nbsp;
 								</td>
 								<td class="text-right"><strong>Freight Charge</strong></td>
-								<td class="text-right">$ {{@$order_data[0]->freight_amount}}</td>
+								<td class="text-right">$ {{number_format(@$order_data[0]->freight_amount,2)}}</td>
 							</tr>
 							<tr>
 								<td colspan="3" >
 									&nbsp;
 								</td>
 								<td class="text-right"><strong>GST</strong></td>
-								<td class="text-right">$ {{@$order_data[0]->vat}}</td>
+								<td class="text-right">$ {{number_format(@$order_data[0]->vat,2)}}</td>
 							</tr>
 							<tr>
 								<td colspan="3" >
 									&nbsp;
 								</td>
 								<td class="text-right"><strong>Total</strong></td>
-								<td class="text-right">$ {{@$order_data[0]->net_amount}}</td>
+								<td class="text-right">$ {{number_format(@$order_data[0]->net_amount,2)}}</td>
 							</tr>
 							
 						</tbody>
