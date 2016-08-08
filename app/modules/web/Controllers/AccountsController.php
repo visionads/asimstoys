@@ -295,7 +295,7 @@ class AccountsController extends Controller
                 $subject = " Payment of invoice # ".$invoice_no. " | Asims Toys ";
                 $body = "Dear ".$to_name. " Your Payment is approved !";
 
-                $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
+                #$mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
 
                 Session::flash('flash_message', "The Amount : ".$amount ." is DONE. Please check your email");
             }
