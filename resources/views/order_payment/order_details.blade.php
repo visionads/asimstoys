@@ -105,21 +105,21 @@
                             <tr><td colspan="5" style="border-top: 0px"></td></tr>
                             <tr><td colspan="5" style="border-top: 0px"></td></tr>
 							<tr>
-								<td colspan="3" >
+								<td colspan="4" >
 									&nbsp;
 								</td>
 								<td class="text-right"><strong>Subtotal</strong></td>
 								<td class="text-right">$ {{number_format(@$total,2)}}</td>
 							</tr>
 							<tr>
-								<td colspan="3" >
+								<td colspan="4" >
 									&nbsp;
 								</td>
 								<td class="text-right"><strong>Freight Charge</strong></td>
 								<td class="text-right">$ {{number_format(@$order_data[0]->freight_amount,2)}}</td>
 							</tr>
 							<tr>
-								<td colspan="3" >
+								<td colspan="4" >
 									&nbsp;
 								</td>
 								<td class="text-right"><strong>GST</strong></td>
