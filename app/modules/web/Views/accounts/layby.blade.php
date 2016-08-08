@@ -59,7 +59,7 @@
                                         </td>
 
                                         <td>
-                                            <b>{{isset($due_amount)?number_format($due_amount, 2):0}}</b>
+                                            <b>{{isset($due_amount)? ( $due_amount>0?number_format($due_amount, 2):'0.00' ):0}}</b>
                                         </td>
                                         <td>
                                             {{isset($get_order->status)?$get_order->status:null}}
