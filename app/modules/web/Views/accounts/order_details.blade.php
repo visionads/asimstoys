@@ -53,9 +53,10 @@
 
                         <div class="col-md-12">
                             <div class="pull-right">
-                                <h2 style="color: darkblue">Total Amount : {{@$total_amount->total_amount + $freight_data->freight_amount}}</h2>
-                                <h2 style="color: green">Paid Amount : {{@$paid_amount->paid_amount }}</h2>
-                                <h2 style="color: red">Due Amount : {{@$due_amount}}</h2>
+                                <h2 style="color: darkblue">Total Amount : {{@$total_amount->total_amount + @$freight_data->freight_amount}}</h2>
+                                <h2>Freight Charge {{isset($freight_data->freight_amount)?number_format($freight_data->freight_amount,2):0}}</h2>
+                                <h2 style="color: green">Paid Amount : {{number_format(@$paid_amount->paid_amount, 2) }}</h2>
+                                <h2 style="color: red">Due Amount : {{number_format(@$due_amount,2)}}</h2>
                             </div>
                         </div>
                         @if(@$total_amount->total_amount != @$paid_amount->paid_amount)
