@@ -7,7 +7,7 @@
 
 				@if(!empty($slider_data)):
 					@foreach($slider_data as $slider)
-						<div data-src="{{URL::to('/')}}/{{$slider->image}}"></div>
+						<div data-src="{{URL::to('/')}}/{{@$slider->image}}"></div>
 					@endforeach
 				@endif;
 	            
@@ -36,15 +36,15 @@
 						<li class="newproductslider-item ajax_block_product first_item last_item_of_line ">
 							<div class="item-inner">
 
-								<a href="{{URL::to('/')}}/{{$featured_product->slug}}" title="{{$featured_product->title}}" class="bigpic_15_newproduct123 product_image">
-									<img src="{{URL::to('/')}}/{{$featured_product->image}}"  alt="{{$featured_product->title}}" />
+								<a href="{{URL::to('/')}}/{{@$featured_product->slug}}" title="{{@$featured_product->title}}" class="bigpic_15_newproduct123 product_image">
+									<img src="{{URL::to('/')}}/{{@$featured_product->image}}"  alt="{{@$featured_product->title}}" />
 								</a>
 				
 								<h5 class="s_title_block">
-									<a href="{{URL::to('/')}}/{{$featured_product->slug}}" title="{{$featured_product->title}}">{{$featured_product->title}}</a>
+									<a href="{{URL::to('/')}}/{{@$featured_product->slug}}" title="{{@$featured_product->title}}">{{@$featured_product->title}}</a>
 								</h5>
 			                                            
-			                    <p class="price_container"><span class="price">${{number_format($featured_product->sell_rate, 2)}}</span></p>
+			                    <p class="price_container"><span class="price">${{number_format(@$featured_product->sell_rate, 2)}}</span></p>
 								<div class="action">						
 									<a class="exclusive ajax_add_to_cart_button" href="#" title="Add to Cart">&nbsp;</a>
 									<a class="lnk_more" href="{{URL::to('/')}}/{{$featured_product->slug}}" title="View">&nbsp;</a>
@@ -70,7 +70,7 @@
 					
 					<div class="col-md-4">
 						<div class="home-youtube">
-							<a class="fancybox-media" href="{{$youtube->link}}">
+							<a class="fancybox-media" href="{{@$youtube->link}}">
 								<img src="{{URL::to('/')}}/web/images/youtube.jpg">
 							</a>
 						</div>
