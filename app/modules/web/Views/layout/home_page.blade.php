@@ -16,9 +16,9 @@
 		</div>
 
 		<div class="pos-new-product home-text-container">
-			<h4>{{$data->title}}</h4>
+			<h4>{{@$data->title}}</h4>
 			<div class="description">
-				<?php echo $data->desc; ?>
+				<?php echo isset($data->desc)?$data->desc:null; ?>
 			</div>
 		</div>
 
