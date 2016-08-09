@@ -187,11 +187,19 @@ class ProductController extends Controller
 
             if ($file_name != '') {
                 if(!empty($model->image)){
-                    unlink(public_path()."/".$model->image);    
+                    if(file_exists($model->image))
+                    {
+                        unlink(public_path()."/".$model->image);
+                    }
+
                 }
                 
                 if(!empty($model->thumb)){
-                    unlink(public_path()."/".$model->thumb);    
+                    if(file_exists($model->thumb))
+                    {
+                        unlink(public_path()."/".$model->thumb);
+                    }
+
                 }
                 
                 $input['image'] = $file_name[0];
