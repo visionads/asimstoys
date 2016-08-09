@@ -73,6 +73,9 @@
 									<option value="Red">Red</option>
 									<option value="Blue">Blue</option>
 									<option value="Pink">Pink</option>			
+									<option value="Yellow">Yellow</option>
+									<option value="Magento">Magento</option>
+									<option value="Purple">Purple</option>
 								</select>
 							</div>
 
