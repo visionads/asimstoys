@@ -417,13 +417,16 @@ class OrderController extends Controller
 
         //Store to Order Head and Details
         $product_cart = $request->session()->get('product_cart');
+
+
         if($product_cart)
         {
             $gen_number = GenerateNumber::generate_number();
 
             //Total Price
             $total_price = 0;
-            foreach ($product_cart as $product){
+            foreach ($product_cart as $product)
+            {
                 #$product = DB::table('product')->where('id',$product['product_id'])->first();
                 $total_price += $product['product_price']; //$product->sell_rate;
             }
@@ -444,7 +447,8 @@ class OrderController extends Controller
                 'status'=> 1,
             ];
 
-            try{
+            try
+            {
                 $model = new OrderHead();
                 if($order_head = $model->create($order_head_data))
                 {
@@ -452,9 +456,9 @@ class OrderController extends Controller
                     {
                         $model_order_dt = new OrderDetail();
                         $model_order_dt->order_head_id = $order_head['id']; //$order_head->id;
-                        $model_order_dt->product_id =$products['product_id'];
-                        $model_order_dt->product_variation_id = $products['color'];
-                        $model_order_dt->qty = $products['quantity'];
+                        $model_order_dt->product_id =$products['product_id']?$products['product_id']:null;
+                        $model_order_dt->product_variation_id = $products['color']?$products['color']:null;
+                        $model_order_dt->qty = $products['quantity']?$products['quantity']:null;
                         $model_order_dt->color = $products['color']?$products['color']:null;
                         $model_order_dt->background_color = $products['background']?$products['background']:null;
                         $model_order_dt->plate_text = $products['plate_text']?$products['plate_text']:null;
@@ -462,9 +466,7 @@ class OrderController extends Controller
                         $model_order_dt->status =1;
                         $model_order_dt->save();
 
-						#$get_product_data = DB::table('product')->where('id',$product->id)->first();
-						
-						if($model_order_dt = $model_order_dt->save())
+						/*if($model_order_dt->save())
                         {
 							//Remove from product stock
 							$get_product_data = DB::table('product')->where('id',$products['product_id'])->first();
@@ -475,19 +477,20 @@ class OrderController extends Controller
 								->where('id', $product->id)
 								->update(['stock_unit_quantity' => $edited_quantity]);
 						
-						}
-
+						}*/
                     }
-                    #$request->session()->forget('freight_calculation');
-                    $request->session()->forget('product_cart');
-                    $request->session()->set('invoice_no', $order_head['invoice_no']);
-                    $request->session()->set('total_price', $total_price);
-                    $request->session()->set('customer_data', $user_data);
-
-                    Session::flash('flash_message', 'Success !');
-
                 }
+                #$request->session()->forget('freight_calculation');
+                $request->session()->forget('product_cart');
+                $request->session()->set('invoice_no', $order_head['invoice_no']);
+                $request->session()->set('total_price', $total_price);
+                $request->session()->set('customer_data', $user_data);
+
+                Session::flash('flash_message', 'Success !');
+
             }catch(\Exception $e){
+
+                #print_r($e->getMessage());
                 Session::flash('flash_message_error', $e->getMessage());
             }
 
@@ -497,7 +500,6 @@ class OrderController extends Controller
             $subject = "Order placed  # ".$order_head->invoice_no. " | Asims Toys ";
             $body = "Dear ".$user_data->first_name. " Your Order is placed !";
             $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);*/
-
 
         }else{
             Session::flash('flash_message_error', "No Product is available in cart");
