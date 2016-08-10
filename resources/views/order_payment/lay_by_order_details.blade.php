@@ -27,11 +27,13 @@
 				<div class="col-xs-4">
 					<h4 class="text-light">Prepared for</h4>
 					<address>
-						<strong>{{$customer_data->first_name}} {{$customer_data->last_name}}</strong><br>
-						{{$customer_data->suburb}}, {{$customer_data->postcode}}<br>
-						{{$customer_data->state}}, {{$customer_data->country}}<br>
-						<abbr title="Phone">P:</abbr> {{$customer_data->telephone}}<br/>
-						{{@$customer_data->address}}
+						<strong>{{@$customer_data->first_name}} {{@$customer_data->last_name}}</strong><br>
+						{{@$customer_data->address}}<br/>
+						{{@$customer_data->suburb}}<br/>
+						{{@$customer_data->postcode}}<br>
+						<abbr title="Phone">P: </abbr> {{@$customer_data->telephone}}<br/>
+						{{@$customer_data->state}}<br/>
+						{{@$customer_data->country}}<br>
 					</address>
 				</div><!--end .col -->
 				<div class="col-xs-4">

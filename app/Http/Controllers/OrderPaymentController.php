@@ -24,7 +24,7 @@ class OrderPaymentController extends Controller
      */
     public function order_paid_index()
     {
-
+	
         $pageTitle = "Order (Paid)";
 
         $data = OrderHead::with('relCustomer')
