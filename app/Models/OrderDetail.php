@@ -23,6 +23,8 @@ class OrderDetail extends Model
         'product_variation_id',
         'qty',
         'color',
+		'background_color',
+		'plate_text',
         'price',
         'status',
     ];

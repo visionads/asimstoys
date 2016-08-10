@@ -95,7 +95,7 @@
 											{{@$product->title}}
 										</td>
 										<td>
-											{{@$product_variation->title}}
+											{{@$orderdetails->color}}
 										</td>
 										<td>
 											{{@$orderdetails->background_color}}
