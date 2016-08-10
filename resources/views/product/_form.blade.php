@@ -164,9 +164,9 @@
             <div class="fileupload fileupload-new" data-provides="fileupload">
                 <div class="fileupload-new thumbnail" style="width: 120px; height: 120px;">
                     {{--<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />--}}
-                    @if($data['image'] != '')
+                    @if(isset($data['image']) != '')
                         {{--<img src="{{URL::to($data['image'])}}" alt="" />--}}
-                        <a href="{{ route('product-image.image.show', $data['slug']) }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#imageView"><img src="{{ URL::to('') }}/{{$data['image']}}" height="50px" width="50px" alt="{{$data['image']}}" />
+                        <a href="{{ route('product-image.image.show', @$data['slug']) }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#imageView"><img src="{{ URL::to('') }}/{{@$data['image']}}" height="50px" width="50px" alt="{{@$data['image']}}" />
                         </a>
                     @else
                         <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />

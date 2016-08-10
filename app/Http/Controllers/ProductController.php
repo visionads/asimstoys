@@ -31,7 +31,7 @@ class ProductController extends Controller
 	   $brand_id = [''=>'Please select']+Brand::lists('title','title')->all();
        $cat_product_id = ProductCategory::lists('title','id');
 
-       $data = Product::orderBy('id', 'DESC')->paginate(20);
+       $data = Product::orderBy('id', 'DESC')->get();
         return view('product.index',[
                 'pageTitle' => $pageTitle,
                 'cat_product_id' => $cat_product_id,
@@ -187,11 +187,19 @@ class ProductController extends Controller
 
             if ($file_name != '') {
                 if(!empty($model->image)){
-                    unlink(public_path()."/".$model->image);    
+                    if(file_exists($model->image))
+                    {
+                        unlink(public_path()."/".$model->image);
+                    }
+
                 }
                 
                 if(!empty($model->thumb)){
-                    unlink(public_path()."/".$model->thumb);    
+                    if(file_exists($model->thumb))
+                    {
+                        unlink(public_path()."/".$model->thumb);
+                    }
+
                 }
                 
                 $input['image'] = $file_name[0];
