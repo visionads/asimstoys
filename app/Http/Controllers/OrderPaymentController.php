@@ -145,6 +145,7 @@ class OrderPaymentController extends Controller
 
         $order = OrderHead::with('relOrderDetail', 'relOrderPaymentTransaction')->where('id', $order_head_id)->get();
         $customer_data = Customer::where('id',$order[0]->user_id)->first();
+		$delivery_data = DB::table('delivery_details')->where('user_id',$customer_data->id)->orderBy('id', 'desc')->first();
 
         $total_amount = DB::table('order_detail')
             ->select(DB::raw('SUM(price) as total_amount'))
@@ -165,7 +166,7 @@ class OrderPaymentController extends Controller
             'title' => $title,
             'order_head_id'=>$order_head_id,
             'customer_data' => $customer_data,
-
+			'delivery_data' => $delivery_data,
             'total_amount'=>$total_amount,
             'paid_amount'=>$paid_amount,
             'due_amount'=>$due_amount,

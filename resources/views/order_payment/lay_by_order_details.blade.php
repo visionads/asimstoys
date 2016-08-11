@@ -15,7 +15,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-xs-4">
+				<div class="col-xs-3">
 					<h4 class="text-light">Prepared by</h4>
 					<address>
 						<strong>Asim's Toys</strong><br>
@@ -24,9 +24,10 @@
 						
 					</address>
 				</div><!--end .col -->
-				<div class="col-xs-4">
+				<div class="col-xs-3">
 					<h4 class="text-light">Prepared for</h4>
 					<address>
+						<strong>Billing Address</strong><br><br/>
 						<strong>{{@$customer_data->first_name}} {{@$customer_data->last_name}}</strong><br>
 						{{@$customer_data->address}}<br/>
 						{{@$customer_data->suburb}}<br/>
@@ -36,7 +37,22 @@
 						{{@$customer_data->country}}<br>
 					</address>
 				</div><!--end .col -->
-				<div class="col-xs-4">
+				
+				<div class="col-xs-3">
+					<h4 class="text-light">&nbsp;</h4>
+					<address>
+						<strong>Delivery Address</strong><br><br/>
+						<strong>{{@$delivery_data->first_name}} {{@$delivery_data->last_name}}</strong><br>
+						{{@$delivery_data->address}}<br/>
+						{{@$delivery_data->suburb}}<br/>
+						{{@$delivery_data->postcode}}<br>
+						<abbr title="Phone">P: </abbr> {{@$delivery_data->telephone}}<br/>
+						{{@$delivery_data->state}}<br/>
+						{{@$delivery_data->country}}<br>
+					</address>
+				</div><!--end .col -->
+				
+				<div class="col-xs-3">
 					<div class="well">
 						<div class="clearfix">
 							<div class="pull-left"> INVOICE NO #  </div>
@@ -125,6 +141,31 @@
 										</td>
 									</tr>
 								@endforeach
+								
+								<tr>
+									<td colspan="6" class="text-right">
+										Sub Amount
+									</td>
+									<td colspan="2" class="text-right">
+										{{@$order_data[0]->sub_total}}
+									</td>
+								</tr>
+								<tr>
+									<td colspan="6" class="text-right">
+										Freight Amount
+									</td>
+									<td colspan="2" class="text-right">
+										{{@$order_data[0]->freight_amount}}
+									</td>
+								</tr>
+								<tr>
+									<td colspan="6" class="text-right">
+										Total Amount
+									</td>
+									<td colspan="2" class="text-right">
+										{{@$order_data[0]->net_amount}}
+									</td>
+								</tr>
 							@endif
                         </tbody>
                     </table>
