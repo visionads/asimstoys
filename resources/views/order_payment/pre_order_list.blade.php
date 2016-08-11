@@ -53,7 +53,7 @@
                                             {{$values->net_amount - $values->relOrderPaymentTransaction->sum('amount')}}
                                         </td>
                                         <td>{{$values->created_at}}</td>
-                                        <td>{{ucfirst($values->status=='done'?"Closed": $values->status)}}</td>
+                                        <td>{{ucfirst($values->status=='done'?"Closed": $values->status=='approved'?"Approved Payement": $values->status)}}</td>
                                         <td>
                                             <a href="{{ route('lay-by-order-show', $values->id) }}" data-toggle="modal" data-target="#etsbModal" class="btn btn-info btn-xs" title="Details"><i class="icon-eye-open"></i></a>
                                             <a href="{{ route('order-paid-approve', $values->id) }}" class="btn btn-success btn-xs" onclick="return confirm('Are you sure to Approve?')" title="Approved"><i class="icon-check"></i></a>
