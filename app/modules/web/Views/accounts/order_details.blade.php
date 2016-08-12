@@ -53,10 +53,12 @@
 
                         <div class="col-md-12">
                             <div class="pull-right" style="font-size: 15px">
-                                <h2 style="color: darkblue">Total Amount : {{@$total_amount->total_amount + @$freight_data->freight_amount}}</h2>
-                                {{--<h2>Freight Charge {{isset($freight_data->freight_amount)?number_format($freight_data->freight_amount,2):0}}</h2>--}}
-                                <h2 style="color: green">Paid Amount : {{number_format(@$paid_amount->paid_amount, 2) }}</h2>
-                                <h2 style="color: red">Due Amount : {{number_format(@$due_amount,2)}}</h2>
+                                <h2 style="color: darkblue;padding-bottom: 0px;text-align: right;">Sub Amount : {{number_format(@$total_amount->total_amount, 2)}}</h2>
+								<h2 style="color: darkblue;padding-bottom: 0px;text-align: right;">Freight Amount : {{number_format(@$freight_data->freight_amount, 2)}}</h2>
+								<h2 style="color: darkblue;padding-bottom: 0px;text-align: right;">Total Amount : {{number_format(@$total_amount->total_amount + @$freight_data->freight_amount, 2)}}</h2>
+								<h2 style="color: red;padding-bottom: 0px;text-align: right;">Left Amount : {{number_format(@$due_amount,2)}}</h2>
+                                <h2 style="color: green;padding-bottom: 0px;text-align: right;">Paid Amount : {{number_format(@$paid_amount->paid_amount, 2) }}</h2>
+                                
                             </div>
                         </div>
                         @if(@$total_amount->total_amount != @$paid_amount->paid_amount)
@@ -103,10 +105,25 @@
                             <td>{{isset($order_dt->price)?$order_dt->price:null}}</td>
                         </tr>
                     @endforeach
+					
+						<tr>
+							<td colspan="6" align="right">Sub Amount</td>
+							<td colspan="2" align="right">{{number_format(@$total_amount->total_amount, 2)}}</td>
+						</tr>
+						
+						<tr>
+							<td colspan="6" align="right">Freight Amount</td>
+							<td colspan="2" align="right">{{number_format(@$freight_data->freight_amount, 2)}}</td>
+						</tr>
+						
+						<tr>
+							<td colspan="6" align="right">Total Amount</td>
+							<td colspan="2" align="right">{{number_format(@$total_amount->total_amount + @$freight_data->freight_amount, 2)}}</td>
+						</tr>
 
                     </tbody>
                 </table>
-                <p class="pull-right">Total Amount {{isset($total_amount->total_amount)?number_format($total_amount->total_amount,2):null}}</p>
+                
             @endforeach
 
 
