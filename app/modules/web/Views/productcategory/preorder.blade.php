@@ -5,6 +5,7 @@
 
 		<div class="pos-new-product-title title_block">
 			<h4>{{$header}}</h4>
+            <small>Please note this is pre-sale listings, not in stock. Comming Soon ... </small>
 			
 		</div>
 
