@@ -1,7 +1,7 @@
 @extends('web::layout.web_master')
 
 @section('content')
-        <h1 style="color: black; background: yellow; padding: 10px;">Apologies for inconvenience ! We are still fixing our technical issues. Please call us if occurs anything! </h1>
+        
 		<div class="home-banner-container">
 			<div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
 
