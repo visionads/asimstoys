@@ -45,7 +45,9 @@
                                             {{$count}}
                                         </td>
                                         <td>
-                                            {{isset($get_order->invoice_no)?$get_order->invoice_no:null}}
+                                            <a href="{{URL::to('details_of_lay_by', $get_order->id)}}" title="{{$get_order->invoice_no}}" >
+												{{isset($get_order->invoice_no)?$get_order->invoice_no:null}}
+											</a>
                                         </td>
                                         <td>
                                             <b>{{isset($get_order->net_amount)?number_format($get_order->net_amount, 2): 0}}</b>
