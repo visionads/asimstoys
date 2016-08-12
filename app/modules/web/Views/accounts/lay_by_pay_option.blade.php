@@ -27,9 +27,9 @@
                         <div class="col-md-6">
                             <div>
                                 <span class="panel-title"> Payment for the Invoice (<a href="{{route('details_of_lay_by', $order_data->id)}}"> {{@$order_data->invoice_no}} </a> ) </span><br>
-                                <small style="color: blue">Invoice Bill is : {{@$total_amount->total_amount}}</small>  |
-                                <small style="color: green">Paid Amount is : {{isset($paid_amount->paid_amount)?$paid_amount->paid_amount: "0.00"}}</small> |
-                                <small style="color: red">Due Amount is : {{@$due_amount}}</small>
+                                <small style="color: blue">Invoice Bill is : {{number_format(@$total_amount->total_amount + @$order_data->freight_amount, 2)}}</small>  |
+                                <small style="color: green">Paid Amount is : {{number_format(isset($paid_amount->paid_amount)?$paid_amount->paid_amount: "0.00", 2)}}</small> |
+                                <small style="color: red">Due Amount is : {{number_format(@$due_amount, 2)}}</small>
                             </div>
                             <br>
                             <div class="radio" style="margin-top: 0;">

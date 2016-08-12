@@ -154,7 +154,7 @@ class AccountsController extends Controller
             ->where('order_head_id', $order_head_id)
             ->first();
 
-        $due_amount = @$total_amount->total_amount + $freight_data->freight_amount - @$paid_amount->paid_amount;
+        $due_amount = (@$total_amount->total_amount + $freight_data->freight_amount) - @$paid_amount->paid_amount;
 
         $order = OrderHead::with('relOrderDetail')->where('invoice_type', 'layby')->where('id', $order_head_id)->get();
         $order_pay_trn = OrderPaymentTransaction::where('order_head_id', $order_head_id)->get();
@@ -205,7 +205,7 @@ class AccountsController extends Controller
             ->where('order_head_id', $order_head_id)
             ->first();
 
-        $due_amount = @$total_amount->total_amount - @$paid_amount->paid_amount;
+        $due_amount = (@$total_amount->total_amount + @$order_data->freight_amount) - @$paid_amount->paid_amount;
 
         return view('web::accounts.lay_by_pay_option',[
             'title' => $title,
