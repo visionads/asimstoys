@@ -19,9 +19,9 @@
                                             <p>&nbsp;</p>
                                             <p style="text-align: center; ">
 
-                                                <img src="{{URL::asset('/web/images/twitter_icon.png')}}" alt="Twitter" height="50" width="50">
-                                                <img src="{{URL::asset('/web/images/instagram_icon.png')}}" alt="Instagram" height="50" width="50">
-                                                <img src="{{URL::asset('/web/images/youtube_icon.png')}}" alt="You Tube" height="50" width="50">
+                                                <a target="_blank" href="https://twitter.com/asims_toys"><img src="{{URL::asset('/web/images/twitter_icon.png')}}" alt="Twitter" height="50" width="50"></a>
+                                                <a target="_blank" href="https://www.instagram.com/asims_toys/"><img src="{{URL::asset('/web/images/instagram_icon.png')}}" alt="Instagram" height="50" width="50"></a>
+                                                <a target="_blank" href="https://www.youtube.com/channel/UCRUrMyHLzDSf7JkwmBLGPLA"><img src="{{URL::asset('/web/images/youtube_icon.png')}}" alt="You Tube" height="50" width="50"></a>
                                             </p>
                                         </div>
 
