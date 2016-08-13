@@ -38,6 +38,11 @@ Route::any("order-complete/{id}", [
     "uses" => "OrderPaymentController@order_complete"
 ]);
 
+Route::any("order-shipped/{id}", [
+    "as"   => "order-shipped",
+    "uses" => "OrderPaymentController@order_shipped"
+]);
+
 /*----------Lay BY-------------*/
 
 
