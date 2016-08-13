@@ -359,9 +359,6 @@
 					  <ul class="nav nav-tabs" role="tablist">
 					    <li role="presentation" class="active"><a href="#specification" aria-controls="home" role="tab" data-toggle="tab">Specification</a></li>
 					    <li role="presentation"><a href="#features" aria-controls="profile" role="tab" data-toggle="tab">Features</a></li>
-					    <li role="presentation"><a href="#shippingcost" aria-controls="messages" role="tab" data-toggle="tab">Shipping Cost</a></li>
-					    <li role="presentation"><a href="#warranty" aria-controls="settings" role="tab" data-toggle="tab">Warranty</a></li>
-					    <li role="presentation"><a href="#returns" aria-controls="settings" role="tab" data-toggle="tab">Returns</a></li>
 					    <li role="presentation"><a href="#videos" aria-controls="settings" role="tab" data-toggle="tab">Videos</a></li>
 					  </ul>
 
@@ -389,15 +386,7 @@
 								}
 							?>
 					    </div>
-					    <div role="tabpanel" class="tab-pane" id="shippingcost">
-					    	No shipping content yet.
-					    </div>
-					    <div role="tabpanel" class="tab-pane" id="warranty">
-					    	No warranty content yet.
-					    </div>
-					    <div role="tabpanel" class="tab-pane" id="returns">
-					    	No returns content yet.
-					    </div>
+					    
 					    <div role="tabpanel" class="tab-pane" id="videos">
 					    	<div class="col-md-4">
 								<div class="home-youtube">
