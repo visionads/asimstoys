@@ -158,19 +158,11 @@
 
 
 <li class="sub-menu">
-    <a href="javascript:;" >
-        <i class="icon-book"></i>
-        <span>Settings</span>
+    <a href="{{URL::to('youtube/index')}}" >
+        <i class="icon-youtube"></i>
+        <span>Youtube Home Link</span>
     </a>
-    <ul class="sub">
-		<li><a  href="{{URL::to('youtube/index')}}">Youtube Link</a></li>
-		{{--<li><a  href="{{URL::to('central-settings')}}">Central Settings</a></li>--}}
-		{{--<li><a  href="{{URL::to('state/index')}}">State</a></li>--}}
-        {{--<li><a  href="buttons.html">Buttons</a></li>--}}
-        {{--<li><a  href="widget.html">Widget</a></li>--}}
-        {{--<li><a  href="slider.html">Slider</a></li>--}}
-        {{--<li><a  href="nestable.html">Nestable</a></li>--}}
-    </ul>
+    
 </li>
 
 
