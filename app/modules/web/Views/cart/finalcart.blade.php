@@ -143,7 +143,7 @@
                                     {{ Session::has('coupon_code')? Session::get('coupon_code'):null }}
                                 </span>
                             </p>
-                            <h5><b style="color: #ff7722;">Select Pick-up Process :</b></h5>
+                            
                             <div id="freight-cal">
 
                                 @if(isset($freight_calculation))
