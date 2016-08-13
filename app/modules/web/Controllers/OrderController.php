@@ -371,19 +371,9 @@ class OrderController extends Controller
             $request->session()->forget('freight_calculation');
         }
 
-        if($product['product_group_id'] !=6 ){
-            if($product['product_group_id'] !=7 ) {
-                //Freight Calculation for RTT TNT Express
-                $freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_cart);
-                $request->session()->set('freight_calculation', $freight_calculation);
-            }else{
-                $freight_calculation = 0;
-                $request->session()->set('freight_calculation', 0);
-            }
-        }else{
-            $freight_calculation = 0;
-            $request->session()->set('freight_calculation', 0);
-        }
+        //freight Calculation
+        $freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_cart);
+        $request->session()->set('freight_calculation', $freight_calculation);
 
 
         return view('web::cart.finalcart',[
