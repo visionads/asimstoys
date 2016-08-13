@@ -284,7 +284,7 @@ class AccountsController extends Controller
         $order_trn->transaction_no = 'eway';
         $order_trn->gateway_name = 'eway';
         $order_trn->gateway_address ='eway';
-        $order_trn->status = 'approved';
+        $order_trn->status = 'pending';
 
         try{
             if($order_trn->save()){
