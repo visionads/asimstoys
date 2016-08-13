@@ -65,6 +65,7 @@ class OrderPaymentController extends Controller
 
         $data = OrderHead::with('relCustomer')
             ->where('order_head.invoice_type','layby')
+			->where('order_head.status','!=','cancel')
             ->orderBy('order_head.id','desc')
             ->get();
 
@@ -78,6 +79,7 @@ class OrderPaymentController extends Controller
 
         $data = OrderHead::with('relCustomer')
             ->where('order_head.invoice_type','pre-order')
+			->where('order_head.status','!=','cancel')
             ->orderBy('order_head.id','desc')
             ->get();
 
