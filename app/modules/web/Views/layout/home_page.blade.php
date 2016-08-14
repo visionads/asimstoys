@@ -10,7 +10,7 @@
 						<div data-src="{{URL::to('/')}}/{{@$slider->image}}"></div>
 					@endforeach
 				@endif;
-	            
+	            <h1 style="color: #ededed;">Site is under maintenance !</h1>
 	            
 	        </div><!-- #camera_wrap_1 -->
 		</div>
