@@ -81,6 +81,8 @@
             <div class="page-inner">
                 @include('web::layout.web_header')
 
+                <h1 style="color: red;">Site is under maintenance !</h1>
+
                 <div id="toppage">
                     <div class="container">
                         <div class="row">
