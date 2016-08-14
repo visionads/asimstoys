@@ -83,7 +83,7 @@
 
 
                 <div style="background: white; padding: 20px; text-align: center">
-                    <br>
+                    <p>&nbsp; </p>
                     <h1 style="color: red;">Site is under maintenance !</h1>
                 </div>
 
