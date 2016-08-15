@@ -68,11 +68,18 @@ class RttTntExpress
                 $product_id = isset($values['product_id'])? $values['product_id'] : $values['id'];
                 $product = Product::findOrFail($product_id);
 
-                //set value
-                $weight +=isset($product['weight'])?$product['weight']:0;
-                $length +=isset($product['length'])?$product['length']:0;
-                $width +=isset($product['width'])?$product['width']:0;
-                $height +=isset($product['height'])?$product['height']:0;
+                if( $product['product_group_id'] != 6 )
+                {
+                    if( $product['product_group_id'] != 7 )
+                    {
+                        //set value
+                        $weight +=isset($product['weight'])?$product['weight']:0;
+                        $length +=isset($product['length'])?$product['length']:0;
+                        $width +=isset($product['width'])?$product['width']:0;
+                        $height +=isset($product['height'])?$product['height']:0;
+                    }
+                }
+
             }
 
         }
@@ -82,7 +89,8 @@ class RttTntExpress
         print "Width : ".$width."\n";
         print "Height : ".$height."\n";
         print "------ \n";
-        print "------ \n";*/
+        print "------ \n";
+        exit();*/
 
 
         //product data
