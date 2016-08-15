@@ -191,7 +191,7 @@ class OrderController extends Controller
         
     }*/
 
-    public function savedeliverydetails(Request $request)
+    public function savedeliverydetails(Requests\BillingaddressRequest $request)
     {
         $input = $request->all();
         $user_id = $request->session()->get('user_id');
@@ -292,7 +292,7 @@ class OrderController extends Controller
     }
 
 
-    public function customersavebilling(Request $request){
+    public function customersavebilling(Requests\BillingaddressRequest $request){
 
         $user_id = $request->session()->get('user_id');
         $model = Customer::where('id',$user_id)->first();

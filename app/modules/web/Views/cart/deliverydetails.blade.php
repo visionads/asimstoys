@@ -118,7 +118,7 @@
 
 									<div class="form-group">
 										<label>Address</label>
-										 {!! Form::textarea('address', $data->address, ['id'=>'address', 'class' => 'form-control', 'cols'=>'15' , 'rows'=>'5']) !!}
+										 {!! Form::textarea('address', $data->address, ['id'=>'address', 'class' => 'form-control', 'cols'=>'15' , 'rows'=>'5', 'required']) !!}
 									</div>
 									
 									<div class="form-group">
@@ -140,6 +140,14 @@
 								</div>
 							</div>
 						{!! Form::close() !!}
+						
+						@if($errors->any())
+							<ul class="alert alert-danger" style="width: 100%;float: left;padding-left: 30px;">
+								@foreach($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						@endif
 
 					</div>
 						
