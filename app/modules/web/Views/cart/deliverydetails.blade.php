@@ -105,7 +105,7 @@
 
 									
 									<div class="form-group">
-										<input type="submit" class="form-control register_btn" name="submit" value="Submit">
+										<input type="submit" class="form-control register_btn" name="submit" value="Submit" id="myFormSubmit">
 									</div>
 
 								</div>
@@ -158,4 +158,35 @@
 
 		</div>
 	</div>
+
+
+    <script>
+        $('#myFormSubmit').click(function(e)
+        {
+            $('#loadingModal').modal('show');
+            return true;
+        });
+
+    </script>
+
+    {{--modal--}}
+    <div id="loadingModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p>
+                        Freight Charge Calculating  ...
+                    </p>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Please wait .... Freight Charge Calculating...
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <p>&nbsp;</p>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 @stop
