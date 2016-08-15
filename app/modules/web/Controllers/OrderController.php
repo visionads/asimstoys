@@ -356,6 +356,7 @@ class OrderController extends Controller
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
         $product_cart = $request->session()->get('product_cart');
+
         foreach ($product_cart as $values){
             $product = Product::findOrFail($values['product_id']);
         }

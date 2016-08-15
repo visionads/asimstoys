@@ -99,10 +99,10 @@ class RttTntExpress
 
         //product data
         $numberOfPackages=1;
-        $packWeight= $weight>0 ? $weight : 1;
-        $length=$length>0 ? $length : 1;
-        $width=$width>0 ? $width : 1;
-        $height=$height>0 ? $height : 1;
+        $packWeight= $weight>0 ? $weight : 0;
+        $length=$length>0 ? $length : 0;
+        $width=$width>0 ? $width : 0;
+        $height=$height>0 ? $height : 0;
         $dimensionUnit="cm";
         $weightUnit="kg";
 
