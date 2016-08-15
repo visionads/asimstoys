@@ -99,7 +99,7 @@
 												</div>
 											</td>
 											<td>
-												<input class="cart-quantity" type="number" min="1" name="product_quantity" value="{{$product_cart['quantity']}}">
+												<input class="cart-quantity" type="number" min="1" name="product_quantity" value="{{$product_cart['quantity']}}" readonly>
 											</td>
 											<td>
 												<div class="unit-price">
