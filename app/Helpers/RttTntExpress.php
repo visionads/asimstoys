@@ -23,8 +23,7 @@ class RttTntExpress
      */
     public static function rtt_call($user_data, $delivery_data, $product_cart)
     {
-        print_r($delivery_data);
-     
+       
 
         //date
         $tomorrow = date("Y-m-d", strtotime("+1 day"));
@@ -55,8 +54,7 @@ class RttTntExpress
             'state'=>'vic'
         );
 
-        print_r($deliveryAddress);
-        exit();
+
         //Set Delivery address
         $enquiry->setDeliveryAddress($deliveryAddress);
 
