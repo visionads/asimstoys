@@ -21,7 +21,10 @@ class RttTntExpress
      * @param $product_cart
      * @return array|string
      */
-    public static function rtt_call($user_data, $delivery_data, $product_cart){
+    public static function rtt_call($user_data, $delivery_data, $product_cart)
+    {
+        print_r($delivery_data);
+     
 
         //date
         $tomorrow = date("Y-m-d", strtotime("+1 day"));
@@ -51,6 +54,9 @@ class RttTntExpress
             'postCode'=>$delivery_data_arr['postcode'],
             'state'=>'vic'
         );
+
+        print_r($deliveryAddress);
+        exit();
         //Set Delivery address
         $enquiry->setDeliveryAddress($deliveryAddress);
 
