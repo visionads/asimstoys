@@ -51,8 +51,11 @@ class WwwController extends Controller
         $data = Article::where('slug', $home_value)->where('status', 'active')->first();
 		
 		$youtube_link = DB::table('youtube_link')->where('status','active')->limit(3)->get();
+		
+		return view('web::maintaince');
 
-        return view('web::layout.home_page', [
+        /**
+		return view('web::layout.home_page', [
             'productgroup_data' => $productgroup_data,
             'slider_data'=>$slider_data,
             'title'=>$title,
@@ -60,6 +63,7 @@ class WwwController extends Controller
             'featured_product_data' => $featured_product_data,
 			'youtube_link' => $youtube_link
         ]);
+		**/
     }
 
 
