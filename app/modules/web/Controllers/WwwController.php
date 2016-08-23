@@ -39,7 +39,7 @@ class WwwController extends Controller
 	
     public function home_page()
     {
-        $home_value = "about-the-asims-toy";
+        $home_value = "14";
         $title = "Home | Asim's Toy";
 
         $slider_data = SliderImage::where('cat_slider_id', 1)->get();
@@ -48,7 +48,7 @@ class WwwController extends Controller
 
         $featured_product_data = Product::where('is_featured','Yes')->where('status','active')->get();
 
-        $data = Article::where('slug', $home_value)->where('status', 'active')->first();
+        $data = Article::where('id', $home_value)->where('status', 'active')->first();
 		
 		$youtube_link = DB::table('youtube_link')->where('status','active')->limit(3)->get();
 		
