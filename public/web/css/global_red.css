@@ -5150,6 +5150,13 @@ img.downa_arrow_btn{
 	width: 100%;
 	float: left;
 	padding: 30px;
+	font-size:13px;
+}
+
+.home-text-container .description h5{
+	    color: #D42E98;
+    font-size: 15px;
+    margin: 5px 0px 10px 0px;
 }
 .home-text-container .description p{
 
