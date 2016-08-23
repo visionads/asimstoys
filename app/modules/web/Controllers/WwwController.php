@@ -96,7 +96,53 @@ class WwwController extends Controller
             'productgroup_data' => $productgroup_data
         ]);
     }
+	
+	public function aboutus(){
+        $id = '14';
 
+        $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
+        $data = Article::where('id',$id)->first();
+
+        $title =$data->title . " | Asim's Toy";
+
+        return view('web::general.commonpage', [
+            'title'=>$title,
+            'data'=>$data,
+            'productgroup_data' => $productgroup_data
+        ]);
+    }
+	
+	public function deliverypolicy(){
+        $id = '22';
+
+        $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
+        $data = Article::where('id',$id)->first();
+
+        $title =$data->title . " | Asim's Toy";
+
+        return view('web::general.commonpage', [
+            'title'=>$title,
+            'data'=>$data,
+            'productgroup_data' => $productgroup_data
+        ]);
+    }
+	
+	public function privacypolicy(){
+        $id = '21';
+
+        $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
+        $data = Article::where('id',$id)->first();
+
+        $title =$data->title . " | Asim's Toy";
+
+        return view('web::general.commonpage', [
+            'title'=>$title,
+            'data'=>$data,
+            'productgroup_data' => $productgroup_data
+        ]);
+    }
+	
+	
     public function laybyinstruction(){
         $slug = 'lay-by';
 

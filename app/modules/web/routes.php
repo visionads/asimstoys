@@ -47,6 +47,21 @@ Route::any('special', [
     'uses' => 'WwwController@special'
 ]);
 
+Route::any('about-us', [
+    'as' => 'about-us',
+    'uses' => 'WwwController@aboutus'
+]);
+
+Route::any('delivery-policy', [
+    'as' => 'delivery-policy',
+    'uses' => 'WwwController@deliverypolicy'
+]);
+
+Route::any('privacy-policy', [
+    'as' => 'privacy-policy',
+    'uses' => 'WwwController@privacypolicy'
+]);
+
 Route::any('terms-condition',[
 		'as' => 'terms-condition',
 		'uses' => 'WwwController@termscondition'

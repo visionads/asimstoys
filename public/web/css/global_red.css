@@ -502,7 +502,28 @@ form.pagination { }
 	}
 
 
-
+	.footer_menu{
+		float:left;
+	}
+	
+	.footer_menu a{
+		font-size:12px;
+		float:left;
+		margin-right: 20px;
+		border-right: 1px solid rgba(200,200,200,.3);
+		padding-right: 20px;
+	}
+	
+	.footer_menu a:last-child{
+		border-right:none;
+	}
+	
+	p.secure-payment-info{
+		background: #fff;
+		color: #3d3d3d;
+		padding: 10px;
+		font-size: 13px;
+	}
 /* CART steps *********************************************************************** */
 ul#order_step { background-color: white;}
 ul.step {

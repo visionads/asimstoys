@@ -42,8 +42,8 @@
                                                 <h4>Secure Payment </h4><br>
                                             </div>
 
-                                            <br>
-                                            <img src="{{URL::asset('/web/images/payment.png')}}" alt="Secure Payment" height="100" width="180">
+                                            <p class="secure-payment-info">All transactions are securely process and encrypted by the eWAY payment gateway platform. Credit Card information is never stored.</p>
+                                            <!--<img src="{{URL::asset('/web/images/payment.png')}}" alt="Secure Payment" height="100" width="180">-->
                                         </div>
                                     </div>
                                 </div>
@@ -53,6 +53,11 @@
 
                     <div class="pos-footer-2">
                         <div class="container">
+							<div class="footer_menu">
+								<a href="{{Url::to('')}}/privacy-policy">Privacy Policy</a>
+								<a href="{{Url::to('')}}/delivery-policy">Delivery Policy</a>
+								<a href="{{Url::to('')}}/about-us">About Us</a>
+							</div>
                             <a class="developer_company" href="http://www.visionads.com.au/" target="_blank" title="Vision Ads">SEO & Website by VisionsAds</a>
                         </div>
                     </div>
