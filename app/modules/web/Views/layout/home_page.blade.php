@@ -71,7 +71,12 @@
 					<div class="col-md-4">
 						<div class="home-youtube">
 							<a class="fancybox-media" href="{{@$youtube->link}}">
-								<img src="{{URL::to('/')}}/web/images/youtube.jpg">
+								@if(!empty($youtube->image))
+									<img src="{{URL::to('/')}}/{{$youtube->image}}">
+								@else
+									<img src="{{URL::to('/')}}/web/images/youtube.jpg">
+								@endif
+								
 							</a>
 						</div>
 					</div>

@@ -57,7 +57,39 @@ class YoutubeController  extends Controller
        $input = $request->all();
        $link = Input::get('link');
        
+	   $image=Input::file('image');
+	   
+	   
+	   if(count($image)>0) {
+			
+			$file_type_required = 'png,jpeg,jpg';
+            $destinationPath = 'uploads/youtube/';
+			
+			$uploadfolder = 'uploads/';
 
+			if ( !file_exists($uploadfolder) ) {
+				$oldmask = umask(0);  // helpful when used in linux server
+				mkdir ($uploadfolder, 0777);
+			}
+			if ( !file_exists($destinationPath) ) {
+				$oldmask = umask(0);  // helpful when used in linux server
+				mkdir ($destinationPath, 0777);
+			}
+			
+			if($image){
+				$file_name = YoutubeController::image_upload($image, $file_type_required, $destinationPath);
+			}
+			
+			if (isset($file_name) != '') {
+				
+				@unlink(public_path()."/".$model->image);
+                @unlink(public_path()."/".$model->thumbnail);
+
+				$input['image'] = $file_name[0];
+				$input['thumbnail'] = $file_name[1];
+			}
+	   }
+		
        DB::beginTransaction();
         try {
             
@@ -117,7 +149,38 @@ class YoutubeController  extends Controller
        $model = Youtube::where('id',$id)->first();
        $input = $request->all();
        $link = Input::get('link');
-       
+       $image=Input::file('image');
+	   
+	   
+	   if(count($image)>0) {
+			
+			$file_type_required = 'png,jpeg,jpg';
+            $destinationPath = 'uploads/youtube/';
+			
+			$uploadfolder = 'uploads/';
+
+			if ( !file_exists($uploadfolder) ) {
+				$oldmask = umask(0);  // helpful when used in linux server
+				mkdir ($uploadfolder, 0777);
+			}
+			if ( !file_exists($destinationPath) ) {
+				$oldmask = umask(0);  // helpful when used in linux server
+				mkdir ($destinationPath, 0777);
+			}
+			
+			if($image){
+				$file_name = YoutubeController::image_upload($image, $file_type_required, $destinationPath);
+			}
+			
+			if (isset($file_name) != '') {
+				
+				@unlink(public_path()."/".$model->image);
+                @unlink(public_path()."/".$model->thumbnail);
+
+				$input['image'] = $file_name[0];
+				$input['thumbnail'] = $file_name[1];
+			}
+	   }
 
        DB::beginTransaction();
         try {
@@ -153,6 +216,12 @@ class YoutubeController  extends Controller
         try {
             $model = Youtube::where('id',$id)->first();
             if ($model->delete()) {
+				
+				if($model->image != null){
+                    unlink($model->image);
+                    unlink($model->thumbnail);
+                }
+				
                 DB::commit();               
                 Session::flash('flash_message', " Successfully Deleted.");
                 return redirect()->back();
@@ -161,6 +230,53 @@ class YoutubeController  extends Controller
             DB::rollback();
             Session::flash('flash_message_error',$e->getMessage() );
             return redirect()->back();
+        }
+    }
+	
+	
+	 public function image_upload($image,$file_type_required,$destinationPath){
+        if ($image != '') {
+
+            $img_name = ($_FILES['image']['name']);
+            $random_number = rand(111, 999);
+
+            $thumb_name = 'thumb_200x200_'.$random_number.'_'.$img_name;
+
+            $newWidth=120;
+            $targetFile=$destinationPath.$thumb_name;
+            $originalFile=$image;
+
+            $resizedImages 	= ImageResize::resize($newWidth, $targetFile,$originalFile);
+
+            $thumb_image_destination=$destinationPath;
+            $thumb_image_name=$thumb_name;
+
+            //$rules = array('image' => 'required|mimes:png,jpeg,jpg');
+            $rules = array('image' => 'required|mimes:'.$file_type_required);
+            $validator = Validator::make(array('image' => $image), $rules);
+            if ($validator->passes()) {
+                // Files destination
+                //$destinationPath = 'uploads/slider_image/';
+                // Create folders if they don't exist
+                if (!file_exists($destinationPath)) {
+                    mkdir($destinationPath, 0777, true);
+                }
+                $image_original_name = $image->getClientOriginalName();
+                $image_name = rand(11111, 99999) . $image_original_name;
+                $upload_success = $image->move($destinationPath, $image_name);
+
+                $file=array($destinationPath . $image_name, $thumb_image_destination.$thumb_image_name);
+
+                if ($upload_success) {
+                    return $file_name = $file;
+                }
+                else{
+                    return $file_name = '';
+                }
+            }
+            else{
+                return $file_name = '';
+            }
         }
     }
 

@@ -13,7 +13,8 @@ class Youtube extends Model
     protected $fillable = [
         'link',
         'status',
-
+        'image',
+		'thumbnail'
     ];
 
 
