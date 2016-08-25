@@ -90,7 +90,15 @@
                             <label>
                                 <input type="radio" name="payment_method" id="r2" value="lay_by" class="px">
                                 <span class="lbl">Partial Payment (Lay By)</span> <br>
-                                <i>You may pay partially by Credit Card  </i> <br>
+                                <i>You may pay partially by Credit Card  </i> <br><br/>
+                            </label>
+                        </div>
+						
+						<div class="radio" style="margin-inside: 0;">
+                            <label>
+                                <input type="radio" name="payment_method" id="r2" value="pre_order" class="px">
+                                <span class="lbl">Pre Order</span> <br>
+                                <i>Pay using your Credit Card. We accept VISA | MasterCard  | American Express </i> <br>
                             </label>
                         </div>
 

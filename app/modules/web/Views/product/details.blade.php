@@ -134,12 +134,21 @@
 																Price: $ <?php echo $product->sell_rate;?>
 															</span>
 														@endif
+														
+														@if($product->preorder == '1')
+                                                                <label>
+                                                                    <input type="radio" checked name="price_asim" value="{{$product->sell_rate}}" required="required">
+                                                                    Pre order &nbsp;<br>
+                                                                   <!-- <small style="font-weight: normal; line-height: 0;">" $50 minimum Pre order. Chose partial payment option at the checkout "</small>-->
+                                                           
+                                                                </label>
+														@endif
                                                         <div class="col-md-6">
 														
 															
 																		
                                                             @if(!empty($product->cost_price))
-                                                                @if($product->preorder == '1' || $product->preorder == '0' )
+                                                                @if($product->preorder != '1' || $product->preorder == '0' )
 
                                                                     <label>
                                                                         <input type="radio" name="price_asim" value="{{$product->sell_rate}}" required="required" checked="checked">
@@ -159,15 +168,9 @@
                                                             @endif
                                                         </div>
                                                         <div class="col-md-6">
-                                                            @if($product->preorder == '1')
-                                                                <label>
-                                                                    <input type="radio" name="price_asim" value="{{$product->cost_price}}" required="required">
-                                                                    Pre order &nbsp;<br>
-                                                                    <small style="font-weight: normal; line-height: 0;">" $50 minimum Pre order. Chose partial payment option at the checkout "</small>
                                                            
-                                                                </label>
 
-                                                            @elseif($product->product_group_id == '9')
+                                                            @if($product->product_group_id == '9')
                                                                 <label>
                                                                     <input type="radio" name="price_asim" value="{{$product->cost_price}}" required="required">
                                                                     Special Rate &nbsp;
@@ -175,13 +178,15 @@
 																		$ <?php echo $product->cost_price;?>
 																	</span>
                                                                 </label>
-
-                                                            @else
-                                                                <label>
-                                                                    <input type="radio" name="price_asim" value="{{$product->cost_price}}" required="required">
-                                                                    Layby &nbsp; <br>
-                                                                    <small style="font-weight: normal; line-height: 0;">" $50 minimum layby. Chose partial payment option at the checkout "</small>
-                                                                </label>
+															@else
+																
+																@if($product->preorder != '1')
+																	<label>
+																		<input type="radio" name="price_asim" value="{{$product->cost_price}}" required="required">
+																		Layby &nbsp; <br>
+																		<small style="font-weight: normal; line-height: 0;">" $50 minimum layby. Chose partial payment option at the checkout "</small>
+																	</label>
+																@endif
                                                             @endif
                                                         </div>
 
