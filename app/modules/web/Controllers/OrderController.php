@@ -551,7 +551,6 @@ class OrderController extends Controller
         $input_data = $request->all();
 
 
-
         if($input_data['payment_method']=='e_way')
         {
             $invoice_number = $input_data['invoice_number'];// $request->session()->get('invoice_no');
@@ -579,14 +578,25 @@ class OrderController extends Controller
                 'customer_data' => $customer_data,
             ]);
 
-        }else{
+        }
+        else if($input_data['payment_method']=='pre_order')
+        {
+            // Update Invoice
+            $invoice_number = $input_data['invoice_number']; //$request->session()->get('invoice_no');
+            DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'pre-order']);
+            $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
+
+            Session::flash('flash_message', "Successfully Added Pre-Order Process.");
+            return redirect()->route('details_of_pre_order', $order_head->id);
+        }
+        else
+        {
             // Update Invoice
             $invoice_number = $input_data['invoice_number']; //$request->session()->get('invoice_no');
             DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'layby']);
             $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
 
             Session::flash('flash_message', "Successfully Added Lay-by Process.");
-            #return redirect()->route('lay_by_order_lists');
             return redirect()->route('details_of_lay_by', $order_head->id);
         }
 

@@ -182,6 +182,85 @@ class AccountsController extends Controller
     }
 
 
+    public function pre_order_lists(Request $request){
+
+        if(Session::has('user_id')){
+
+            $request->session()->set('redirect_value', '');
+            $title ="Pre Order | Asim's Toy";
+
+            $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
+
+            $get_pre_order_history = DB::table('order_head')
+                ->where('order_head.user_id',Session::get('user_id'))
+                ->where('order_head.invoice_type','pre-order')
+                ->orderBy('order_head.id','desc')
+                ->get();
+
+
+            return view('web::accounts.pre_order',[
+                'title' => $title,
+                'productgroup_data' => $productgroup_data,
+                'get_pre_order_history' => $get_pre_order_history
+            ]);
+
+
+        }else{
+            $request->session()->set('redirect_value', 'myaccount');
+            return redirect('customerlogin');
+
+        }
+
+
+    }
+
+    public function details_of_pre_order($order_head_id)
+    {
+
+        $freight_data = DB::table('order_head')
+            ->where(['id' => $order_head_id])
+            ->first();
+
+        $total_amount = DB::table('order_detail')
+            ->select(DB::raw('SUM(price) as total_amount'))
+            ->groupBy('order_head_id')
+            ->where('order_head_id', $order_head_id)
+            ->first();
+
+        $paid_amount = DB::table('order_payment_transaction')
+            ->select(DB::raw('SUM(amount) as paid_amount'))
+            ->groupBy('order_head_id')
+            ->where('order_head_id', $order_head_id)
+            ->first();
+
+        $due_amount = (@$total_amount->total_amount + $freight_data->freight_amount) - @$paid_amount->paid_amount;
+
+        $order = OrderHead::with('relOrderDetail')->where('invoice_type', 'pre-order')->where('id', $order_head_id)->get();
+        $order_pay_trn = OrderPaymentTransaction::where('order_head_id', $order_head_id)->get();
+
+        $get_customer_data = Customer::where('id',Session::get('user_id'))->first();
+        $delivery_data = DeliveryDetails::where('user_id',Session::get('user_id'))->orderBy('id','desc')->first();
+
+        $title = 'Invoice Detail';
+
+
+        return view('web::accounts.order_details',[
+            'order' => $order,
+            'freight_data' => $freight_data,
+            'order_pay_trn' => $order_pay_trn,
+            'title' => $title,
+            'get_customer_data' => $get_customer_data,
+            'delivery_data' => $delivery_data,
+            'total_amount'=>$total_amount,
+            'paid_amount'=>$paid_amount,
+            'due_amount'=>$due_amount,
+            'order_head_id'=>$order_head_id,
+        ]);
+
+
+    }
+
+
     /**
      * @param $order_head_id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

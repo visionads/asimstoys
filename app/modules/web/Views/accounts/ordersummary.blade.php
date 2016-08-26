@@ -9,15 +9,7 @@
                 <div class="col-sm-12">
 
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation">
-                            <a href="{{route('myaccount')}}" >Profile</a>
-                        </li>
-                        <li role="presentation" class="active">
-                            <a href="{{route('order_summery_lists')}}" >Order History</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="{{route('lay_by_order_lists')}}">Lay by Order</a>
-                        </li>
+                        @include('web::accounts._account_menu')
                     </ul>
 
                     <div class="tab-content ">

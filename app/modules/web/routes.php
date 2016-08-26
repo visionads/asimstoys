@@ -164,6 +164,11 @@ Route::any('remove_cart',[
         "uses" => "AccountsController@details_of_lay_by"
     ]);
 
+    Route::any("details_of_pre_order/{order_head_id}", [
+        "as"   => "details_of_pre_order",
+        "uses" => "AccountsController@details_of_pre_order"
+    ]);
+
 
     Route::any("details_of_order_summery/{order_head_id}", [
         "as"   => "details_of_order_summery",
@@ -179,6 +184,11 @@ Route::any('remove_cart',[
     Route::any("lay_by_order_lists", [
         "as"   => "lay_by_order_lists",
         "uses" => "AccountsController@lay_by_order_lists"
+    ]);
+
+    Route::any("pre_order_lists", [
+        "as"   => "pre_order_lists",
+        "uses" => "AccountsController@pre_order_lists"
     ]);
 
 

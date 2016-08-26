@@ -16,7 +16,7 @@
                     <div class="tab-content ">
 
 
-                        @if(!empty($get_layby_history))
+                        @if(!empty($get_pre_order_history))
                             <table class="table">
                                 <?php
                                 $count = 1;
@@ -30,7 +30,7 @@
                                     <td>Status</td>
                                     <td>Action</td>
                                 </tr>
-                                @foreach($get_layby_history as $get_order)
+                                @foreach($get_pre_order_history as $get_order)
 
                                     <tr>
                                         <td>
