@@ -7,6 +7,7 @@ use App\Helpers\RttTntExpress;
 use App\Helpers\TntExpress;
 use App\OrderDetail;
 use App\OrderHead;
+use App\OrderTmp;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -356,34 +357,93 @@ class OrderController extends Controller
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
         $product_cart = $request->session()->get('product_cart');
-
-        foreach ($product_cart as $values){
-            $product = Product::findOrFail($values['product_id']);
-        }
-
         $user_id = $request->session()->get('user_id');
         $deliver_id = $request->session()->get('deliver_id');
-
         $user_data = DB::table('customer')->where('id',$user_id)->first();
         $delivery_data = DB::table('delivery_details')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
 
-        //Freight Calculation if session the forget first
-        if(Session::has('freight_calculation')){
-            $request->session()->forget('freight_calculation');
+        /*print_r($product_cart);
+        print "User ID: ";
+        print_r($user_id);
+        print "\n";
+        print "Delivery ID: ";
+        print_r($deliver_id);
+        print "\n";
+        print "User Data: ";
+        print_r($user_data->id);
+        print "\n";
+        print "Delivery Data: ";
+        print_r($delivery_data);
+        exit();*/
+
+
+
+        DB::beginTransaction();
+        try
+        {
+            foreach ($product_cart as $values)
+            {
+
+                #print_r($values);exit();
+                $product = Product::findOrFail($values['product_id']);
+
+                $product_data [] =array(
+                    'product_id'=> $product['id'],
+                    'product_group_id'=> $product['product_group_id'],
+                    'weight'=> $product['weight'],
+                    'length'=> $product['length'],
+                    'width'=> $product['width'],
+                    'height'=> $product['height'],
+                );
+
+                //freight Calculation
+                $freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_data);
+                $freight_charge = $freight_calculation[0]['price'][0];
+
+                //store to order tmp table
+                $model = new OrderTmp();
+
+                $order_tmp_exists = $model->where('user_id', $user_data->id)->where('product_id', $product['id'])->exists();
+                if($order_tmp_exists == null)
+                {
+                    $model->user_id = $user_data->id;
+                    $model->delivery_id= $delivery_data->id;
+                    $model->date= Date('Y-m-d');
+                    $model->product_id= isset($product['id'])?$product['id']:null;
+                    $model->product_type= isset($values['product_type'])?$values['product_type']:null;
+                    $model->color= isset($values['color'])?$values['color']:null;
+                    $model->quantity= isset($values['quantity'])?$values['quantity']:null;
+                    $model->background= isset($values['background'])?$values['background']:null;
+                    $model->product_price= isset($values['product_price'])?$values['product_price']:null;
+                    $model->plate_text= isset($values['plate_text'])?$values['plate_text']:null;
+                    $model->volume= isset($values['volume'])?$values['volume']:null;
+                    $model->weight= isset($values['weight'])?$values['weight']:null;
+                    $model->freight_charge= isset($freight_charge)?$freight_charge:0;
+                    $model->save();
+
+                    DB::commit();
+                }
+
+            }
+        }
+        catch (\Exception $e)
+        {
+            //If there are any exceptions, rollback the transaction`
+            DB::rollback();
+            Session::flash('flash_message_error', $e->getMessage());
+
         }
 
-        //freight Calculation
-        $freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_cart);
-        $request->session()->set('freight_calculation', $freight_calculation);
+        $product_cart_order_tmp = OrderTmp::where('user_id', $user_data->id)->get()->toArray();
 
 
         return view('web::cart.finalcart',[
                 'title' => $title,
                 'productgroup_data' => $productgroup_data,
-                'product_cart_r' => $product_cart,
+                'product_cart_r' => $product_cart_order_tmp,
                 'user_data' => $user_data,
                 'delivery_data' => $delivery_data,
-                'freight_calculation' => $freight_calculation,
+                #'freight_calculation' => $freight_calculation,
             ]);
     }
 
@@ -401,13 +461,13 @@ class OrderController extends Controller
         $plate_text = @$request->session()->get('plate_text');
         $user_id = $request->session()->get('user_id');
         $deliver_id = $request->session()->get('deliver_id');
-        $freight_calculation = $input_data['freight_calculation'];//$request->session()->get('freight_calculation');
+        #$freight_calculation = $input_data['freight_calculation'];//$request->session()->get('freight_calculation');
 
         $user_data = DB::table('customer')->where('id',$user_id)->first();
         #$delivery_data = DB::table('delivery_details')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
 
         //Store to Order Head and Details
-        $product_cart = $request->session()->get('product_cart');
+        $product_cart = OrderTmp::where('user_id', $user_id)->get()->toArray();
 
 
         if($product_cart)
@@ -415,12 +475,9 @@ class OrderController extends Controller
             $gen_number = GenerateNumber::generate_number();
 
             //Total Price
-            $total_price = 0;
-            foreach ($product_cart as $product)
-            {
-                #$product = DB::table('product')->where('id',$product['product_id'])->first();
-                $total_price += $product['product_price']; //$product->sell_rate;
-            }
+            $total_price = $input_data['total_amount'];
+            $total_freight_charge = $input_data['total_freight_charge'];
+
 
             //coupon code
             $coupon_value = $request->session()->get('coupon_value');
@@ -432,12 +489,13 @@ class OrderController extends Controller
                 'user_id'=>$user_id,
                 'total_discount_price'=>$total_discount_price,
                 'vat'=>0,
-                'freight_amount' => $freight_calculation,
+                'freight_amount' => $total_freight_charge,
                 'sub_total' => $total_price - $total_discount_price, //$total_price,
-                'net_amount'=> $input_data['total_amount'] - $total_discount_price, //$total_price+$freight_calculation,
+                'net_amount'=> $total_price - $total_discount_price, //$total_price+$freight_calculation,
                 'status'=> 1,
             ];
 
+            DB::beginTransaction();
             try
             {
                 $model = new OrderHead();
@@ -456,32 +514,24 @@ class OrderController extends Controller
                         $model_order_dt->price = $products['product_price']?$products['product_price']:null; //$product->sell_rate;
                         $model_order_dt->status =1;
                         $model_order_dt->save();
-
-						/*if($model_order_dt->save())
-                        {
-							//Remove from product stock
-							$get_product_data = DB::table('product')->where('id',$products['product_id'])->first();
-							$edited_quantity = $get_product_data->stock_unit_quantity - $products['quantity'];
-
-                            //update stock balance
-							DB::table('product')
-								->where('id', $product->id)
-								->update(['stock_unit_quantity' => $edited_quantity]);
-						
-						}*/
+                        
                     }
+                    DB::table('order_tmp')->where('user_id', '=', $user_id)->delete();
                 }
+
+                DB::commit();
+                Session::flash('flash_message', 'Success !');
+
                 #$request->session()->forget('freight_calculation');
                 $request->session()->forget('product_cart');
                 $request->session()->set('invoice_no', $order_head['invoice_no']);
                 $request->session()->set('total_price', $total_price);
                 $request->session()->set('customer_data', $user_data);
 
-                Session::flash('flash_message', 'Success !');
-
             }catch(\Exception $e){
 
-                #print_r($e->getMessage());
+                //If there are any exceptions, rollback the transaction`
+                DB::rollback();
                 Session::flash('flash_message_error', $e->getMessage());
             }
 

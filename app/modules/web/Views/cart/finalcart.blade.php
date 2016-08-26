@@ -71,6 +71,7 @@
 										<td>Item</td>
 										<td>Qty</td>
 										<td>Unit Price</td>
+										<td>Freight Charge </td>
 										<td class="text-align-right">Line Total</td>
 									</tr>
 								</thead>
@@ -80,6 +81,8 @@
 										$total_value = 0;
 
 										$count = 0;
+                                    $total_freight_charge = 0;
+
 									?>
 									@foreach($product_cart_r as $product_cart)
 										<?php
@@ -102,18 +105,31 @@
 												<input class="cart-quantity" type="number" min="1" name="product_quantity" value="{{$product_cart['quantity']}}" readonly>
 											</td>
 											<td>
-												<div class="unit-price">
-													${{$product_cart['product_price']}}
-												</div>
-											</td>
+                                                <div class="unit-price">
+                                                    ${{$product_cart['product_price']}}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="unit-price">
+                                                    ${{number_format(isset($product_cart['freight_charge'])?$product_cart['freight_charge']:0, 2)}}
+                                                </div>
+                                            </td>
 											<td class="text-align-right">
 												<div class="linetotal">
 													
 													<span class="line_total">
-														${{$product_cart['quantity']*$product_cart['product_price']}}
-														<?php
-															$total_value+=$product_cart['quantity']*$product_cart['product_price'];
-														?>
+                                                        <?php
+
+                                                            $pro_price = $product_cart['quantity']*$product_cart['product_price'];
+                                                            $freight_charge= isset($product_cart['freight_charge'])?$product_cart['freight_charge']:0;
+                                                            $line_amount = $pro_price + $freight_charge;
+                                                            #$total_line_amount += $line_amount + $freight_charge;
+                                                            $total_value+=$pro_price + $freight_charge;
+                                                            $total_freight_charge+=$freight_charge;
+                                                        ?>
+
+														${{ $line_amount }}
+
 													</span>
 												</div>
 											</td>	
@@ -124,12 +140,17 @@
 									@endforeach
 										<tr class="sub-total-tr">
 											<td>
-												&nbsp;</td>
+												&nbsp;
+                                            </td>
 											<td>
+                                                &nbsp;
+											</td>
+                                            <td>
+                                                &nbsp;
 											</td>
 											<td>Total: <input type="hidden" name="total_value" value="{{$total_value}}"></td>
 											<td class="text-align-right" >${{$total_value }}</td>
-                                            <input type="hidden" id="total-amount-cart-in" value="{{$total_value }}">
+
 										</tr>
 								</tbody>
 							</table>
@@ -144,35 +165,9 @@
                                 </span>
                             </p>
                             
-                            <div id="freight-cal">
 
-                                @if(isset($freight_calculation))
-                                    <?php $init_amount =0; ?>
-                                    @if(count($freight_calculation)>1)
-
-                                        <?php
-                                            $init_amount = isset($freight_calculation)?$freight_calculation[0]['price'][0]: 0.00;
-                                                $code = isset($freight_calculation)? $freight_calculation[0]['code'][0]:0;
-                                                $description = isset($freight_calculation)? $freight_calculation[0]['description'][0]:"";
-                                            ?>
-
-                                        {{--@foreach($freight_calculation as $fc)
-
-                                           <input type="radio" name="fc" id="{{$fc['code'][0]}}" value="{{$fc['price'][0]}}" {{$fc['code'][0]==76 ? 'checked': null}} /><label for="{{$fc['code'][0]}}"> {{$fc['description'][0]}} || Cost is <b>{{$fc['price'][0]}}</b></label><br>
-
-                                        @endforeach--}}
-
-                                            <input type="radio" name="fc" id="{{$code}}" value="{{$init_amount}}" {{$code==76 ? 'checked': null}} /><label for="{{$code}}"> {{$description}} || Cost is <b>{{$init_amount}}</b></label><br>
-                                            {{--<input type="radio" name="fc" id="0" value="0"  /><label for="0"> Pick Up (by appointment only)</label>--}}
-
-
-                                    @else
-                                        <div style="color: blue; font-size: 14px;">{{"Freight Charge will not add for this product. "}}</div>
-                                    @endif
-                                @endif
-                            </div>
                             <p>&nbsp;</p>
-							<h4><span class="pull-right" style="color: orangered;">Total Cost : <b>$ <span id="final-amount-cart">{{ round($init_amount.".00" + $total_value, 2) }} </span> &nbsp;</b></span></h4>
+							<h4><span class="pull-right" style="color: orangered;">Total Cost : <b>$ <span id="final-amount-cart">{{ round($total_value, 2) }} </span> &nbsp;</b></span></h4>
 
 
 
@@ -185,6 +180,11 @@
 
 
                 {!! Form::open(['route' => 'pay-now']) !!}
+
+                <input type="hidden" name="total_amount" value="{{$total_value }}">
+                <input type="hidden" name="total_freight_charge" value="{{$total_freight_charge }}">
+
+
 						<div class="col-md-12 margin-top-30 margin-bottom-30">
 							<div class="col-md-6">
 								<div class="row">
@@ -242,12 +242,8 @@
 
                             <div class="col-md-12 margin-top-30 margin-bottom-30">
 
-                                    <a href="{{Url::to('')}}/mycart" class="cart-continue-shopping">Edit Cart</a>
-                                    <!-- <input type="submit" value="Checkout" class="cart-checkout">					 -->
-                                {{--<a href="{{ route('pay-now') }}" class="cart-checkout">Proceed to Payment Method</a>--}}
+                                {{--<a href="{{Url::to('')}}/mycart" class="cart-continue-shopping">Edit Cart</a>--}}
 
-                                <input type="hidden" name="total_amount" value="{{ round($init_amount.".00" + $total_value, 2) }}" id="total-net-amount-cart">
-                                <input type="hidden" name="freight_calculation" value="{{ round($init_amount.".00", 2) }}" id="freight-amount">
 
                                 <input type="submit" value="Proceed to Payment Method" class="cart-checkout" id="myFormSubmit">
 
@@ -260,7 +256,7 @@
 
 
     <script>
-        $('#freight-cal input').on('change', function() {
+        /*$('#freight-cal input').on('change', function() {
             total_amt_cart = $('#total-amount-cart-in').val();
             total_amt_cart_in = Math.round(total_amt_cart * 100) / 100;
             fc_amt = $('input[name=fc]:checked', '#freight-cal').val();
@@ -268,7 +264,7 @@
             $('#final-amount-cart').html(sum1);
             $('#total-net-amount-cart').val(sum1);
             $('#freight-amount').val(fc_amt);
-        });
+        });*/
 
 
         $('#myFormSubmit').click(function(e)

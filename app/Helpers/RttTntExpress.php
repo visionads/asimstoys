@@ -23,7 +23,6 @@ class RttTntExpress
      */
     public static function rtt_call($user_data, $delivery_data, $product_cart)
     {
-       
 
         //date
         $tomorrow = date("Y-m-d", strtotime("+1 day"));
@@ -69,18 +68,15 @@ class RttTntExpress
         {
             foreach ($product_cart as $values)
             {
-                $product_id = isset($values['product_id'])? $values['product_id'] : $values['id'];
-                $product = Product::findOrFail($product_id);
-
-                if( $product['product_group_id'] != 6 )
+                if( $values['product_group_id'] != 6 )
                 {
-                    if( $product['product_group_id'] != 7 )
+                    if( $values['product_group_id'] != 7 )
                     {
                         //set value
-                        $weight +=isset($product['weight'])?$product['weight']:0;
-                        $length +=isset($product['length'])?$product['length']:0;
-                        $width +=isset($product['width'])?$product['width']:0;
-                        $height +=isset($product['height'])?$product['height']:0;
+                        $weight =isset($values['weight'])?$values['weight']:0;
+                        $length =isset($values['length'])?$values['length']:0;
+                        $width =isset($values['width'])?$values['width']:0;
+                        $height =isset($values['height'])?$values['height']:0;
                     }
                 }
 
