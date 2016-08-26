@@ -43,7 +43,7 @@
                                             </div>
 
                                             <p class="secure-payment-info">All transactions are securely process and encrypted by the eWAY payment gateway platform. Credit Card information is never stored.</p>
-                                            <!--<img src="{{URL::asset('/web/images/payment.png')}}" alt="Secure Payment" height="100" width="180">-->
+                                            <img src="{{URL::asset('/web/images/accept_credit_cards.jpg')}}" alt="Secure Payment" width="273">
                                         </div>
                                     </div>
                                 </div>
