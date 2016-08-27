@@ -1,6 +1,27 @@
 @extends('web::layout.web_master')
 
 @section('content')
+
+<?php
+	
+	function search($array, $key, $value)
+	{
+		$results = array();
+
+		if (is_array($array)) {
+			if (isset($array[$key]) && $array[$key] == $value) {
+				$results[] = $array;
+			}
+
+			foreach ($array as $subarray) {
+				$results = array_merge($results, search($subarray, $key, $value));
+			}
+		}
+
+		return $results;
+	}
+
+?>
 	<div class="pos-new-product home-text-container">
 		<h4>{{$product->title}}</h4>
 
@@ -231,10 +252,36 @@
                                                 <div style="text-align: center; ">
                                                     <p>&nbsp; </p>
 													<?php
+													
+													
 														if($product->stock_unit_quantity > 0){
+															
+														
+																$show_add_to_cart = 'no';
+																
+																if(Session::has('product_cart')){
+																	$product_cart_exists = Session::get('product_cart');
+																
+																	$check_value = search($product_cart_exists, 'product_id', $product->id);
+
+																	if(!empty($check_value)){
+																		$show_add_to_cart = 'yes';
+																	}else{
+																		$show_add_to_cart = 'no';
+																	}
+																}
+																
+																if($show_add_to_cart == 'yes'){
 													?>
-														<input type="submit" name="submit" class="register_btn" value="Add to Cart" style="padding: 10px; text-align: center; ">
-													<?php 
+																	<span class="register_btn no_add_cart">Add to Cart</span>
+													<?php
+																}else{
+																	
+													?>
+																	<input type="submit" name="submit" class="register_btn" value="Add to Cart" style="padding: 10px; text-align: center; ">
+													<?php
+																}
+
 														}
 													?>
                                                 </div>
@@ -498,6 +545,34 @@
         });
     //});
  </script>--}}
+ 
+ <script>
+        $('.no_add_cart').click(function(e)
+        {
+            $('#loadingModal').modal('show');
+            return true;
+        });
+
+    </script>
+ 
+   <div id="loadingModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    
+                        Add to Cart
+                    
+					 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Dear Customer,<br/> You already add this product into cart.<br/><br/> Please add another one.
+                    </p>
+                </div>
+                
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 
 @stop

@@ -5520,6 +5520,17 @@ input.register_btn{
     border: none;
 }
 
+.register_btn.no_add_cart{
+	background: coral;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 15px;
+    outline: none;
+    border: none;
+	padding:10px 20px;
+	cursor:pointer;
+}
+
 input.register_btn:hover{
 	background: rgba(255, 201, 71, .9);
     color: green;
@@ -5820,9 +5831,9 @@ a.email_us:hover{
 	    background: #ffc947;
     color: #fff;
     font-size: 15px;
-    height: 30px;
+    height: 40px;
     padding: 0px 15px;
-    line-height: 30px;
+    line-height: 40px;
 }
 
 .text-align-right{
@@ -5830,12 +5841,13 @@ a.email_us:hover{
 }
 
 .modal-header .close {
-    margin-top: 4px;
+    margin-top: 8px;
 }
 
 .modal-content{
 	width: 100%;
 	float: left;
+	border-radius:0px;
 }
 .email_us_container{
 	width: 100%;
