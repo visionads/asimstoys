@@ -5428,6 +5428,11 @@ padding: 8px;
 	text-transform:lowercase;
 }
 
+.hot_line .hot_line_row .email a{
+	font-size:18px;
+	font-weight:bold;
+}
+
 .delivery_text{
 	width: 100%;
     float: left;

@@ -38,7 +38,9 @@
 						<img src="{{URL::to('')}}/web/images/phone-call.png"> <span>1300 566 662</span>
 					</div>
 					<div class="hot_line_row">
-						<img src="{{URL::to('')}}/web/images/envelope.png"> <span class="email">asimstoys@gmail.com</span>
+						<img src="{{URL::to('')}}/web/images/envelope.png"> <span class="email">
+							<a href="mailto:asimstoys@gmail.com?Subject=Mail to Us" target="_top">info@asimstoys.com.au</a>
+						</span>
 					</div>
                 </div>
 				
