@@ -296,6 +296,16 @@ Route::any('forgotpassword',[
 	'uses' => 'WwwController@forgotpassword'
 ]);
 
+Route::any("ride-on-toys", [
+	"as"   => "ride-on-toys",
+	"uses" => "ProductCategoryController@ridesontoy"
+]);
+
+Route::any("product", [
+	"as"   => "product",
+	"uses" => "ProductCategoryController@product"
+]);
+
 Route::any('{product_slug}',[
 		'as' => 'product',
 		'uses' => 'ProductController@index'
@@ -321,7 +331,6 @@ Route::any("order/paynow", [
 
 
 /*--------- End---------------*/
-
 
 Route::any('{main_slug}/{sub_slug}',[
 		'as' => 'product_category',

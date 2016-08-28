@@ -81,11 +81,12 @@
             <div class="page-inner">
                 @include('web::layout.web_header')
 
-
+				<!--
                 <div style="background: white; padding: 20px; text-align: center">
                     <p>&nbsp; </p>
                     <h1 style="color: red;">Site is under maintenance !</h1>
                 </div>
+				-->
 
 
                 <div id="toppage">
