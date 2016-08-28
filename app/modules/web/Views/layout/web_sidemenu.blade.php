@@ -6,7 +6,7 @@
 		<ul class="left-menu-product scroll-menu-close">
 
 			<li>
-				<a href="{{URL::to('')}}/product">Product</a>
+				<a href="{{URL::to('')}}/product">All Products</a>
 			</li>
 
 			@if(!empty($productgroup_data))
