@@ -160,7 +160,7 @@
                                                                 <label>
                                                                     <input type="radio" checked name="price_asim" value="{{$product->sell_rate}}" required="required">
                                                                     Pre order &nbsp;<br>
-                                                                   <!-- <small style="font-weight: normal; line-height: 0;">" $50 minimum Pre order. Chose partial payment option at the checkout "</small>-->
+                                                                    <small style="font-weight: normal; line-height: 0;">" $50 minimum Pre order. Chose partial payment option at the checkout "</small>
                                                            
                                                                 </label>
 														@endif
