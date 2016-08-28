@@ -6,7 +6,7 @@
 		<ul class="left-menu-product scroll-menu-close">
 
 			<li>
-				<a>Product</a>
+				<a href="{{URL::to('')}}/product">Product</a>
 			</li>
 
 			@if(!empty($productgroup_data))
@@ -16,8 +16,8 @@
 							<a class="sidemenu-{{$productgroup->id}}" href="{{URL::to('')}}/pre-order">{{$productgroup->title}}</a>
 						@elseif($productgroup->id == '5')
 							<a class="sidemenu-{{$productgroup->id}}" href="{{URL::to('')}}/lay-by-instruction">{{$productgroup->title}}</a>
-						{{--@elseif($productgroup->id == '8')
-							<a class="sidemenu-{{$productgroup->id}}" href="{{URL::to('')}}/lay-by">{{$productgroup->title}}</a>--}}
+						@elseif($productgroup->id == '3')
+							<a class="sidemenu-{{$productgroup->id}}" href="{{URL::to('')}}/{{$productgroup->slug}}">{{$productgroup->title}}</a>
 						@else
 							<a class="sidemenu-{{$productgroup->id}}" href="#">{{$productgroup->title}}</a>
 						@endif

@@ -48,6 +48,53 @@ class ProductCategoryController extends Controller
             'productgroup_data' => $productgroup_data
         ]);
 	}
+	
+	public function ridesontoy(){
+		
+		$product_group = DB::table('groups')
+							->where('id','3')
+							->first();
+							
+		$title =$product_group->title . " | Asim's Toy";
+		
+		$productdata = DB::table('product')
+						->where('product_group_id',$product_group->id)
+						->where('preorder','0')
+						->where('status','active')
+						->orderBy('sort_order','asc')
+						->get();
+						
+	
+						
+		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
+		
+		return view('web::productcategory.all_data',[
+	            'title' => $title,
+	            'productdata' => $productdata,
+	            'productgroup_data' => $productgroup_data,
+				'product_group' => $product_group
+	        ]);
+	}
+	
+	public function product(){
+		
+		$title ="All Product | Asim's Toy";
+		
+		$productdata = DB::table('product')
+						->where('status','active')
+						->orderBy('sort_order','asc')
+						->get();
+						
+	
+						
+		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
+		
+		return view('web::productcategory.all_data',[
+	            'title' => $title,
+	            'productdata' => $productdata,
+				'productgroup_data' => $productgroup_data
+	        ]);
+	}
 
 	public function couple($main_slug,$sub_slug){
 
@@ -60,7 +107,7 @@ class ProductCategoryController extends Controller
 							->where('product_group_id',$product_group->id)
 							->first();
 
-		
+		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
 		$productdata = DB::table('product')
 						->where('product_group_id',$product_group->id)
