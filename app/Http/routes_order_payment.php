@@ -43,6 +43,11 @@ Route::any("order-shipped/{id}", [
     "uses" => "OrderPaymentController@order_shipped"
 ]);
 
+Route::any("order-archive/{id}", [
+    "as"   => "order-archive",
+    "uses" => "OrderPaymentController@order_archive"
+]);
+
 /*----------Lay BY-------------*/
 
 
@@ -54,6 +59,11 @@ Route::any("lay_by/index", [
 Route::any("pre-order-list", [
     "as"   => "pre-order-list",
     "uses" => "OrderPaymentController@pre_order_list"
+]);
+
+Route::any("archive-list", [
+    "as"   => "archive-list",
+    "uses" => "OrderPaymentController@archive_list"
 ]);
 
 Route::any("lay-by-order-show/{order_head_id}", [

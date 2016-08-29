@@ -30,6 +30,7 @@ class OrderPaymentController extends Controller
         $data = OrderHead::with('relCustomer')
             ->where('order_head.invoice_type','eway')
             ->where('status', '!=', 'cancel')
+			->where('status', '!=', 'archive')
             ->orderBy('order_head.invoice_no','desc')
             ->get();
 
@@ -66,6 +67,7 @@ class OrderPaymentController extends Controller
         $data = OrderHead::with('relCustomer')
             ->where('order_head.invoice_type','layby')
 			->where('order_head.status','!=','cancel')
+			->where('status', '!=', 'archive')
             ->orderBy('order_head.id','desc')
             ->get();
 
@@ -80,10 +82,23 @@ class OrderPaymentController extends Controller
         $data = OrderHead::with('relCustomer')
             ->where('order_head.invoice_type','pre-order')
 			->where('order_head.status','!=','cancel')
+			->where('status', '!=', 'archive')
             ->orderBy('order_head.id','desc')
             ->get();
 
         return view('order_payment.pre_order_list',['pageTitle' => $pageTitle,'data' => $data]);
+    }
+	
+	public function archive_list()
+    {
+        $pageTitle = "Archive Order";
+
+        $data = OrderHead::with('relCustomer')
+            ->where('order_head.status','archive')
+            ->orderBy('order_head.id','desc')
+            ->get();
+
+        return view('order_payment.archive_list',['pageTitle' => $pageTitle,'data' => $data]);
     }
 
 
@@ -150,6 +165,24 @@ class OrderPaymentController extends Controller
             if ($model->save()) {
 
                 Session::flash('flash_message', " Successfully Closed as Completed.");
+                return redirect()->back();
+            }
+        } catch(\Exception $e) {
+            Session::flash('flash_message_error',$e->getMessage() );
+            return redirect()->back();
+        }
+    }
+	
+	public function order_archive($order_head_id)
+    {
+	
+        try {
+            $model = OrderHead::findOrFail($order_head_id);
+			
+            $model->status = 'archive';
+            if ($model->save()) {
+
+                Session::flash('flash_message', " Successfully archived.");
                 return redirect()->back();
             }
         } catch(\Exception $e) {

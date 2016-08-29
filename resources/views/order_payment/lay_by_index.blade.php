@@ -40,6 +40,7 @@
                                 <th> Action </th>
 								<th> Approved</th>
 								<th>Delivered</th>
+								<th>Archive</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -66,6 +67,9 @@
 										</td>
 										<td>
 											<a href="{{ route('order-shipped', $values->id) }}" class="btn btn-success btn-xs" onclick="return confirm('Are you sure to Delivered as Complete ?')" title="Delivered the Order as Completed">Delivered</i></a>
+										</td>
+										<td>
+											<a href="{{ route('order-archive', $values->id) }}" class="btn btn-success btn-xs" onclick="return confirm('Are you sure to Archive this order ?')" title="Archive this Order">Archive</i></a>
 										</td>
                                     </tr>
                             @endforeach

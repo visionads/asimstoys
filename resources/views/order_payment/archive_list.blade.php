@@ -9,10 +9,12 @@
     <div class="row">
         <div class="col-lg-12">
             <section class="panel">
+
                 <header class="panel-heading">
-                    Order Paid </br>
-                    <i> all paid order history</i>
+                    Archive History </br>
+                    <i> all archive history</i>
                 </header>
+
                 @if(Session::has('flash_message'))
                     <div class="alert alert-success">
                         <p>{{ Session::get('flash_message') }}</p>
@@ -32,12 +34,12 @@
                                 <th> Invoice No# </th>
                                 <th> User Name </th>
                                 <th> Total Amount</th>
+                                <th> Due Amount</th>
                                 <th> Date</th>
                                 <th> Status</th>
                                 <th> Action </th>
 								<th> Approved</th>
 								<th>Delivered</th>
-								<th>Archive</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -45,13 +47,13 @@
                                 @foreach($data as $values)
                                     <tr class="gradeX">
                                         <td>
-                                            <a href="{{ route('order-paid-show', $values->id) }}" data-toggle="modal" data-target="#etsbModal" class="btn" title="{{$values->invoice_no}} Invoice Details">
-                                                {{$values->invoice_no}}
-                                            </a>
-
-                                        </td>
-                                        <td>{{$values->relCustomer->last_name}} {{$values->relCustomer->first_name}}</td>
+                                            <a href="{{ route('lay-by-order-show', $values->id) }}" data-toggle="modal" data-target="#etsbModal" class="btn" title="Details">{{$values->invoice_no}}</a>
+                                            </td>
+                                        <td>{{$values->relCustomer->first_name}} {{$values->relCustomer->last_name}}</td>
                                         <td>{{$values->net_amount}}</td>
+                                        <td>
+                                            {{$values->net_amount - $values->relOrderPaymentTransaction->sum('amount')}}
+                                        </td>
                                         <td>{{$values->created_at}}</td>
                                         <td>{{ucfirst($values->status=='done'?"Closed": $values->status=='approved'?"Approved Payement": $values->status)}}</td>
                                         <td>
@@ -60,13 +62,10 @@
                                             <a href="{{ route('order-paid-cancel', $values->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Cancel?')" title="Cancel"><i class="icon-trash"></i></a>
                                         </td>
 										<td>
-											<a href="{{ route('order-complete', $values->id) }}" class="btn btn-success btn-xs" onclick="return confirm('Are you sure to Close as Complete ?')" title="Close the Order as Completed">Approved</a>
+											<a href="{{ route('order-complete', $values->id) }}" class="btn btn-success btn-xs" onclick="return confirm('Are you sure to Close as Complete ?')" title="Close the Order as Completed">Approved</i></a>
 										</td>
 										<td>
 											<a href="{{ route('order-shipped', $values->id) }}" class="btn btn-success btn-xs" onclick="return confirm('Are you sure to Delivered as Complete ?')" title="Delivered the Order as Completed">Delivered</i></a>
-										</td>
-										<td>
-											<a href="{{ route('order-archive', $values->id) }}" class="btn btn-success btn-xs" onclick="return confirm('Are you sure to Archive this order ?')" title="Archive this Order">Archive</i></a>
 										</td>
                                     </tr>
                             @endforeach
