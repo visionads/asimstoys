@@ -135,10 +135,10 @@ return [
     'driver' => 'smtp',
     'host' => 'smtp.gmail.com',
     'port' => 465,
-    'from' => array('address' => 'tanin09008@gmail.com', 'name' => 'BZM Graphics'),
+    'from' => array('address' => 'asimstoys@gmail.com', 'name' => 'Asims Toys'),
     'encryption' => 'ssl',
-    'username' => 'tanin09008@gmail.com',
-    'password' => 'tanvir123',
+    'username' => 'devdhaka405@gmail.com',
+    'password' => 'etsb1234',
     'sendmail' => '/usr/sbin/sendmail -bs',
     'pretend' => false,
 

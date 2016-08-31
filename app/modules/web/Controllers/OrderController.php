@@ -514,7 +514,7 @@ class OrderController extends Controller
                         $model_order_dt->price = $products['product_price']?$products['product_price']:null; //$product->sell_rate;
                         $model_order_dt->status =1;
                         $model_order_dt->save();
-                        
+
                     }
                     DB::table('order_tmp')->where('user_id', '=', $user_id)->delete();
                 }
