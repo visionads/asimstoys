@@ -337,11 +337,25 @@ class OrderController extends Controller
 
     public function deliverydetails(Request $request){
         $user_id = $request->session()->get('user_id');
+		
+		$deliver_id = $request->session()->get('deliver_id');
+		
+		$delivery_data = DB::table('delivery_details')->where('user_id',$user_id)->orderBy('id','desc')->first();
+		
+		
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
         $billing_data = DB::table('customer')->where('id',$user_id)->first();
         $title = "Delivery details | Asims Toy";
-
-        $data = DB::table('customer')->where('id',$user_id)->first();
+		
+		if(!empty($deliver_id)){
+			$data = DB::table('delivery_details')->where('user_id',$user_id)->orderBy('id','desc')->first();
+		}else if(!empty($delivery_data)){
+			$data = DB::table('delivery_details')->where('user_id',$user_id)->orderBy('id','desc')->first();
+		}
+		else{
+			$data = DB::table('customer')->where('id',$user_id)->first();
+		}
+        
         return view('web::cart.deliverydetails',[
                 'billing_data' => $billing_data,
                 'title' => $title,
