@@ -27,6 +27,7 @@
 					<h4 class="text-light">Prepared for</h4>
 					<address>
 						<strong>{{@$customer_data->first_name}} {{@$customer_data->last_name}}</strong><br>
+						{{@$customer_data->email}}<br/>
 						{{@$customer_data->address}}<br/>
 						{{@$customer_data->suburb}}<br/>
 						{{@$customer_data->postcode}}<br>

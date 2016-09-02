@@ -29,6 +29,7 @@
 					<address>
 						<strong>Billing Address</strong><br><br/>
 						<strong>{{@$customer_data->first_name}} {{@$customer_data->last_name}}</strong><br>
+						{{@$customer_data->email}}<br/><br/>
 						{{@$customer_data->address}}<br/>
 						{{@$customer_data->suburb}}<br/>
 						{{@$customer_data->postcode}}<br>
