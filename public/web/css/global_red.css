@@ -664,14 +664,14 @@ div.star_hover a, div.star a:hover { background-position: 0 -32px }
 .header-content { position: relative;}
 #header_logo {
 	float:left;
-	width:calc(100% - 285px);
+	width:calc(100% - 300px);
 	margin-top: 20px;
 	z-index: 1;
 }
 #header_logo img { opacity: 1; float:left;}
 #header_right {
 	float:right;
-	width:285px;
+	width:300px;
 }
 
 #header_right #currencies_block_top p { padding-right:10px; }

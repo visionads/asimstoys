@@ -143,7 +143,7 @@ class AccountsController extends Controller
 						->first();
 						
         $total_amount = DB::table('order_detail')
-            ->select(DB::raw('SUM(price) as total_amount'))
+            ->select(DB::raw('SUM(price)*qty as total_amount'))
             ->groupBy('order_head_id')
             ->where('order_head_id', $order_head_id)
             ->first();

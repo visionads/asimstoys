@@ -418,6 +418,7 @@ class OrderController extends Controller
                 $model = new OrderTmp();
 
                 $order_tmp_exists = $model->where('user_id', $user_data->id)->where('product_id', $product['id'])->exists();
+				
                 if($order_tmp_exists == null)
                 {
                     $model->user_id = $user_data->id;
@@ -432,8 +433,9 @@ class OrderController extends Controller
                     $model->plate_text= isset($values['plate_text'])?$values['plate_text']:null;
                     $model->volume= isset($values['volume'])?$values['volume']:null;
                     $model->weight= isset($values['weight'])?$values['weight']:null;
-                    $model->freight_charge= isset($freight_charge)?$freight_charge:0;
+                    $model->freight_charge= isset($freight_charge)?$freight_charge*$values['quantity']:0;
                     $model->save();
+					
 
                     DB::commit();
                 }
@@ -504,7 +506,7 @@ class OrderController extends Controller
                 'total_discount_price'=>$total_discount_price,
                 'vat'=>0,
                 'freight_amount' => $total_freight_charge,
-                'sub_total' => $total_price - $total_discount_price, //$total_price,
+                'sub_total' => $total_price - $total_discount_price -$total_freight_charge, //$total_price,
                 'net_amount'=> $total_price - $total_discount_price, //$total_price+$freight_calculation,
                 'status'=> 1,
             ];
