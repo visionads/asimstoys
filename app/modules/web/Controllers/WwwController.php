@@ -37,6 +37,16 @@ class WwwController extends Controller
 {
 	
 	
+	public function errors(){
+		
+		$title = "Asim's Toy";
+			
+		return view('web::layout.errors',[
+			'title' => $title
+		]);
+		
+	}
+	
     public function home_page()
     {
         $home_value = "14";

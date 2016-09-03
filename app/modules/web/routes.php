@@ -14,6 +14,8 @@ Route::group(array('modules'=>'Web', 'namespace' => 'App\Modules\Web\Controllers
     'uses' => 'HomeController@user_login'
 ]);*/
 
+
+
 Route::post('freight-cal-by-product',[
     'as' => 'freight-cal-by-product',
     'uses' => 'ProductController@freight_cal_by_product'
@@ -23,6 +25,11 @@ Route::post('freight-cal-by-product',[
 Route::any('web', [
     'as' => 'web',
     'uses' => 'WebController@web_index'
+]);
+
+Route::any('errors',[
+	'as' => 'errors',
+	'uses' => 'WwwController@errors'
 ]);
 
 
