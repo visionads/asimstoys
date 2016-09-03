@@ -217,21 +217,19 @@ class WwwController extends Controller
 		
 		// Start filename change
 		
-		$filename = $_POST['filename'];
-		$destinationPath = 'http://localhost/asimstoy/public/web/contact_files';
-        move_uploaded_file($filename, "$destinationPath/".$filename);
+		//$filename = $_POST['filename'];
+		//$destinationPath = 'http://localhost/asimstoy/public/web/contact_files';
+        //move_uploaded_file($filename, "$destinationPath/".$filename);
 		
 		// End image change
 		
 		
-		$to_email = 'mithun.cse521@gmail.coom';
+		$to_email = 'asimstoys@gmail.com';
 		$to_name = 'Asims Toys | Contact';
 		
-		$body = "Name ".$name. "<br/><br/>Email ".$email. "<br/><br/>Subject".$subject. "<br/><br/> Phone".$phone. "<br/><br/> Message".$message.
-					"Attachment: ". $filename;
+		$body = "Name ".$name. "<br/><br/>Email ".$email. "<br/><br/>Subject".$subject. "<br/><br/> Phone".$phone. "<br/><br/> Message".$message;
 		
-		echo $body;
-		exit();
+		
 		$mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
 		
 		

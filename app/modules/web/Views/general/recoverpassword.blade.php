@@ -15,7 +15,7 @@
 					{!! Form::open(['route' => 'recoverpassword-submit']) !!}
 						<div class="login_form">
 							{!! Form::password('password', null, ['id'=>'password', 'class' => 'form-control','required','placeholder' => 'Password']) !!}
-							<input type="text" name="email_address" value="{{$token_exits->email}}">
+							<input type="hidden" name="email_address" value="{{$token_exits->email}}">
 							<input type="submit" name="submit" value="submit" class="loginsubmit">
 						</div>
 						
