@@ -680,16 +680,31 @@ class OrderController extends Controller
         $order_head = OrderHead::where('invoice_no', $invoice_no)->first();
         $order_head->status = 'done';
 
-
+		
 
         try{
             if($order_head->save()){
                 $customer = Customer::where('id', $customer_id)->first();
                 $to_email = $customer->email;
                 $to_name = $customer->first_name." ". $customer->last_name;
+				
+				
+				$delivery_details = DB::table('delivery_details')->where('user_id',$customer->id)->first();
+                $to_email = $customer->email;
+                $to_name = $customer->first_name." ". $customer->last_name;
 
                 $subject = " Payment of invoice # ".$invoice_no. " | Asims Toys ";
                 $body = "Dear ".$to_name. " Your Payment is approved !<br/><br/> Your Invoice no is: ".$invoice_no;
+				
+				$product_cart_r = DB::table('order_detail')->where('order_head_id',$order_head->id)->get();
+				
+				$body = view('web::cart.order_details_mail',[
+					'product_cart_r' => $product_cart_r,
+					'order_head' => $order_head,
+					'customer' => $customer,
+					'delivery_details' => $delivery_details
+				]);
+
 
                 $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
 				$mail_2 = SendMailer::send_mail_by_php_mailer('asimstoys@gmail.com', $to_name, $subject, $body);

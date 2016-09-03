@@ -369,12 +369,17 @@ class AccountsController extends Controller
         try{
             if($order_trn->save()){
 				
-				$to_email = $customer->email;
+				$to_email = $customer->email;				
 				$to_name = $customer->first_name." ". $customer->last_name;
-						
+		
 				$subject = " Payment of invoice # ".$invoice_no. " | Asims Toys ";
-				$body = "Dear ".$to_name. " Your Payment is approved ! <br/><br/> Your Invoice Number is ".$invoice_no;
 				
+				$body = view('web::accounts.order_details_mail',[
+					'invoice_no' => $invoice_no,
+					'order_trn' => $order_trn,
+					'customer' => $customer
+				]);
+		
                 $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
 				$mail_2 = SendMailer::send_mail_by_php_mailer('asimstoys@gmail.com', $to_name, $subject, $body);
 
