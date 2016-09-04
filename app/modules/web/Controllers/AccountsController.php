@@ -156,7 +156,7 @@ class AccountsController extends Controller
 
         $due_amount = (@$total_amount->total_amount + $freight_data->freight_amount) - @$paid_amount->paid_amount;
 
-        $order = OrderHead::with('relOrderDetail')->where('invoice_type', 'layby')->where('id', $order_head_id)->get();
+        $order = OrderHead::with('relOrderDetail')->where('id', $order_head_id)->get();
         $order_pay_trn = OrderPaymentTransaction::where('order_head_id', $order_head_id)->get();
 
         $get_customer_data = Customer::where('id',Session::get('user_id'))->first();

@@ -35,10 +35,7 @@
 						<label>Message</label>
 						{!! Form::text('message', null, ['id'=>'message', 'class' => '','required']) !!}
 					</div>
-					<div class="form-group">
-						<label>File Upload</label>
-						{!!Form::file('filename', ['class' => 'field']) !!}
-					</div>
+					
 					<div class="form-group">
 						<input type="submit" name="submit" value="Send" class="submitbtn">
 					</div>

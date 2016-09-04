@@ -50,6 +50,6 @@ class Handler extends ExceptionHandler
         if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException)
             return response(view('errors.404'), 404);
 		return redirect("errors")->with("alert", "error message to user interface");
-       //return parent::render($request, $e);
+      // return parent::render($request, $e);
     }
 }
