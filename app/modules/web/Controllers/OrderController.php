@@ -694,7 +694,7 @@ class OrderController extends Controller
                 $to_name = $customer->first_name." ". $customer->last_name;
 
                 $subject = " Payment of invoice # ".$invoice_no. " | Asims Toys ";
-                $body = "Dear ".$to_name. " Your Payment is approved !<br/><br/> Your Invoice no is: ".$invoice_no;
+                //$body = "Dear ".$to_name. " Your Payment is approved !<br/><br/> Your Invoice no is: ".$invoice_no;
 				
 				$product_cart_r = DB::table('order_detail')->where('order_head_id',$order_head->id)->get();
 				
