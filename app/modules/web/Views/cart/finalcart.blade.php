@@ -134,7 +134,7 @@
 													</span>
 												</div>
 											</td>	
-											<td> <a href="{{ route('delete_order_tmp', $product_cart['id']) }}" class="btn btn-danger btn-xs pull-right" onclick="return confirm('Are you sure to Delete?')" title="Delete" style="margin-top:10px">
+											<td> <a href="{{ route('delete_order_tmp', $product_cart['id']) }}" class="btn btn-danger btn-xs pull-right" onclick="return confirm('Are you sure to Remove this Item ?')" title="Delete" style="margin-top:10px">
 											<i class="icon-trash">Remove</i></a> 
 											</td>
 											
