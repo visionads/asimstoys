@@ -366,19 +366,54 @@ class AccountsController extends Controller
         $order_trn->status = 'pending';
 		
 		
+		
         try{
             if($order_trn->save()){
 				
 				$to_email = $customer->email;				
 				$to_name = $customer->first_name." ". $customer->last_name;
-		
+				
 				$subject = " Payment of invoice # ".$invoice_no. " | Asims Toys ";
 				
+				
+				$freight_data = DB::table('order_head')
+								->where(['id' => $order_head->id])
+								->first();
+								
+				$total_amount = DB::table('order_detail')
+					->select(DB::raw('SUM(price)*qty as total_amount'))
+					->groupBy('order_head_id')
+					->where('order_head_id', $order_head->id)
+					->first();
+
+				$paid_amount = DB::table('order_payment_transaction')
+					->select(DB::raw('SUM(amount) as paid_amount'))
+					->groupBy('order_head_id')
+					->where('order_head_id', $order_head->id)
+					->first();
+
+				$due_amount = (@$total_amount->total_amount + $freight_data->freight_amount) - @$paid_amount->paid_amount;
+
+				$order = OrderHead::with('relOrderDetail')->where('id', $order_head->id)->get();
+				$order_pay_trn = OrderPaymentTransaction::where('order_head_id', $order_head->id)->get();
+
+				$get_customer_data = Customer::where('id',Session::get('user_id'))->first();
+				$delivery_data = DeliveryDetails::where('user_id',Session::get('user_id'))->orderBy('id','desc')->first();
+						
 				$body = view('web::accounts.order_details_mail',[
 					'invoice_no' => $invoice_no,
 					'order_trn' => $order_trn,
-					'customer' => $customer
+					'customer' => $customer,
+					'total_amount' => $total_amount,
+					'freight_data' => $freight_data,
+					'due_amount' => $due_amount,
+					'paid_amount' => $paid_amount,
+					'order' => $order,
+					'order_pay_trn' => $order_pay_trn,
+					'customer' => $get_customer_data,
+					'delivery_details' => $delivery_data
 				]);
+		
 		
                 $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
 				$mail_2 = SendMailer::send_mail_by_php_mailer('asimstoys@gmail.com', $to_name, $subject, $body);
