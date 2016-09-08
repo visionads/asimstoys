@@ -62,6 +62,12 @@
 						</div>
 
 						<div class="cart-item-container">
+							<p> &nbsp; </p>
+							<p>
+								<span style="color: black; font-size: 18px; text-shadow: 1px 1px yellow; font-weight: bold; text-align: center;">
+									Note : In this screen you will also see the old item if you parked earlier. You can remove any item from here before "Proceed". 
+								</span>
+							</p>
 
 							@if(!empty($product_cart_r))
 
