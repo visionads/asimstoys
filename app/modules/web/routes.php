@@ -241,8 +241,13 @@ Route::any('myaccount',[
 	]);
 
 Route::any('order/confirm',[
-		'as' => 'order-check-order',
-		'uses' => 'OrderController@orderconfirm'
+        'as' => 'order-check-order',
+        'uses' => 'OrderController@orderconfirm'
+    ]);
+
+Route::any('delete_order_tmp/{order_tmp_id}',[
+		'as' => 'delete_order_tmp',
+		'uses' => 'OrderController@delete_order_tmp'
 	]);
 
 Route::any("customer-registration", [

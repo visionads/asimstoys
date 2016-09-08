@@ -73,6 +73,7 @@
 										<td>Unit Price</td>
 										<td>Freight Charge </td>
 										<td class="text-align-right">Line Total</td>
+										<td class="pull-right"> Action </td>
 									</tr>
 								</thead>
 
@@ -133,6 +134,9 @@
 													</span>
 												</div>
 											</td>	
+											<td> <a href="{{ route('delete_order_tmp', $product_cart['id']) }}" class="btn btn-danger btn-xs pull-right" onclick="return confirm('Are you sure to Delete?')" title="Delete" style="margin-top:10px">
+											<i class="icon-trash">Remove</i></a> 
+											</td>
 											
 										</tr>
 										<?php $count++;?>
@@ -150,6 +154,7 @@
 											</td>
 											<td>Total: <input type="hidden" name="total_value" value="{{$total_value}}"></td>
 											<td class="text-align-right" >${{$total_value }}</td>
+											<td> &nbsp; </td>
 
 										</tr>
 								</tbody>

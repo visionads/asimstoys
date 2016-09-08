@@ -583,6 +583,27 @@ class OrderController extends Controller
     }
 
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete_order_tmp($order_tmp_id)
+    {
+        try {
+            $model = OrderTmp::findOrFail($order_tmp_id);
+            if ($model->delete()) {
+                Session::flash('flash_message', " Successfully Deleted.");
+                return redirect()->back();
+            }
+        } catch(\Exception $e) {
+            Session::flash('flash_message_error',$e->getMessage() );
+            return redirect()->back();
+        }
+    }
+
+
     public function payment_process_secure(Request $request, $order_head_id)
     {
 
