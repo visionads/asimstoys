@@ -395,6 +395,7 @@ class OrderController extends Controller
         DB::beginTransaction();
         try
         {
+			
             foreach ($product_cart as $values)
             {
 
@@ -409,10 +410,17 @@ class OrderController extends Controller
                     'width'=> $product['width'],
                     'height'=> $product['height'],
                 );
-
-                //freight Calculation
-                $freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_data);
-                $freight_charge = $freight_calculation[0]['price'][0];
+					
+				if($product['product_group_id'] == '3' || $product['product_group_id'] == '4' || $product['product_group_id'] == '9'){
+					
+					//freight Calculation
+					$freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_data);
+					$freight_charge = $freight_calculation[0]['price'][0] * $values['quantity'];
+					
+				}
+					
+				
+				
 
                 //store to order tmp table
                 $model = new OrderTmp();
@@ -433,10 +441,10 @@ class OrderController extends Controller
                     $model->plate_text= isset($values['plate_text'])?$values['plate_text']:null;
                     $model->volume= isset($values['volume'])?$values['volume']:null;
                     $model->weight= isset($values['weight'])?$values['weight']:null;
-                    $model->freight_charge= isset($freight_charge)?$freight_charge*$values['quantity']:0;
+                    $model->freight_charge= isset($freight_charge)?$freight_charge:0;
                     $model->save();
 					
-
+					$freight_charge =0;
                     DB::commit();
                 }
 
@@ -449,8 +457,11 @@ class OrderController extends Controller
             Session::flash('flash_message_error', $e->getMessage());
 
         }
+		
+		
 
         $product_cart_order_tmp = OrderTmp::where('user_id', $user_data->id)->get()->toArray();
+		
 
 
         return view('web::cart.finalcart',[
