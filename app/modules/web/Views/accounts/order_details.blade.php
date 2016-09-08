@@ -53,7 +53,7 @@
                                 
                             </div>
                         </div>
-                        @if(@$total_amount->total_amount != @$paid_amount->paid_amount)
+                        @if(@number_format(@$total_amount->total_amount + @$freight_data->freight_amount, 2) != number_format(@$paid_amount->paid_amount,2) )
                             <div class="col-md-12 pull-right" style="padding: 20px">
                                 <a href="{{ route('lay_by_pay_option', ['order_head_id'=>$order_head_id]) }}" class="cart-checkout" style="width: 55%; text-align: center; box-shadow: 3px 3px 3px #888888">Want to Pay Now ? </a>
 
