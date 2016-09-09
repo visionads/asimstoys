@@ -1,3 +1,4 @@
+
 @extends('web::layout.web_master')
 
 @section('content')
@@ -158,8 +159,8 @@
                                             <td>
                                                 &nbsp;
 											</td>
-											<td>Total: <input type="hidden" name="total_value" value="{{$total_value}}"></td>
-											<td class="text-align-right" >${{$total_value }}</td>
+											<td>Total: <input type="hidden" name="total_value" value="{{@$total_value}}"></td>
+											<td class="text-align-right" >${{@$total_value }}</td>
 											<td> &nbsp; </td>
 
 										</tr>
@@ -178,7 +179,7 @@
                             
 
                             <p>&nbsp;</p>
-							<h4><span class="pull-right" style="color: orangered;">Total Cost : <b>$ <span id="final-amount-cart">{{ round($total_value, 2) }} </span> &nbsp;</b></span></h4>
+							<h4><span class="pull-right" style="color: orangered;">Total Cost : <b>$ <span id="final-amount-cart">{{ round(@$total_value, 2) }} </span> &nbsp;</b></span></h4>
 
 
 
@@ -192,7 +193,7 @@
 
                 {!! Form::open(['route' => 'pay-now']) !!}
 
-                <input type="hidden" name="total_amount" value="{{$total_value }}">
+                <input type="hidden" name="total_amount" value="{{@$total_value }}">
                 <input type="hidden" name="total_freight_charge" value="{{$total_freight_charge }}">
 
 
