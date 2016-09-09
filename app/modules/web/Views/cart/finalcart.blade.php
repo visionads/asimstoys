@@ -194,7 +194,7 @@
                 {!! Form::open(['route' => 'pay-now']) !!}
 
                 <input type="hidden" name="total_amount" value="{{@$total_value }}">
-                <input type="hidden" name="total_freight_charge" value="{{$total_freight_charge }}">
+                <input type="hidden" name="total_freight_charge" value="{{@$total_freight_charge }}">
 
 
 						<div class="col-md-12 margin-top-30 margin-bottom-30">
