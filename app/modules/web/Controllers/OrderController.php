@@ -446,6 +446,10 @@ class OrderController extends Controller
 					
 					$freight_charge =0;
                     DB::commit();
+
+                    #remove cart
+                    $request->session()->forget('product_cart');    
+
                 }
 
             }
