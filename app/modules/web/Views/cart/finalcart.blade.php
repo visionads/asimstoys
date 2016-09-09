@@ -251,7 +251,7 @@
                                 <input type="checkbox" value="1" id="i_agree" checked="checked" required="required">
                                 <label for="i_agree">I agree with Terms and Condition. <a href="{{URL::to('terms-condition')}}"> Click Here for more details. </a></label>
                             </div>
-
+							@if(@$total_value>0)
                             <div class="col-md-12 margin-top-30 margin-bottom-30">
 
                                 {{--<a href="{{Url::to('')}}/mycart" class="cart-continue-shopping">Edit Cart</a>--}}
@@ -260,6 +260,7 @@
                                 <input type="submit" value="Proceed to Payment Method" class="cart-checkout" id="myFormSubmit">
 
                             </div>
+                            @endif
 
 					</div>
                 {!! Form::close() !!}
