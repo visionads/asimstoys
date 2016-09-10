@@ -26,12 +26,13 @@ class SendMailer
 
         //prepare the mail with PHPMailer
         $mail = new PHPMailer();
-        #$mail->CharSet = "UTF-8";
-        #$mail->Encoding = "base64";
+        $mail->CharSet = "UTF-8";
+        $mail->Encoding = "base64";
         //supply with your header info, body etc...
 
         //TODO::Enable SMTP debugging.
-        $mail->SMTPDebug = 3;
+        #$mail->SMTPDebug = 3;
+        $mail->SMTPDebug = 0;
         $mail->isSMTP();
         $mail->Host = "smtp.gmail.com";
         $mail->SMTPAuth = true;
