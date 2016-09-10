@@ -37,8 +37,10 @@ class SendMailer
         $mail->SMTPAuth = true;
         $mail->Username = "devdhaka405@gmail.com";
         $mail->Password = "etsb1234";
+        #$mail->SMTPSecure = "ssl";
+        #$mail->Port = 465;
         $mail->SMTPSecure = "tsl";
-        $mail->Port = 465;
+        $mail->Port = 587;
 
         //From email address and name
         $mail->From = 'asimstoys@gmail.com';
