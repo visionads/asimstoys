@@ -197,14 +197,19 @@ class OrderController extends Controller
         $input = $request->all();
         $user_id = $request->session()->get('user_id');
         $deliver_id = $request->session()->get('deliver_id');
+		
+		
+		$delivery_data =DeliveryDetails::where('user_id',$user_id)->orderby('id','desc')->first();
+
 
         $input['user_id'] = $user_id;
 
         DB::beginTransaction();
         try {
-            if(isset($deliver_id)) {
-                $model = DeliveryDetails::where('id',$deliver_id)->first();
-                $model->update($input);
+            if(!empty($delivery_data)) {
+                //$model = DeliveryDetails::where('id',$deliver_id)->first();
+                $delivery_data->update($input);
+				$request->session()->set('deliver_id', $delivery_data->id);
             }else{
                 $model = new DeliveryDetails();
                 $delivery = $model->create($input);

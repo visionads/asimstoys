@@ -35,29 +35,13 @@ class AccountsController extends Controller
             $title ="My Accounts | Asim's Toy";
 
             $get_customer_data = DB::table('customer')->where('id',Session::get('user_id'))->first();
+			$delivery_details = DB::table('delivery_details')->where('user_id',$get_customer_data->id)->orderBy('id','desc')->first();
 
-            /*$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
-            $get_order_history = DB::table('order_head')
-                //->join('order_detail', 'order_head.id', '=', 'order_detail.order_head_id')
-                ->where('order_head.user_id',Session::get('user_id'))
-                ->where('order_head.invoice_type','eway')
-                ->orderBy('order_head.id','desc')
-                ->get();
-             $get_layby_history = DB::table('order_head')
-                //->join('order_detail', 'order_head.id', '=', 'order_detail.order_head_id')
-                ->where('order_head.user_id',Session::get('user_id'))
-                ->where('order_head.invoice_type','layby')
-                ->orderBy('order_head.id','desc')
-                ->get();
-            $delivery_data = DB::table('delivery_details')->where('user_id',Session::get('user_id'))->orderBy('id','desc')->first(); */
 
             return view('web::accounts.accounts',[
-                'title' => $title,
-                #'productgroup_data' => $productgroup_data,
+                'title' => $title,               
                 'get_customer_data' => $get_customer_data,
-                #'get_order_history' => $get_order_history,
-                #'delivery_data' => $delivery_data,
-                #'get_layby_history' => $get_layby_history
+                'delivery_details' => $delivery_details
             ]);
 
 
@@ -69,6 +53,70 @@ class AccountsController extends Controller
 
         
     }
+	
+	public function updatebillingdetail(Requests\BillingaddressRequest $request){
+		
+		$input = $request->all();
+		
+		$email = $input['email'];
+		
+		$model = Customer::where('email',$email)->first();
+		
+		DB::beginTransaction();
+        try {
+            
+            $model->update($input);
+            DB::commit();
+            Session::flash('flash_message', 'Billing Information successfully updated');
+            
+        }catch (\Exception $e) {
+
+            //If there are any exceptions, rollback the transaction`
+            DB::rollback();
+            Session::flash('flash_message_error', $e->getMessage());
+
+             
+        }
+		
+		return redirect()->route('myaccount');
+	}
+	
+	
+	public function updatedeliverydetail(Requests\BillingaddressRequest $request){
+		
+		$input = $request->all();
+		
+		$user_id = $input['user_id'];
+		
+		$model = DeliveryDetails::where('user_id',$user_id)->orderBy('id','desc')->first();
+		
+		
+		DB::beginTransaction();
+        try {
+            
+			if(!empty($model)){
+				$model->update($input);
+			}else{
+				
+				$model = new DeliveryDetails();
+                $delivery = $model->create($input);
+				
+			}
+            
+            DB::commit();
+            Session::flash('flash_message', 'Delivery Information successfully updated');
+            
+        }catch (\Exception $e) {
+
+            //If there are any exceptions, rollback the transaction`
+            DB::rollback();
+            Session::flash('flash_message_error', $e->getMessage());
+
+             
+        }
+		
+		return redirect()->route('myaccount');
+	}
 
     public function order_summery_lists(Request $request){
 
