@@ -103,8 +103,73 @@ Route::any("user/sign-up", [
 Route::group(['middleware' => 'auth'], function()
 {
 
-    @include('routes_crud.php');
-    @include('routes_team.php');
+    /*
+        Route Crud
+     */    
+    Route::any("crud/index", [
+        "as"   => "crud-index",
+        "uses" => "CrudController@index"
+    ]);
+
+    Route::any("crud/store", [
+        "as"   => "crud-store",
+        "uses" => "CrudController@store"
+    ]);
+
+    Route::any("crud/show/{id}", [
+        "as"   => "crud-show",
+        "uses" => "CrudController@show"
+    ]);
+
+    Route::any("crud/edit/{id}", [
+        "as"   => "crud-edit",
+        "uses" => "CrudController@edit"
+    ]);
+
+    Route::any("crud/update/{id}", [
+        "as"   => "crud-update",
+        "uses" => "CrudController@update"
+    ]);
+
+    Route::any("crud/delete/{id}", [
+        "as"   => "crud-delete",
+        "uses" => "CrudController@delete"
+    ]);
+
+        
+    /*
+        Route team 
+     */
+    Route::any("team/index", [
+        "as"   => "team-index",
+        "uses" => "TeamController@index"
+    ]);
+
+    Route::any("team/store", [
+        "as"   => "team-store",
+        "uses" => "TeamController@store"
+    ]);
+
+    Route::any("team/show/{slug}", [
+        "as"   => "team-show",
+        "uses" => "TeamController@show"
+    ]);
+
+    Route::any("team/edit/{slug}", [
+        "as"   => "team-edit",
+        "uses" => "TeamController@edit"
+    ]);
+
+    Route::any("team/update/{slug}", [
+        "as"   => "team-update",
+        "uses" => "TeamController@update"
+    ]);
+
+    Route::any("team/delete/{slug}", [
+        "as"   => "team-delete",
+        "uses" => "TeamController@delete"
+    ]);
+
     @include('routes_skills.php');
     @include('routes_brand.php');
     @include('routes_testimonial.php');
