@@ -26,8 +26,8 @@ class SendMailer
 
         //prepare the mail with PHPMailer
         $mail = new PHPMailer();
-        $mail->CharSet = "UTF-8";
-        $mail->Encoding = "base64";
+        #$mail->CharSet = "UTF-8";
+        #$mail->Encoding = "base64";
         //supply with your header info, body etc...
 
         //TODO::Enable SMTP debugging.
@@ -37,10 +37,8 @@ class SendMailer
         $mail->SMTPAuth = true;
         $mail->Username = "devdhaka405@gmail.com";
         $mail->Password = "etsb1234";
-        #$mail->SMTPSecure = "ssl";
-        #$mail->Port = 465;
-        $mail->SMTPSecure = "tsl";
-        $mail->Port = 587;
+        $mail->SMTPSecure = "ssl";
+        $mail->Port = 465;
 
         //From email address and name
         $mail->From = 'asimstoys@gmail.com';
