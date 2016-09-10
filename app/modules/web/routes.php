@@ -267,6 +267,16 @@ Route::any("order/customerdeliverydetails", [
     "uses" => "OrderController@savedeliverydetails"
 ]);
 
+Route::any("accounts/updatebillingdetail", [
+    "as"   => "edit-billing-info",
+    "uses" => "AccountsController@updatebillingdetail"
+]);
+
+Route::any("accounts/updatedeliverydetail", [
+    "as"   => "edit-delivery-info",
+    "uses" => "AccountsController@updatedeliverydetail"
+]);
+
 Route::any("order/customerbillingdetail", [
     "as"   => "customer-billing-detail",
     "uses" => "OrderController@customersavebilling"
