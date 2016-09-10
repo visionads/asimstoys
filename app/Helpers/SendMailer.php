@@ -21,7 +21,8 @@ class SendMailer
      * @return bool
      * @throws \phpmailerException
      */
-    public static function send_mail_by_php_mailer($to_email, $to_name, $subject, $body){
+    public static function send_mail_by_php_mailer($to_email, $to_name, $subject, $body)
+    {
 
         //prepare the mail with PHPMailer
         $mail = new PHPMailer();
@@ -63,12 +64,12 @@ class SendMailer
 
         if(!$mail->send())
         {
-            echo "Mailer Error: " . $mail->ErrorInfo;
+            #echo "Mailer Error: " . $mail->ErrorInfo;
             return false;
         }
         else
         {
-            echo "Message has been sent successfully";
+            #echo "Message has been sent successfully";
             return true;
         }
 

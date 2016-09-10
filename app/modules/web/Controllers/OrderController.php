@@ -572,11 +572,11 @@ class OrderController extends Controller
             }
 
             //send email
-            /*$to_email = $user_data->email;
+            $to_email = $user_data->email;
             $to_name = $user_data->first_name." ". $user_data->last_name;
             $subject = "Order placed  # ".$order_head->invoice_no. " | Asims Toys ";
             $body = "Dear ".$user_data->first_name. " Your Order is placed !";
-            $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);*/
+            $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
 
         }else{
             Session::flash('flash_message_error', "No Product is available in cart");
