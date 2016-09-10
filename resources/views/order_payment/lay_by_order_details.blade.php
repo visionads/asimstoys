@@ -132,13 +132,13 @@
 											{{@$orderdetails->qty}}
 										</td>
 										<td class="text-right">
-											{{$orderdetails->price}}
+											{{number_format(@$orderdetails->price,2)}}
 										</td>
 										<td class="text-right">
 											<?php
 												$total+= $orderdetails->qty * $orderdetails->price;
 											?>
-											{{$orderdetails->price*$orderdetails->qty}}
+											{{number_format( ($orderdetails->price*$orderdetails->qty), 2) }}
 										</td>
 									</tr>
 								@endforeach
@@ -148,7 +148,7 @@
 										Sub Amount
 									</td>
 									<td colspan="2" class="text-right">
-										{{@$order_data[0]->sub_total}}
+										{{number_format(@$order_data[0]->sub_total,2)}}
 									</td>
 								</tr>
 								<tr>
@@ -156,7 +156,7 @@
 										Freight Amount
 									</td>
 									<td colspan="2" class="text-right">
-										{{@$order_data[0]->freight_amount}}
+										{{number_format(@$order_data[0]->freight_amount,2 )}}
 									</td>
 								</tr>
 								<tr>
@@ -164,7 +164,7 @@
 										Total Amount
 									</td>
 									<td colspan="2" class="text-right">
-										{{@$order_data[0]->net_amount}}
+										{{number_format(@$order_data[0]->net_amount, 2)}}
 									</td>
 								</tr>
 							@endif
@@ -200,7 +200,7 @@
                                         {{@$order_trn->payment_type}}
                                     </td>
                                     <td>
-                                        {{@$order_trn->amount}}
+                                        {{number_format(@$order_trn->amount, 2)}}
                                     </td>
                                     <td>
                                         {{@$order_trn->transaction_no}}
@@ -215,12 +215,16 @@
                                         {{@$order_trn->created_at}}
                                     </td>
                                     <td>
-                                        {{@$order_trn->status}}
+                                        <b>{{@$order_trn->status}}</b>
                                     </td>
 
                                     <td>
+                                    	@if(@$order_trn->status != "cancel")
+                                    	@if(@$order_trn->status != "approved")
                                         <a href="{{ route('approve-lay-by-transaction', @$order_trn->id) }}" class="btn btn-success btn-xs" onclick="return confirm('Are you sure to Approve?')" title="Approved"><i class="icon-check"></i></a>
                                         <a href="{{ route('cancel-lay-by-payment', @$order_trn->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Cancel?')" title="Cancel"><i class="icon-trash"></i></a>
+                                        @endif
+                                        @endif
                                     </td>
 
                                 </tr>

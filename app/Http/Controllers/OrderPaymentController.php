@@ -209,6 +209,7 @@ class OrderPaymentController extends Controller
             ->select(DB::raw('SUM(amount) as paid_amount'))
             ->groupBy('order_head_id')
             ->where('order_head_id', $order_head_id)
+            ->where('status', '!=', 'cancel')
             ->first();
 
         $due_amount = @$order[0]->net_amount - @$paid_amount->paid_amount;
