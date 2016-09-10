@@ -144,13 +144,13 @@
                             <td>{{ isset($values->date)?$values->date: null }}</td>
                             <td>{{ isset($values->transaction_no)?$values->transaction_no:null }}</td>
                             <td>{{ isset($values->gateway_name)?$values->gateway_name:null }}</td>
-                            <td>{{ isset($values->status)?$values->status:null }}</td>
+                            <td><b>{{ isset($values->status)?$values->status:null }}</b></td>
                         </tr>
                     @endforeach
 
                     </tbody>
                 </table>
-                <p class="pull-right">Paid Amount {{isset($paid_amount->paid_amount)?number_format($paid_amount->paid_amount,2):null}}</p>
+                <p class="pull-right" style="font-weight: bold;">Paid Amount {{isset($paid_amount->paid_amount)?number_format($paid_amount->paid_amount,2):null}} &nbsp;</p>
             @endif
 
             <div class="col-md-12 margin-top-30 margin-bottom-30">

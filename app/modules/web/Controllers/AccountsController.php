@@ -200,6 +200,7 @@ class AccountsController extends Controller
             ->select(DB::raw('SUM(amount) as paid_amount'))
             ->groupBy('order_head_id')
             ->where('order_head_id', $order_head_id)
+            ->where('status', '!=', 'cancel')
             ->first();
 
         $due_amount = (@$total_amount->total_amount + $freight_data->freight_amount) - @$paid_amount->paid_amount;
