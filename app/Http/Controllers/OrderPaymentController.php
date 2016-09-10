@@ -104,17 +104,21 @@ class OrderPaymentController extends Controller
 
     public function approve($id)
     {
-       
+        /* Transaction Start Here */
+        DB::beginTransaction();
         try {
             $model = OrderHead::where('id',$id)->first();
             $model->status = 'approved';
-            if ($model->save()) {
-
+            if ($model->save()) 
+            {
+                DB::commit();
               
                 Session::flash('flash_message', " Successfully Approved.");
                 return redirect()->back();
             }
         } catch(\Exception $e) {
+            //If there are any exceptions, rollback the transaction`
+            DB::rollback();
             Session::flash('flash_message_error',$e->getMessage() );
             return redirect()->back();
         }
@@ -122,76 +126,104 @@ class OrderPaymentController extends Controller
 
      public function cancel($id)
     {
-       
+        /* Transaction Start Here */
+        DB::beginTransaction();
         try {
             $model = OrderHead::where('id',$id)->first();
             $model->status = 'cancel';
-            if ($model->save()) {
-
-              
+            if ($model->save()) 
+            {
+                DB::commit();
                 Session::flash('flash_message', " Successfully Canceled.");
                 return redirect()->back();
             }
         } catch(\Exception $e) {
+            //If there are any exceptions, rollback the transaction`
+            DB::rollback();
             Session::flash('flash_message_error',$e->getMessage() );
             return redirect()->back();
         }
     }
 
 
+    /*
+        Order Complete by Order Head ID
+     */
     public function order_complete($order_head_id)
     {
-
+        /* Transaction Start Here */
+        DB::beginTransaction();
         try {
             $model = OrderHead::findOrFail($order_head_id);
             $model->status = 'done';
-            if ($model->save()) {
-
+            if ($model->save()) 
+            {
+                DB::commit();
                 Session::flash('flash_message', " Successfully Closed as Completed.");
                 return redirect()->back();
             }
         } catch(\Exception $e) {
+            //If there are any exceptions, rollback the transaction`
+            DB::rollback();
             Session::flash('flash_message_error',$e->getMessage() );
             return redirect()->back();
         }
     }
 	
+    /*
+        Order Shipped by Order Head ID
+     */
 	public function order_shipped($order_head_id)
     {
-
+        /* Transaction Start Here */
+        DB::beginTransaction();
         try {
             $model = OrderHead::findOrFail($order_head_id);
             $model->status = 'delivered';
-            if ($model->save()) {
-
+            if ($model->save()) 
+            {
+                DB::commit();
                 Session::flash('flash_message', " Successfully Closed as Completed.");
                 return redirect()->back();
             }
         } catch(\Exception $e) {
+            //If there are any exceptions, rollback the transaction`
+            DB::rollback();
             Session::flash('flash_message_error',$e->getMessage() );
             return redirect()->back();
         }
     }
 	
+    /*
+        Order Archived by Order Head ID
+     */
 	public function order_archive($order_head_id)
     {
-	
+	   /* Transaction Start Here */
+        DB::beginTransaction();
         try {
             $model = OrderHead::findOrFail($order_head_id);
 			
             $model->status = 'archive';
-            if ($model->save()) {
+            if ($model->save()) 
+            {
 
+                DB::commit();
                 Session::flash('flash_message', " Successfully archived.");
                 return redirect()->back();
             }
         } catch(\Exception $e) {
+            //If there are any exceptions, rollback the transaction`
+            DB::rollback();
             Session::flash('flash_message_error',$e->getMessage() );
             return redirect()->back();
         }
     }
 
 
+    /*
+        Lay by Order Show by Order_Head_ID
+     */
     public function lay_by_order_show($order_head_id){
         $title = 'Invoice Detail';
 
@@ -233,16 +265,19 @@ class OrderPaymentController extends Controller
      */
     public function cancel_lay_by_payment($order_trn_id)
     {
-
+        /* Transaction Start Here */
+        DB::beginTransaction();
         try {
-            $model = OrderPaymentTransaction::where('id',$order_trn_id)->first();
+            $model = OrderPaymentTransaction::findOrFail($order_trn_id);
             $model->status = 'cancel';
-            if ($model->save()) {
+            if ($model->save()) 
+            {
+                DB::commit();
 
-                $order_head = OrderHead::where('id', $model->order_head_id)->first();
+                $order_head = OrderHead::findOrFail($model->order_head_id);
                 $invoice_no = $order_head->invoice_no;
 
-                $customer = Customer::where('id', $order_head->user_id)->first();
+                $customer = Customer::findOrFail($order_head->user_id);
                 $to_email = $customer->email;
                 $to_name = $customer->first_name." ". $customer->last_name;
 
@@ -255,6 +290,8 @@ class OrderPaymentController extends Controller
                 return redirect()->back();
             }
         } catch(\Exception $e) {
+            //If there are any exceptions, rollback the transaction`
+            DB::rollback();
             Session::flash('flash_message_error',$e->getMessage() );
             return redirect()->back();
         }
@@ -268,16 +305,19 @@ class OrderPaymentController extends Controller
     public function approve_lay_by_transaction($order_trn_id)
     {
 
-
+        /* Transaction Start Here */
+        DB::beginTransaction();
         try {
-            $model = OrderPaymentTransaction::where('id',$order_trn_id)->first();
+            $model = OrderPaymentTransaction::findOrFail($order_trn_id);
             $model->status = 'approved';
-            if ($model->save()) {
+            if ($model->save()) 
+            {
+                DB::commit();
 
-                $order_head = OrderHead::where('id', $model->order_head_id)->first();
+                $order_head = OrderHead::findOrFail($model->order_head_id);
                 $invoice_no = $order_head->invoice_no;
 
-                $customer = Customer::where('id', $order_head->user_id)->first();
+                $customer = Customer::findOrFail($order_head->user_id);
                 $to_email = $customer->email;
                 $to_name = $customer->first_name." ". $customer->last_name;
 
@@ -290,6 +330,8 @@ class OrderPaymentController extends Controller
                 return redirect()->back();
             }
         } catch(\Exception $e) {
+            //If there are any exceptions, rollback the transaction`
+            DB::rollback();
             Session::flash('flash_message_error',$e->getMessage() );
             return redirect()->back();
         }
