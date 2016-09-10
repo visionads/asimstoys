@@ -65,12 +65,12 @@ class SendMailer
 
         if(!$mail->send())
         {
-            #echo "Mailer Error: " . $mail->ErrorInfo;
+            echo "Mailer Error: " . $mail->ErrorInfo;
             return false;
         }
         else
         {
-            #echo "Message has been sent successfully";
+            echo "Message has been sent successfully";
             return true;
         }
 
