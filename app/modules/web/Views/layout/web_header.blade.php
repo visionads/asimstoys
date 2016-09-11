@@ -3,7 +3,7 @@
         <div class="row">
             <div class="header-content">
                 <a id="header_logo" href="{{URL::to('/')}}">
-                    <amp-img class="logo" src="{{URL::to('/')}}/web/images/logo.png" width="190px" height="95px"></amp-img>
+                    <amp-img class="logo pull-left" src="{{URL::to('/')}}/web/images/logo.png" width="190px" height="95px"></amp-img>
                     <span style="font-size: 32px;font-weight: bold;text-align: center;width: 75%;float: left;margin-top: 33px; ">
                         &nbsp;
                         <span style="color: #CA2F95; text-shadow: 2px 2px #aaa;"> Asim's </span>
