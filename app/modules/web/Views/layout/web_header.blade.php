@@ -2,9 +2,9 @@
     <div class="container">
         <div class="row">
             <div class="header-content">
+                    <amp-img class="logo pull-left" src="{{URL::to('/')}}/web/images/logo.png" ></amp-img>
                 <a id="header_logo" href="{{URL::to('/')}}">
-                    <amp-img class="logo pull-left" src="{{URL::to('/')}}/web/images/logo.png" width="190px" height="95px"></amp-img>
-                    <span style="font-size: 32px;font-weight: bold;text-align: center;width: 75%;float: left;margin-top: 33px; ">
+                    <span class="logo-right-sidebar">
                         &nbsp;
                         <span style="color: #CA2F95; text-shadow: 2px 2px #aaa;"> Asim's </span>
                         <span style="color: #EEC205; text-shadow: 2px 2px #aaa;"> Toys </span> -

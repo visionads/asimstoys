@@ -368,11 +368,7 @@ div.pt_menu .parentMenu p{
 .item-inner{
     background: #EEEEEE;
 }
-.item-inner a img{
-    width: 250px;
-    min-height: 230px;
-    max-height: 230px;
-}
+
 #gallery_01 a img{
     width: 95px;
     height: 80px;
