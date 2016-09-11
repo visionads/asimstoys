@@ -96,7 +96,7 @@
     <script type='text/javascript' src="{{ URL::asset('web/js/v0.js') }}"></script> 
     <style type="text/css" media="screen">
         amp-img {
-            background-color: gray;
+            background-color: none;
             border: 1px solid black;
           }
     </style>
