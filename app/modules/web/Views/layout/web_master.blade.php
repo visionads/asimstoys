@@ -97,7 +97,7 @@
     <style type="text/css" media="screen">
         amp-img {
             background-color: none;
-            border: 1px solid black;
+            border: none;
           }
     </style>
 
