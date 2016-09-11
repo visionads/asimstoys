@@ -730,7 +730,7 @@ class OrderController extends Controller
                 $to_name = $customer->first_name." ". $customer->last_name;
 				
 				
-				$delivery_details = DB::table('delivery_details')->where('user_id',$customer->id)->first();
+				$delivery_details = DB::table('delivery_details')->where('user_id',$customer->id)->orderby('id','desc')->first();
                 $to_email = $customer->email;
                 $to_name = $customer->first_name." ". $customer->last_name;
 
