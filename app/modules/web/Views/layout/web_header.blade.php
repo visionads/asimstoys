@@ -35,7 +35,9 @@
 					<div class="hot_line" >
                     
 						<div class="hot_line_row">
-							<amp-img src="{{URL::to('')}}/web/images/envelope.png"></amp-img> <span class="email">
+							<img src="{{URL::to('')}}/web/images/envelope.png" width="20" height="20" layout="responsive" >      
+
+                            <span class="email">
 								<a href="mailto:asimstoys@gmail.com?Subject=Mail to Us" target="_top">info@asimstoys.com.au</a>
 							</span>
 						</div>
