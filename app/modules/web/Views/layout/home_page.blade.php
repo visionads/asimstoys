@@ -37,7 +37,7 @@
 							<div class="item-inner">
 
 								<a href="{{URL::to('/')}}/{{@$featured_product->slug}}" title="{{@$featured_product->title}}" class="bigpic_15_newproduct123 product_image">
-									<img src="{{URL::to('/')}}/{{@$featured_product->image}}"  alt="{{@$featured_product->title}}" />
+									<amp-img src="{{URL::to('/')}}/{{@$featured_product->image}}"  alt="{{@$featured_product->title}}" ></amp-img>
 								</a>
 				
 								<h5 class="s_title_block">
@@ -72,9 +72,9 @@
 						<div class="home-youtube">
 							<a class="fancybox-media" href="{{@$youtube->link}}">
 								@if(!empty($youtube->image))
-									<img src="{{URL::to('/')}}/{{$youtube->image}}">
+									<amp-img src="{{URL::to('/')}}/{{$youtube->image}}"></amp-img>
 								@else
-									<img src="{{URL::to('/')}}/web/images/youtube.jpg">
+									<amp-img src="{{URL::to('/')}}/web/images/youtube.jpg"></amp-img>
 								@endif
 								
 							</a>

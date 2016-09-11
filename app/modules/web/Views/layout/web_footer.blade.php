@@ -8,7 +8,7 @@
                                         <div class="f-col f-col1 span3">
                                             
                                             <div class="footer-logo footer-static-content ">
-                                                <a href="#"><img src="{{URL::to('/')}}/web/images/logo.png" width="230px" height="140px"></a>
+                                                <a href="#"><amp-img src="{{URL::to('/')}}/web/images/logo.png" width="230px" height="140px"></amp-img></a>
                                             </div>
                                         </div>
 
@@ -19,9 +19,15 @@
                                             <p>&nbsp;</p>
                                             <p style="text-align: center; ">
 
-                                                <a target="_blank" href="https://twitter.com/asims_toys"><img src="{{URL::asset('/web/images/twitter_icon.png')}}" alt="Twitter" height="50" width="50"></a>
-                                                <a target="_blank" href="https://www.instagram.com/asims_toys/"><img src="{{URL::asset('/web/images/instagram_icon.png')}}" alt="Instagram" height="50" width="50"></a>
-                                                <a target="_blank" href="https://www.youtube.com/channel/UCRUrMyHLzDSf7JkwmBLGPLA"><img src="{{URL::asset('/web/images/youtube_icon.png')}}" alt="You Tube" height="50" width="50"></a>
+                                                <a target="_blank" href="https://twitter.com/asims_toys">
+                                                <amp-img src="{{URL::asset('/web/images/twitter_icon.png')}}" alt="Twitter" height="50" width="50"></amp-img>
+                                                </a>
+                                                <a target="_blank" href="https://www.instagram.com/asims_toys/">
+                                                <amp-img src="{{URL::asset('/web/images/instagram_icon.png')}}" alt="Instagram" height="50" width="50"></amp-img>
+                                                </a>
+                                                <a target="_blank" href="https://www.youtube.com/channel/UCRUrMyHLzDSf7JkwmBLGPLA">
+                                                <amp-img src="{{URL::asset('/web/images/youtube_icon.png')}}" alt="You Tube" height="50" width="50"></amp-img>
+                                                </a>
                                             </p>
                                         </div>
 
@@ -43,7 +49,7 @@
                                             </div>
 
                                             <p class="secure-payment-info">All transactions are securely process and encrypted by the eWAY payment gateway platform. Credit Card information is never stored.</p>
-                                            <img src="{{URL::asset('/web/images/accept_credit_cards.jpg')}}" alt="Secure Payment" width="273">
+                                            <amp-img src="{{URL::asset('/web/images/accept_credit_cards.jpg')}}" alt="Secure Payment" width="273"></amp-img>
                                         </div>
                                     </div>
                                 </div>

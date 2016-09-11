@@ -8,9 +8,9 @@
 
         <div id="layer-01-slide-01" class="ls-s6" style="layer1-sublayer2" data-rel="delayin: 100; slidedirection: right; slideoutdirection: left; durationin: 1500;">
             <p>REFLECTION</p>
-            <img src="etsb/web_assets/slider_assets/images/home-slider/image-01.jpg" height="347" width="387" alt="home-slider-01"> </div>
+            <amp-img src="etsb/web_assets/slider_assets/images/home-slider/image-01.jpg" height="347" width="387" alt="home-slider-01"></amp-img> </div>
 
-        <div id="layer-01-slide-02" class="ls-s4" style="layer1-sublayer3" data-rel="delayin: 100; slidedirection: bottom; slideoutdirection: bottom; durationin: 2000;"> <img src="etsb/web_assets/slider_assets/images/home-slider/image-02.png" width="503" height="339" alt="home-slider-02">
+        <div id="layer-01-slide-02" class="ls-s4" style="layer1-sublayer3" data-rel="delayin: 100; slidedirection: bottom; slideoutdirection: bottom; durationin: 2000;"> <amp-img src="etsb/web_assets/slider_assets/images/home-slider/image-02.png" width="503" height="339" alt="home-slider-02"></amp-img>
             <p>CLIPPING PATH WITH SHADOW</p>
         </div>
         <div id="layer-01-slide-03" class="ls-s2" style="layer1-sublayer4" data-rel="delayin: 100; slidedirection: right; slideoutdirection: left; durationin: 1000;">
@@ -25,7 +25,7 @@
 
     <div class="ls-layer">
         <div id="layer-02-bg" class="ls-bg" style="layer2-sublayer2"></div>
-        <img id="layer-02-slide-01" class="ls-s6" src="etsb/web_assets/slider_assets/images/home-slider/image-03.png" width="595" height="500" style="layer2-sublayer1" data-rel="delayin: 100; slidedirection: right; slideoutdirection: left; durationin: 2000;" alt="home-slider-02-01">
+        <amp-img id="layer-02-slide-01" class="ls-s6" src="etsb/web_assets/slider_assets/images/home-slider/image-03.png" width="595" height="500" style="layer2-sublayer1" data-rel="delayin: 100; slidedirection: right; slideoutdirection: left; durationin: 2000;" alt="home-slider-02-01"></amp-img>
         <div id="layer-02-slide-02" class="ls-s2" style="layer2-sublayer2" data-rel="delayin: 100; slidedirection: left; slideoutdirection: bottom; durationin: 1500;">
             <p class="style-01">A Complete Creative Studio</p>
             <p class="style-02">working  <span class="highlight">24/7</span><br>
