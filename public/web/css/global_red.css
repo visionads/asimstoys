@@ -6063,6 +6063,43 @@ a.email_us:hover{
 			display:none;
 		}
 		
+		.home-text-container h4{
+			font-size:15px;
+		}
+		
+		.nav-tabs > li > a{
+			font-size:12px;
+		}
+		
+		.availability_container .avaliablity{
+			font-size:12px;
+		}
+		
+		.availability_container .in_stock{
+			font-size:12px;
+		}
+		
+		.product_details .previous_price{
+			font-size:16px;
+		}
+		.home-text-container .description h1, h2, h3, h4{
+			font-size:12px;
+		}
+		.product_details_buynow_form select{
+			font-size:12px;
+		}
+		
+		input.register_btn{
+			font-size:12px;
+		}
+		
+		.tab-content > .tab-pane{
+			font-size:12px;
+		}
+		
+		.home-new-product-container ul li.newproductslider-item.newproductslider-item .item-inner.related-inner{
+			height:380px;
+		}
 	}
 	
 	
@@ -6131,7 +6168,7 @@ a.email_us:hover{
 	#header_user #header_nav { position: static;}
 	#header #cart_block { top: 117px; right:0px;}
 	
-	.block .title_block, .block h4, .pos-new-product h4 { font-size: 22px;}
+	
 	select { width: auto; margin: 0;}
 	#newsletter_block_left input.inputNew {width:100%; }
 	.ma-nav-mobile-container { /*width: 500px; float: right;*/}
@@ -6299,6 +6336,11 @@ a.email_us:hover{
 	 a.developer_company{
 		 font-size:10px;
 	 }
+	 
+	 .home-text-container h4{
+		 font-size:12px;
+		 line-height:20px;
+	 }
 
 }
 @media (max-width: 360px) {
@@ -6364,6 +6406,15 @@ a.email_us:hover{
 .hot_line .hot_line_row .email a{
 	margin-right:5px;
 }
+
+.home-new-product-container ul li.newproductslider-item.newproductslider-item .item-inner.related-inner{
+	height:450px;
+}
+
+.nav-tabs > li > a{
+	font-size:10px;
+	padding:6px 10px;
+}
      
 }
 
@@ -6372,5 +6423,9 @@ a.email_us:hover{
   
 	.home-new-product-container ul li.newproductslider-item.newproductslider-item .item-inner{
 		height:400px;
+	}
+	
+	.nav-tabs > li > a{
+		padding:5px;
 	}
 }

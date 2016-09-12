@@ -175,8 +175,8 @@ class GalImageController extends Controller
             $file_name = GalImageController::image_upload($image, $file_type_required, $destinationPath);
 
             if ($file_name != '') {
-                unlink(public_path()."/".$model->image);
-                unlink(public_path()."/".$model->thumbnail);
+                @unlink(public_path()."/".$model->image);
+                @unlink(public_path()."/".$model->thumbnail);
                 $input['image'] = $file_name[0];
                 $input['thumbnail'] = $file_name[1];
             } else {
@@ -208,8 +208,8 @@ class GalImageController extends Controller
         try {
             $model = GalImage::where('slug',$slug)->first();
             if ($model->delete()) {
-                unlink(public_path()."/".$model->image);
-                unlink(public_path()."/".$model->thumbnail);
+                @unlink(public_path()."/".$model->image);
+                @unlink(public_path()."/".$model->thumbnail);
                 Session::flash('flash_message', " Successfully Deleted.");
                 return redirect()->back();
             }

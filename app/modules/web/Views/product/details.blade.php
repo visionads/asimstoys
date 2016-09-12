@@ -33,7 +33,7 @@
 				<div class="col-md-12">
 
 
-					<div class="col-md-6">
+					<div class="col-md-6 col-sm-6 col-xs-12">
 						<div class="product_gallery_section">
 
 							<div class="main_open_image">
@@ -107,7 +107,7 @@
 					</div>
 
 
-					<div class="col-md-6">
+					<div class="col-md-6 col-sm-6 col-xs-12">
 
                         <div class="col-md-12" style="padding: 0px; margin: 0px;">
                             <div class="product_details_tab" style="background: none; ">
@@ -472,10 +472,12 @@
 					@foreach($related_product_r as $related_product)
 
 						<li class="newproductslider-item ajax_block_product first_item last_item_of_line ">
-							<div class="item-inner">
-								<a href="{{URL::to('/')}}/{{$related_product->slug}}" title="Malesuada mi" class="bigpic_15_newproduct123 product_image">
-									<img src="{{URL::to('/')}}/{{$related_product->image}}"  alt="" />
+							<div class="item-inner related-inner">
+								
+								<a href="{{URL::to('/')}}/{{@$related_product->slug}}" title="{{@$related_product->title}}" class="bigpic_15_newproduct123 product_image">
+									<amp-img src="{{URL::to('/')}}/{{@$related_product->image}}"  alt="{{@$related_product->title}}" width="250" height="230" layout="responsive"> </amp-img>
 								</a>
+				
 								<h5 class="s_title_block">
 									<a href="{{URL::to('/')}}/{{$related_product->slug}}" title="Malesuada mi">{{$related_product->title}}</a>
 								</h5>
