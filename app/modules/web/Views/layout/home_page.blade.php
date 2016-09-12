@@ -69,7 +69,7 @@
 			@if(!empty($youtube_link))
 				@foreach($youtube_link as $youtube)
 					
-					<div class="col-md-4">
+					<div class="col-md-4 col-xs-4 col-sm-4">
 						<div class="home-youtube">
 							<a class="fancybox-media" href="{{@$youtube->link}}">
 								@if(!empty($youtube->image))

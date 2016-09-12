@@ -51,7 +51,7 @@
         </div>
     </div>
 </div>
-<div class="nav-container visible-desktop">
+<div class="nav-container ">
     <div class="container">
         <div class="row">
             <div class="pt_custommenu" id="pt_custommenu">

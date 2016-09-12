@@ -2,6 +2,7 @@
 	use App\ProductSubgroups;
 ?>
 <div class="col-md-3 padding-left-0">
+<span class="mobile_menu open_mobile_menu">=</span>
 	<div class="top-left-menu-container">
 		<ul class="left-menu-product scroll-menu-close">
 
@@ -65,3 +66,8 @@
 		</div>
 	</div>
 </div>
+<script>
+	$(".mobile_menu").click(function(){
+	    $(".top-left-menu-container").toggle();
+	});
+</script>
