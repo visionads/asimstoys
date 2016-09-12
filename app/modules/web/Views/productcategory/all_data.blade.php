@@ -20,8 +20,8 @@
 					@foreach($productdata as $product)
 						<li class="newproductslider-item ajax_block_product first_item last_item_of_line ">
 							<div class="item-inner">
-								<a href="{{URL::to('/')}}/{{$product->slug}}" title="Malesuada mi" class="bigpic_15_newproduct123 product_image">
-									<img src="{{URL::to('/')}}/{{$product->image}}"  alt="" />
+								<a href="{{URL::to('/')}}/{{@$product->slug}}" title="{{@$product->title}}" class="bigpic_15_newproduct123 product_image">
+									<amp-img src="{{URL::to('/')}}/{{@$product->image}}"  alt="{{@$product->title}}" width="250" height="230" layout="responsive"> </amp-img>
 								</a>
 								<h5 class="s_title_block">
 									<a href="{{URL::to('/')}}/{{$product->slug}}" title="Malesuada mi">{{$product->title}}</a>
