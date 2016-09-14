@@ -61,7 +61,7 @@
 						<div class="cart-item-container">
 
 							@if(!empty($product_cart_r))
-
+								<div class="table-responsive">
 								<table class="table table-striped cart-table">
 								<thead>
 									<tr>
@@ -144,6 +144,7 @@
 										</tr>
 								</tbody>
 							</table>
+							</div>
 
 
 							@else
@@ -154,23 +155,29 @@
 
             @if(Session::has('product_cart') && count(Session::get('product_cart')) > 0)
             {!! Form::open(['route' => 'order-checkout']) !!}
-						<div class="col-md-12">
-						    <div class="col-md-8">
-                                <span class="pull-right">
+						<div class="col-md-12 col-xs-12 col-sm-12">
+						  <div class="row">
+						    <div class="col-md-7 col-xs-12 col-sm-7">
+							<div class="row">
+                                <span class="pull-right pull-right-480-floatnone">
                                     <b> Enter Your Coupon Code </b>
                                     <br>
                                     <small>A coupon code which you received from Asim's Toys</small>
                                 </span>
+							</div>
 						    </div>
 
-                            <div class="col-md-4">
-                                <span class="pull-right">
+                            <div class="col-md-5 col-xs-12 col-sm-5">
+							<div class="row">
+                                <span class="pull-right pull-right-480-floatnone">
                                     <input type="text" name="coupon_code" class="form-control" placeholder="enter your coupon code here">
                                 </span>
+							</div>
                             </div>
+						  </div>
                         </div>
 
-						<div class="col-md-12 margin-top-30 margin-bottom-30">
+						<div class="col-md-12 col-xs-12 col-sm-12 margin-top-30 margin-bottom-30">
                             <a href="{{Url::to('')}}" class="cart-continue-shopping">Continue Shopping</a>
                             <input type="submit" class="cart-checkout" value="Checkout">
                             {{--<a href="{{URL::to('/')}}/order-checkout" class="cart-checkout">Checkout</a>--}}

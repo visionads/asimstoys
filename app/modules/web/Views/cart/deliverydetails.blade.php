@@ -68,12 +68,12 @@
 
 	            		<div class="delivery_text">
 	            			<p>Automatically filled up delivery details with billing address. You can modify this below information.</p>
-							<small style="color: rgb(255,0,0);font-size: 14px;">Note:: Put your post code and superb properly. If you put wrong superb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small><br/><br/>
+							<small style="color: rgb(255,0,0);font-size: 14px;">Note:: Put your post code and suburb properly. If you put wrong suburb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small><br/><br/>
 	            		</div>
 
 						{!! Form::open(['route' => 'customer-delivery-detail']) !!}
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							<div class="col-md-6">
+							<div class="col-md-6 col-sm-6 col-xs-12">
 								<div class="login_container">
 									<div class="form-group">
 										<label>Email Address <span style="color:rgba(255,0,0,.7);">(required)</span></label>
@@ -101,7 +101,7 @@
 
 									<div class="form-group">
 										<label>Post code <span style="color:rgba(255,0,0,.7);">(required)</span></label><br/>
-										<small style="color:rgb(255,99,71);">Put your post code and superb properly. If you put wrong superb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small>
+										<small style="color:rgb(255,99,71);">Put your post code and suburb properly. If you put wrong suburb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small>
 										{!! Form::text('postcode', $data->postcode, ['id'=>'post_code', 'class' => 'form-control','required']) !!}
 									</div>
 
@@ -112,7 +112,7 @@
 								
 							</div>
 
-							<div class="col-md-6">
+							<div class="col-md-6 col-sm-6 col-xs-12">
 								
 								<div class="login_container">
 
@@ -123,7 +123,7 @@
 									
 									<div class="form-group">
 										<label>Suburb <span style="color:rgba(255,0,0,.7);">(required)</span></label><br/>
-										<small style="color:rgb(255,99,71);">Put your post code and superb properly. If you put wrong superb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small>
+										<small style="color:rgb(255,99,71);">Put your post code and suburb properly. If you put wrong suburb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small>
 										{!! Form::text('suburb', $data->suburb, ['id'=>'suburb', 'class' => 'form-control','required']) !!}
 									</div>
 									

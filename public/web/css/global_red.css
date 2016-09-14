@@ -6341,6 +6341,16 @@ a.email_us:hover{
 		 font-size:12px;
 		 line-height:20px;
 	 }
+	 
+	 .pull-right.pull-right-480-floatnone{
+		 float:none!important;
+		 margin-bottom:10px;
+	 }
+	 
+	 #header_links li{
+		 padding:10px 0 10px 10px;
+		 background:none;
+	 }
 
 }
 @media (max-width: 360px) {
@@ -6414,6 +6424,16 @@ a.email_us:hover{
 .nav-tabs > li > a{
 	font-size:10px;
 	padding:6px 10px;
+}
+
+a.cart-continue-shopping{
+	width:100%;
+	margin-bottom:15px;
+	text-align:center;
+}
+
+input.cart-checkout{
+	width:100%;
 }
      
 }

@@ -38,7 +38,7 @@
 
 		<div class="form-group">
 			<label>Post code <span style="color:rgba(255,0,0,.7);;">(required)</span></label><br/>
-			<small style="color:rgb(255,99,71);">Put your post code and superb properly. If you put wrong superb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small>
+			<small style="color:rgb(255,99,71);">Put your post code and suburb properly. If you put wrong suburb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small>
 			{!! Form::text('postcode', $delivery_details->postcode, ['id'=>'post_code', 'class' => 'form-control','required']) !!}
 		</div>
 
@@ -60,7 +60,7 @@
 		
 		<div class="form-group">
 			<label>Suburb <span style="color:rgba(255,0,0,.7);;">(required)</span> </label><br/>
-			<small style="color:rgb(255,99,71);">Put your post code and superb properly. If you put wrong superb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small>
+			<small style="color:rgb(255,99,71);">Put your post code and suburb properly. If you put wrong suburb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small>
 			{!! Form::text('suburb', $delivery_details->suburb, ['id'=>'suburb', 'class' => 'form-control','required']) !!}
 		</div>
 		

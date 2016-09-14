@@ -71,7 +71,7 @@
 							</p>
 
 							@if(!empty($product_cart_r))
-
+							<div class="table-responsive">
 								<table class="table table-striped cart-table">
 								<thead>
 									<tr>
@@ -166,6 +166,7 @@
 										</tr>
 								</tbody>
 							</table>
+							</div>
 
                             <p>
                                 <span class="pull-right">
@@ -197,7 +198,7 @@
                 <input type="hidden" name="total_freight_charge" value="{{@$total_freight_charge }}">
 
 
-						<div class="col-md-12 margin-top-30 margin-bottom-30">
+						<div class="col-md-12 col-sm-6 col-xs-12 margin-top-30 margin-bottom-30">
 							<div class="col-md-6">
 								<div class="row">
 									<div class="billing_address">
