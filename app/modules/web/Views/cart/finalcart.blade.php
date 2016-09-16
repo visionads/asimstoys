@@ -89,6 +89,7 @@
 										$total_value = 0;
 
 										$count = 0;
+									$total_pro_price =
                                     $total_freight_charge = 0;
 
 									?>
@@ -134,6 +135,7 @@
                                                             #$total_line_amount += $line_amount + $freight_charge;
                                                             $total_value+=$pro_price + $freight_charge;
                                                             $total_freight_charge+=$freight_charge;
+															$total_pro_price+=$pro_price;
                                                         ?>
 
 														${{ $line_amount }}
@@ -194,7 +196,7 @@
 
                 {!! Form::open(['route' => 'pay-now']) !!}
 
-                <input type="hidden" name="total_amount" value="{{@$total_value }}">
+                <input type="hidden" name="total_amount" value="{{@$total_pro_price }}">
                 <input type="hidden" name="total_freight_charge" value="{{@$total_freight_charge }}">
 
 

@@ -159,6 +159,8 @@ class OrderController extends Controller
                 $request->session()->set('coupon_status', 'Your Coupon code is Valid ! Your discount will be added into the payment ');
             }else{
                 $request->session()->forget('coupon_status');
+				$request->session()->forget('coupon_code');
+				$request->session()->forget('coupon_value');
                 $request->session()->set('coupon_status', ' Coupon code is invalid ! Please try again !');
             }
         }
@@ -526,8 +528,8 @@ class OrderController extends Controller
                 'total_discount_price'=>$total_discount_price,
                 'vat'=>0,
                 'freight_amount' => $total_freight_charge,
-                'sub_total' => $total_price - $total_discount_price -$total_freight_charge, //$total_price,
-                'net_amount'=> $total_price - $total_discount_price, //$total_price+$freight_calculation,
+                'sub_total' => $total_price - $total_discount_price, //$total_price,
+                'net_amount'=> $total_price - $total_discount_price + $total_freight_charge, //$total_price+$freight_calculation,
                 'status'=> 1,
             ];
 
@@ -560,6 +562,9 @@ class OrderController extends Controller
 
                 #$request->session()->forget('freight_calculation');
                 $request->session()->forget('product_cart');
+				$request->session()->forget('coupon_value');
+				$request->session()->forget('coupon_code');
+				
                 $request->session()->set('invoice_no', $order_head['invoice_no']);
                 $request->session()->set('total_price', $total_price);
                 $request->session()->set('customer_data', $user_data);
@@ -629,9 +634,12 @@ class OrderController extends Controller
         $sub_total =isset($order_head->sub_total) ? $order_head->sub_total : 0;
         $net_amount =isset($order_head->net_amount) ? $order_head->net_amount : 0;
 
-        $coupon_value = $request->session()->get('coupon_value');
-        $discount_price = ($sub_total * $coupon_value)/100;
+        
+        $discount_price = isset($order_head->total_discount_price) ? $order_head->total_discount_price : 0;
+		
         $net_amount = $net_amount - @$discount_price;
+		$total_price = $net_amount + @$discount_price;
+		
 
         //setter
         $request->session()->set('net_amount', $net_amount);
@@ -641,7 +649,7 @@ class OrderController extends Controller
             'title' => $title,
             'invoice_number' => $order_head['invoice_no'],
             'user_id' => $user_id,
-            'total_price' => $net_amount,
+            'total_price' => $total_price,
             'customer_data' => $customer_data,
             'discount_price' => $discount_price?$discount_price:0,
             'net_amount' => $net_amount?$net_amount:0,

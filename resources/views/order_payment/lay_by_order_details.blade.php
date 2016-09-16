@@ -64,6 +64,10 @@
                             <div class="pull-right"> <b>{{@$order_data[0]->sub_total}} </b></div>
 						</div>
 						<div class="clearfix">
+							<div class="pull-left"> Discount Amount : </div>
+                            <div class="pull-right"> <b>{{@$order_data[0]->total_discount_price}} </b></div>
+						</div>
+						<div class="clearfix">
 							<div class="pull-left"> FREIGHT Amount : </div>
                             <div class="pull-right"> <b>{{@$order_data[0]->freight_amount}} </b></div>
 						</div>
@@ -149,6 +153,14 @@
 									</td>
 									<td colspan="2" class="text-right">
 										{{number_format(@$order_data[0]->sub_total,2)}}
+									</td>
+								</tr>
+								<tr>
+									<td colspan="6" class="text-right">
+										Discount Amount
+									</td>
+									<td colspan="2" class="text-right">
+										{{number_format(@$order_data[0]->total_discount_price,2 )}}
 									</td>
 								</tr>
 								<tr>

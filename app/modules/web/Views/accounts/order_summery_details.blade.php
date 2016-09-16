@@ -82,6 +82,10 @@
             <div class="col-md-4 pull-right">
                 <table class="table table-striped cart-table" style="text-align: right; background: none; font-weight: bold">
                     <tr>
+                        <td> Discount Amount </td>
+                        <td> {{number_format($order->total_discount_price?$order->total_discount_price:0, 2)}}  </td>
+                    </tr>
+					<tr>
                         <td> Freight Charge </td>
                         <td> {{number_format($order->freight_amount?$order->freight_amount:0, 2)}}  </td>
                     </tr>
