@@ -16,45 +16,47 @@
 
 
                         @if(!empty($get_order_history))
-                            <table class="table">
-                                <?php
-                                $count = 1;
-                                ?>
-                                <tr>
-                                    <td>#</td>
-                                    <td>Invoice No#</td>
-                                    <td>Amount</td>
-                                    <td>Status</td>
-                                    <td>Action</td>
-                                </tr>
-                                @foreach($get_order_history as $get_order)
+							<div class="table-responsive">
+								<table class="table">
+									<?php
+									$count = 1;
+									?>
+									<tr>
+										<td>#</td>
+										<td>Invoice No#</td>
+										<td>Amount</td>
+										<td>Status</td>
+										<td>Action</td>
+									</tr>
+									@foreach($get_order_history as $get_order)
 
-                                    <tr>
-                                        <td>
-                                            {{$count}}
-                                        </td>
-                                        <td>
-                                            {{$get_order->invoice_no}}
-                                        </td>
-                                        <td>
-                                            {{$get_order->net_amount}}
-                                        </td>
-                                        <td>
-                                            {{$get_order->status}}
-                                        </td>
-                                        <td>
-                                            <a class="" data-toggle="modal" href="{{URL::to('details_of_order_summery', $get_order->id)}}" title="{{$get_order->invoice_no}}">
-                                                <b>Details</b>
-                                            </a>
+										<tr>
+											<td>
+												{{$count}}
+											</td>
+											<td>
+												{{$get_order->invoice_no}}
+											</td>
+											<td>
+												{{$get_order->net_amount}}
+											</td>
+											<td>
+												{{$get_order->status}}
+											</td>
+											<td>
+												<a class="" data-toggle="modal" href="{{URL::to('details_of_order_summery', $get_order->id)}}" title="{{$get_order->invoice_no}}">
+													<b>Details</b>
+												</a>
 
-                                        </td>
-                                    </tr>
+											</td>
+										</tr>
 
 
-                                    <?php $count++; ?>
-                                @endforeach
+										<?php $count++; ?>
+									@endforeach
 
-                            </table>
+								</table>
+							</div>
                         @else
                             <p>No order yet</p>
                         @endif

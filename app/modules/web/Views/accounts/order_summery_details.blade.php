@@ -18,7 +18,7 @@
             @foreach($order as $order)
 
                 <div class="invoice-header">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
                         <h3>
                             <div>
                                 <small><strong>Asims</strong>Toys</small><br>
@@ -26,7 +26,7 @@
                             </div>
                         </h3>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
                         <address>
                             Asims Toys.<br>
                             Australia <br>
@@ -34,7 +34,7 @@
                         </address>
                     </div>
 
-                    <div class="col-md-6 pull-right">
+                    <div class="col-md-6 col-3 col-xs-12 pull-right">
                         <div class="invoice-date">
                             <small><strong>Date</strong></small><br>
                             {{$order->created_at}}
@@ -47,6 +47,7 @@
                 <p> &nbsp; </p>
 
                 <h3 style="color: green;">Invoice History </h3>
+				<div class="table-responsive">
                 <table class="table table-striped cart-table">
                     <thead>
                     <tr>
@@ -76,6 +77,7 @@
 
                     </tbody>
                 </table>
+				</div>
 
             @endforeach
                 <p>

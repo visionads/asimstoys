@@ -10,100 +10,110 @@
 @endif
 
 <div class="accounts-billing-info">
-	<h2>Billing Information</h2>
+	<h2>Billing Information
+	
 	<a class="btn-sm btn-info pull-right" data-toggle="modal" href="#addData" title="Add">
                     <strong>Edit</strong>
                 </a>
-	<table class="table">
-		<tr>
-			<td>Name</td>
-			<td> {{$get_customer_data->first_name}}  {{$get_customer_data->last_name}}</td>
-		</tr>
-		<tr>
-			<td>Email</td>
-			<td> {{$get_customer_data->email}}</td>
-		</tr>
-		<tr>
-			<td>Telephone</td>
-			<td> {{$get_customer_data->telephone}}</td>
-		</tr>
-		<tr>
-			<td>Suburb</td>
-			<td> {{$get_customer_data->suburb}}</td>
-		</tr>
-		<tr>
-			<td>Postcode</td>
-			<td> {{$get_customer_data->postcode}}</td>
-		</tr>
-		<tr>
-			<td>State</td>
-			<td> {{$get_customer_data->state}}</td>
-		</tr>
-		<tr>
-			<td>Address</td>
-			<td> {{$get_customer_data->address}}</td>
-		</tr>
-		<tr>
-			<td>Country</td>
-			<td> {{$get_customer_data->country}}</td>
-		</tr>
-	</table>
-</div>
-
-<div class="accounts-billing-info">
-	<h2>Delivery Information</h2>
-	<a class="btn-sm btn-info pull-right" data-toggle="modal" href="#updateData" title="Add">
-		<strong>
-			@if(!empty($delivery_details))
-				Edit
-			@else
-				Add
-			@endif
-		</strong>
-	</a>
-				
-	@if(!empty($delivery_details))
+	</h2>
+	<br/><br/>
+	
+	<div class="table-responsive">
 		<table class="table">
 			<tr>
 				<td>Name</td>
-				<td> {{@$delivery_details->first_name}}  {{@$delivery_details->last_name}}</td>
+				<td> {{$get_customer_data->first_name}}  {{$get_customer_data->last_name}}</td>
 			</tr>
 			<tr>
 				<td>Email</td>
-				<td> {{@$delivery_details->email}}</td>
+				<td> {{$get_customer_data->email}}</td>
 			</tr>
 			<tr>
 				<td>Telephone</td>
-				<td> {{@$delivery_details->telephone}}</td>
+				<td> {{$get_customer_data->telephone}}</td>
 			</tr>
 			<tr>
 				<td>Suburb</td>
-				<td> {{@$delivery_details->suburb}}</td>
+				<td> {{$get_customer_data->suburb}}</td>
 			</tr>
 			<tr>
 				<td>Postcode</td>
-				<td> {{@$delivery_details->postcode}}</td>
+				<td> {{$get_customer_data->postcode}}</td>
 			</tr>
 			<tr>
 				<td>State</td>
-				<td> {{@$delivery_details->state}}</td>
+				<td> {{$get_customer_data->state}}</td>
 			</tr>
 			<tr>
 				<td>Address</td>
-				<td> {{@$delivery_details->address}}</td>
+				<td> {{$get_customer_data->address}}</td>
 			</tr>
 			<tr>
 				<td>Country</td>
-				<td> {{@$delivery_details->country}}</td>
+				<td> {{$get_customer_data->country}}</td>
 			</tr>
 		</table>
+	</div>
+</div>
+
+<div class="accounts-billing-info">
+	<h2>Delivery Information
+		<a class="btn-sm btn-info pull-right" data-toggle="modal" href="#updateData" title="Add">
+			<strong>
+				@if(!empty($delivery_details))
+					Edit
+				@else
+					Add
+				@endif
+			</strong>
+		</a>
+	</h2>
+	<br/><br/>
+		
+	@if(!empty($delivery_details))
+		<div class="table-responsive">
+			<table class="table">
+				<tr>
+					<td>Name</td>
+					<td> {{@$delivery_details->first_name}}  {{@$delivery_details->last_name}}</td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td> {{@$delivery_details->email}}</td>
+				</tr>
+				<tr>
+					<td>Telephone</td>
+					<td> {{@$delivery_details->telephone}}</td>
+				</tr>
+				<tr>
+					<td>Suburb</td>
+					<td> {{@$delivery_details->suburb}}</td>
+				</tr>
+				<tr>
+					<td>Postcode</td>
+					<td> {{@$delivery_details->postcode}}</td>
+				</tr>
+				<tr>
+					<td>State</td>
+					<td> {{@$delivery_details->state}}</td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td> {{@$delivery_details->address}}</td>
+				</tr>
+				<tr>
+					<td>Country</td>
+					<td> {{@$delivery_details->country}}</td>
+				</tr>
+			</table>
+		</div>
 	@endif
 </div>
 
 
 
 <div class="modal fade" id="addData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog"  style="width: 60%;">
+    <div class="modal-dialog" >
         <div class="modal-content" style="width:100%;float:left;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -123,7 +133,7 @@
 <!-- modal -->
 
 <div class="modal fade" id="updateData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog"  style="width: 60%;">
+    <div class="modal-dialog">
         <div class="modal-content" style="width:100%;float:left;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

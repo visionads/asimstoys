@@ -166,6 +166,10 @@ h3 {
 	text-transform: uppercase;
 	
 }
+
+.modal-dialog{
+	width:60%;
+}
 .page-title  { margin-bottom: 20px; font-family: OleoScriptSwashCapsRegular; border-bottom: 1px solid #eee; font-size: 25px; font-weight: normal; text-transform: capitalize; padding: 0 0 3px;}
 
 /* text **************************************************************************************** */
@@ -6275,6 +6279,10 @@ a.email_us:hover{
 @media screen and (max-width: 667px) {
 	#header_right{
 		margin-right:15px;
+	}
+	
+	.modal-dialog{
+		width:100%;
 	}
 }
 
