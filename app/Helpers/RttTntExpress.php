@@ -11,7 +11,10 @@ namespace App\Helpers;
 use App\Helpers\TntEnquiry;
 use App\Product;
 use DOMDocument;
-use Faker\Provider\DateTime;
+use DateTimeZone;
+use DateTime;
+
+#use Faker\Provider\DateTime;
 
 class RttTntExpress
 {
@@ -23,24 +26,50 @@ class RttTntExpress
      */
     public static function rtt_call($user_data, $delivery_data, $product_cart)
     {
+		
+	//	echo gmdate('Y-m-d');
+		//exit();
+		//date_default_timezone_set('Asia/Dacca');
+//		$createdDate = date_default_timezone_set('UTC');
+//
+//		$date1 = date_modify($createdDate, "+4 hours");
+//		echo $date1;
+//		exit();
+//		//date_default_timezone_set('Australia/Currie');
+//
+//		echo $date = date('Y-m-d h:i:s');
+//
+//		exit();
+
+        //$dateStarted = \DateTime::createFromFormat('D M d Y H:i:s e+', new DateTimeZone('Asia/Dacca'));
+	//$date = new DateTime('Y m d', new DateTimeZone('Asia/Dacca'));
+      //  echo $date->format('Y-m-d H:i:sP') . "\n";
+
+//exit($dateStarted);
+	//	echo date("Y-m-d",new DateTimeZone('Asia/Dacca')) . '<br/>';
 
         //date
-        $tomorrow = date("Y-m-d", strtotime("+1 day"));
-
+       // $tomorrow = date("Y-m-d", strtotime("+1 day"));
+	   
+	   $tomorrow = gmdate('Y-m-d',strtotime("+1 day"));
+		
+		
         $date1 = strtotime($tomorrow);
-        $date2 = date("l", $date1);
+        $date2 = gmdate("l", $date1);
         $date3 = strtolower($date2);
+		
         //ignore sunday and make the day Monday
         if ($date3 == "sunday")
         {
-            $tomorrow = date("Y-m-d", strtotime("+2 day"));
+            $tomorrow = gmdate("Y-m-d", strtotime("+4 day"));
         }
         if ($date3 == "saturday")
         {
-            $tomorrow = date("Y-m-d", strtotime("+3 day"));
+            $tomorrow = gmdate("Y-m-d", strtotime("+5 day"));
         }
 
-
+	
+	
         //call Enquiry Class
         $enquiry = new TntEnquiry();
         $enquiry->setShipDate($tomorrow);
@@ -121,14 +150,13 @@ class RttTntExpress
         //xml output
         $xml = simplexml_load_string($output);
 
-
         //rate
         $result = null;
         if($xml){
             $result = (array)$xml->ratedTransitTimeResponse->ratedProducts;
         }
-
-
+		
+		
 
         //make the object or array
         if($result){
