@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\DeliveryDetails;
 use App\Helpers\SendMailer;
-use App\OrderHead;
 use App\OrderPaymentTransaction;
 use Illuminate\Http\Request;
 use DB;
 use Session;
 use Input;
+use App\OrderHead;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
