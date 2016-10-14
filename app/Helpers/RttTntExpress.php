@@ -61,11 +61,11 @@ class RttTntExpress
         //ignore sunday and make the day Monday
         if ($date3 == "sunday")
         {
-            $tomorrow = gmdate("Y-m-d", strtotime("+4 day"));
+            $tomorrow = gmdate("Y-m-d", strtotime("+2 day"));
         }
         if ($date3 == "saturday")
         {
-            $tomorrow = gmdate("Y-m-d", strtotime("+5 day"));
+            $tomorrow = gmdate("Y-m-d", strtotime("+3 day"));
         }
 
 	
