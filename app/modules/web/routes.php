@@ -163,6 +163,12 @@ Route::any('remove_cart',[
     ]);
 
 
+    Route::any("zip_pay_process/{invoice_number}", [
+        "as"   => "zip_pay_process",
+        "uses" => "OrderController@zip_pay_process"
+    ]);
+
+
 
 
     //order History

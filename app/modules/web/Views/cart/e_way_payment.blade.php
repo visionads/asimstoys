@@ -104,34 +104,48 @@
                                     <input type="checkbox" checked="checked"> <a href="{{route('terms-condition')}}">I agree with terms and condition </a>
                                 </p>
 
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-5" style="padding: 10% 10%; text-align: center">
+                                            <script src="https://secure.ewaypayments.com/scripts/eCrypt.js"
+                                                    class="eway-paynow-button"
+                                                    data-publicapikey="epk-4AABBD0F-8893-4863-8776-ABF469799708"
+
+                                                    data-amount='{{$eway_total_price_format}}'
+                                                    data-currency="AUD"
+                                                    data-buttoncolor="#ffc947"
+                                                    data-buttonsize="100"
+                                                    data-buttonerrorcolor="#f2dede"
+                                                    data-buttonprocessedcolor="#dff0d8"
+                                                    data-buttondisabledcolor="#f5f5f5"
+                                                    data-buttontextcolor="#000000"
+
+                                                    data-invoiceref="{{$invoice_number}}"
+                                                    data-invoicedescription="Asims Toys Payment "
+                                                    data-email= '{{@$customer_data->email}}'
+                                                    data-phone='{{@$customer_data->telephone}}'
+                                                    data-allowedit="true"
+                                                    data-resulturl="{{route('redirect_e_way_d', [$invoice_number, $total_price, $customer_data->id])}}"
+                                            >
+                                            </script>
+                                        </div>
+                                        <div class="col-md-5" style="padding: 10% 10%; text-align: center">
+                                            <div class="eway-paynow-button">
+
+                                                <a href="{{route('zip_pay_process', [$invoice_number])}}" class="btn btn-success" style="padding: 13px 60px; box-shadow: 1px 1px 3px #0a2b1d; font-weight: bold; color: black;">
+                                                    Pay with Zip-Pay   <br>
+                                                    ( ${{number_format($eway_total_price_format/100, 2)}} )
+                                                </a>
+
+                                            </div>
 
 
-                                <div class="col-md-12" style="padding: 10% 30%; text-align: center">
-
-
-                                    <script src="https://secure.ewaypayments.com/scripts/eCrypt.js"
-                                            class="eway-paynow-button"
-                                            data-publicapikey="epk-4AABBD0F-8893-4863-8776-ABF469799708"
-
-                                            data-amount='{{$eway_total_price_format}}'
-                                            data-currency="AUD"
-                                            data-buttoncolor="#ffc947"
-                                            data-buttonsize="100"
-                                            data-buttonerrorcolor="#f2dede"
-                                            data-buttonprocessedcolor="#dff0d8"
-                                            data-buttondisabledcolor="#f5f5f5"
-                                            data-buttontextcolor="#000000"
-
-                                            data-invoiceref="{{$invoice_number}}"
-                                            data-invoicedescription="Asims Toys Payment "
-                                            data-email= '{{@$customer_data->email}}'
-                                            data-phone='{{@$customer_data->telephone}}'
-                                            data-allowedit="true"
-                                            data-resulturl="{{route('redirect_e_way_d', [$invoice_number, $total_price, $customer_data->id])}}"
-                                    >
-                                    </script>
+                                        </div>
+                                    </div>
 
                                 </div>
+
+
 
 
                             </div>
