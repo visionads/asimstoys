@@ -31,16 +31,23 @@ class ZipPay
     public static function call_to_server($invoice_number, $order_head, $order_detail, $customer_data, $delivery_data)
     {
 
+
         /*
         SANDBOX
-        Merchant ID: 3075
-        API Signature: TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0=
-        Unique Id: daef00bf-536f-41b2-9bc7-2f1a47fc1742
+            Merchant ID: 3075
+            API Signature: TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0=
+            Unique Id: daef00bf-536f-41b2-9bc7-2f1a47fc1742
+         */
+
+        /*
+         *  Merchant ID: 3075
+            API Signature: TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0=
+            Unique Id: daef00bf-536f-41b2-9bc7-2f1a47fc1742
          */
 
         zipMoney\Configuration::$merchant_id  = 3075;
         zipMoney\Configuration::$merchant_key = 'TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0=';
-        zipMoney\Configuration::$environment  = 'sandbox'; //sandbox|production;
+        zipMoney\Configuration::$environment  = 'production'; //sandbox|production;
 
 
         # Initialize the checkout
@@ -49,11 +56,11 @@ class ZipPay
         $checkout->request->charge = false;
         $checkout->request->currency_code = "AUD";
         $checkout->request->txn_id = false;
-        $checkout->request->order_id =  "ord-001"; //$this->_current_order_id;
+        $checkout->request->order_id =  $invoice_number; //$this->_current_order_id;
         $checkout->request->in_store = false;
 
         #$checkout->request->cart_url    = "https://your-domain/checkout/cart/";
-        $checkout->request->success_url = "https://your-domain/checkout/success/";
+        $checkout->request->success_url = "{{route('redirect_e_way_d', [$invoice_number, $order_head->net_amount, $customer_data->id])}}";
         #$checkout->request->cancel_url  = "https://your-domain/zipmoney/express/cancel/";
         #$checkout->request->error_url   = "https://your-domain/zipmoney/express/error/";
         #$checkout->request->refer_url   = "https://your-domain/zipmoney/express/refer/";
@@ -61,45 +68,40 @@ class ZipPay
 
         // Order Info
         $order = new \zipMoney\Request\Order;
-        $order->id = 1;
-        $order->tax = 110;
+        $order->id = $invoice_number or null;
+        $order->tax = 0;
         $order->shipping_tax = 0;
-        $order->shipping_value = 10;
-        $order->total = 120;
+        $order->shipping_value = 1;
+        $order->total = $order_head->net_amount;
 
         // Order Item 1
-        $order_item = new \zipMoney\Request\OrderItem;
-        $order_item->id = 10758;
-        $order_item->sku  = "item-10758";
-        $order_item->name = "GoPro Hero3+ Silver Edition - Silver";
-        $order_item->price =  110;
-        $order_item->quantity = 1;
+        foreach ($order_detail as  $value)
+        {
 
-        $order->detail[] = $order_item;
+            $order_item = new \zipMoney\Request\OrderItem;
+            $order_item->id = $value->product_id;
+            $order_item->sku  = $value->product_id;
+            $order_item->name = $value->product_id;
+            $order_item->price =  $value->price;
+            $order_item->quantity = $value->qty;
 
-        // Order Item 2
-        $order_item = new \zipMoney\Request\OrderItem;
-        $order_item->id = 10759;
-        $order_item->sku  = "item-10759";
-        $order_item->name = "GoPro Hero3+ Silver Edition - Silver1";
-        $order_item->price =  110;
-        $order_item->quantity = 1;
+            $order->detail[] = $order_item;
+        }
 
-        $order->detail[] = $order_item;
 
         $checkout->request->order = $order;
 
         // Billing Address
         $billingAddress  = new \zipMoney\Request\Address;
 
-        $billingAddress->first_name = "firstname";
-        $billingAddress->last_name = "lastname";
-        $billingAddress->line1 = "line1";
-        $billingAddress->line2 = "line2";
-        $billingAddress->country = "Australia";
-        $billingAddress->zip = "postcode";
-        $billingAddress->city = "Sydney";
-        $billingAddress->state = "NSW";
+        $billingAddress->first_name = $customer_data->first_name;
+        $billingAddress->last_name = $customer_data->last_name;
+        $billingAddress->line1 = $customer_data->suburb;
+        $billingAddress->line2 = $customer_data->suburb;
+        $billingAddress->country = $customer_data->country;
+        $billingAddress->zip = $customer_data->postcode;
+        $billingAddress->city = $customer_data->state;
+        $billingAddress->state = $customer_data->state;
 
         $checkout->request->billing_address  = $billingAddress;
 
@@ -121,41 +123,36 @@ class ZipPay
         // Consumer Info
         $consumer  = new \zipMoney\Request\Consumer;
 
-        $consumer->first_name = "firstname";
-        $consumer->last_name = "lastname";
-        $consumer->phone = 0400000000;
-        $consumer->email = "test@test.com.au";
-        $consumer->gender = "male";
-        $consumer->dob = "2016-06-16T15:31:23.8051383+10:00";
-        $consumer->title = "mr";
+        $consumer->first_name = $delivery_data->first_name;
+        $consumer->last_name = $delivery_data->last_name;
+        $consumer->phone = $delivery_data->telephone;
+        $consumer->email = $delivery_data->email;
+        $consumer->gender = null;
+        $consumer->dob = null;
+        $consumer->title = "Mr/Mrs";
 
         $checkout->request->consumer  = $consumer;
         $checkout->request->version = new Version();
         $checkout->request->version->platform = "php";
-
-
+        
 
         try{
             $response = $checkout->process();
 
             if($response->isSuccess()){
                 //Do Something
-                print_r($response);
-                echo "Success !";
+                $result = 'Payment Success!';
             } else {
                 //Handle Error
-                echo "Error !";
+                $result = 'Invalid Request. Please try again !';
             }
 
         } catch (Exception $e){
             // Handle Error
-            echo "Exception !";
+            $result = 'Oops! Something went wrong. Please try again !';
         }
 
-
-        exit("-----");
-
-
+        return $result;
 
 
     }

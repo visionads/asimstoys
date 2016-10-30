@@ -787,22 +787,24 @@ class OrderController extends Controller
     public function zip_pay_process($invoice_number)
     {
         if($invoice_number){
-            $invoice_head = DB::table('order_head')->where('invoice_no',$invoice_number)->where('status','open')->first();
-            $invoice_detail = DB::table('order_detail')->where('invoice_no',$invoice_number)->get();
-            if($invoice_head['user_id'])
+            $invoice_head = DB::table('order_head')->where('invoice_no',$invoice_number)->first();
+
+            $invoice_detail = DB::table('order_detail')->where('order_head_id',$invoice_head->id)->get();
+
+            if($invoice_head->user_id)
             {
-                $customer_data = DB::table('customer')->where('id',$invoice_head['user_id'])->first();
-                $delivery_data = DB::table('delivery_details')->where('user_id',$invoice_head['user_id'])->first();
+                $customer_data = DB::table('customer')->where('id',$invoice_head->user_id)->first();
+                $delivery_data = DB::table('delivery_details')->where('user_id',$invoice_head->user_id)->first();
             }
 
             $result = ZipPay::call_to_server($invoice_number, $invoice_head, $invoice_detail, $customer_data, $delivery_data);
-            exit("END");
+
 
             if ($result)
             {
-                Session::flash('flash_message', "Payment Success ! ");
+                Session::flash('flash_message', $result);
                 return redirect()->route('redirect_e_way_d', [
-                    $invoice_number, $invoice_head['net_amount'], $customer_data['id']
+                    $invoice_number, $invoice_head->net_amount, $customer_data->id
                 ]);
             }else{
                 Session::flash('flash_message', "Failed payment. Please try again ");

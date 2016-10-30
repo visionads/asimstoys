@@ -137,6 +137,15 @@
                                                     ( ${{number_format($eway_total_price_format/100, 2)}} )
                                                 </a>
 
+                                                <script type="text/javascript" src="https://account.zipmoney.com.au/scripts/iframe/zipmoney-checkout.js"></script>
+                                                <script>
+                                                    // this is an example function that would invoke the iframe API call
+                                                    zipMoneyCheckout = function (redirecturl) {
+                                                        // this call will load the in context dialog and load the url supplied in the redirect_url value
+                                                        zipMoney.checkout(redirecturl);
+                                                    }
+                                                </script>
+
                                             </div>
 
 

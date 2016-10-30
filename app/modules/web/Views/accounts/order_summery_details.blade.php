@@ -71,7 +71,7 @@
                             <td>{{@$order_dt->product_variation_id}}</td>
                             <td>{{@$order_dt->background_color}}</td>
                             <td>{{@$order_dt->plate_text}}</td>
-                            <td>{{$order_dt->price}}</td>
+                            <td>{{number_format($order_dt->price,2 )}}</td>
                         </tr>
                     @endforeach
 
