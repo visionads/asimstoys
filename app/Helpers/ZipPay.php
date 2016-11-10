@@ -47,7 +47,7 @@ class ZipPay
 
         zipMoney\Configuration::$merchant_id  = 3075;
         zipMoney\Configuration::$merchant_key = 'TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0=';
-        zipMoney\Configuration::$environment  = 'production'; //sandbox|production;
+        zipMoney\Configuration::$environment  = 'sandbox'; //sandbox|production;
 
 
         # Initialize the checkout
@@ -139,8 +139,14 @@ class ZipPay
         try{
             $response = $checkout->process();
 
+            print_r($response);
+            exit();
+            $url = "https://account.sandbox.zipmoney.com.au/?o=26035";
+
             if($response->isSuccess()){
                 //Do Something
+                header('Location: [URL]');
+
                 $result = 'Payment Success!';
             } else {
                 //Handle Error
