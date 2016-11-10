@@ -139,13 +139,12 @@ class ZipPay
         try{
             $response = $checkout->process();
 
-            print_r($response);
-            exit();
-            $url = "https://account.sandbox.zipmoney.com.au/?o=26035";
+            $arr_response = $response->toArray();
+            $url = $arr_response['redirect_url'];
 
             if($response->isSuccess()){
                 //Do Something
-                header('Location: [URL]');
+                header('Location: '.$url);
 
                 $result = 'Payment Success!';
             } else {

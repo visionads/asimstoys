@@ -135,9 +135,8 @@
                                         <div class="col-md-5" style="padding: 10% 10%; text-align: center">
                                             <div class="eway-paynow-button">
 
-                                                {{--<a href="{{route('zip_pay_process', [$invoice_number])}}" class="btn btn-success" style="padding: 13px 60px; box-shadow: 1px 1px 3px #0a2b1d; font-weight: bold; color: black;">--}}
-                                                <a href="#{{$invoice_number}}" class="btn btn-success" style="padding: 13px 60px; box-shadow: 1px 1px 3px #0a2b1d; font-weight: bold; color: black;">
-                                                    comming soon .... <br>
+                                                <a href="{{route('zip_pay_process', [$invoice_number])}}" class="btn btn-success" style="padding: 13px 60px; box-shadow: 1px 1px 3px #0a2b1d; font-weight: bold; color: black;">
+
                                                     Pay with Zip-Pay    <br>
                                                     ( ${{number_format($eway_total_price_format/100, 2)}} )
                                                 </a>
