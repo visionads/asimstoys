@@ -26,6 +26,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+
        $pageTitle = "Product";
        $product_group_id = [''=>'Please select group']+ProductGroup::where('status', 'active')->lists('title','id')->all();
 	   $brand_id = [''=>'Please select']+Brand::lists('title','title')->all();

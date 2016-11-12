@@ -705,6 +705,29 @@ class OrderController extends Controller
             Session::flash('flash_message', "Successfully Added Pre-Order Process.");
             return redirect()->route('details_of_pre_order', $order_head->id);
         }
+        else if($input_data['payment_method']=='zip_pay')
+        {
+            $invoice_number = $input_data['invoice_number'];
+            $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
+            $customer = Customer::findOrFail($order_head['user_id']);
+
+            $user_id = $order_head['user_id'];
+            $customer_data = $customer;
+
+            // Update Invoice
+            DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'zip-pay']);
+
+            $request->session()->forget('product_cart');
+
+            return view('web::cart.zip_pay_page',[
+                'title' => $title,
+                'invoice_number' => $invoice_number,
+                'user_id' => $user_id,
+                'eway_total_price_format' => $order_head['net_amount']*100,
+                'total_price' => $order_head['net_amount'],
+                'customer_data' => $customer_data,
+            ]);
+        }
         else
         {
             // Update Invoice
