@@ -147,7 +147,7 @@ class ZipPay
                 header('Location: '.$url);
 
                 exit();
-                
+
                 $result = 'Payment Success!';
             } else {
                 //Handle Error

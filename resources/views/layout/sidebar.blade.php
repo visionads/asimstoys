@@ -52,6 +52,7 @@
         <li><a  href={{URL::to('order_paid/index')}}>Order (Paid)</a></li>
         <li><a  href={{URL::to('lay_by/index')}}>Lay-By Order</a></li>
         <li><a  href={{URL::to('pre-order-list')}}>Pre-Order</a></li>
+        <li><a  href={{URL::to('zip-pay-order')}}>Zip-Pay Order</a></li>
 		<li><a  href={{URL::to('archive-list')}}>Archive</a></li>
     </ul>
 </li>

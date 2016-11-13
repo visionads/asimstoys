@@ -61,6 +61,11 @@ Route::any("pre-order-list", [
     "uses" => "OrderPaymentController@pre_order_list"
 ]);
 
+Route::any("zip-pay-order", [
+    "as"   => "zip-pay-order",
+    "uses" => "OrderPaymentController@zip_pay_order"
+]);
+
 Route::any("archive-list", [
     "as"   => "archive-list",
     "uses" => "OrderPaymentController@archive_list"

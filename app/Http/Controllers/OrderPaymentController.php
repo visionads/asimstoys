@@ -88,6 +88,20 @@ class OrderPaymentController extends Controller
 
         return view('order_payment.pre_order_list',['pageTitle' => $pageTitle,'data' => $data]);
     }
+
+    public function zip_pay_order()
+    {
+        $pageTitle = "Zip Money Payment History";
+
+        $data = OrderHead::with('relCustomer')
+            ->where('order_head.invoice_type','zip-pay')
+            ->where('order_head.status','!=','cancel')
+            ->where('status', '!=', 'archive')
+            ->orderBy('order_head.id','desc')
+            ->get();
+
+        return view('order_payment.zip_pay_order',['pageTitle' => $pageTitle,'data' => $data]);
+    }
 	
 	public function archive_list()
     {
