@@ -98,6 +98,9 @@ class ZipPay
         // Billing Address
         $billingAddress  = new \zipMoney\Request\Address;
 
+        print_r($customer_data);
+        exit();
+
         $billingAddress->first_name = $customer_data->first_name or null;
         $billingAddress->last_name = $customer_data->first_name or null;
         $billingAddress->line1 = $customer_data->first_name or null;
