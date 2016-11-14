@@ -15,6 +15,8 @@ use DateTimeZone;
 use DateTime;
 use zipMoney;
 use zipMoney\Request\Version;
+use Illuminate\Support\Facades\DB;
+
 
 #use Faker\Provider\DateTime;
 
@@ -53,18 +55,19 @@ class ZipPay
         # Initialize the checkout
         $checkout = new \zipMoney\Api\Checkout();
 
-        $checkout->request->charge = false;
+        $checkout->request->charge = true;
         $checkout->request->currency_code = "AUD";
         $checkout->request->txn_id = false;
         $checkout->request->order_id =  $invoice_number; //$this->_current_order_id;
         $checkout->request->in_store = false;
 
-        #$checkout->request->cart_url    = "https://your-domain/checkout/cart/";
-        $checkout->request->success_url = "{{route('redirect_e_way_d', [$invoice_number, $order_head->net_amount, $customer_data->id])}}";
-        #$checkout->request->cancel_url  = "https://your-domain/zipmoney/express/cancel/";
-        #$checkout->request->error_url   = "https://your-domain/zipmoney/express/error/";
-        #$checkout->request->refer_url   = "https://your-domain/zipmoney/express/refer/";
-        #$checkout->request->decline_url = "https://your-domain/zipmoney/express/decline/";
+        $checkout->request->cart_url    = "http://asimstoys.com.au/mycart";
+        $checkout->request->success_url = "http://asimstoys.com.au/redirect_e_way_d/".$invoice_number."/".$order_head->net_amount."/".$customer_data->id ;
+        //"{{route('redirect_e_way_d', [$invoice_number, $order_head->net_amount, $customer_data->id])}}";
+        $checkout->request->cancel_url  = "http://asimstoys.com.au/redirect_e_way_d/cancel/";
+        $checkout->request->error_url   = "http://asimstoys.com.au/redirect_e_way_d/rror/";
+        $checkout->request->refer_url   = "http://asimstoys.com.au/redirect_e_way_d/refer/";
+        $checkout->request->decline_url = "http://asimstoys.com.au/redirect_e_way_d/decline/";
 
         // Order Info
         $order = new \zipMoney\Request\Order;
@@ -72,16 +75,17 @@ class ZipPay
         $order->tax = 0;
         $order->shipping_tax = 0;
         $order->shipping_value = 1;
-        $order->total = $order_head->net_amount;
+        $order->total = $order_head->net_amount + $order->shipping_value;
 
         // Order Item 1
         foreach ($order_detail as  $value)
         {
 
             $order_item = new \zipMoney\Request\OrderItem;
+            $product = $customer_data = DB::table('product')->where('id',$value->product_id)->first();
             $order_item->id = $value->product_id;
-            $order_item->sku  = $value->product_id;
-            $order_item->name = $value->product_id;
+            $order_item->sku  = $product->slug;
+            $order_item->name = $product->title;
             $order_item->price =  $value->price;
             $order_item->quantity = $value->qty;
 
@@ -95,8 +99,8 @@ class ZipPay
         $billingAddress  = new \zipMoney\Request\Address;
 
         $billingAddress->first_name = $customer_data->first_name;
-        $billingAddress->last_name = $customer_data->last_name;
-        $billingAddress->line1 = $customer_data->suburb;
+        $billingAddress->last_name = $customer_data->first_name;
+        $billingAddress->line1 = $customer_data->first_name;
         $billingAddress->line2 = $customer_data->suburb;
         $billingAddress->country = $customer_data->country;
         $billingAddress->zip = $customer_data->postcode;
@@ -108,14 +112,14 @@ class ZipPay
         // Shipping Address
         $shippingAddress = new \zipMoney\Request\Address;
 
-        $shippingAddress->first_name = "firstname";
-        $shippingAddress->last_name = "lastname";
-        $shippingAddress->line1 = "line1";
-        $shippingAddress->line2 = "line2";
-        $shippingAddress->country = "Australia";
-        $shippingAddress->zip = "postcode";
-        $shippingAddress->city = "Sydney";
-        $shippingAddress->state = "NSW";
+        $shippingAddress->first_name = $delivery_data->first_name;
+        $shippingAddress->last_name = $delivery_data->first_name;
+        $shippingAddress->line1 = $delivery_data->first_name;
+        $shippingAddress->line2 = $delivery_data->suburb;
+        $shippingAddress->country = $delivery_data->country;
+        $shippingAddress->zip = $delivery_data->postcode;
+        $shippingAddress->city = $delivery_data->state;
+        $shippingAddress->state = $delivery_data->state;
 
         $checkout->request->shipping_address  = $shippingAddress;
 
