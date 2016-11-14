@@ -98,28 +98,28 @@ class ZipPay
         // Billing Address
         $billingAddress  = new \zipMoney\Request\Address;
 
-        $billingAddress->first_name = $customer_data->first_name;
-        $billingAddress->last_name = $customer_data->first_name;
-        $billingAddress->line1 = $customer_data->first_name;
-        $billingAddress->line2 = $customer_data->suburb;
-        $billingAddress->country = $customer_data->country;
-        $billingAddress->zip = $customer_data->postcode;
-        $billingAddress->city = $customer_data->state;
-        $billingAddress->state = $customer_data->state;
+        $billingAddress->first_name = $customer_data->first_name or null;
+        $billingAddress->last_name = $customer_data->first_name or null;
+        $billingAddress->line1 = $customer_data->first_name or null;
+        $billingAddress->line2 = $customer_data->suburb or null;
+        $billingAddress->country = $customer_data->country or null;
+        $billingAddress->zip = $customer_data->postcode or null;
+        $billingAddress->city = $customer_data->state or null;
+        $billingAddress->state = $customer_data->state or null;
 
         $checkout->request->billing_address  = $billingAddress;
 
         // Shipping Address
         $shippingAddress = new \zipMoney\Request\Address;
 
-        $shippingAddress->first_name = $delivery_data->first_name;
-        $shippingAddress->last_name = $delivery_data->first_name;
-        $shippingAddress->line1 = $delivery_data->first_name;
-        $shippingAddress->line2 = $delivery_data->suburb;
-        $shippingAddress->country = $delivery_data->country;
-        $shippingAddress->zip = $delivery_data->postcode;
-        $shippingAddress->city = $delivery_data->state;
-        $shippingAddress->state = $delivery_data->state;
+        $shippingAddress->first_name = $delivery_data->first_name or null;
+        $shippingAddress->last_name = $delivery_data->first_name or null;
+        $shippingAddress->line1 = $delivery_data->first_name or null;
+        $shippingAddress->line2 = $delivery_data->suburb or null;
+        $shippingAddress->country = $delivery_data->country or null;
+        $shippingAddress->zip = $delivery_data->postcode or null;
+        $shippingAddress->city = $delivery_data->state or null;
+        $shippingAddress->state = $delivery_data->state or null;
 
         $checkout->request->shipping_address  = $shippingAddress;
 
