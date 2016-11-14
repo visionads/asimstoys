@@ -100,27 +100,27 @@ class ZipPay
 
 
         $billingAddress->first_name = isset($customer_data->first_name)?$customer_data->first_name : null;
-        $billingAddress->last_name = $customer_data->first_name or null;
-        $billingAddress->line1 = $customer_data->first_name or null;
-        $billingAddress->line2 = $customer_data->suburb or null;
-        $billingAddress->country = $customer_data->country or null;
-        $billingAddress->zip = $customer_data->postcode or null;
-        $billingAddress->city = $customer_data->state or null;
-        $billingAddress->state = $customer_data->state or null;
+        $billingAddress->last_name = isset($customer_data->first_name)?$customer_data->first_name : null;
+        $billingAddress->line1 = isset($customer_data->first_name)?$customer_data->first_name : null;
+        $billingAddress->line2 = isset($customer_data->suburb)?$customer_data->suburb : null;
+        $billingAddress->country = isset($customer_data->country)?$customer_data->country : null;
+        $billingAddress->zip = isset($customer_data->postcode)?$customer_data->postcode : null;
+        $billingAddress->city = isset($customer_data->state)?$customer_data->state : null;
+        $billingAddress->state = isset($customer_data->state)?$customer_data->state : null;
 
         $checkout->request->billing_address  = $billingAddress;
 
         // Shipping Address
         $shippingAddress = new \zipMoney\Request\Address;
 
-        $shippingAddress->first_name = $delivery_data->first_name or null;
-        $shippingAddress->last_name = $delivery_data->first_name or null;
-        $shippingAddress->line1 = $delivery_data->first_name or null;
-        $shippingAddress->line2 = $delivery_data->suburb or null;
-        $shippingAddress->country = $delivery_data->country or null;
-        $shippingAddress->zip = $delivery_data->postcode or null;
-        $shippingAddress->city = $delivery_data->state or null;
-        $shippingAddress->state = $delivery_data->state or null;
+        $shippingAddress->first_name = isset($delivery_data->first_name)?$delivery_data->first_name : null;
+        $shippingAddress->last_name = isset($delivery_data->first_name)?$delivery_data->first_name:null;
+        $shippingAddress->line1 = isset($delivery_data->first_name)? $delivery_data->first_name : null;
+        $shippingAddress->line2 = isset($delivery_data->suburb)?$delivery_data->suburb : null;
+        $shippingAddress->country = isset($delivery_data->country ) ? $delivery_data->country : null;
+        $shippingAddress->zip = isset($delivery_data->postcode) ?$delivery_data->postcode : null;
+        $shippingAddress->city = isset($delivery_data->state) ?$delivery_data->state : null;
+        $shippingAddress->state = isset($delivery_data->state) ? $delivery_data->state : null;
 
         $checkout->request->shipping_address  = $shippingAddress;
 
@@ -128,10 +128,10 @@ class ZipPay
         // Consumer Info
         $consumer  = new \zipMoney\Request\Consumer;
 
-        $consumer->first_name = $delivery_data->first_name;
-        $consumer->last_name = $delivery_data->last_name;
-        $consumer->phone = $delivery_data->telephone;
-        $consumer->email = $delivery_data->email;
+        $consumer->first_name = isset($delivery_data->first_name)?$delivery_data->first_name:null;
+        $consumer->last_name = isset($delivery_data->last_name)?$delivery_data->last_name:null;
+        $consumer->phone = isset($delivery_data->telephone)?$delivery_data->telephone:null;
+        $consumer->email = isset($delivery_data->email)?$delivery_data->email:null;
         $consumer->gender = null;
         $consumer->dob = null;
         $consumer->title = "Mr/Mrs";
