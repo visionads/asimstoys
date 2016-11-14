@@ -32,7 +32,7 @@ class ZipPay
      */
     public static function call_to_server($invoice_number, $order_head, $order_detail, $customer_data, $delivery_data)
     {
-        print_r($customer_data);exit();
+        print_r($customer_data->toArray());exit();
 
         /*
         SANDBOX
