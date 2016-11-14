@@ -32,7 +32,7 @@ class ZipPay
      */
     public static function call_to_server($invoice_number, $order_head, $order_detail, $customer_data, $delivery_data)
     {
-        print_r($customer_data->toArray());exit();
+
 
         /*
         SANDBOX
@@ -99,28 +99,28 @@ class ZipPay
         $billingAddress  = new \zipMoney\Request\Address;
 
 
-        $billingAddress->first_name = $customer_data['first_name'] or null;
-        $billingAddress->last_name = $customer_data['first_name'] or null;
-        $billingAddress->line1 = $customer_data['first_name'] or null;
-        $billingAddress->line2 = $customer_data['suburb'] or null;
-        $billingAddress->country = $customer_data['country'] or null;
-        $billingAddress->zip = $customer_data['postcode'] or null;
-        $billingAddress->city = $customer_data['state'] or null;
-        $billingAddress->state = $customer_data['state'] or null;
+        $billingAddress->first_name = $customer_data->first_name or null;
+        $billingAddress->last_name = $customer_data->first_name or null;
+        $billingAddress->line1 = $customer_data->first_name or null;
+        $billingAddress->line2 = $customer_data->suburb or null;
+        $billingAddress->country = $customer_data->country or null;
+        $billingAddress->zip = $customer_data->postcode or null;
+        $billingAddress->city = $customer_data->state or null;
+        $billingAddress->state = $customer_data->state or null;
 
         $checkout->request->billing_address  = $billingAddress;
 
         // Shipping Address
         $shippingAddress = new \zipMoney\Request\Address;
 
-        $shippingAddress->first_name = $delivery_data['first_name'] or null;
-        $shippingAddress->last_name = $delivery_data['first_name'] or null;
-        $shippingAddress->line1 = $delivery_data['first_name'] or null;
-        $shippingAddress->line2 = $delivery_data['suburb'] or null;
-        $shippingAddress->country = $delivery_data['country'] or null;
-        $shippingAddress->zip = $delivery_data['postcode'] or null;
-        $shippingAddress->city = $delivery_data['state'] or null;
-        $shippingAddress->state = $delivery_data['state'] or null;
+        $shippingAddress->first_name = $delivery_data->first_name or null;
+        $shippingAddress->last_name = $delivery_data->first_name or null;
+        $shippingAddress->line1 = $delivery_data->first_name or null;
+        $shippingAddress->line2 = $delivery_data->suburb or null;
+        $shippingAddress->country = $delivery_data->country or null;
+        $shippingAddress->zip = $delivery_data->postcode or null;
+        $shippingAddress->city = $delivery_data->state or null;
+        $shippingAddress->state = $delivery_data->state or null;
 
         $checkout->request->shipping_address  = $shippingAddress;
 
@@ -128,10 +128,10 @@ class ZipPay
         // Consumer Info
         $consumer  = new \zipMoney\Request\Consumer;
 
-        $consumer->first_name = $delivery_data['first_name'];
-        $consumer->last_name = $delivery_data['last_name'];
-        $consumer->phone = $delivery_data['telephone'];
-        $consumer->email = $delivery_data['email'];
+        $consumer->first_name = $delivery_data->first_name;
+        $consumer->last_name = $delivery_data->last_name;
+        $consumer->phone = $delivery_data->telephone;
+        $consumer->email = $delivery_data->email;
         $consumer->gender = null;
         $consumer->dob = null;
         $consumer->title = "Mr/Mrs";
