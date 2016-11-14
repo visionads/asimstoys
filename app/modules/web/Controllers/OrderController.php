@@ -820,6 +820,8 @@ class OrderController extends Controller
                 $delivery_data = DB::table('delivery_details')->where('user_id',$invoice_head->user_id)->first();
             }
 
+            print_r($customer_data);exit();
+
             $result = ZipPay::call_to_server($invoice_number, $invoice_head, $invoice_detail, $customer_data, $delivery_data);
 
 
