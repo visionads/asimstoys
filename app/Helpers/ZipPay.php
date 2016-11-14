@@ -145,6 +145,9 @@ class ZipPay
             $response = $checkout->process();
 
             $arr_response = $response->toArray();
+
+            print_r($arr_response);
+            exit();
             $url = $arr_response['redirect_url'];
 
             if($response->isSuccess()){
