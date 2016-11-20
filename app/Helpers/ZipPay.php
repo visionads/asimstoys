@@ -150,7 +150,14 @@ class ZipPay
         try{
             $response = $checkout->process();
 
-            print_r($response);exit("Cancel");
+            print_r($response);
+
+            print "\n";
+            print "\n";
+            print "Please go back and use another payment";
+            print "\n";
+
+            exit("Status : Declined ! Please try later !");
 
             if($response->isSuccess())
             {
