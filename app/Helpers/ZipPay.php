@@ -177,12 +177,12 @@ class ZipPay
             print "\n";
 
             exit("Status : Declined ! Please try later !");
-            
+
             // Handle Error
             $result = 'Oops! Something went wrong. Please try again !';
         }
 
-        return $result;
+        #return $result;
 
 
     }
