@@ -102,7 +102,7 @@
                             </label>
                         </div>
 
-                        {{--<div class="radio" style="margin-inside: 0;">
+                        <div class="radio" style="margin-inside: 0;">
                             <label>
                                 <input type="radio" name="payment_method" id="r2" value="zip_pay" class="px">
                                 <span class="lbl">Buy Now or Pay Later </span> <br>
@@ -114,7 +114,7 @@
                                 </i> <br>
                             </label>
 
-                        </div>--}}
+                        </div>
 
                         {{--<div style="padding: 4%">
                             <input type="radio" value="1" id="i_agree" checked="checked">
