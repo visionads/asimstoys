@@ -33,9 +33,6 @@ class ZipPay
     public static function call_to_server($invoice_number, $order_head, $order_detail, $customer_data, $delivery_data)
     {
 
-
-        print_r($customer_data);
-        print_r($delivery_data);
         /*
         SANDBOX
             Merchant ID: 3075
@@ -72,10 +69,10 @@ class ZipPay
         $checkout->request->cart_url    = "http://asimstoys.com.au/mycart";
         $checkout->request->success_url = "http://asimstoys.com.au/redirect_e_way_d/".$invoice_number."/".$order_head->net_amount."/".$customer_data->id ;
         //"{{route('redirect_e_way_d', [$invoice_number, $order_head->net_amount, $customer_data->id])}}";
-        $checkout->request->cancel_url  = "http://asimstoys.com.au/redirect_e_way_d/cancel/";
-        $checkout->request->error_url   = "http://asimstoys.com.au/redirect_e_way_d/rror/";
+        $checkout->request->cancel_url  = "http://asimstoys.com.au/redirect_e_way_d/cancel/".$invoice_number;
+        $checkout->request->error_url   = "http://asimstoys.com.au/redirect_e_way_d/error/".$invoice_number;
         $checkout->request->refer_url   = "http://asimstoys.com.au/redirect_e_way_d/refer/";
-        $checkout->request->decline_url = "http://asimstoys.com.au/redirect_e_way_d/decline/";
+        $checkout->request->decline_url = "http://asimstoys.com.au/redirect_e_way_d/decline/".$invoice_number;
 
         // Order Info
         $order = new \zipMoney\Request\Order;
@@ -96,6 +93,7 @@ class ZipPay
             $order_item->name = $product->title;
             $order_item->price =  $value->price;
             $order_item->quantity = $value->qty;
+            $order_item->image_url = 'http://asimstoys.com.au/'.$product->image;
 
             $order->detail[] = $order_item;
         }
@@ -151,7 +149,7 @@ class ZipPay
 
         try{
             $response = $checkout->process();
-            
+
             if($response->isSuccess())
             {
                 $arr_response = @$response->toArray();
