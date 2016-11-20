@@ -150,6 +150,8 @@ class ZipPay
         try{
             $response = $checkout->process();
 
+            print_r($response);exit("Cancel");
+
             if($response->isSuccess())
             {
                 $arr_response = @$response->toArray();
