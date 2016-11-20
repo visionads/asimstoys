@@ -151,12 +151,11 @@ class ZipPay
 
         try{
             $response = $checkout->process();
-
+            $arr_response = @$response->toArray();
+            $url = @$arr_response['redirect_url'];
+            
             if($response->isSuccess())
             {
-                $arr_response = $response->toArray();
-                $url = $arr_response['redirect_url'];
-
                 //Do Something
                 header('Location: '.$url);
 
