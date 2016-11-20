@@ -150,6 +150,7 @@ class ZipPay
         try{
             $response = $checkout->process();
 
+            echo "<pre>";
             print_r($response);
 
             print "\n";
