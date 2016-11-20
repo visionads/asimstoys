@@ -47,9 +47,15 @@ class ZipPay
             Unique Id: daef00bf-536f-41b2-9bc7-2f1a47fc1742
          */
 
-        zipMoney\Configuration::$merchant_id  = 3075;
-        zipMoney\Configuration::$merchant_key = 'TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0=';
-        zipMoney\Configuration::$environment  = 'sandbox'; //sandbox|production;
+
+        zipMoney\Configuration::$merchant_id  = 3075; //sandbox;
+        zipMoney\Configuration::$merchant_id  = 2485; //production;
+
+        zipMoney\Configuration::$merchant_key = 'TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0='; //sandbox
+        #zipMoney\Configuration::$merchant_key = '3t50JGRyQZeg7X3/00emLUvZYVp4BRLq/j8ty3256ec='; // production
+
+        zipMoney\Configuration::$environment  = 'sandbox'; //sandbox;
+        #zipMoney\Configuration::$environment  = 'production'; //production;
 
 
         # Initialize the checkout
