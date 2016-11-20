@@ -42,7 +42,7 @@
         <div class="container">
             <div class="content">
                 <div class="title">
-                    Oops... looks like something went wrong! This page does not exist or has been moved. asdasdas
+                    Oops... looks like something went wrong! This page does not exist or has been moved.
                 </div>
             </div>
         </div>

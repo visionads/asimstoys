@@ -843,4 +843,81 @@ class OrderController extends Controller
     }
 
 
+    /**
+     * @param $invoice_no
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function zip_pay_cancel($invoice_no)
+    {
+        $order_head = OrderHead::where('invoice_no', $invoice_no)->first();
+        $order_head->status = 'cancel';
+
+
+        try {
+            $order_head->save();
+
+        }catch(\exception $e){
+            Session::flash('flash_message', "Payment Declined");
+        }
+
+        return redirect()->route('order_summery_lists');
+    }
+
+    /**
+     * @param $invoice_no
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function zip_pay_error($invoice_no)
+    {
+        $order_head = OrderHead::where('invoice_no', $invoice_no)->first();
+        $order_head->status = 'cancel';
+
+
+        try {
+            $order_head->save();
+
+        }catch(\exception $e){
+            Session::flash('flash_message', "Payment Declined");
+        }
+
+        return redirect()->route('order_summery_lists');
+    }
+
+    /**
+     * @param $invoice_no
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function zip_pay_decline($invoice_no)
+    {
+        $order_head = OrderHead::where('invoice_no', $invoice_no)->first();
+        $order_head->status = 'cancel';
+
+
+        try {
+            $order_head->save();
+
+        }catch(\exception $e){
+            Session::flash('flash_message', "Payment Declined");
+        }
+
+        return redirect()->route('order_summery_lists');
+    }
+
+    /**
+     * @param $invoice_no
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function zip_pay_refer($invoice_no)
+    {
+        #$order_head = OrderHead::where('invoice_no', $invoice_no)->first();
+        #$order_head->status = 'cancel';
+
+        #try {
+            #$order_head->save();
+        #}catch(\exception $e){
+        #    Session::flash('flash_message', "Payment Declined");
+        #}
+
+        return redirect()->route('order_summery_lists');
+    }
 }

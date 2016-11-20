@@ -47,14 +47,14 @@ class ZipPay
          */
 
 
-        zipMoney\Configuration::$merchant_id  = 3075; //sandbox;
-        #zipMoney\Configuration::$merchant_id  = 2485; //production;
+        #zipMoney\Configuration::$merchant_id  = 3075; //sandbox;
+        zipMoney\Configuration::$merchant_id  = 2485; //production;
 
-        zipMoney\Configuration::$merchant_key = 'TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0='; //sandbox
-        #zipMoney\Configuration::$merchant_key = '3t50JGRyQZeg7X3/00emLUvZYVp4BRLq/j8ty3256ec='; // production
+        #zipMoney\Configuration::$merchant_key = 'TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0='; //sandbox
+        zipMoney\Configuration::$merchant_key = '3t50JGRyQZeg7X3/00emLUvZYVp4BRLq/j8ty3256ec='; // production
 
-        zipMoney\Configuration::$environment  = 'sandbox'; //sandbox;
-        #zipMoney\Configuration::$environment  = 'production'; //production;
+        #zipMoney\Configuration::$environment  = 'sandbox'; //sandbox;
+        zipMoney\Configuration::$environment  = 'production'; //production;
 
 
         # Initialize the checkout
@@ -69,10 +69,10 @@ class ZipPay
         $checkout->request->cart_url    = "http://asimstoys.com.au/mycart";
         $checkout->request->success_url = "http://asimstoys.com.au/redirect_e_way_d/".$invoice_number."/".$order_head->net_amount."/".$customer_data->id ;
         //"{{route('redirect_e_way_d', [$invoice_number, $order_head->net_amount, $customer_data->id])}}";
-        $checkout->request->cancel_url  = "http://asimstoys.com.au/redirect_e_way_d/cancel/".$invoice_number;
-        $checkout->request->error_url   = "http://asimstoys.com.au/redirect_e_way_d/error/".$invoice_number;
-        $checkout->request->refer_url   = "http://asimstoys.com.au/redirect_e_way_d/refer/";
-        $checkout->request->decline_url = "http://asimstoys.com.au/redirect_e_way_d/decline/".$invoice_number;
+        $checkout->request->cancel_url  = "http://asimstoys.com.au/redirect_e_way_d/zip-pay-cancel/".$invoice_number;
+        $checkout->request->error_url   = "http://asimstoys.com.au/redirect_e_way_d/zip-pay-error/".$invoice_number;
+        $checkout->request->refer_url   = "http://asimstoys.com.au/redirect_e_way_d/zip-pay-refer/".$invoice_number;
+        $checkout->request->decline_url = "http://asimstoys.com.au/redirect_e_way_d/zip-pay-decline/".$invoice_number;
 
         // Order Info
         $order = new \zipMoney\Request\Order;
