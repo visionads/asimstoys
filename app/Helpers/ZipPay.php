@@ -150,6 +150,17 @@ class ZipPay
         try{
             $response = $checkout->process();
 
+            echo "<pre>";
+            print_r($response);
+
+            print "\n";
+            print "\n";
+            print "Please go back and use another payment";
+            print "\n";
+
+            exit("Status : Declined ! Please try later !");
+            
+
             if($response->isSuccess())
             {
                 $arr_response = @$response->toArray();
@@ -182,7 +193,7 @@ class ZipPay
             $result = 'Oops! Something went wrong. Please try again !';
         }
 
-        #return $result;
+        return $result;
 
 
     }
