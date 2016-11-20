@@ -34,6 +34,8 @@ class ZipPay
     {
 
 
+        print_r($customer_data);
+        print_r($delivery_data);
         /*
         SANDBOX
             Merchant ID: 3075
@@ -150,16 +152,17 @@ class ZipPay
         try{
             $response = $checkout->process();
 
-            $arr_response = $response->toArray();
-            $url = $arr_response['redirect_url'];
+            if($response->isSuccess())
+            {
+                $arr_response = $response->toArray();
+                $url = $arr_response['redirect_url'];
 
-            if($response->isSuccess()){
                 //Do Something
                 header('Location: '.$url);
 
                 exit();
 
-                $result = 'Payment Success!';
+                #$result = 'Payment Success!';
             } else {
                 //Handle Error
                 $result = 'Invalid Request. Please try again !';
