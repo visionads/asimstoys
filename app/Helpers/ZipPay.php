@@ -79,7 +79,7 @@ class ZipPay
         $order->id = $invoice_number or null;
         $order->tax = 0;
         $order->shipping_tax = 0;
-        $order->shipping_value = 1;
+        $order->shipping_value = 0;
         $order->total = $order_head->net_amount + $order->shipping_value;
 
         // Order Item 1
