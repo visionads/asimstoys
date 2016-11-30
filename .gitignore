@@ -5,11 +5,7 @@
 .env.php
 .env
 .idea
-vendor
-/vendor
 vendor/
-/vendor/*
-vendor/*
 .idea/
 .idea/workspace.xml
 

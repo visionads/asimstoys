@@ -98,9 +98,23 @@
                             <label>
                                 <input type="radio" name="payment_method" id="r2" value="pre_order" class="px">
                                 <span class="lbl">Pre Order</span> <br>
-                                <i>Pay using your Credit Card. We accept VISA | MasterCard  | American Express </i> <br>
+                                <i>Pay using your Credit Card. We accept VISA | MasterCard  | American Express </i> <br><br>
                             </label>
                         </div>
+
+                        {{--<div class="radio" style="margin-inside: 0;">
+                            <label>
+                                <input type="radio" name="payment_method" id="r2" value="zip_pay" class="px">
+                                <span class="lbl">Buy Now or Pay Later </span> <br>
+                                    <img src="{{asset('images/zip_money.png')}}" width="120">
+                                <i>
+                                    <div style="text-align: center;">Learn about how you can buy now and pay later with
+                                        <a href="http://www.zippay.com.au" title="Buy Now, and Pay Later with zipPay" target="_blank" style="text-decoration: underline;">zipPay</a>
+                                    </div>
+                                </i> <br>
+                            </label>
+
+                        </div>--}}
 
                         {{--<div style="padding: 4%">
                             <input type="radio" value="1" id="i_agree" checked="checked">
@@ -117,5 +131,8 @@
                 {!! Form::close() !!}
             </div>
         </div>
+    </div>
+
+
     </div>
 @stop

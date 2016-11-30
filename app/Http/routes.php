@@ -22,6 +22,10 @@ Route::any('xml_data', [
     'uses' => 'HomeController@xml_data'
 ]);
 
+Route::any('zip_pay', [
+    'as' => 'zip_pay',
+    'uses' => 'HomeController@zip_pay'
+]);
 
 
 

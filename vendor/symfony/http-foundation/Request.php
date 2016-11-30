@@ -1470,6 +1470,16 @@ class Request
      */
     public function isMethodSafe()
     {
+        return in_array($this->getMethod(), array('GET', 'HEAD', 'OPTIONS', 'TRACE'));
+    }
+
+    /**
+     * Checks whether the method is cacheable or not.
+     *
+     * @return bool
+     */
+    public function isMethodCacheable()
+    {
         return in_array($this->getMethod(), array('GET', 'HEAD'));
     }
 
@@ -1516,7 +1526,7 @@ class Request
             return stream_get_contents($this->content);
         }
 
-        if (null === $this->content) {
+        if (null === $this->content || false === $this->content) {
             $this->content = file_get_contents('php://input');
         }
 

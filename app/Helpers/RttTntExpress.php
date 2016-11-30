@@ -26,46 +26,24 @@ class RttTntExpress
      */
     public static function rtt_call($user_data, $delivery_data, $product_cart)
     {
-		
-	//	echo gmdate('Y-m-d');
-		//exit();
-		//date_default_timezone_set('Asia/Dacca');
-//		$createdDate = date_default_timezone_set('UTC');
-//
-//		$date1 = date_modify($createdDate, "+4 hours");
-//		echo $date1;
-//		exit();
-//		//date_default_timezone_set('Australia/Currie');
-//
-//		echo $date = date('Y-m-d h:i:s');
-//
-//		exit();
-
-        //$dateStarted = \DateTime::createFromFormat('D M d Y H:i:s e+', new DateTimeZone('Asia/Dacca'));
-	//$date = new DateTime('Y m d', new DateTimeZone('Asia/Dacca'));
-      //  echo $date->format('Y-m-d H:i:sP') . "\n";
-
-//exit($dateStarted);
-	//	echo date("Y-m-d",new DateTimeZone('Asia/Dacca')) . '<br/>';
-
-        //date
-       // $tomorrow = date("Y-m-d", strtotime("+1 day"));
-	   
 	   $tomorrow = gmdate('Y-m-d',strtotime("+1 day"));
-		
-		
+
         $date1 = strtotime($tomorrow);
         $date2 = gmdate("l", $date1);
         $date3 = strtolower($date2);
-		
+
         //ignore sunday and make the day Monday
         if ($date3 == "sunday")
         {
-            $tomorrow = gmdate("Y-m-d", strtotime("+4 day"));
+            $tomorrow = gmdate("Y-m-d", strtotime("+2 day"));
         }
         if ($date3 == "saturday")
         {
-            $tomorrow = gmdate("Y-m-d", strtotime("+5 day"));
+            $tomorrow = gmdate("Y-m-d", strtotime("+3 day"));
+        }
+        if ($date3 == "friday")
+        {
+            $tomorrow = gmdate("Y-m-d", strtotime("+4 day"));
         }
 
 	
@@ -93,6 +71,8 @@ class RttTntExpress
         $width = null;
         $height = null;
 
+
+
         if($product_cart)
         {
             foreach ($product_cart as $values)
@@ -112,6 +92,7 @@ class RttTntExpress
             }
 
         }
+
 
         /*print "Weight : ".$weight."\n";
         print "Length : ".$length."\n";
@@ -155,7 +136,6 @@ class RttTntExpress
         if($xml){
             $result = (array)$xml->ratedTransitTimeResponse->ratedProducts;
         }
-		
 		
 
         //make the object or array

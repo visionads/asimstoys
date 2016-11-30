@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\DeliveryDetails;
 use App\Helpers\SendMailer;
-use App\OrderHead;
 use App\OrderPaymentTransaction;
 use Illuminate\Http\Request;
 use DB;
 use Session;
 use Input;
+use App\OrderHead;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -87,6 +87,20 @@ class OrderPaymentController extends Controller
             ->get();
 
         return view('order_payment.pre_order_list',['pageTitle' => $pageTitle,'data' => $data]);
+    }
+
+    public function zip_pay_order()
+    {
+        $pageTitle = "Zip Money Payment History";
+
+        $data = OrderHead::with('relCustomer')
+            ->where('order_head.invoice_type','zip-pay')
+            ->where('order_head.status','!=','cancel')
+            ->where('status', '!=', 'archive')
+            ->orderBy('order_head.id','desc')
+            ->get();
+
+        return view('order_payment.zip_pay_order',['pageTitle' => $pageTitle,'data' => $data]);
     }
 	
 	public function archive_list()

@@ -28,6 +28,7 @@ use Eway\Rapid\Model\Response\CreateTransactionResponse;
 use Eway\Rapid;
 use Eway\Rapid\Client;
 use App\Helpers\SendMailer;
+use App\Helpers\ZipPay;
 
 
 class OrderController extends Controller
@@ -704,6 +705,29 @@ class OrderController extends Controller
             Session::flash('flash_message', "Successfully Added Pre-Order Process.");
             return redirect()->route('details_of_pre_order', $order_head->id);
         }
+        else if($input_data['payment_method']=='zip_pay')
+        {
+            $invoice_number = $input_data['invoice_number'];
+            $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
+            $customer = Customer::findOrFail($order_head['user_id']);
+
+            $user_id = $order_head['user_id'];
+            $customer_data = $customer;
+
+            // Update Invoice
+            DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'zip-pay']);
+
+            $request->session()->forget('product_cart');
+
+            return view('web::cart.zip_pay_page',[
+                'title' => $title,
+                'invoice_number' => $invoice_number,
+                'user_id' => $user_id,
+                'eway_total_price_format' => $order_head['net_amount']*100,
+                'total_price' => $order_head['net_amount'],
+                'customer_data' => $customer_data,
+            ]);
+        }
         else
         {
             // Update Invoice
@@ -780,4 +804,120 @@ class OrderController extends Controller
     }
 
 
+    /**
+     * @param $invoice_number
+     */
+    public function zip_pay_process($invoice_number)
+    {
+        if($invoice_number){
+            $invoice_head = DB::table('order_head')->where('invoice_no',$invoice_number)->first();
+
+            $invoice_detail = DB::table('order_detail')->where('order_head_id',$invoice_head->id)->get();
+
+            if($invoice_head->user_id)
+            {
+                $customer_data = DB::table('customer')->where('id',$invoice_head->user_id)->first();
+                $delivery_data = DB::table('delivery_details')->where('user_id',$invoice_head->user_id)->first();
+            }
+            
+
+            $result = ZipPay::call_to_server($invoice_number, $invoice_head, $invoice_detail, $customer_data, $delivery_data);
+
+
+            if ($result)
+            {
+                Session::flash('flash_message', $result);
+                return redirect()->route('redirect_e_way_d', [
+                    $invoice_number, $invoice_head->net_amount, $customer_data->id
+                ]);
+            }else{
+                Session::flash('flash_message', "Failed payment. Please try again ");
+                return redirect()->back();
+            }
+
+        }else{
+            Session::flash('flash_message', "Missing Invoice. Please try again ");
+            return redirect()->back();
+        }
+
+    }
+
+
+    /**
+     * @param $invoice_no
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function zip_pay_cancel($invoice_no)
+    {
+        $order_head = OrderHead::where('invoice_no', $invoice_no)->first();
+        $order_head->status = 'cancel';
+
+
+        try {
+            $order_head->save();
+
+        }catch(\exception $e){
+            Session::flash('flash_message', "Payment Declined");
+        }
+
+        return redirect()->route('order_summery_lists');
+    }
+
+    /**
+     * @param $invoice_no
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function zip_pay_error($invoice_no)
+    {
+        $order_head = OrderHead::where('invoice_no', $invoice_no)->first();
+        $order_head->status = 'cancel';
+
+
+        try {
+            $order_head->save();
+
+        }catch(\exception $e){
+            Session::flash('flash_message', "Payment Declined");
+        }
+
+        return redirect()->route('order_summery_lists');
+    }
+
+    /**
+     * @param $invoice_no
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function zip_pay_decline($invoice_no)
+    {
+        $order_head = OrderHead::where('invoice_no', $invoice_no)->first();
+        $order_head->status = 'cancel';
+
+
+        try {
+            $order_head->save();
+
+        }catch(\exception $e){
+            Session::flash('flash_message', "Payment Declined");
+        }
+
+        return redirect()->route('order_summery_lists');
+    }
+
+    /**
+     * @param $invoice_no
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function zip_pay_refer($invoice_no)
+    {
+        #$order_head = OrderHead::where('invoice_no', $invoice_no)->first();
+        #$order_head->status = 'cancel';
+
+        #try {
+            #$order_head->save();
+        #}catch(\exception $e){
+        #    Session::flash('flash_message', "Payment Declined");
+        #}
+
+        return redirect()->route('order_summery_lists');
+    }
 }
