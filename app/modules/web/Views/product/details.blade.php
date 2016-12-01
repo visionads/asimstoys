@@ -212,14 +212,14 @@
 																@endif
                                                             @endif
                                                         </div>
-                                                        {{--<p>
+                                                        <p>
 
                                                             <div style="text-align: center;">
                                                                 <img src="{{asset('images/zip_money.png')}}" width="120" >
                                                                 Learn about how you can buy now and pay later with
                                                                 <a href="http://www.zippay.com.au" title="Buy Now, and Pay Later with zipPay" target="_blank" style="text-decoration: underline;">zipPay</a>
                                                             </div>
-                                                        </p>--}}
+                                                        </p>
 
                                                     </div>
                                                 </div>
