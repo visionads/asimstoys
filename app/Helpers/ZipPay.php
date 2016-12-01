@@ -47,14 +47,14 @@ class ZipPay
          */
 
 
-        #zipMoney\Configuration::$merchant_id  = 3075; //sandbox;
-        zipMoney\Configuration::$merchant_id  = 2485; //production;
+        zipMoney\Configuration::$merchant_id  = 3075; //sandbox;
+        #zipMoney\Configuration::$merchant_id  = 2485; //production;
 
-        #zipMoney\Configuration::$merchant_key = 'TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0='; //sandbox
-        zipMoney\Configuration::$merchant_key = '3t50JGRyQZeg7X3/00emLUvZYVp4BRLq/j8ty3256ec='; // production
+        zipMoney\Configuration::$merchant_key = 'TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0='; //sandbox
+        #zipMoney\Configuration::$merchant_key = '3t50JGRyQZeg7X3/00emLUvZYVp4BRLq/j8ty3256ec='; // production
 
-        #zipMoney\Configuration::$environment  = 'sandbox'; //sandbox;
-        zipMoney\Configuration::$environment  = 'production'; //production;
+        zipMoney\Configuration::$environment  = 'sandbox'; //sandbox;
+        #zipMoney\Configuration::$environment  = 'production'; //production;
 
 
         # Initialize the checkout
@@ -150,7 +150,7 @@ class ZipPay
         try{
             $response = $checkout->process();
 
-            echo "<pre>";
+            /*echo "<pre>";
             print_r($response);
 
             print "\n";
@@ -158,7 +158,7 @@ class ZipPay
             print "Please go back and use another payment";
             print "\n";
 
-            exit("Status : Declined ! Please try later !");
+            exit("Status : Declined ! Please try later !");*/
             
 
             if($response->isSuccess())
