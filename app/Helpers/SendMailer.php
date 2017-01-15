@@ -36,8 +36,8 @@ class SendMailer
         $mail->isSMTP();
         $mail->Host = "smtp.gmail.com";
         $mail->SMTPAuth = true;
-        $mail->Username = "wayhalf0@gmail.com";
-        $mail->Password = "halfway@16";
+        $mail->Username = "devdhaka405@gmail.com";
+        $mail->Password = "etsb1234";
         $mail->SMTPSecure = "ssl";
         $mail->Port = 465;
 
