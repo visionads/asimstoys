@@ -12,7 +12,7 @@ vendor/
 app/.DS_Store/
 
 
-config/database.php
+#config/database.php
 composer.lock
 public/uploads
 
