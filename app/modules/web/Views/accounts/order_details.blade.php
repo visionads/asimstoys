@@ -82,6 +82,7 @@
 							<td>Background Color</td>
 							<td>Plate Text</td>
 							<td>Price</td>
+							<td>Total Price</td>
 						</tr>
 						</thead>
 						<tbody>
@@ -98,26 +99,27 @@
 								<td>{{isset($order_dt->background_color)?$order_dt->background_color:null}}</td>
 								<td>{{isset($order_dt->plate_text)?$order_dt->plate_text:null}}</td>
 								<td>{{isset($order_dt->price)?$order_dt->price:null}}</td>
+								<td>{{$order_dt->price*$order_dt->qty}}</td>
 							</tr>
 						@endforeach
 						
 							<tr>
-								<td colspan="6" align="right">Sub Amount</td>
+								<td colspan="7" align="right">Sub Amount</td>
 								<td colspan="2" align="right">{{number_format(@$total_amount->total_amount, 2)}}</td>
 							</tr>
 							
 							<tr>
-								<td colspan="6" align="right">Discount Amount</td>
+								<td colspan="7" align="right">Discount Amount</td>
 								<td colspan="2" align="right">{{number_format(@$freight_data->total_discount_price, 2)}}</td>
 							</tr>
 							
 							<tr>
-								<td colspan="6" align="right">Freight Amount</td>
+								<td colspan="7" align="right">Freight Amount</td>
 								<td colspan="2" align="right">{{number_format(@$freight_data->freight_amount, 2)}}</td>
 							</tr>
 							
 							<tr>
-								<td colspan="6" align="right">Total Amount</td>
+								<td colspan="7" align="right">Total Amount</td>
 								<td colspan="2" align="right">{{number_format(@$total_amount->total_amount -@$freight_data->total_discount_price + @$freight_data->freight_amount, 2)}}</td>
 							</tr>
 
