@@ -72,13 +72,14 @@
                             <div class="pull-right"> <b>{{@$order_data[0]->freight_amount}} </b></div>
 						</div>
 						<div class="clearfix">
-							<div class="pull-left"> TOTAL Amount : </div>
-                            <div class="pull-right"> <b>{{@$order_data[0]->net_amount}} </b></div>
-						</div>
-						<div class="clearfix">
 							<div class="pull-left"> Left Amount : </div>
                             <div class="pull-right" style="color: red"> <b>{{@$due_amount}} </b></div>
 						</div>
+						<div class="clearfix">
+							<div class="pull-left"> TOTAL Amount : </div>
+                            <div class="pull-right"> <b>{{@$order_data[0]->net_amount}} </b></div>
+						</div>
+						
 						<div class="clearfix">
 							<div class="pull-left"> PAID Amount : </div>
                             <div class="pull-right" style="color: green;"> <b>{{@$paid_amount->paid_amount}}</b> </div>
