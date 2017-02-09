@@ -466,7 +466,8 @@ class AccountsController extends Controller
 					'order' => $order,
 					'order_pay_trn' => $order_pay_trn,
 					'customer' => $get_customer_data,
-					'delivery_details' => $delivery_data
+					'delivery_details' => $delivery_data,
+					'order_head' => $order_head
 				]);
 		
 		
