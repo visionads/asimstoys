@@ -432,7 +432,7 @@ class AccountsController extends Controller
 								->first();
 								
 				$total_amount = DB::table('order_detail')
-					->select(DB::raw('SUM(price)*qty as total_amount'))
+					->select(DB::raw('SUM(price*qty) as total_amount'))
 					->groupBy('order_head_id')
 					->where('order_head_id', $order_head->id)
 					->first();
@@ -441,12 +441,16 @@ class AccountsController extends Controller
 					->select(DB::raw('SUM(amount) as paid_amount'))
 					->groupBy('order_head_id')
 					->where('order_head_id', $order_head->id)
+					->where('order_payment_transaction.status', '!=', 'cancel')
 					->first();
 
 				$due_amount = (@$total_amount->total_amount + $freight_data->freight_amount) - @$paid_amount->paid_amount;
 
 				$order = OrderHead::with('relOrderDetail')->where('id', $order_head->id)->get();
-				$order_pay_trn = OrderPaymentTransaction::where('order_head_id', $order_head->id)->get();
+				$order_pay_trn = DB::table('order_payment_transaction')
+								->where('order_head_id', $order_head->id)
+								->where('status', '!=', 'cancel')
+								->get();
 
 				$get_customer_data = Customer::where('id',Session::get('user_id'))->first();
 				$delivery_data = DeliveryDetails::where('user_id',Session::get('user_id'))->orderBy('id','desc')->first();

@@ -42,6 +42,7 @@
 			<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);">Background Color</td>
 			<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);">Plate Text</td>
 			<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);text-align:right;">Price</td>
+			<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);text-align:right;">Total Price</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -62,6 +63,7 @@
 					<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);">{{isset($order_dt->background_color)?$order_dt->background_color:null}}</td>
 					<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);">{{isset($order_dt->plate_text)?$order_dt->plate_text:null}}</td>
 					<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);text-align:right;">{{isset($order_dt->price)?$order_dt->price:null}}</td>
+					<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);text-align:right;">{{$order_dt->price*$order_dt->qty}}</td>
 				</tr>
 			
 			@endforeach
