@@ -92,7 +92,11 @@
                         Learn about how you can buy now and pay later with
                         <a href="http://www.zippay.com.au" title="Buy Now, and Pay Later with zipPay" target="_blank" style="text-decoration: underline;">zipPay</a>
                     </p>
-
+					
+					<div style="padding: 0% 4%">
+						<input type="radio" value="1" id="i_agree" checked="checked">
+						<label for="i_agree">I agree with Terms and Condition. <a href="{{URL::to('terms-condition')}}"> Click Here for more details. </a></label>
+					</div>
 
 
                 </div>
