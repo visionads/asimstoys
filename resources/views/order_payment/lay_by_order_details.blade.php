@@ -60,6 +60,15 @@
 							<div class="pull-right"> {{$order_data[0]->invoice_no}} </div>
 						</div>
 						<div class="clearfix">
+							<div class="pull-left"> ORDER DATE #  </div>
+							<div class="pull-right"> 
+								<?php
+									$originalDate = $order_data[0]->created_at;
+									echo $newDate = date("dS M y", strtotime($originalDate));
+								?>
+							</div>
+						</div>
+						<div class="clearfix">
 							<div class="pull-left"> SUB Amount : </div>
                             <div class="pull-right"> <b>{{@$order_data[0]->sub_total}} </b></div>
 						</div>

@@ -30,7 +30,11 @@
                         </h3>
                         <div>
                             <small><strong>Date</strong></small><br>
-                            {{isset($order->created_at)?$order->created_at:null}}
+							<?php
+								$originalDate = $order->created_at;
+								echo $newDate = date("dS M y", strtotime($originalDate));
+							?>
+                           
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-6">
