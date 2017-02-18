@@ -37,6 +37,31 @@
 					@foreach($productdata as $product)
 						<li class="newproductslider-item ajax_block_product first_item last_item_of_line ">
 							<div class="item-inner">
+								@if($product->sticker !='none')
+									<div class="sticker">
+																				
+										@if($product->sticker == 'Sale')
+											<div class="sale">
+												&nbsp;&nbsp;{{@$product->sticker}}&nbsp;&nbsp;
+											</div>
+										@elseif($product->sticker == 'Clearance')
+											<div class="clearance">
+												{{@$product->sticker}}
+											</div>
+										@elseif($product->sticker == 'In-stock')
+											<div class="in-stock">
+												{{@$product->sticker}}
+											</div>
+										@elseif($product->sticker == 'Preorder')
+											<div class="pre-order">
+												{{@$product->sticker}}
+											</div>
+										@else
+											{{@$featured_product->sticker}}
+										@endif
+										
+									</div>
+								@endif
 								<a href="{{URL::to('/')}}/{{@$product->slug}}" title="{{@$product->title}}" class="bigpic_15_newproduct123 product_image">
 									<amp-img src="{{URL::to('/')}}/{{@$product->image}}"  alt="{{@$product->title}}" width="250" height="230" layout="responsive"> </amp-img>
 								</a>

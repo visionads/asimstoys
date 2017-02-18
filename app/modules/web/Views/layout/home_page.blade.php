@@ -36,7 +36,30 @@
 
 						<li class="newproductslider-item ajax_block_product first_item last_item_of_line ">
 							<div class="item-inner">
-
+								@if($featured_product->sticker !='none')
+									<div class="sticker">
+										@if($featured_product->sticker == 'Sale')
+											<div class="sale">
+												&nbsp;&nbsp;{{@$featured_product->sticker}}&nbsp;&nbsp;
+											</div>
+										@elseif($featured_product->sticker == 'Clearance')
+											<div class="clearance">
+												{{@$featured_product->sticker}}
+											</div>
+										@elseif($featured_product->sticker == 'In-stock')
+											<div class="in-stock">
+												{{@$featured_product->sticker}}
+											</div>
+										@elseif($featured_product->sticker == 'Preorder')
+											<div class="pre-order">
+												{{@$featured_product->sticker}}
+											</div>
+										@else
+											{{@$featured_product->sticker}}
+										@endif
+										
+									</div>
+								@endif
 								<a href="{{URL::to('/')}}/{{@$featured_product->slug}}" title="{{@$featured_product->title}}" class="bigpic_15_newproduct123 product_image">
 									<amp-img src="{{URL::to('/')}}/{{@$featured_product->image}}"  alt="{{@$featured_product->title}}" width="250" height="230" layout="responsive"> </amp-img>
 								</a>
