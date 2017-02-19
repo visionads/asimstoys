@@ -122,6 +122,12 @@
             <small class="required">(Required)</small>
             {!! Form::Select('status',array('active'=>'Active','inactive'=>'Inactive'),Input::old('status'),['class'=>'form-control ','required']) !!}
         </div>
+		
+		<div class="form-group">
+            {!! Form::label('sticker', 'Sticker:', ['class' => 'control-label']) !!}
+            <small class="required">(Required)</small>
+            {!! Form::Select('sticker',array('none'=>'none','Clearance'=>'Clearance','Sale'=>'Sale','In-stock' => 'In-stock','Preorder' => 'Preorder'),Input::old('sticker'),['class'=>'form-control ','required']) !!}
+        </div>
 
     </div>
 </div>

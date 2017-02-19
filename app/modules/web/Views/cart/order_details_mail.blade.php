@@ -1,7 +1,14 @@
 <table style="width:100%;float:left;margin-top: 30px;margin-bottom:30px;font-family: 'arial';" cellspacing="0">
 	<tr>
-		<td style="text-align:center;font-size:20px;">
-			Invoice Number is: {{$order_head->invoice_no}}
+		<td style="text-align:left;font-size:20px;">
+			Invoice Number is: {{$invoice_no}}
+		</td>
+		<td style="text-align:right;font-size:20px;">
+			Order Date:
+			<?php
+				$originalDate = $order_head->created_at;
+				echo $newDate = date("dS F Y, h:s A", strtotime($originalDate));
+			?>
 		</td>
 	</tr>
 </table>

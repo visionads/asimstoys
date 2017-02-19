@@ -78,21 +78,57 @@
                     </style>
 
                     <!-- Large modal -->
+					
+					<!-- Large modal -->
+					<button style="background: #5cb85c;padding: 35px;border-color: #5cb85c;" type="button" class="btn btn-primary eway-button" data-toggle="modal" data-target=".bs-example-modal-lg">
+						<span>
+							Confirm to Pay ( {{number_format($eway_total_price_format/100, 2)}} )
+						</span>
 
-                    <div class="eway-paynow-button">
+					</button>
+					
+					
+					<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button  type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-                        <a href="{{route('zip_pay_process', [$invoice_number])}}" class="btn btn-success" style="padding: 13px 60px; box-shadow: 1px 1px 3px #0a2b1e; font-weight: bold; color: black;">
+								</div>
+								<div class="modal-body">
+									<div class="eway-paynow-button" style="margin-top: 40px;margin-bottom:20px;">
 
-                            Buy Now or Pay Later   <br>
-                            <img src="{{asset('images/zip_money.png')}}" width="120" > <br>
-                            ( ${{number_format($eway_total_price_format/100, 2)}} )
-                        </a>
-                    </div>
-                    <p>
-                        Learn about how you can buy now and pay later with
-                        <a href="http://www.zippay.com.au" title="Buy Now, and Pay Later with zipPay" target="_blank" style="text-decoration: underline;">zipPay</a>
-                    </p>
+										<a href="{{route('zip_pay_process', [$invoice_number])}}" class="btn btn-success" style="padding: 13px 60px; box-shadow: 1px 1px 3px #0a2b1e; font-weight: bold; color: black;">
 
+											Buy Now or Pay Later   <br>
+											<img src="{{asset('images/zip_money.png')}}" width="120" > <br>
+											( ${{number_format($eway_total_price_format/100, 2)}} )
+										</a>
+									</div>
+									<p>
+										Learn about how you can buy now and pay later with
+										<a href="http://www.zippay.com.au" title="Buy Now, and Pay Later with zipPay" target="_blank" style="text-decoration: underline;">zipPay</a>
+									</p>
+									
+									<div style="padding: 0% 4%">
+										<input type="radio" value="1" id="i_agree" checked="checked">
+										<label for="i_agree">I agree with Terms and Condition. <a href="{{URL::to('terms-condition')}}"> Click Here for more details. </a></label>
+									</div>
+
+									
+
+
+
+
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
+					</div>
+
+                    
 
 
                 </div>

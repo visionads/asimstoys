@@ -41,7 +41,8 @@ class Product extends Model
         'length',
         'width',
         'height',
-        'volume'
+        'volume',
+		'sticker'
     ];
 
      public function relCatProduct(){

@@ -1,7 +1,14 @@
 <table style="width:100%;float:left;margin-top: 30px;margin-bottom:30px;font-family: 'arial';" cellspacing="0">
 	<tr>
-		<td style="text-align:center;font-size:20px;">
+		<td style="text-align:left;font-size:20px;">
 			Invoice Number is: {{$invoice_no}}
+		</td>
+		<td style="text-align:right;font-size:20px;">
+			Order Date:
+			<?php
+				$originalDate = $order_head->created_at;
+				echo $newDate = date("dS F Y, h:s A", strtotime($originalDate));
+			?>
 		</td>
 	</tr>
 </table>
@@ -42,6 +49,7 @@
 			<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);">Background Color</td>
 			<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);">Plate Text</td>
 			<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);text-align:right;">Price</td>
+			<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);text-align:right;">Total Price</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -62,6 +70,7 @@
 					<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);">{{isset($order_dt->background_color)?$order_dt->background_color:null}}</td>
 					<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);">{{isset($order_dt->plate_text)?$order_dt->plate_text:null}}</td>
 					<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);text-align:right;">{{isset($order_dt->price)?$order_dt->price:null}}</td>
+					<td style="padding: 10px;border:1px solid rgba(200,200,200,.4);text-align:right;">{{$order_dt->price*$order_dt->qty}}</td>
 				</tr>
 			
 			@endforeach

@@ -39,7 +39,7 @@ class OrderHead extends Model
     }
 
     public function relOrderPaymentTransaction(){
-        return $this->HasMany('App\OrderPaymentTransaction', 'order_head_id');
+        return $this->HasMany('App\OrderPaymentTransaction', 'order_head_id')->where('order_payment_transaction.status', '!=', 'cancel');
     }
 
 }

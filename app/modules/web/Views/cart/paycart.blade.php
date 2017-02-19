@@ -115,11 +115,11 @@
                             </label>
 
                         </div>
-
-                        {{--<div style="padding: 4%">
+						<!--
+                        <div style="padding: 0% 4%">
                             <input type="radio" value="1" id="i_agree" checked="checked">
                             <label for="i_agree">I agree with Terms and Condition. <a href="{{URL::to('terms-condition')}}"> Click Here for more details. </a></label>
-                        </div>--}}
+                        </div>-->
 
                     </div>
                 </div>
