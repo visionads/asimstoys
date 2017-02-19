@@ -783,7 +783,8 @@ class OrderController extends Controller
 					'product_cart_r' => $product_cart_r,
 					'order_head' => $order_head,
 					'customer' => $customer,
-					'delivery_details' => $delivery_details
+					'delivery_details' => $delivery_details,
+					'invoice_no' => $invoice_no
 				]);
 
 

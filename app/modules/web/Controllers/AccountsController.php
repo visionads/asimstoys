@@ -131,8 +131,10 @@ class AccountsController extends Controller
                 //->join('order_detail', 'order_head.id', '=', 'order_detail.order_head_id')
                 ->where('order_head.user_id',Session::get('user_id'))
                 ->where('order_head.invoice_type','eway')
+				->where('order_head.status','!=','cancel')
                 ->orderBy('order_head.id','desc')
                 ->get();
+				
 
             return view('web::accounts.ordersummary',[
                 'title' => $title,
@@ -163,6 +165,7 @@ class AccountsController extends Controller
             $get_layby_history = DB::table('order_head')
                 ->where('order_head.user_id',Session::get('user_id'))
                 ->where('order_head.invoice_type','layby')
+				->where('order_head.status','!=','cancel')
                 ->orderBy('order_head.id','desc')
                 ->get();
 
@@ -245,6 +248,7 @@ class AccountsController extends Controller
             $get_pre_order_history = DB::table('order_head')
                 ->where('order_head.user_id',Session::get('user_id'))
                 ->where('order_head.invoice_type','pre-order')
+				->where('order_head.status','!=','cancel')
                 ->orderBy('order_head.id','desc')
                 ->get();
 

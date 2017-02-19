@@ -4886,7 +4886,7 @@ left: -100%;
 }
 
 .home-new-product-container ul li.newproductslider-item.newproductslider-item .item-inner .sticker .pre-order{
-	background:#BDC921;    border-radius: 50%;
+	background:blue;    border-radius: 50%;
     padding: 15% 4%;
     width: 90px;
 }
