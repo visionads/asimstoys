@@ -256,6 +256,7 @@ class OrderPaymentController extends Controller
             ->groupBy('order_head_id')
             ->where('order_head_id', $order_head_id)
             ->where('status', '!=', 'cancel')
+			->where('status', '!=', 'pending')
             ->first();
 
         $due_amount = @$order[0]->net_amount - @$paid_amount->paid_amount;

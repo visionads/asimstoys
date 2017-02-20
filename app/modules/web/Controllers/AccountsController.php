@@ -206,6 +206,7 @@ class AccountsController extends Controller
             ->groupBy('order_head_id')
             ->where('order_head_id', $order_head_id)
             ->where('status', '!=', 'cancel')
+			->where('status', '!=', 'pending')
             ->first();
 
         $due_amount = (@$total_amount->total_amount + $freight_data->freight_amount) - @$paid_amount->paid_amount;
@@ -446,6 +447,7 @@ class AccountsController extends Controller
 					->groupBy('order_head_id')
 					->where('order_head_id', $order_head->id)
 					->where('order_payment_transaction.status', '!=', 'cancel')
+					->where('order_payment_transaction.status', '!=', 'pending')
 					->first();
 
 				$due_amount = (@$total_amount->total_amount + $freight_data->freight_amount) - @$paid_amount->paid_amount;
