@@ -47,7 +47,8 @@
 											</td>
 											<td>
 												<?php
-													$paid_amount = \App\OrderPaymentTransaction::where('order_head_id', $get_order->id)->select(DB::raw('SUM(amount) as paid_amount'))->groupBy('order_head_id')->where('status', '!=', 'cancel')->first();
+													$paid_amount = \App\OrderPaymentTransaction::where('order_head_id', $get_order->id)->select(DB::raw('SUM(amount) as paid_amount'))->groupBy('order_head_id')->where('status', '!=', 'cancel')
+													->where('status', '!=', 'pending')->first();
 													$due_amount = $get_order->net_amount-(isset($paid_amount->paid_amount)?$paid_amount->paid_amount:'0.00') ;
 												?>
 												<b>{{isset($paid_amount->paid_amount)?number_format($paid_amount->paid_amount,2):'0.00'}}</b>
