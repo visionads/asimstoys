@@ -373,12 +373,70 @@ class WwwController extends Controller
 
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
+        $state_data = DB::table('allpostcode')->distinct()->get(['state']);
+
+        $state_options = array(""=> 'Please select state');
+
+        foreach($state_data as $state){
+        	$state_options[$state->state] = $state->state;
+        }
+
+
         return view('web::general.registration',[
                 'title' => $title,
-                'productgroup_data' => $productgroup_data
+                'productgroup_data' => $productgroup_data,
+                'state_data' => $state_options
             ]);
     }
     
+    public function state_ajax(Request $request){
 
+    	$input_data = $request->all();
+
+    	$state_id = $input_data['state'];
+
+    	$postcode_data = DB::table('allpostcode')->distinct()->where('state',$state_id)->get(['postcode']);
+
+    	$select = '';
+        $select.='<option value="">Select Postcode</option>';
+        foreach($postcode_data as $postcode):
+            $select.='<option value="'.$postcode->postcode.'">'.$postcode->postcode.'</option>';
+        endforeach;
+
+        $ajax_response_data = array(
+            'status' => "1",
+            'message' => "$select"
+        );
+        echo json_encode($ajax_response_data);
+        exit;
+    }
+
+
+     public function suburb_ajax(Request $request){
+
+    	$input_data = $request->all();
+
+    	$postcode_id = $input_data['postcode'];
+    	$state = $input_data['state'];
+
+    	$suburb_data = DB::table('allpostcode')
+    			->distinct()
+    			->where('postcode',$postcode_id)
+    			->where('state',$state)
+    			->get(['suburb']);
+
+    	$select = '';
+        $select.='<option value="">Select Suburb</option>';
+        foreach($suburb_data as $suburb):
+            $select.='<option value="'.$suburb->suburb.'">'.$suburb->suburb.'</option>';
+        endforeach;
+
+        $ajax_response_data = array(
+            'status' => "1",
+            'message' => "$select"
+        );
+        echo json_encode($ajax_response_data);
+        exit;
+    }
 
 }

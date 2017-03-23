@@ -45,20 +45,17 @@
 									<div class="form-group">
 										<label>Please select state</label>
 										{!! Form::Select('state',
-											array('New South Wales'=>'New South Wales',
-												  'Australian Capital Territory'=>'Australian Capital Territory',
-												  'Victoria' => 'Victoria',
-												  'Queensland' => 'Queensland',
-												  'South Australia' => 'South Australia',
-												  'Western Australia' => 'Western Australia',
-												  'Tasmania' => 'Tasmania',
-												  'Northern Territory' => 'Northern Territory'),Input::old('state'),['class'=>'form-control ','required']) !!}
+											$state_data,Input::old('state'),['id' => 'state_id','class'=>'form-control ','required']) !!}
 										
 									</div>
 
 									<div class="form-group">
 										<label>Post code</label>
-										{!! Form::text('post_code', null, ['id'=>'post_code', 'class' => 'form-control','required']) !!}
+
+										<select class='form-control' required="required" id="post_code" name="post_code">
+
+										</select>
+										
 									</div>
 
 									
@@ -85,7 +82,10 @@
 									
 									<div class="form-group">
 										<label>Suburb</label>
-										{!! Form::text('suburb', null, ['id'=>'suburb', 'class' => 'form-control','required']) !!}
+										
+										<select class='form-control' required="required" id="suburb" name="suburb">
+
+										</select>
 									</div>
 
 									<div class="form-group">
@@ -109,4 +109,55 @@
 
 		</div>
 	</div>
+
+
+	<a href="{{URL::to('')}}" id="site_url">&nbsp;</a>
+
+	<script>
+	    
+
+	        $("#state_id").on('change',function(e){
+
+	            var state = $("#state_id").val();
+	            var site_url = $('#site_url').attr("href");
+	            $.ajax({
+	                url: site_url+'/www/state_ajax',
+	                type: 'POST',
+	                dataType: 'json',
+	                data: {_token: '{!! csrf_token() !!}',state:state,},
+	                success: function(response)
+	                {
+	                    $("#post_code").html(response.message);
+	                }
+	            });
+
+
+	            return false;
+	        });
+
+	         $("#post_code").on('change',function(e){
+
+	            var postcode = $("#post_code").val();
+	            var state = $("#state_id").val();
+	            
+	            var site_url = $('#site_url').attr("href");
+	            $.ajax({
+	                url: site_url+'/www/suburb_ajax',
+	                type: 'POST',
+	                dataType: 'json',
+	                data: {_token: '{!! csrf_token() !!}',postcode:postcode,state:state},
+	                success: function(response)
+	                {
+	                    $("#suburb").html(response.message);
+	                }
+	            });
+
+
+	            return false;
+	        });
+
+
+	    
+	</script>
+
 @stop

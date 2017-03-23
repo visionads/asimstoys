@@ -335,11 +335,25 @@ class OrderController extends Controller
     	$title = "Billing address | Asims Toy";
 
     	$data = DB::table('customer')->where('id',$user_id)->first();
+
+        $state_data = DB::table('allpostcode')->distinct()->get(['state']);
+
+        $postcode_data = DB::table('allpostcode')->distinct()->where('state',$data->state)->get(['postcode']);
+
+        $suburb_data = DB::table('allpostcode')
+                ->distinct()
+                ->where('postcode',$data->postcode)
+                ->where('state',$data->state)
+                ->get(['suburb']);
+
     	return view('web::cart.billingaddress',[
                 'billing_data' => $billing_data,
                 'title' => $title,
                 'productgroup_data' => $productgroup_data,
-                'data' => $data
+                'data' => $data,
+                'state_data' => $state_data,
+                'postcode_data' => $postcode_data,
+                'suburb_data' => $suburb_data
             ]);
     }
 
@@ -363,12 +377,25 @@ class OrderController extends Controller
 		else{
 			$data = DB::table('customer')->where('id',$user_id)->first();
 		}
+
+        $state_data = DB::table('allpostcode')->distinct()->get(['state']);
+
+        $postcode_data = DB::table('allpostcode')->distinct()->where('state',$data->state)->get(['postcode']);
+
+        $suburb_data = DB::table('allpostcode')
+                ->distinct()
+                ->where('postcode',$data->postcode)
+                ->where('state',$data->state)
+                ->get(['suburb']);
         
         return view('web::cart.deliverydetails',[
                 'billing_data' => $billing_data,
                 'title' => $title,
                 'productgroup_data' => $productgroup_data,
-                'data' => $data
+                'data' => $data,
+                'state_data' => $state_data,
+                'postcode_data' => $postcode_data,
+                'suburb_data' => $suburb_data
             ]);
     }
 

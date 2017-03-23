@@ -199,6 +199,7 @@ Route::group(['middleware' => 'auth'], function()
     @include('routes_widget.php');
     @include('routes_order_payment.php');
     @include('routes_state.php');
+    @include('routes_standardpostcode.php');
 	
 
 

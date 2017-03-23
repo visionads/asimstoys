@@ -21,6 +21,15 @@ Route::post('freight-cal-by-product',[
     'uses' => 'ProductController@freight_cal_by_product'
 ]);
 
+Route::post('www/state_ajax',[
+    'as' => 'www/state_ajax',
+    'uses' => 'WWWController@state_ajax'
+]);
+
+Route::post('www/suburb_ajax',[
+    'as' => 'www/suburb_ajax',
+    'uses' => 'WWWController@suburb_ajax'
+]);
 
 Route::any('web', [
     'as' => 'web',

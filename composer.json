@@ -14,7 +14,8 @@
         "intervention/image": "dev-master",
         "eway/eway-rapid-php": "^1.3",
         "phpmailer/phpmailer": "^5.2",
-        "zipmoney/zipmoney-php":"^1.0"
+        "zipmoney/zipmoney-php":"^1.0",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -57,6 +57,18 @@
     </ul>
 </li>
 
+<li class="sub-menu">
+    <a href="javascript:;">
+        <i class="icon-bookmark"></i>
+        <span>Standard PostCode</span>
+    </a>
+    <ul class="sub">
+        <li><a  href={{URL::to('standardpostcode/state')}}>State</a></li>
+        <li><a  href={{URL::to('standardpostcode/postcode')}}>PostCode</a></li>
+        <li><a  href={{URL::to('standardpostcode/suburb')}}>Suburb</a></li>
+    </ul>
+</li>
+
 
 
 <li class="sub-menu">

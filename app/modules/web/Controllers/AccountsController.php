@@ -37,11 +37,34 @@ class AccountsController extends Controller
             $get_customer_data = DB::table('customer')->where('id',Session::get('user_id'))->first();
 			$delivery_details = DB::table('delivery_details')->where('user_id',$get_customer_data->id)->orderBy('id','desc')->first();
 
+            $state_data = DB::table('allpostcode')->distinct()->get(['state']);
+
+            $postcode_data = DB::table('allpostcode')->distinct()->where('state',$get_customer_data->state)->get(['postcode']);
+
+            $suburb_data = DB::table('allpostcode')
+                    ->distinct()
+                    ->where('postcode',$get_customer_data->postcode)
+                    ->where('state',$get_customer_data->state)
+                    ->get(['suburb']);
+
+
+            $postcode_delivery_data = DB::table('allpostcode')->distinct()->where('state',$delivery_details->state)->get(['postcode']);
+
+            $suburb_delivery_data = DB::table('allpostcode')
+                    ->distinct()
+                    ->where('postcode',$delivery_details->postcode)
+                    ->where('state',$delivery_details->state)
+                    ->get(['suburb']);
 
             return view('web::accounts.accounts',[
                 'title' => $title,               
                 'get_customer_data' => $get_customer_data,
-                'delivery_details' => $delivery_details
+                'delivery_details' => $delivery_details,
+                'state_data' => $state_data,
+                'postcode_data' => $postcode_data,
+                'suburb_data' => $suburb_data,
+                'postcode_delivery_data' => $postcode_delivery_data,
+                'suburb_delivery_data' => $suburb_delivery_data
             ]);
 
 
