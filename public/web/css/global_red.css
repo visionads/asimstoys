@@ -6029,6 +6029,9 @@ a.email_us:hover{
 	height:90px;margin-top:30px;
 }
 
+.cart-by-appoinment{
+	margin-top: 30px;
+}
 
 /* Fixed Mobile*/
 @media (max-width: 1200px) {

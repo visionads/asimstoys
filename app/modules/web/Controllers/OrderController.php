@@ -145,6 +145,16 @@ class OrderController extends Controller
 
 	public function ordercheckout(Request  $request){
         $input = $request->all();
+
+        // local pickup
+        if(isset($input['localpickup'])){
+            $localpickup = $input['localpickup'];
+        }else{
+            $localpickup = 'no';
+        }
+        $request->session()->set('localpickup', $localpickup);
+
+        // Coupon Code
         $coupon_code = isset($input['coupon_code'])?$input['coupon_code']:null;
         $today = date('Y-m-d');
 
@@ -406,6 +416,9 @@ class OrderController extends Controller
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
         $product_cart = $request->session()->get('product_cart');
+
+        $localpickup = $request->session()->get('localpickup');
+
         $user_id = $request->session()->get('user_id');
         $deliver_id = $request->session()->get('deliver_id');
         $user_data = DB::table('customer')->where('id',$user_id)->first();
@@ -445,14 +458,19 @@ class OrderController extends Controller
                     'width'=> $product['width'],
                     'height'=> $product['height'],
                 );
-					
-				if($product['product_group_id'] == '3' || $product['product_group_id'] == '4' || $product['product_group_id'] == '9'){
-					
-					//freight Calculation
-					$freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_data);
-					$freight_charge = $freight_calculation[0]['price'][0] * $values['quantity'];
-					
-				}
+				
+                if($localpickup == 'no'){
+
+                    if($product['product_group_id'] == '3' || $product['product_group_id'] == '4' || $product['product_group_id'] == '9'){
+                    
+                        //freight Calculation
+                        $freight_calculation = RttTntExpress::rtt_call($user_data, $delivery_data, $product_data);
+                        $freight_charge = $freight_calculation[0]['price'][0] * $values['quantity'];
+                        
+                    }
+
+                }	
+				
 					
 				
 				
@@ -477,13 +495,15 @@ class OrderController extends Controller
                     $model->volume= isset($values['volume'])?$values['volume']:null;
                     $model->weight= isset($values['weight'])?$values['weight']:null;
                     $model->freight_charge= isset($freight_charge)?$freight_charge:0;
+                    $model->localpickup= $localpickup;
                     $model->save();
 					
 					$freight_charge =0;
                     DB::commit();
 
                     #remove cart
-                    $request->session()->forget('product_cart');    
+                    $request->session()->forget('product_cart'); 
+                    $request->session()->forget('localpickup');   
 
                 }
 
@@ -559,6 +579,7 @@ class OrderController extends Controller
                 'sub_total' => $total_price - $total_discount_price, //$total_price,
                 'net_amount'=> $total_price - $total_discount_price + $total_freight_charge, //$total_price+$freight_calculation,
                 'status'=> 1,
+                'localpickup' => $input_data['localpickup']
             ];
 
             DB::beginTransaction();

@@ -66,6 +66,11 @@ Route::any("zip-pay-order", [
     "uses" => "OrderPaymentController@zip_pay_order"
 ]);
 
+Route::any("local-pickup-order", [
+    "as"   => "local-pickup-order",
+    "uses" => "OrderPaymentController@local_pickup_order"
+]);
+
 Route::any("archive-list", [
     "as"   => "archive-list",
     "uses" => "OrderPaymentController@archive_list"

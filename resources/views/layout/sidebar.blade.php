@@ -53,6 +53,7 @@
         <li><a  href={{URL::to('lay_by/index')}}>Lay-By Order</a></li>
         <li><a  href={{URL::to('pre-order-list')}}>Pre-Order</a></li>
         <li><a  href={{URL::to('zip-pay-order')}}>Zip-Pay Order</a></li>
+        <li><a style="height: 45px;line-height: 20px;" href={{URL::to('local-pickup-order')}}>Local Pickup Order ( by appoinment only ) </a></li>
 		<li><a  href={{URL::to('archive-list')}}>Archive</a></li>
     </ul>
 </li>

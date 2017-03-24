@@ -89,10 +89,15 @@
 										$total_value = 0;
 
 										$count = 0;
-									$total_pro_price =
-                                    $total_freight_charge = 0;
+										$total_pro_price =
+                                    	$total_freight_charge = 0;
+
+                                    	$localpickup = 'no';
+                                    	$localpickup_count = 1;
 
 									?>
+
+
 									@foreach($product_cart_r as $product_cart)
 										<?php
 											$product_id = $product_cart['product_id'];
@@ -136,6 +141,14 @@
                                                             $total_value+=$pro_price + $freight_charge;
                                                             $total_freight_charge+=$freight_charge;
 															$total_pro_price+=$pro_price;
+
+															if($localpickup_count == '1'){
+																if($product_cart['localpickup'] == 'yes'){
+																	$localpickup = 'yes';
+																	$localpickup_count++;
+																}
+															}
+															
                                                         ?>
 
 														${{ $line_amount }}
@@ -198,6 +211,7 @@
 
                 <input type="hidden" name="total_amount" value="{{@$total_pro_price }}">
                 <input type="hidden" name="total_freight_charge" value="{{@$total_freight_charge }}">
+                <input type="hidden" name="localpickup" value="{{@$localpickup }}">
 
 
 						<div class="col-md-12 col-sm-6 col-xs-12 margin-top-30 margin-bottom-30">

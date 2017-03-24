@@ -90,6 +90,7 @@
 					<tr>
                         <td> Freight Charge </td>
                         <td> {{number_format($order->freight_amount?$order->freight_amount:0, 2)}}  </td>
+                        
                     </tr>
                     <tr>
                         <td> Total Cost </td>

@@ -38,6 +38,23 @@ class OrderPaymentController extends Controller
         return view('order_payment.order_paid_index',['pageTitle' => $pageTitle,'data' => $data]);
     }
 
+    public function local_pickup_order()
+    {
+    
+        $pageTitle = "Order (Paid)";
+
+        $data = OrderHead::with('relCustomer')
+            ->where('order_head.localpickup','yes')
+            ->where('status', '!=', 'cancel')
+            ->where('status', '!=', 'archive')
+            ->where('invoice_type', '!=', 'NULL')
+            ->orderBy('order_head.invoice_no','desc')
+            ->get();
+
+
+        return view('order_payment.order_paid_index',['pageTitle' => $pageTitle,'data' => $data]);
+    }
+
 
     public function order_show($order_head_id){
 

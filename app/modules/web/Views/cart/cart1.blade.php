@@ -177,6 +177,36 @@
 						  </div>
                         </div>
 
+                        <div class="col-md-12 col-xs-12 col-sm-12 cart-by-appoinment" >
+                        	<div class="row">
+
+                        		<div class="col-md-7 col-xs-12 col-sm-7">
+									<div class="row">
+		                                <span class="pull-right pull-right-480-floatnone">
+		                                    <b> Local pickup  </b>
+		                                    <br>
+		                                    <small>By appointment only</small>
+		                                </span>
+									</div>
+							    </div>
+
+							    <div class="col-md-5 col-xs-12 col-sm-5">
+									<div class="row">
+										<span class="pull-right pull-right-480-floatnone">
+
+		                                    <input type="radio" name="localpickup" checked id="localpickup_no" value="no">
+		                                    <label for="localpickup_no">No</label><br>
+										    
+										    <input type="radio" name="localpickup" id="localpickup_yes" value="yes">	
+										    <label for="localpickup_yes">Yes</label><br>
+
+		                                </span>
+									</div>
+								</div>
+
+                        	</div>
+                        </div>
+
 						<div class="col-md-12 col-xs-12 col-sm-12 margin-top-30 margin-bottom-30">
                             <a href="{{Url::to('')}}" class="cart-continue-shopping">Continue Shopping</a>
                             <input type="submit" class="cart-checkout" value="Checkout">

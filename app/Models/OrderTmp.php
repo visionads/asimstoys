@@ -29,7 +29,8 @@ class OrderTmp extends Model
         'plate_text',
         'volume',
         'weight',
-        'freight_charge'
+        'freight_charge',
+        'localpickup'
     ];
 
 
