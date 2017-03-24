@@ -693,6 +693,8 @@ class OrderController extends Controller
         //setter
         $request->session()->set('net_amount', $net_amount);
 
+        // set session in invoice number
+        $request->session()->set('invoice_number_zippay', $order_head['invoice_no']);
 
         return view('web::cart.paycart',[
             'title' => $title,
@@ -877,8 +879,13 @@ class OrderController extends Controller
                 $delivery_data = DB::table('delivery_details')->where('user_id',$invoice_head->user_id)->first();
             }
             
-
-            $result = ZipPay::call_to_server($invoice_number, $invoice_head, $invoice_detail, $customer_data, $delivery_data);
+             if(Session::has('invoice_number_zippay')){
+                $zip_pay_invoice = Session::get('invoice_number_zippay');
+             }else{
+                $zip_pay_invoice = $invoice_number;
+             }
+                
+            $result = ZipPay::call_to_server($invoice_number, $invoice_head, $invoice_detail, $customer_data, $delivery_data,$zip_pay_invoice);
 
 
             if ($result)
@@ -918,6 +925,11 @@ class OrderController extends Controller
         }
 
         return redirect()->route('order_summery_lists');
+    }
+
+    public function zip_pay_redirect($invoice_no)
+    {
+       echo 'ZipPay Redirect is working';
     }
 
     /**

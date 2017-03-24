@@ -30,7 +30,7 @@ class ZipPay
      * @param $delivery_data
      * @throws zipMoney\Exception
      */
-    public static function call_to_server($invoice_number, $order_head, $order_detail, $customer_data, $delivery_data)
+    public static function call_to_server($invoice_number, $order_head, $order_detail, $customer_data, $delivery_data, $zip_pay_invoice)
     {
 
         /*
@@ -79,6 +79,10 @@ class ZipPay
 "http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-refer/".$invoice_number;
         $checkout->request->decline_url = 
 "http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-decline/".$invoice_number;
+
+
+$checkout->request->redirect_url = 
+"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-redirect_url/".$zip_pay_invoice;
 
         // Order Info
         $order = new \zipMoney\Request\Order;

@@ -167,6 +167,12 @@ Route::any('remove_cart',[
     ]);
 
     /* Zip pay redirect url */
+    
+    Route::any("zip-pay-redirect_url/{invoice_no}", [
+        "as"   => "zip-pay-redirect_url",
+        "uses" => "OrderController@zip_pay_redirect"
+    ]);
+
     Route::any("zip-pay-cancel/{invoice_no}", [
         "as"   => "zip-pay-cancel",
         "uses" => "OrderController@zip_pay_cancel"
