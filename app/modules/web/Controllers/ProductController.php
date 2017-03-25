@@ -21,27 +21,41 @@ class ProductController extends Controller
     {
         
         $product = DB::table('product')->where('slug',$product_slug)->where('status','active')->first();
-		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
-		$related_product_r = DB::table('product')
-							->where('product_subgroup_id',$product->product_subgroup_id)
-							->whereNotIn('id',[$product->id])
-							->where('status','active')
-							->get();
 
-		$product_single_gallery = DB::table('gal_image')->where('product_id',$product->id)->first();
-		$product_gallery_all = DB::table('gal_image')->where('product_id',$product->id)->get();
-		$product_variation = DB::table('product_variation')->where('product_id',$product->id)->get();
-		$title =$product->title ." | Asim's Toy";
+        if(!empty($product)){
 
-			return view('web::product.details',[
-                'title' => $title,
-                'product' => $product,
-                'productgroup_data' => $productgroup_data,
-                'product_single_gallery' => $product_single_gallery,
-                'product_gallery_all' => $product_gallery_all,
-                'related_product_r' => $related_product_r,
-                'product_variation_r' => $product_variation
-            ]);
+            $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
+            $related_product_r = DB::table('product')
+                                ->where('product_subgroup_id',$product->product_subgroup_id)
+                                ->whereNotIn('id',[$product->id])
+                                ->where('status','active')
+                                ->get();
+
+            $product_single_gallery = DB::table('gal_image')->where('product_id',$product->id)->first();
+            $product_gallery_all = DB::table('gal_image')->where('product_id',$product->id)->get();
+            $product_variation = DB::table('product_variation')->where('product_id',$product->id)->get();
+            $title =$product->title ." | Asim's Toy";
+
+                return view('web::product.details',[
+                    'title' => $title,
+                    'product' => $product,
+                    'productgroup_data' => $productgroup_data,
+                    'product_single_gallery' => $product_single_gallery,
+                    'product_gallery_all' => $product_gallery_all,
+                    'related_product_r' => $related_product_r,
+                    'product_variation_r' => $product_variation
+                ]);
+
+        }else{
+
+            $title = "Found Not Found";
+
+            return view('web::product.not_found',[
+                    'title' => $title
+                ]);
+
+        }
+		
 
 	}
 

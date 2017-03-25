@@ -153,7 +153,11 @@
 														
 														@if($product->product_group_id != '9')
 															<span class="previous_price">
-																Price: $ <?php echo $product->sell_rate;?>
+																Price: 
+                                                                @if(!empty($product->old_price))
+                                                                    <span class="old_price">${{number_format(@$product->old_price, 2)}}</span>
+                                                                @endif
+                                                                $ <?php echo $product->sell_rate;?>
 															</span>
 														@endif
 														

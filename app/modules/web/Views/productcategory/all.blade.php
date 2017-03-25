@@ -48,7 +48,11 @@
 									<a href="{{URL::to('/')}}/{{$product->slug}}" title="Malesuada mi">{{$product->title}}</a>
 								</h5>
 			                                            
-			                    <p class="price_container"><span class="price">${{$product->sell_rate}}</span></p>                                            						
+			                    <p class="price_container"><span class="price">
+			                    	@if(!empty($product->old_price))
+			                    		<span class="old_price">${{number_format(@$product->old_price, 2)}}</span>
+			                    	@endif
+			                    	${{$product->sell_rate}}</span></p>                                            						
 								<div class="action">						
 									<a class="exclusive ajax_add_to_cart_button" href="{{URL::to('/')}}/{{$product->slug}}" title="Add to Cart">&nbsp;</a>
 									<a class="lnk_more" href="{{URL::to('/')}}/{{$product->slug}}" title="View">&nbsp;</a>
