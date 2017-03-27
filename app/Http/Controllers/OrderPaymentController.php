@@ -11,6 +11,8 @@ use DB;
 use Session;
 use Input;
 use App\OrderHead;
+use App\OrderDetail;
+use App\Product;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -186,6 +188,46 @@ class OrderPaymentController extends Controller
         DB::beginTransaction();
         try {
             $model = OrderHead::findOrFail($order_head_id);
+
+            $model_order_details = OrderDetail::where('order_head_id',$order_head_id)->get();
+
+            foreach($model_order_details as $product_list){
+                
+                $product_data = Product::
+                        where('id',$product_list['product_id'])
+                        ->where('status','active')
+                        ->first();
+
+                if(!empty($product_data)){
+                    echo $product_data->stock_unit_quantity . '<br/>';
+
+                    if($product_data->stock_unit_quantity > 0){
+
+                        $product_data->stock_unit_quantity = $product_data->stock_unit_quantity - $product_list['qty'];
+                        
+                        DB::beginTransaction();
+                        try {
+
+                            $update_data = DB::table('product')
+                                            ->where('id', $product_list['product_id'])
+                                            ->update(['stock_unit_quantity' => $product_data->stock_unit_quantity]);
+                                            DB::commit();
+
+
+
+                        }catch (\Exception $e) {
+
+                            //If there are any exceptions, rollback the transaction`
+                            print_r($e->getMessage());
+                        }
+                        
+
+                           
+                        
+                    }
+                }
+            }
+
             $model->status = 'done';
             if ($model->save()) 
             {

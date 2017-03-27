@@ -255,11 +255,12 @@
                                                 <div class="width50">
                                                     <label>Quantity</label>
                                                     <select name="quantity">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
+                                                        @if($product->stock_unit_quantity > 0)
+                                                            @for($i=1;$i<=$product->stock_unit_quantity;$i++)
+                                                                <option value="{{$i}}">{{$i}}</option>
+                                                            @endfor
+                                                        @endif
+                                                        
                                                     </select>
                                                 </div>
 
