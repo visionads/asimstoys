@@ -142,7 +142,8 @@
                                                             if($product->stock_unit_quantity <= 0){
                                                                 echo 'Out of Stock';
                                                             }else{
-                                                                echo 'In Stock (only '. $product->stock_unit_quantity .' left)';
+                                                                //echo 'In Stock (only '. $product->stock_unit_quantity .' left)';
+                                                                echo 'In Stock';
                                                             }
                                                         ?>
 
