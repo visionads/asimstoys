@@ -62,13 +62,23 @@
 								@endif
 								<a href="{{URL::to('/')}}/{{@$featured_product->slug}}" title="{{@$featured_product->title}}" class="bigpic_15_newproduct123 product_image">
 									<amp-img src="{{URL::to('/')}}/{{@$featured_product->image}}"  alt="{{@$featured_product->title}}" width="250" height="230" layout="responsive"> </amp-img>
+
+									@if($featured_product->sold_out =='yes')
+										<span class="sold_out">Sold out</span>
+									@endif
 								</a>
 				
 								<h5 class="s_title_block">
+
+
 									<a href="{{URL::to('/')}}/{{@$featured_product->slug}}" title="{{@$featured_product->title}}">{{@$featured_product->title}}</a>
 								</h5>
 			                                            
-			                    <p class="price_container"><span class="price">${{number_format(@$featured_product->sell_rate, 2)}}</span></p>
+			                    <p class="price_container"><span class="price">
+			                    	@if(!empty($featured_product->old_price))
+			                    		<span class="old_price">${{number_format(@$featured_product->old_price, 2)}}</span>
+			                    	@endif
+			                    	${{number_format(@$featured_product->sell_rate, 2)}}</span></p>
 								<div class="action">						
 									<a class="exclusive ajax_add_to_cart_button" href="#" title="Add to Cart">&nbsp;</a>
 									<a class="lnk_more" href="{{URL::to('/')}}/{{$featured_product->slug}}" title="View">&nbsp;</a>

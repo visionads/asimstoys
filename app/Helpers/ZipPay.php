@@ -30,7 +30,7 @@ class ZipPay
      * @param $delivery_data
      * @throws zipMoney\Exception
      */
-    public static function call_to_server($invoice_number, $order_head, $order_detail, $customer_data, $delivery_data)
+    public static function call_to_server($invoice_number, $order_head, $order_detail, $customer_data, $delivery_data, $zip_pay_invoice)
     {
 
         /*
@@ -41,20 +41,20 @@ class ZipPay
          */
 
         /*
-         *  Merchant ID: 1485
-            API Key: 3t50JGRyQZeg7X3/00emLUvZYVp4BRLq/j8ty3256ec=
-            Public Key: 6cbda058-c152-489e-bc0b-c34875f2f39d
+         *  Merchant ID: 3075
+            API Signature: TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0=
+            Unique Id: daef00bf-536f-41b2-9bc7-2f1a47fc1742
          */
 
 
-        #zipMoney\Configuration::$merchant_id  = 3075; //sandbox;
-        zipMoney\Configuration::$merchant_id  = 1485; //production;
+        zipMoney\Configuration::$merchant_id  = 3075; //sandbox;
+        #zipMoney\Configuration::$merchant_id  = 2485; //production;
 
-        #zipMoney\Configuration::$merchant_key = 'TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0='; //sandbox
-        zipMoney\Configuration::$merchant_key = '3t50JGRyQZeg7X3/00emLUvZYVp4BRLq/j8ty3256ec='; // production
+        zipMoney\Configuration::$merchant_key = 'TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0='; //sandbox
+        #zipMoney\Configuration::$merchant_key = '3t50JGRyQZeg7X3/00emLUvZYVp4BRLq/j8ty3256ec='; // production
 
-        #zipMoney\Configuration::$environment  = 'sandbox'; //sandbox;
-        zipMoney\Configuration::$environment  = 'production'; //production;
+        zipMoney\Configuration::$environment  = 'sandbox'; //sandbox;
+        #zipMoney\Configuration::$environment  = 'production'; //production;
 
 
         # Initialize the checkout
@@ -66,13 +66,23 @@ class ZipPay
         $checkout->request->order_id =  $invoice_number; //$this->_current_order_id;
         $checkout->request->in_store = false;
 
-        $checkout->request->cart_url    = "http://asimstoys.com.au/mycart";
-        $checkout->request->success_url = "http://asimstoys.com.au/redirect_e_way_d/".$invoice_number."/".$order_head->net_amount."/".$customer_data->id ;
+        $checkout->request->cart_url    = "http://staging.asimstoys.com.au/mycart";
+        $checkout->request->success_url = 
+"http://staging.asimstoys.com.au/redirect_e_way_d/".$invoice_number."/".$order_head->net_amount."/".$customer_data->id 
+;
         //"{{route('redirect_e_way_d', [$invoice_number, $order_head->net_amount, $customer_data->id])}}";
-        $checkout->request->cancel_url  = "http://asimstoys.com.au/redirect_e_way_d/zip-pay-cancel/".$invoice_number;
-        $checkout->request->error_url   = "http://asimstoys.com.au/redirect_e_way_d/zip-pay-error/".$invoice_number;
-        $checkout->request->refer_url   = "http://asimstoys.com.au/redirect_e_way_d/zip-pay-refer/".$invoice_number;
-        $checkout->request->decline_url = "http://asimstoys.com.au/redirect_e_way_d/zip-pay-decline/".$invoice_number;
+        $checkout->request->cancel_url  = 
+"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-cancel/".$invoice_number;
+        $checkout->request->error_url   = 
+"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-error/".$invoice_number;
+        $checkout->request->refer_url   = 
+"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-refer/".$invoice_number;
+        $checkout->request->decline_url = 
+"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-decline/".$invoice_number;
+
+
+$checkout->request->redirect_url = 
+"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-redirect_url/".$zip_pay_invoice;
 
         // Order Info
         $order = new \zipMoney\Request\Order;

@@ -21,6 +21,15 @@ Route::post('freight-cal-by-product',[
     'uses' => 'ProductController@freight_cal_by_product'
 ]);
 
+Route::post('www/state_ajax',[
+    'as' => 'www/state_ajax',
+    'uses' => 'WwwController@state_ajax'
+]);
+
+Route::post('www/suburb_ajax',[
+    'as' => 'www/suburb_ajax',
+    'uses' => 'WwwController@suburb_ajax'
+]);
 
 Route::any('web', [
     'as' => 'web',
@@ -158,6 +167,12 @@ Route::any('remove_cart',[
     ]);
 
     /* Zip pay redirect url */
+    
+    Route::any("zip-pay-redirect_url/{invoice_no}", [
+        "as"   => "zip-pay-redirect_url",
+        "uses" => "OrderController@zip_pay_redirect"
+    ]);
+
     Route::any("zip-pay-cancel/{invoice_no}", [
         "as"   => "zip-pay-cancel",
         "uses" => "OrderController@zip_pay_cancel"

@@ -26,6 +26,7 @@ class OrderHead extends Model
         'sub_total',
         'net_amount',
         'status',
+        'localpickup'
     ];
 
 

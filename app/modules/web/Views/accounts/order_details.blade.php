@@ -50,8 +50,8 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="pull-right" style="font-size: 15px">
                                 <h2 style="color: darkblue;padding-bottom: 0px;text-align: right;">Sub Amount : {{number_format(@$total_amount->total_amount, 2)}}</h2>
-								<h2 style="color: darkblue;padding-bottom: 0px;text-align: right;">Discount Amount : {{number_format(@$freight_data->total_discount_price, 2)}}</h2>
-								<h2 style="color: darkblue;padding-bottom: 0px;text-align: right;">Freight Amount : {{number_format(@$freight_data->freight_amount, 2)}}</h2>
+								<h2 style="color: darkblue;padding-bottom: 0px;text-align: right;">Discount Amount : {{number_format(@$freight_data->total_discount_price, 2)}}</h2>								
+                                <h2 style="color: darkblue;padding-bottom: 0px;text-align: right;">Freight Amount : {{number_format(@$freight_data->freight_amount, 2)}}</h2>                               
 								<h2 style="color: darkblue;padding-bottom: 0px;text-align: right;">Total Amount : {{number_format(@$total_amount->total_amount -@$freight_data->total_discount_price + @$freight_data->freight_amount, 2)}}</h2>
 								<h2 style="color: red;padding-bottom: 0px;text-align: right;">Left Amount : {{number_format(@$due_amount - @$freight_data->total_discount_price,2)}}</h2>
                                 <h2 style="color: green;padding-bottom: 0px;text-align: right;">Paid Amount : {{number_format(@$paid_amount->paid_amount, 2) }}</h2>
@@ -118,8 +118,9 @@
 							</tr>
 							
 							<tr>
-								<td colspan="7" align="right">Freight Amount</td>
-								<td colspan="2" align="right">{{number_format(@$freight_data->freight_amount, 2)}}</td>
+                               <td colspan="7" align="right">Freight Amount</td>
+                                    <td colspan="2" align="right">{{number_format(@$freight_data->freight_amount, 2)}}</td>
+								
 							</tr>
 							
 							<tr>

@@ -20,26 +20,40 @@
 
 		<div class="form-group">
 			<label>Please select state <span style="color:rgba(255,0,0,.7);;">(required)</span></label>
-			{!! Form::Select('state',
-				array(
+			<select id="state_id_d" class="form-control " required="required" name="state">
+				@if(empty($get_customer_data))
+					<option value="" selected="selected">Please select state</option>
+				@endif
 				
-				$delivery_details->state => $delivery_details->state,
 				
-				'New South Wales'=>'New South Wales',
-					  'Australian Capital Territory'=>'Australian Capital Territory',
-					  'Victoria' => 'Victoria',
-					  'Queensland' => 'Queensland',
-					  'South Australia' => 'South Australia',
-					  'Western Australia' => 'Western Australia',
-					  'Tasmania' => 'Tasmania',
-					  'Northern Territory' => 'Northern Territory'),Input::old('state'),['class'=>'form-control ','required']) !!}
+					@if(!empty($state_data))
+						@foreach($state_data as $state)												
+							<option <?php if($delivery_details->state == $state->state){echo 'selected';} ?> value="{{$state->state}}">{{$state->state}}</option>
+						@endforeach
+					@endif
+				
+				
+			</select>
 			
 		</div>
 
 		<div class="form-group">
 			<label>Post code <span style="color:rgba(255,0,0,.7);;">(required)</span></label><br/>
 			<small style="color:rgb(255,99,71);">Put your post code and suburb properly. If you put wrong suburb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small>
-			{!! Form::text('postcode', $delivery_details->postcode, ['id'=>'post_code', 'class' => 'form-control','required']) !!}
+			
+			<select id="post_code_d" class="form-control " required="required" name="postcode">
+
+					@if(empty($get_customer_data))
+						<option value="" selected="selected">Please select post code</option>
+					@endif
+																	
+					@if(!empty($postcode_delivery_data))
+						@foreach($postcode_delivery_data as $postcode_delivery)												
+							<option <?php if($delivery_details->postcode == $postcode_delivery->postcode){echo 'selected';} ?> value="{{$postcode_delivery->postcode}}">{{$postcode_delivery->postcode}}</option>
+						@endforeach
+					@endif											
+					
+			</select>
 		</div>
 
 		
@@ -61,7 +75,19 @@
 		<div class="form-group">
 			<label>Suburb <span style="color:rgba(255,0,0,.7);;">(required)</span> </label><br/>
 			<small style="color:rgb(255,99,71);">Put your post code and suburb properly. If you put wrong suburb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small>
-			{!! Form::text('suburb', $delivery_details->suburb, ['id'=>'suburb', 'class' => 'form-control','required']) !!}
+			
+			<select id="suburb_d" class="form-control " required="required" name="suburb">
+					@if(empty($get_customer_data))
+						<option value="" selected="selected">Please select suburb</option>
+					@endif
+																	
+					@if(!empty($suburb_delivery_data))
+						@foreach($suburb_delivery_data as $suburb_delivery)												
+							<option <?php if($delivery_details->suburb == $suburb_delivery->suburb){echo 'selected';} ?> value="{{$suburb_delivery->suburb}}">{{$suburb_delivery->suburb}}</option>
+						@endforeach
+					@endif											
+					
+			</select>
 		</div>
 		
 		<div class="form-group">
@@ -81,3 +107,52 @@
 		
 	</div>
 </div>
+
+<a href="{{URL::to('')}}" id="site_url_d">&nbsp;</a>
+	<script>
+	    
+
+	        $("#state_id_d").on('change',function(e){
+
+	            var state = $("#state_id_d").val();
+	            var site_url = $('#site_url').attr("href");
+	            $.ajax({
+	                url: site_url_d+'/www/state_ajax',
+	                type: 'POST',
+	                dataType: 'json',
+	                data: {_token: '{!! csrf_token() !!}',state:state,},
+	                success: function(response)
+	                {
+	                    $("#post_code_d").html(response.message);
+	                    $("#suburb_d").html('');
+	                }
+	            });
+
+
+	            return false;
+	        });
+
+	         $("#post_code_d").on('change',function(e){
+
+	            var postcode = $("#post_code_d").val();
+	            var state = $("#state_id_d").val();
+	            
+	            var site_url = $('#site_url_d').attr("href");
+	            $.ajax({
+	                url: site_url+'/www/suburb_ajax',
+	                type: 'POST',
+	                dataType: 'json',
+	                data: {_token: '{!! csrf_token() !!}',postcode:postcode,state:state},
+	                success: function(response)
+	                {
+	                    $("#suburb_d").html(response.message);
+	                }
+	            });
+
+
+	            return false;
+	        });
+
+
+	    
+	</script>

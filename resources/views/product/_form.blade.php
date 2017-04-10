@@ -57,6 +57,12 @@
             
             {!! Form::text('cost_price', null, ['id'=>'cost_price', 'class' => 'form-control','required']) !!}
         </div>
+
+        <div class="form-group">
+            {!! Form::label('Old Price', 'Old Price:', ['class' => 'control-label']) !!}          
+            {!! Form::text('old_price', null, ['id'=>'old_price', 'class' => 'form-control']) !!}
+        </div>
+
         <div class="form-group">
             {!! Form::label('Stock Quantity', 'Stock Quantity:', ['class' => 'control-label']) !!}
             <small class="required">(Required)</small>
@@ -117,16 +123,15 @@
             {!! Form::text('height', null, ['id'=>'height', 'class' => 'form-control', 'required']) !!}
         </div>
 
-        <div class="form-group">
-            {!! Form::label('status', 'Status:', ['class' => 'control-label']) !!}
-            <small class="required">(Required)</small>
-            {!! Form::Select('status',array('active'=>'Active','inactive'=>'Inactive'),Input::old('status'),['class'=>'form-control ','required']) !!}
-        </div>
-		
 		<div class="form-group">
             {!! Form::label('sticker', 'Sticker:', ['class' => 'control-label']) !!}
             <small class="required">(Required)</small>
             {!! Form::Select('sticker',array('none'=>'none','Clearance'=>'Clearance','Sale'=>'Sale','In-stock' => 'In-stock','Preorder' => 'Preorder'),Input::old('sticker'),['class'=>'form-control ','required']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('sold_out', 'Sold Out:', ['class' => 'control-label']) !!}            
+            {!! Form::Select('sold_out',array('no'=>'No','yes'=>'Yes'),Input::old('sold_out'),['class'=>'form-control ']) !!}
         </div>
 
     </div>
@@ -134,6 +139,12 @@
 
 <div class="col-md-6" style="padding-right: 0;">
 
+    <div class="form-group">
+        {!! Form::label('status', 'Status:', ['class' => 'control-label']) !!}
+        <small class="required">(Required)</small>
+        {!! Form::Select('status',array('active'=>'Active','inactive'=>'Inactive'),Input::old('status'),['class'=>'form-control ','required']) !!}
+    </div>
+        
     <div class="form-group">
         {!! Form::label('preorder', 'preorder?', ['class' => 'control-label']) !!}
         <small class="required">(Required)</small>

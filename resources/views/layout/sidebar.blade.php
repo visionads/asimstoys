@@ -53,7 +53,20 @@
         <li><a  href={{URL::to('lay_by/index')}}>Lay-By Order</a></li>
         <li><a  href={{URL::to('pre-order-list')}}>Pre-Order</a></li>
         <li><a  href={{URL::to('zip-pay-order')}}>Zip-Pay Order</a></li>
+        <li><a style="height: 45px;line-height: 20px;" href={{URL::to('local-pickup-order')}}>Local Pickup Order ( by appoinment only ) </a></li>
 		<li><a  href={{URL::to('archive-list')}}>Archive</a></li>
+    </ul>
+</li>
+
+<li class="sub-menu">
+    <a href="javascript:;">
+        <i class="icon-bookmark"></i>
+        <span>Standard PostCode</span>
+    </a>
+    <ul class="sub">
+        <li><a  href={{URL::to('standardpostcode/state')}}>State</a></li>
+        <li><a  href={{URL::to('standardpostcode/postcode')}}>PostCode</a></li>
+        <li><a  href={{URL::to('standardpostcode/suburb')}}>Suburb</a></li>
     </ul>
 </li>
 

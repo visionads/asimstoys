@@ -81,7 +81,7 @@
 					
 					<!-- Large modal -->
 					<button style="background: #5cb85c;padding: 35px;border-color: #5cb85c;" type="button" class="btn btn-primary eway-button" data-toggle="modal" data-target=".bs-example-modal-lg">
-						<span>
+						<span>                           
 							Confirm to Pay ( {{number_format($eway_total_price_format/100, 2)}} )
 						</span>
 

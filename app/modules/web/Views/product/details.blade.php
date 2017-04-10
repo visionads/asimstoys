@@ -142,7 +142,8 @@
                                                             if($product->stock_unit_quantity <= 0){
                                                                 echo 'Out of Stock';
                                                             }else{
-                                                                echo 'In Stock (only '. $product->stock_unit_quantity .' left)';
+                                                                //echo 'In Stock (only '. $product->stock_unit_quantity .' left)';
+                                                                echo 'In Stock';
                                                             }
                                                         ?>
 
@@ -153,7 +154,11 @@
 														
 														@if($product->product_group_id != '9')
 															<span class="previous_price">
-																Price: $ <?php echo $product->sell_rate;?>
+																Price: 
+                                                                @if(!empty($product->old_price))
+                                                                    <span class="old_price">${{number_format(@$product->old_price, 2)}}</span>
+                                                                @endif
+                                                                $ <?php echo $product->sell_rate;?>
 															</span>
 														@endif
 														
@@ -251,11 +256,12 @@
                                                 <div class="width50">
                                                     <label>Quantity</label>
                                                     <select name="quantity">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
+                                                        @if($product->stock_unit_quantity > 0)
+                                                            @for($i=1;$i<=$product->stock_unit_quantity;$i++)
+                                                                <option value="{{$i}}">{{$i}}</option>
+                                                            @endfor
+                                                        @endif
+                                                        
                                                     </select>
                                                 </div>
 
