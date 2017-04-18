@@ -38,8 +38,9 @@
 		</div>
 
 		<div class="form-group">
-			<label>Post code <span style="color:rgba(255,0,0,.7);;">(required)</span></label><br/>
-			<small style="color:rgb(255,99,71);">Put your post code and suburb properly. If you put wrong suburb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small>
+			<label>Post code 
+			<span style="color:rgba(255,0,0,.7);;">(required)</span></label><br/>
+			<!-- <small style="color:rgb(255,99,71);">Put your post code and suburb properly. If you put wrong suburb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small> -->
 			
 			<select id="post_code_d" class="form-control " required="required" name="postcode">
 
@@ -73,8 +74,9 @@
 		</div>
 		
 		<div class="form-group">
-			<label>Suburb <span style="color:rgba(255,0,0,.7);;">(required)</span> </label><br/>
-			<small style="color:rgb(255,99,71);">Put your post code and suburb properly. If you put wrong suburb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small>
+			<label>Suburb 
+			<!-- <span style="color:rgba(255,0,0,.7);;">(required)</span> </label><br/>
+			<small style="color:rgb(255,99,71);">Put your post code and suburb properly. If you put wrong suburb or post code this will make error page. If occurs error page then go back to previous page and try with proper information</small> -->
 			
 			<select id="suburb_d" class="form-control " required="required" name="suburb">
 					@if(empty($get_customer_data))
