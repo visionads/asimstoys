@@ -67,22 +67,44 @@ class ZipPay
         $checkout->request->in_store = false;
 
         $checkout->request->cart_url    = "http://staging.asimstoys.com.au/mycart";
-        $checkout->request->success_url = 
-"http://staging.asimstoys.com.au/redirect_e_way_d/".$invoice_number."/".$order_head->net_amount."/".$customer_data->id 
-;
-        //"{{route('redirect_e_way_d', [$invoice_number, $order_head->net_amount, $customer_data->id])}}";
-        $checkout->request->cancel_url  = 
-"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-cancel/".$invoice_number;
-        $checkout->request->error_url   = 
-"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-error/".$invoice_number;
-        $checkout->request->refer_url   = 
-"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-refer/".$invoice_number;
-        $checkout->request->decline_url = 
-"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-decline/".$invoice_number;
+        /*$checkout->request->success_url = 
+"http://staging.asimstoys.com.au/redirect_e_way_d/".$invoice_number."/".$order_head->net_amount."/".$customer_data->id;*/
 
+    $checkout->request->success_url = 
+"http://staging.asimstoys.com.au/redirect_zipay/success";
+
+        //"{{route('redirect_e_way_d', [$invoice_number, $order_head->net_amount, $customer_data->id])}}";
+
+        /*$checkout->request->cancel_url  = 
+"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-cancel/".$invoice_number;*/
+
+$checkout->request->cancel_url  = 
+"http://staging.asimstoys.com.au/redirect_zipay/cancel/";
+
+/*        $checkout->request->error_url   = 
+"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-error/".$invoice_number;*/
+
+    $checkout->request->error_url   = 
+"http://staging.asimstoys.com.au/redirect_zipay/error/";
+
+        /*$checkout->request->refer_url   = 
+"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-refer/".$invoice_number;*/
+
+    $checkout->request->refer_url   = 
+"http://staging.asimstoys.com.au/redirect_zipay/refer/";
+
+        /*$checkout->request->decline_url = 
+"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-decline/".$invoice_number;*/
+
+$checkout->request->decline_url = 
+"http://staging.asimstoys.com.au/redirect_zipay/decline/";
+
+
+/*$checkout->request->redirect_url = 
+"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-redirect_url/".$zip_pay_invoice;*/
 
 $checkout->request->redirect_url = 
-"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-redirect_url/".$zip_pay_invoice;
+"http://staging.asimstoys.com.au/redirect_zipay/redirect_url/";
 
         // Order Info
         $order = new \zipMoney\Request\Order;

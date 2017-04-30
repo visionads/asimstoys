@@ -166,26 +166,33 @@ Route::any('remove_cart',[
         "uses" => "OrderController@redirect_e_way_d"
     ]);
 
+    /*zip pay success url */
+
+    Route::any("redirect_zipay/success", [
+        "as"   => "redirect_zipay.success",
+        "uses" => "OrderController@redirect_zipay_success"
+    ]);
+
     /* Zip pay redirect url */
     
-    Route::any("zip-pay-redirect_url/{invoice_no}", [
+    Route::any("redirect_zipay/redirect_url", [
         "as"   => "zip-pay-redirect_url",
         "uses" => "OrderController@zip_pay_redirect"
     ]);
 
-    Route::any("zip-pay-cancel/{invoice_no}", [
+    Route::any("redirect_zipay/cancel", [
         "as"   => "zip-pay-cancel",
         "uses" => "OrderController@zip_pay_cancel"
     ]);
-    Route::any("zip-pay-error/{invoice_no}", [
+    Route::any("redirect_e_way_d/zip-pay-error", [
         "as"   => "zip-pay-error",
         "uses" => "OrderController@zip_pay_error"
     ]);
-    Route::any("zip-pay-decline/{invoice_no}", [
+    Route::any("redirect_zipay/decline", [
         "as"   => "zip-pay-decline",
         "uses" => "OrderController@zip_pay_decline"
     ]);
-    Route::any("zip-pay-refer/{invoice_no}", [
+    Route::any("redirect_zipay/refer", [
         "as"   => "zip-pay-refer",
         "uses" => "OrderController@zip_pay_refer"
     ]);

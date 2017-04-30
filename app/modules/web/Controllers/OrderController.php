@@ -850,6 +850,70 @@ class OrderController extends Controller
         return redirect()->route('order_summery_lists');
     }
 
+    /*Success method for zippay*/
+
+    public function redirect_zipay_success(){
+
+        if(Session::has('invoice_number')){
+
+            if(Session::has('customer_id')){
+                $customer_id = Session::get('customer_id');
+            }else{
+                $customer_id = NULL;
+            }
+            
+
+            $invoice_no = Session::get('invoice_number');
+
+            $order_head = OrderHead::where('invoice_no', $invoice_no)->first();
+            $order_head->status = 'done';            
+
+            try{
+                if($order_head->save()){
+                    $customer = Customer::where('id', $customer_id)->first();
+                    $to_email = $customer->email;
+                    $to_name = $customer->first_name." ". $customer->last_name;
+                    
+                    
+                    $delivery_details = DB::table('delivery_details')->where('user_id',$customer->id)->orderby('id','desc')->first();
+                    $to_email = $customer->email;
+                    $to_name = $customer->first_name." ". $customer->last_name;
+
+                    $subject = " Payment of invoice # ".$invoice_no. " | Asims Toys ";
+                    //$body = "Dear ".$to_name. " Your Payment is approved !<br/><br/> Your Invoice no is: ".$invoice_no;
+                    
+                    $product_cart_r = DB::table('order_detail')->where('order_head_id',$order_head->id)->get();
+                    
+                    $body = view('web::cart.order_details_mail',[
+                        'product_cart_r' => $product_cart_r,
+                        'order_head' => $order_head,
+                        'customer' => $customer,
+                        'delivery_details' => $delivery_details,
+                        'invoice_no' => $invoice_no
+                    ]);
+
+                    if(Session::has('net_amount')){
+                        $amount = Session::get('net_amount');
+                    }else{
+                        $amount = NULL;
+                    }
+
+                    $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
+                    $mail_2 = SendMailer::send_mail_by_php_mailer('asimstoys@gmail.com', $to_name, $subject, $body);
+
+                    Session::flash('flash_message', "The Amount : ".$amount ." is DONE. Please check your email");
+                }
+            }catch(\exception $e){
+                Session::flash('flash_message', "Payment Declined");
+            }
+        }else{
+            Session::flash('flash_message', "Invoice Number Not present");
+        }
+
+
+        return redirect()->route('order_summery_lists');
+    }
+
     /**
      * @param Request $request
      */
@@ -890,6 +954,16 @@ class OrderController extends Controller
 
             if ($result)
             {
+                // Set Invoice Number
+                Session::set('invoice_number',$invoice_number);
+
+                // Set Net Amount
+                Session::set('net_amount',$invoice_head->net_amount);
+
+                // Set Customer data
+                Session::set('customer_id',$customer_data->id);
+                
+
                 Session::flash('flash_message', $result);
                 return redirect()->route('redirect_e_way_d', [
                     $invoice_number, $invoice_head->net_amount, $customer_data->id
@@ -911,8 +985,15 @@ class OrderController extends Controller
      * @param $invoice_no
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function zip_pay_cancel($invoice_no)
+    public function zip_pay_cancel()
     {
+
+        if(Session::has('invoice_number')){
+            $invoice_no = Session::get('invoice_number');
+        }else{
+            $invoice_no = null;
+        }
+
         $order_head = OrderHead::where('invoice_no', $invoice_no)->first();
         $order_head->status = 'cancel';
 
@@ -927,7 +1008,7 @@ class OrderController extends Controller
         return redirect()->route('order_summery_lists');
     }
 
-    public function zip_pay_redirect($invoice_no)
+    public function zip_pay_redirect()
     {
        echo 'ZipPay Redirect is working';
     }
@@ -936,8 +1017,15 @@ class OrderController extends Controller
      * @param $invoice_no
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function zip_pay_error($invoice_no)
+    public function zip_pay_error()
     {
+
+        if(Session::has('invoice_number')){
+            $invoice_no = Session::get('invoice_number');
+        }else{
+            $invoice_no = NULL;
+        }
+
         $order_head = OrderHead::where('invoice_no', $invoice_no)->first();
         $order_head->status = 'cancel';
 
@@ -956,8 +1044,15 @@ class OrderController extends Controller
      * @param $invoice_no
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function zip_pay_decline($invoice_no)
+    public function zip_pay_decline()
     {
+
+        if(Session::has('invoice_number')){
+            $invoice_no = Session::get('invoice_number');
+        }else{
+            $invoice_no = NULL;
+        }
+
         $order_head = OrderHead::where('invoice_no', $invoice_no)->first();
         $order_head->status = 'cancel';
 
@@ -976,7 +1071,7 @@ class OrderController extends Controller
      * @param $invoice_no
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function zip_pay_refer($invoice_no)
+    public function zip_pay_refer()
     {
         #$order_head = OrderHead::where('invoice_no', $invoice_no)->first();
         #$order_head->status = 'cancel';
