@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: selimreza
- * Date: 6/17/16
- * Time: 2:36 PM
- */
 
 namespace App\Helpers;
 
@@ -16,9 +10,6 @@ use DateTime;
 use zipMoney;
 use zipMoney\Request\Version;
 use Illuminate\Support\Facades\DB;
-
-
-#use Faker\Provider\DateTime;
 
 class ZipPay
 {
@@ -63,48 +54,28 @@ class ZipPay
         $checkout->request->charge = true;
         $checkout->request->currency_code = "AUD";
         $checkout->request->txn_id = false;
-        $checkout->request->order_id =  $invoice_number; //$this->_current_order_id;
+        $checkout->request->order_id =  $invoice_number; 
         $checkout->request->in_store = false;
 
         $checkout->request->cart_url    = "http://staging.asimstoys.com.au/mycart";
-        /*$checkout->request->success_url = 
-"http://staging.asimstoys.com.au/redirect_e_way_d/".$invoice_number."/".$order_head->net_amount."/".$customer_data->id;*/
+        
+        $checkout->request->success_url = 
+"http://staging.asimstoys.com.au/zippay/success";
 
-    $checkout->request->success_url = 
-"http://staging.asimstoys.com.au/redirect_zipay/success";
+        $checkout->request->cancel_url  = 
+"http://staging.asimstoys.com.au/zippay/cancel/";
 
-        //"{{route('redirect_e_way_d', [$invoice_number, $order_head->net_amount, $customer_data->id])}}";
+        $checkout->request->error_url   = 
+"http://staging.asimstoys.com.au/zippay/error/";
 
-        /*$checkout->request->cancel_url  = 
-"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-cancel/".$invoice_number;*/
+        $checkout->request->refer_url   = 
+"http://staging.asimstoys.com.au/zippay/refer/";
 
-$checkout->request->cancel_url  = 
-"http://staging.asimstoys.com.au/redirect_zipay/cancel/";
+        $checkout->request->decline_url = 
+"http://staging.asimstoys.com.au/zippay/decline/";
 
-/*        $checkout->request->error_url   = 
-"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-error/".$invoice_number;*/
-
-    $checkout->request->error_url   = 
-"http://staging.asimstoys.com.au/redirect_zipay/error/";
-
-        /*$checkout->request->refer_url   = 
-"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-refer/".$invoice_number;*/
-
-    $checkout->request->refer_url   = 
-"http://staging.asimstoys.com.au/redirect_zipay/refer/";
-
-        /*$checkout->request->decline_url = 
-"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-decline/".$invoice_number;*/
-
-$checkout->request->decline_url = 
-"http://staging.asimstoys.com.au/redirect_zipay/decline/";
-
-
-/*$checkout->request->redirect_url = 
-"http://staging.asimstoys.com.au/redirect_e_way_d/zip-pay-redirect_url/".$zip_pay_invoice;*/
-
-$checkout->request->redirect_url = 
-"http://staging.asimstoys.com.au/redirect_zipay/redirect_url/";
+        $checkout->request->redirect_url = 
+"http://staging.asimstoys.com.au/zippay/redirect_url/";
 
         // Order Info
         $order = new \zipMoney\Request\Order;
@@ -181,17 +152,6 @@ $checkout->request->redirect_url =
 
         try{
             $response = $checkout->process();
-
-            /*echo "<pre>";
-            print_r($response);
-
-            print "\n";
-            print "\n";
-            print "Please go back and use another payment";
-            print "\n";
-
-            exit("Status : Declined ! Please try later !");*/
-            
 
             if($response->isSuccess())
             {

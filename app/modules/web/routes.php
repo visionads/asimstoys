@@ -168,32 +168,32 @@ Route::any('remove_cart',[
 
     /*zip pay success url */
 
-    Route::any("redirect_zipay/success", [
-        "as"   => "redirect_zipay.success",
+    Route::any("zippay/success", [
+        "as"   => "zippay.success",
         "uses" => "OrderController@redirect_zipay_success"
     ]);
 
     /* Zip pay redirect url */
     
-    Route::any("redirect_zipay/redirect_url", [
-        "as"   => "zip-pay-redirect_url",
+    Route::any("zippay/redirect_url", [
+        "as"   => "zippay.redirect_url",
         "uses" => "OrderController@zip_pay_redirect"
     ]);
 
-    Route::any("redirect_zipay/cancel", [
-        "as"   => "zip-pay-cancel",
+    Route::any("zippay.cancel", [
+        "as"   => "zippay.cancel",
         "uses" => "OrderController@zip_pay_cancel"
     ]);
-    Route::any("redirect_e_way_d/zip-pay-error", [
-        "as"   => "zip-pay-error",
+    Route::any("zippay/error", [
+        "as"   => "zippay.error",
         "uses" => "OrderController@zip_pay_error"
     ]);
-    Route::any("redirect_zipay/decline", [
-        "as"   => "zip-pay-decline",
+    Route::any("zippay/decline", [
+        "as"   => "zippay.decline",
         "uses" => "OrderController@zip_pay_decline"
     ]);
-    Route::any("redirect_zipay/refer", [
-        "as"   => "zip-pay-refer",
+    Route::any("zippay/refer", [
+        "as"   => "zippay.refer",
         "uses" => "OrderController@zip_pay_refer"
     ]);
 
