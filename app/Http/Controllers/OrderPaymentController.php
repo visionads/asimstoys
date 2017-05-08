@@ -31,8 +31,10 @@ class OrderPaymentController extends Controller
 
         $data = OrderHead::with('relCustomer')
             ->where('order_head.invoice_type','eway')
+            ->where('order_head.localpickup',NULL)            
             ->where('status', '!=', 'cancel')
 			->where('status', '!=', 'archive')
+            ->orwhere('order_head.localpickup','no')
             ->orderBy('order_head.invoice_no','desc')
             ->get();
 
@@ -85,8 +87,10 @@ class OrderPaymentController extends Controller
 
         $data = OrderHead::with('relCustomer')
             ->where('order_head.invoice_type','layby')
+            ->where('order_head.localpickup',NULL)
 			->where('order_head.status','!=','cancel')
 			->where('status', '!=', 'archive')
+            ->orwhere('order_head.localpickup','no')
             ->orderBy('order_head.id','desc')
             ->get();
 
@@ -100,8 +104,10 @@ class OrderPaymentController extends Controller
 
         $data = OrderHead::with('relCustomer')
             ->where('order_head.invoice_type','pre-order')
+            ->where('order_head.localpickup',NULL)
 			->where('order_head.status','!=','cancel')
 			->where('status', '!=', 'archive')
+            ->orwhere('order_head.localpickup','no')
             ->orderBy('order_head.id','desc')
             ->get();
 
@@ -114,8 +120,10 @@ class OrderPaymentController extends Controller
 
         $data = OrderHead::with('relCustomer')
             ->where('order_head.invoice_type','zip-pay')
+            ->where('order_head.localpickup',NULL)
             ->where('order_head.status','!=','cancel')
             ->where('status', '!=', 'archive')
+            ->orwhere('order_head.localpickup','no')
             ->orderBy('order_head.id','desc')
             ->get();
 

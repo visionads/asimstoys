@@ -183,9 +183,8 @@
                         		<div class="col-md-7 col-xs-12 col-sm-7">
 									<div class="row">
 		                                <span class="pull-right pull-right-480-floatnone">
-		                                    <b> Local pickup  </b>
-		                                    <br>
-		                                    <small>By appointment only</small>
+		                                    <b> Please choose </b>
+		                                    
 		                                </span>
 									</div>
 							    </div>
@@ -195,10 +194,10 @@
 										<span class="pull-right pull-right-480-floatnone">
 
 		                                    <input type="radio" name="localpickup" checked id="localpickup_no" value="no">
-		                                    <label for="localpickup_no">No</label><br>
+		                                    <label for="localpickup_no">Default</label><br>
 										    
 										    <input type="radio" name="localpickup" id="localpickup_yes" value="yes">	
-										    <label for="localpickup_yes">Yes</label><br>
+										    <label for="localpickup_yes">Local pickup <br/>By appointment only</label><br>
 
 		                                </span>
 									</div>
