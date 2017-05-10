@@ -195,10 +195,10 @@
 										<span class="pull-right pull-right-480-floatnone">
 
 		                                    <input type="radio" name="localpickup" checked id="localpickup_no" value="no">
-		                                    <label for="localpickup_no">Default</label><br>
+		                                    <label for="localpickup_no">Delivered (By TNT Road Express)</label><br>
 										    
 										    <input type="radio" name="localpickup" id="localpickup_yes" value="yes">	
-										    <label for="localpickup_yes">Local pickup (<small>by appoinment only</small>)</label><br>
+										    <label for="localpickup_yes">Local Pick up <br/>( By appoinment Only from Greenacre, NSW)</label><br>
 
 		                                </span>
 									</div>
