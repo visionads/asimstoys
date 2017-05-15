@@ -9,10 +9,12 @@
 Route::group(array('modules'=>'Web', 'namespace' => 'App\Modules\Web\Controllers'), function() {
     //Your routes belong to this module.
 
-/*Route::any('admin', [
-    'as' => 'admin',
-    'uses' => 'HomeController@user_login'
-]);*/
+Route::any('index/zipmoney', [
+    'as' => 'index/zipmoney',
+    'uses' => 'ZipMoneyWebHook@subscribeAction'
+]);
+
+
 
 
 
