@@ -167,7 +167,6 @@ class ProductController extends Controller
         $image=Input::file('image');
 
       
-
         if(count($image)>0) {
             $file_type_required = 'png,jpeg,jpg';
             $destinationPath = 'uploads/product_image/';

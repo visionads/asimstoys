@@ -1,0 +1,373 @@
+/*------------------------------------------------
+|              AR. After Requirements            |
+------------------------------------------------*/
+/*
+  After deliver site to the client he will give some requirments. That is the area
+  the changed style and requirments will be written.
+*/
+
+/*===================================================================================================
+                                 Responsive & Media Queries
+===================================================================================================*/
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+@media print {
+
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        /* Black prints faster:
+                                            http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+          * Don't show links that are fragment identifiers,
+          * or use the `javascript:` pseudo protocol
+          */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+          * Printing Tables:
+          * http://css-discuss.incutio.com/wiki/Printing_Tables
+          */
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    /*img {max-width: 100% !important;}*/
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+/*==== -----------| Responsive Style |----------- ===*/
+
+@media (min-width: 1200px) {
+    .product-zoom-wrapper {
+        padding-right: 0;
+    }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 768px) {
+
+    .catagory-li:hover a + ul.submenu,
+    .catagory-li a + ul.submenu li:hover ul.submenu-2 {
+        display: block;
+    }
+
+    ul.submenu li:hover a + ul.submenu-2 {
+        display: block
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+    [class*="custom-col-xs"] {
+        float: left;
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .custom-col-xs-12 {
+        width: 100%;
+    }
+
+    .custom-col-xs-11 {
+        width: 91.66666667%;
+    }
+
+    .custom-col-xs-10 {
+        width: 83.33333333%;
+    }
+
+    .custom-col-xs-9 {
+        width: 75%;
+    }
+
+    .custom-col-xs-8 {
+        width: 66.66666667%;
+    }
+
+    .custom-col-xs-7 {
+        width: 58.33333333%;
+    }
+
+    .custom-col-xs-6 {
+        width: 50%;
+    }
+
+    .custom-col-xs-5 {
+        width: 41.66666667%;
+    }
+
+    .custom-col-xs-4 {
+        width: 33.33333333%;
+    }
+
+    .custom-col-xs-3 {
+        width: 25%;
+    }
+
+    .custom-col-xs-2 {
+        width: 16.66666667%;
+    }
+
+    .custom-col-xs-1 {
+        width: 8.33333333%;
+    }
+
+    .contact-form{
+        padding: 20px;
+    }
+
+    .contact-form h3{
+        font-size: 20px;
+        padding: 20px;
+        line-height: 35px;
+    }
+
+    form.form{
+        margin-top: 20px;
+        padding: 5%;
+    }
+
+    .general-container{
+        padding-bottom: 20px;
+    }
+
+    .faq-container {
+        margin: 20px;
+        width: calc(100% - 40px);
+        padding: 20px; 
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+
+}
+
+/*Mobile View Port*/
+@media (max-width: 800px) {
+
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 767px) {
+    .top-header {
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .top-header a {
+        padding: 0 10px;
+    }
+
+    /***-------------- Menu ----------***/
+    .navbar-nav,
+    .navbar-nav li {
+        float: left;
+        width: 100%;
+    }
+    #slider {
+
+    }
+    .category-dropdown-wrapper {
+
+    }
+    .category-dropdown-wrapper ul {
+        position: static !important;
+        float: none !important;
+    }
+    .collapse.in .category-list{
+        display: block;
+    }
+    .category-list {
+        display: none;
+    }
+    .menu-area {
+        min-height: 60px;
+    }
+    .menu-area .category {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
+    .menu-area .category .category-btn {
+        background: none;
+    }
+    .menu-area .category .category-btn button {
+        position: static;
+        float: left;
+        margin-left: 18px;
+    }
+    .menu-area .category .category-btn > span {
+        /*display: inline-block;*/
+        /*float: left;*/
+        margin-left: -10px;
+        /*margin-top: 2px;*/
+    }
+    .menu-area > .navbar-toggle {
+        float: right;
+        color: #fff;
+        position: absolute;
+        right: 3px;
+        top: 3px;
+        z-index: 100;
+        background: none;
+    }
+    .menu-area > .navbar-collapse {
+        position: absolute;
+        width: 100%;
+        left: 0px;
+        right: 0px;
+        top: 59px;
+        padding: 0px;
+        z-index: 10;
+    }
+    /***-------------- Catergories & slider   ----------***/
+    .slider-flexbox {
+        -webkit-flex-direction: row;
+        display: block;
+        flex-direction: row;
+    }
+
+    .slider,
+    .products,
+    .category {
+        padding: 0
+    }
+    .slider{
+        display: none;
+    }
+    .main-section-flexbox {
+        color: #fff;
+        /*-webkit-flex-direction: row;*/
+        /*display: block;*/
+        /*flex-direction: row;*/
+    }
+    .footer-container {
+        text-align: center;
+        margin-top: 40px;
+    }
+    .footer-container .footer-left-col,
+    .footer-container .footer-left-col {
+        display: inline-block;
+        width: 100%;
+    }
+    .footer-container .footer-left-col>*,
+    .footer-container .footer-left-col>* {
+
+    }
+    .footer-container .footer-menu>ul,
+    .footer-container .developer-company {
+        float: none !important;
+        display: inline-block;
+        line-height: 1;
+    }
+    .footer-container {
+
+    }
+}
+
+@media (max-width: 650px) {
+    .footer-container .footer-menu ul li a {
+        padding: 0 10px;
+    }
+}
+@media (max-width: 568px) {
+    .pagination {
+        font-size: 16px;
+    }
+    .product-price-calculation-tabs .nav-tabs > li > a {
+        font-size: 12px;
+    }
+}
+
+/* Smartphone Landscape */
+@media (max-width: 480px) {
+    .m-after-logo h5 {
+        font-size: 14px
+    }
+
+    .m-after-logo {
+        padding: 20px 0;
+    }
+
+    .each-p-details {
+        height: auto;
+        padding-bottom: 40px;
+    }
+    .pagination {
+        font-size: 13px;
+    }
+    .pagination span:first-child {
+        margin-right:10px;
+    }
+    .pagination span:last-child {
+        margin-left: 10px;
+    }
+    .pagination li a {
+        padding: 0 6px;
+    }
+    .footer-container .footer-menu ul li a {
+        padding: 0 6px;
+    }
+}
+
+/* Lowest devices and Smartphone Portrait Screen */
+@media (max-width: 320px) {
+
+}
+

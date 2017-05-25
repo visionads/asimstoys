@@ -45,6 +45,11 @@
         </div>
 
         <div class="form-group">
+            {!! Form::label('caption', 'Caption:', ['class' => 'control-label']) !!}
+            {!! Form::text('caption', null, ['id'=>'caption', 'class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
             {!! Form::label('Buy now rate', 'Buy now rate:', ['class' => 'control-label']) !!}
             <small class="required">(Required)</small>
             {!! Form::text('sell_rate', null, ['id'=>'sell_rate', 'class' => 'form-control','required']) !!}
