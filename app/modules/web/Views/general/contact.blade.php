@@ -1,40 +1,28 @@
 @extends('web::layout.web_master')
 
 @section('content')
-	<div class="pos-new-product home-text-container">
-		<h4>{{$data->title}}</h4>
-		<div class="description">
-			<?php
-				if(!empty($data->desc)){
-					echo $data->desc;
-				}else{
-					echo 'No content yet.';
-				}
-			?>
+	<div class="general-container">
+		<h1 class="box-tb-border">{{$data->title}}</h1>
 
-			<div class="contact_form_container">
-			
-				{!! Form::open(['route' => 'contactsubmit']) !!}
-					<div class="form-group">
-						<label>Name</label>
-						{!! Form::text('name', null, ['id'=>'name', 'class' => '','required']) !!}
-					</div>
-					<div class="form-group">
-						<label>Email</label>
-						{!! Form::email('email', null, ['id'=>'email', 'class' => '','required']) !!}
-					</div>
-					<div class="form-group">
-						<label>Phone</label>
-						{!! Form::text('phone', null, ['id'=>'phone', 'class' => '','required']) !!}
-					</div>
-					<div class="form-group">
-						<label>Subject</label>
-						{!! Form::text('subject', null, ['id'=>'subject', 'class' => '','required']) !!}
-					</div>
-					<div class="form-group">
-						<label>Message</label>
-						{!! Form::text('message', null, ['id'=>'message', 'class' => '','required']) !!}
-					</div>
+		<div class="contact-form">
+			<h3>
+				If you have any enquiry about our products, please contact with us. OR you can call to <a href="tel:1300 566 662">1300 566 662</a>
+			</h3>
+
+			{!! Form::open(['route' => 'contactsubmit', 'class'=>'form']) !!}
+					
+						
+						{!! Form::text('name', null, ['id'=>'name', 'class' => '','required', 'placeholder' => 'Your Name']) !!}
+					
+					
+						{!! Form::email('email', null, ['id'=>'email', 'class' => '','required', 'placeholder' => 'Email Address']) !!}
+					
+						{!! Form::text('phone', null, ['id'=>'phone', 'class' => '','required', 'placeholder' => 'Phone Number']) !!}
+										
+						{!! Form::text('subject', null, ['id'=>'subject', 'class' => '','required', 'placeholder' => 'Subject']) !!}
+					
+						{!! Form::textarea('message', null, ['id'=>'message', 'class' => '','required','placeholder' => 'Your Message']) !!}
+					
 					
 					<div class="form-group">
 						<input type="submit" name="submit" value="Send" class="submitbtn">
@@ -55,8 +43,9 @@
 					</div>
 						
 				{!! Form::close() !!}
-				
-			</div>
+
 		</div>
+
 	</div>
+	
 @stop

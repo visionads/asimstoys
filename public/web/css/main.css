@@ -1394,6 +1394,7 @@ form.form{
     padding: 5% 20%;
     display: inline-block;
     margin-bottom: 50px;
+    width: 100%;
 }
 
 form.form.form-2{
@@ -1487,9 +1488,12 @@ form.form input[type="submit"]{
     display: inline-block;
     background: #fff;
     padding: 40px;
+    color: #00a4e1;
+    font-size: 16px;
 }
 
 .faq-container h3{
+    text-transform: uppercase;
     color: #ce2491;
     font-weight: bold;
     font-size: 17px;
