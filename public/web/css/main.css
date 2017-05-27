@@ -1747,6 +1747,34 @@ a.cart-continue-shopping{
     margin-top: 30px;
 }
 
+/*Filter Value*/
+.by-filter{
+    width: 100%;
+    display: inline-block;
+}
+
+.by-filter select{
+    width: 200px;
+    height: 50px;
+    border: none;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    border-radius: 6px;
+    webkit-box-shadow: 2px -1px 10px 1px rgba(0,0,0,0.15);
+    -moz-box-shadow: 2px -1px 10px 1px rgba(0,0,0,0.15);
+    box-shadow: 2px -1px 10px 1px rgba(0,0,0,0.15);
+    float: right;
+}
+
+.pre-order-small{
+        color: #00a4e1;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
 
 /*** BootStrap Modify ***/
 @media screen and (max-width: 1399px) {
