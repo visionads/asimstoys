@@ -229,6 +229,10 @@
         position: static !important;
         float: none !important;
     }
+
+     .category-dropdown-wrapper ul li ul.submenu{
+        display: block;
+     }
     .collapse.in .category-list{
         display: block;
     }

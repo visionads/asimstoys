@@ -84,6 +84,35 @@
                                 <a class="sidemenu-{{$productgroup->id}}" href="#">{{$productgroup->title}}
                                 </a>
                             @endif
+
+                            <?php
+                                $product_subgroup_data =  DB::table('product_subgroup')->where('product_group_id', $productgroup->id)->orderBy('sort_order','asc')->get();
+                                if(!empty($product_subgroup_data)):
+                            ?>
+                                    <ul class="submenu">
+                                        @foreach($product_subgroup_data as $product_subgroup)
+                                            <li>
+                                                <a href="{{URL::to('/')}}/{{$productgroup->slug}}/{{$product_subgroup->slug}}">{{$product_subgroup->title}}</a>
+                                                <?php
+                                                    if($product_subgroup->id == 7):
+                                                ?>
+                                                    <ul class="submenu-2">
+                                                        <li>
+                                                            <a href="{{Url::to('/')}}/{{$productgroup->slug}}/{{$product_subgroup->slug}}/by-brand">By Brands</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{Url::to('/')}}/{{$productgroup->slug}}/{{$product_subgroup->slug}}/by-seats">By Seats</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{Url::to('/')}}/{{$productgroup->slug}}/{{$product_subgroup->slug}}/by-voltage">By Voltage</a>
+                                                        </li>
+                                                    </ul>
+                                                <?php endif; ?>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+
+                            <?php endif; ?>
                             
                         </li>
                     @endforeach
