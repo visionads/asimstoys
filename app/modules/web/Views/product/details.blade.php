@@ -23,498 +23,400 @@
 	}
 
 ?>
-	<div class="pos-new-product home-text-container">
-		<h4>{{$product->title}}</h4>
 
+<div class="slider mb-30">
+    <div class="slider-wrapper ">
 
+        <h5 class="box-tb-border">{{$product->title}}</h5>
 
-		<div class="col-md-12">
-			<div class="row">
-
-				<div class="col-md-12">
-
-
-					<div class="col-md-6 col-sm-6 col-xs-12">
-						<div class="product_gallery_section">
-
-							<div class="main_open_image">
-								@if(!empty($product_single_gallery))
-									<img id="zoom_01" src="{{URL::to('')}}/{{$product_single_gallery->image}}" data-zoom-image="{{URL::to('')}}/{{$product_single_gallery->image}}" width="100%" height="350px" />
-								@else
-									<p class="no_gallery_yet">No gallery yet.</p>
-								@endif
-								
-							</div>
-                            <div id="gallery_01">
-
-                                @if(!empty($product_gallery_all))
-                                    @foreach($product_gallery_all as $product_gallery)
-                                        <a href="#" data-image="{{URL::to('')}}/{{$product_gallery->image}}" data-zoom-image="{{URL::to('')}}/{{$product_gallery->image}}"> <img id="zoom_01" src="{{URL::to('')}}/{{$product_gallery->image}}" /> </a>
-                                    @endforeach
+        <div class="products-box product-details-box-wrapper box-tb-border-b ">
+            <div class="clearfix mb-30">
+                <div class="col-lg-7 product-zoom-wrapper ">
+                    <div class="mb-30">
+                        <div class="product-zoom-image-wrapper">
+                            
+                           @if(!empty($product_single_gallery))
+                                    <img id="zoom_01" src="{{URL::to('')}}/{{$product_single_gallery->image}}" data-zoom-image="{{URL::to('')}}/{{$product_single_gallery->image}}" width="100%" height="350px" />
+                                @else
+                                    <p class="no_gallery_yet">No gallery yet.</p>
                                 @endif
 
-                            </div>
+                        </div>
+                        <div id="gallery_01" class="product-zoom-thumb-wrapper row">
 
-
-
-                            {{--Social Share Start--}}
-
-                            <script>
-                                var popupSize = {
-                                    width: 600,
-                                    height: 500
-                                };
-
-                                $(document).on('click', '.social-buttons > a', function(e){
-
-                                    var
-                                            verticalPos = Math.floor(($(window).width() - popupSize.width) / 2),
-                                            horisontalPos = Math.floor(($(window).height() - popupSize.height) / 2);
-
-                                    var popup = window.open($(this).prop('href'), 'social',
-                                            'width='+popupSize.width+',height='+popupSize.height+
-                                            ',left='+verticalPos+',top='+horisontalPos+
-                                            ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
-
-                                    if (popup) {
-                                        popup.focus();
-                                        e.preventDefault();
-                                    }
-
-                                });
-                            </script>
-                            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-                            <div class="social-buttons">
-                                Share :
-                                <a href="https://www.facebook.com/sharer/sharer.php?url={{ urlencode(Request::fullUrl()) }}"
-                                   target="_blank">
-                                    <i class="fa fa-facebook-official"> Facebook</i>
+                             @if(!empty($product_gallery_all))
+                                @foreach($product_gallery_all as $product_gallery)
+                                    <a href="#" data-image="{{URL::to('')}}/{{$product_gallery->image}}" data-zoom-image="{{URL::to('')}}/{{$product_gallery->image}}"> <img style="width: 120px;float: left;height: 80px;margin-right: 10px;margin-bottom: 10px;" id="zoom_01" src="{{URL::to('')}}/{{$product_gallery->image}}" /> </a>
+                                @endforeach
+                            @endif
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 ">
+                    <div class="product-price-calculation-tabs">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="{{\Session::has('active_fc')?'':'active'}}">
+                                <a href="#tab-product-details" aria-controls="profile" role="tab" data-toggle="tab">
+                                    Product Details
                                 </a>
-                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::fullUrl()) }}"
-                                   target="_blank">
-                                    <i class="fa fa-twitter-square"> Twitter</i>
+                            </li>
+                            <li role="presentation" class="{{\Session::get('active_fc')}}">
+                                <a href="#tab-product-freight-calculation" aria-controls="profile" role="tab" data-toggle="tab">
+                                    Freight Calculation
                                 </a>
-                                <a href="https://plus.google.com/share?url={{ urlencode(Request::fullUrl()) }}"
-                                   target="_blank">
-                                    <i class="fa fa-google-plus-square"> Google Plus</i>
-                                </a>
-                            </div>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane {{\Session::has('active_fc')?'':'active'}}" id="tab-product-details">
+                                <div class="product-cart-card">
 
+                                    <form method="post" action="{{URL::to('/')}}/order/add_to_cart" class="<?php if(!empty($product_variation_r)){echo 'product_details_buynow_form';}else{echo 'product_details_buynow_form product_details_buynow_form_up';} ?>">
 
-                            {{--Social Share END--}}
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <div class="product-cart-card__header">
+                                            <div class="product-cart-title">Availability: <?php
+                                                    if($product->stock_unit_quantity <= 0){
+                                                        echo 'Out of Stock';
+                                                    }else{
+                                                        //echo 'In Stock (only '. $product->stock_unit_quantity .' left)';
+                                                        echo 'In Stock';
+                                                    }
+                                                ?></div>
+                                        </div>
+                                        <div class="product-cart-card__body">
 
-						</div>
-					</div>
+                                        @if($product->product_group_id != '9')
+                                            <div class="total-price mb-10">Price: @if(!empty($product->old_price))
+                                                <span class="old_price">${{number_format(@$product->old_price, 2)}}</span>
+                                            @endif
+                                            $ <?php echo $product->sell_rate;?>
+                                            </div>
+                                        @endif
 
+                                            <div class="row mb-10">
 
-					<div class="col-md-6 col-sm-6 col-xs-12">
-
-                        <div class="col-md-12" style="padding: 0px; margin: 0px;">
-                            <div class="product_details_tab" style="background: none; ">
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs" role="tablist" >
-                                    <li role="presentation" class="{{\Session::has('active_fc')?'':'active'}}">
-                                        <a href="#product-details-of" aria-controls="messages" role="tab" data-toggle="tab" style="color: black; border-bottom: 0px;">Product Details</a>
-                                    </li>
-                                    <li role="presentation" class="{{\Session::get('active_fc')}}">
-                                        <a href="#freight-panel" aria-controls="settings" role="tab" data-toggle="tab" style="color: white; border-bottom: 0px; background-color: #D42E98; ">Freight Calculation </a>
-                                    </li>
-                                </ul>
-
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane {{\Session::has('active_fc')?'':'active'}}" id="product-details-of" style="padding: 0px;">
-                                        {{--
-                                            Product area
-                                        --}}
-
-
-                                        <form method="post" action="{{URL::to('/')}}/order/add_to_cart" class="<?php if(!empty($product_variation_r)){echo 'product_details_buynow_form';}else{echo 'product_details_buynow_form product_details_buynow_form_up';} ?>">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-
-                                        <div class="product_details">
-                                            <div class="availability_container">
-                                                <p>
-                                                    <span class="avaliablity">Availability:</span><span class="in_stock">
-                                                        <?php
-                                                            if($product->stock_unit_quantity <= 0){
-                                                                echo 'Out of Stock';
-                                                            }else{
-                                                                //echo 'In Stock (only '. $product->stock_unit_quantity .' left)';
-                                                                echo 'In Stock';
-                                                            }
-                                                        ?>
-
-                                                    </span>
-                                                </p>
-                                                <div>
+                                                @if($product->preorder == '1')
                                                     <div class="col-md-12">
-														
-														@if($product->product_group_id != '9')
-															<span class="previous_price">
-																Price: 
-                                                                @if(!empty($product->old_price))
-                                                                    <span class="old_price">${{number_format(@$product->old_price, 2)}}</span>
-                                                                @endif
-                                                                $ <?php echo $product->sell_rate;?>
-															</span>
-														@endif
-														
-														@if($product->preorder == '1')
-                                                                <label>
-                                                                    <input type="radio" checked name="price_asim" value="{{$product->sell_rate}}" required="required">
-                                                                    Pre order &nbsp;<br>
-                                                                    <small style="font-weight: normal; line-height: 0;">" $50 minimum Pre order. Chose partial payment option at the checkout "</small>
-                                                           
-                                                                </label>
-														@endif
+                                                        <label>
+                                                            <input type="radio" checked name="price_asim" value="{{$product->sell_rate}}" required="required">
+                                                            PRE ORDER &nbsp;<br>
+                                                            <small style="font-weight: normal;font-size: 9px;text-transform: uppercase;">" $50 minimum Pre order. Chose partial payment option at the checkout "</small>
+                                                   
+                                                        </label>
+                                                    </div>
+                                                @endif
 
-                                                        <div class="col-md-6">
-														
-															
-																		
-                                                            @if(!empty($product->cost_price))
-                                                                @if($product->preorder != '1' || $product->preorder == '0' )
+                                                <div class="col-md-6 text-center text-uppercase">
+                                                
+                                                    
+                                                                
+                                                    @if(!empty($product->cost_price))
+                                                        @if($product->preorder != '1' || $product->preorder == '0' )
 
-                                                                    <label>
-                                                                        <input type="radio" name="price_asim" value="{{$product->sell_rate}}" required="required" checked="checked">
-                                                                        Buy now &nbsp;
-                                                                        @if($product->product_group_id == '9')
-																		<span class="previous_price text-align-left">
-																			$ <?php echo $product->sell_rate;?>
-																		</span>
-																	@endif
-                                                                    </label>
-
-                                                                {{--@else
-                                                                    Was &nbsp;--}}
-                                                                {{--@endif--}}
-
-                                                                @endif
+                                                            <label>
+                                                                <input type="radio" name="price_asim" value="{{$product->sell_rate}}" required="required" checked="checked">
+                                                                BUY NOW&nbsp;
+                                                                @if($product->product_group_id == '9')
+                                                                <span class="previous_price text-align-left">
+                                                                    $ <?php echo $product->sell_rate;?>
+                                                                </span>
                                                             @endif
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                           
+                                                            </label>
 
-                                                            @if($product->product_group_id == '9')
-                                                                <label>
-                                                                    <input type="radio" name="price_asim" value="{{$product->cost_price}}" required="required">
-                                                                    Special Rate &nbsp;
-																	<span class="previous_price text-align-left">
-																		$ <?php echo $product->cost_price;?>
-																	</span>
-                                                                </label>
-															@else
-																
-																@if($product->preorder != '1')
-																	<label>
-																		<input type="radio" name="price_asim" value="{{$product->cost_price}}" required="required">
-																		Layby &nbsp; <br>
-																		<small style="font-weight: normal; line-height: 0;">" $50 minimum layby. Chose partial payment option at the checkout "</small>
-																	</label>
-																@endif
-                                                            @endif
-                                                        </div>
-                                                        <p>
+                                                        {{--@else
+                                                            Was &nbsp;--}}
+                                                        {{--@endif--}}
 
-                                                            <div style="text-align: center;">
-                                                                <img src="{{asset('images/zip_money.png')}}" width="120" >
-                                                                Learn about how you can buy now and pay later with
-                                                                <a href="http://www.zippay.com.au" title="Buy Now, and Pay Later with zipPay" target="_blank" style="text-decoration: underline;">zipPay</a>
+                                                        @endif
+                                                    @endif
+                                                </div>
+                                                <div class="col-md-6">
+                                                   
+
+                                                    @if($product->product_group_id == '9')
+                                                        <label>
+                                                            <input type="radio" name="price_asim" value="{{$product->cost_price}}" required="required">
+                                                            SPECIAL RATE &nbsp;
+                                                            <div class="small-text">
+                                                                $ <?php echo $product->cost_price;?>
                                                             </div>
-                                                        </p>
+                                                        </label>
+                                                    @else
+                                                        
+                                                        @if($product->preorder != '1')
+                                                            <label>
+                                                                <input type="radio" name="price_asim" value="{{$product->cost_price}}" required="required">
+                                                                LAY BY &nbsp; <br>
+                                                                <div class="small-text"> $50 minimum layby. Chose partial payment option at the checkout "</div>
+                                                            </label>
+                                                        @endif
+                                                    @endif
+                                                </div>
 
+                                            </div>
+                                            <div class="payment-way">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <img src="{{URL::to('')}}/web/images/zip-pay.png" alt="" class="img-responsive">
+                                                    </div>
+                                                    <div class="col-xs-8">
+                                                        Learn about how you can buy now and pay later with zipPay
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="width: 100%; border-bottom: 1px solid #efefef; padding-bottom: 10px">
-                                                <?php echo $product->short_description; ?>
+                                            <div class="row mt-20">
+                                      
+                                                <input type="hidden" name="weight" value="{{$product->weight}}">
+                                                <input type="hidden" name="volume" value="{{$product->volume}}">
 
-                                            </div>
-
-
-                                            <input type="hidden" name="weight" value="{{$product->weight}}">
-                                            <input type="hidden" name="volume" value="{{$product->volume}}">
-                                            <div class="form-group">
                                                 <input type="hidden" name="product_id" value="{{$product->id}}">
                                                 <input type="hidden" name="price_amount" value="{{@$product->sell_rate}}" id="price-amount">
+
                                                 @if(!empty($product_variation_r))
-                                                    <div class="width50">
-                                                        <label>color</label>
-                                                        <select name="color">
+                                                    <div class="col-xs-4 mb-10">
+                                                    <div class="text-uppercase lebels">Color:</div>
+                                                    </div>
+
+                                                    <div class="col-xs-8 mb-10">
+                                                        <select name="color" id="">
                                                             @foreach($product_variation_r as $product_variation)
                                                                 <option value="{{$product_variation->title}}">{{$product_variation->title}}</option>
                                                             @endforeach
-
                                                         </select>
-                                                    </div>
+                                                    </div>                                                   
 
                                                 @endif
 
-                                                <div class="width50">
-                                                    <label>Quantity</label>
-                                                    <select name="quantity">
+                                                <div class="col-xs-4">
+                                                    <div class="text-uppercase lebels">Quantity:</div>
+                                                </div>
+                                                <div class="col-xs-8">
+                                                    <select name="quantity" id="">
                                                         @if($product->stock_unit_quantity > 0)
                                                             @for($i=1;$i<=$product->stock_unit_quantity;$i++)
                                                                 <option value="{{$i}}">{{$i}}</option>
                                                             @endfor
                                                         @endif
-                                                        
                                                     </select>
                                                 </div>
-
-                                                <div style="text-align: center; ">
-                                                    <p>&nbsp; </p>
-													<?php
-													
-													
-														if($product->stock_unit_quantity > 0){
-															
-														
-																$show_add_to_cart = 'no';
-																
-																if(Session::has('product_cart')){
-																	$product_cart_exists = Session::get('product_cart');
-																
-																	$check_value = search($product_cart_exists, 'product_id', $product->id);
-
-																	if(!empty($check_value)){
-																		$show_add_to_cart = 'yes';
-																	}else{
-																		$show_add_to_cart = 'no';
-																	}
-																}
-																
-																if($show_add_to_cart == 'yes'){
-													?>
-																	<span class="register_btn no_add_cart">Add to Cart</span>
-													<?php
-																}else{
-																	
-													?>
-																	<input type="submit" name="submit" class="register_btn" value="Add to Cart" style="padding: 10px; text-align: center; ">
-													<?php
-																}
-
-														}
-													?>
-                                                </div>
-
-
-{{--
-                                                <!-- Button trigger modal -->
-                                                <a class="email_us" href="#" data-toggle="modal" data-target="#myModal" >
-                                                    <img src="{{URL::to('')}}/web/images/ask.png">
-                                                    <br/>
-                                                    EMAIL
-                                                </a>--}}
-
-
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form class="email_us_container">
-                                                                    <div class="form-group">
-                                                                        <label>Product Name</label>
-                                                                        {{$product->title}}
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>Name</label>
-                                                                        <input type="text" name="name">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>Email</label>
-                                                                        <input type="text" name="email">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>Message</label>
-                                                                        <textarea name="message" ></textarea>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <input class="submit" type="submit" name="name" value="Send">
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
-
                                         </div>
-                                        </form>
-                                        {{--
-                                        End Product Area.
-                                        --}}
+                                        <div class="product-cart-card__footer">
 
-                                    </div>
+                                            <?php
+                                            
+                                            
+                                                if($product->stock_unit_quantity > 0){
+                                                    
+                                                
+                                                        $show_add_to_cart = 'no';
+                                                        
+                                                        if(Session::has('product_cart')){
+                                                            $product_cart_exists = Session::get('product_cart');
+                                                        
+                                                            $check_value = search($product_cart_exists, 'product_id', $product->id);
 
-                                    @if($product->product_group_id !=7)
+                                                            if(!empty($check_value)){
+                                                                $show_add_to_cart = 'yes';
+                                                            }else{
+                                                                $show_add_to_cart = 'no';
+                                                            }
+                                                        }
+                                                        
+                                                        if($show_add_to_cart == 'yes'){
+                                            ?>
+                                                            <span class="add-to-cart-btn">Add to Cart</span>
+                                            <?php
+                                                        }else{
+                                                            
+                                            ?>
+                                                        <input type="submit" name="submit" class="add-to-cart-btn" value="Add to Cart">
+                                            <?php
+                                                    }
 
-                                    <div role="tabpanel" class="tab-pane {{\Session::get('active_fc')}}" id="freight-panel">
-                                        {{--Freight Panel--}}
-
-                                        <small> Shipping Cost and method (TNT Express) for this product <b>{{$product->title}}</b> </small>
-                                        @if(\Session::has('cal'))
-                                            <div id="freight-result" style="font-size: 13px; color: blue; font-weight: bold;">
-                                                <br>
-                                                {{\Session::get('cal')}}
-                                                <p>&nbsp;</p>
-                                            </div>
-                                        @endif
-
-                                        <div>
-                                            {!! Form::open(array('url' => 'freight-cal-by-product', 'id'=>'fc-base-search')) !!}
-
-                                                <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                <div class="form-group">
-                                                    <input type="text" name="suburb" required="required" placeholder="type your suburb" class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" name="postcode" required="required" placeholder="type your post code" class="form-control">
-                                                </div>
-                                                <div class="form-group" style="text-align: center">
-                                                    <button class="btn btn-info btn-flat" type="submit" style="width: 90%">
-                                                        Freight Calculation
-                                                    </button>
-                                                </div>
-
-                                            {!! Form::close() !!}
+                                                }
+                                            ?>
+                                            
                                         </div>
-
-
-
-                                        {{--END Freight --}}
-                                    </div>
-
-
-                                    @endif
+                                    </form>
                                 </div>
                             </div>
+
+                            @if($product->product_group_id !=7)
+                                <div role="tabpanel" class="tab-pane {{\Session::get('active_fc')}} " id="tab-product-freight-calculation">
+                                    <div class="product-cart-card">
+                                        {!! Form::open(array('url' => 'freight-cal-by-product', 'id'=>'fc-base-search')) !!}
+                                            
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
+
+                                            <div class="small-text mb-20">Shipping Cost and method (TNT Express) for this product SPRAY PAINT-PINK 24 VOLT BMW X7 STYLE TWO SEATS ,RUBBER WHEELS, LEATHER SEATS & REMOTE</div>
+                                            <div class="form-group">
+                                                <input type="text" name="suburb" id="" class="form-control" placeholder="Type your suburb">
+                                            </div>
+                                            <div class="form-group mb-20">
+                                                <input type="text" name="postcode" id="" class="form-control" placeholder="Type your post code">
+                                            </div>
+                                            <button class="add-to-cart-btn" type="submit">Freight Calculation</button>
+                                        {!! Form::close() !!}
+                                    </div>
+                                </div>
+                            @endif
+
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix mb-30">
+                <div class="col-sm-12">
+                    <div class="product-details-description-tabs">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#tab-product-description" aria-controls="profile" role="tab" data-toggle="tab">
+                                    Description
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#tab-product-specification" aria-controls="profile" role="tab" data-toggle="tab">
+                                    Specification
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#tab-product-features" aria-controls="profile" role="tab" data-toggle="tab">
+                                    Features
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#tab-product-videos" aria-controls="home" role="tab" data-toggle="tab">
+                                    Videos
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="tab-product-description">
+                                <?php echo $product->short_description; ?>
+                            </div>
+                            <div role="tabpanel" class="tab-pane " id="tab-product-specification">
+                                <?php
+                                    if(!empty($product->long_description)){
+                                        echo $product->long_description;
+                                    }else{
+                                        echo 'No Specification yet.';
+                                    }
+                                ?>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="tab-product-features">
+                                
+                                <?php
+                                    if(!empty($product->features)){
+                                        echo $product->features;
+                                    }else{
+                                        echo 'No Feature yet.';
+                                    }
+                                ?>
 
-
-					</div>
-
-
-
-
-				</div>
-
-
-			</div>
-		</div>
-	</div>
-
-
-
-
-
-
-	<div class="pos-new-product home-text-container">
-		<div class="col-md-12">
-			<div class="rowd">
-				<div class="product_details_tab">
-					<!-- Nav tabs -->
-					  <ul class="nav nav-tabs" role="tablist">
-					    <li role="presentation" class="active"><a href="#specification" aria-controls="home" role="tab" data-toggle="tab">Specification</a></li>
-					    <li role="presentation"><a href="#features" aria-controls="profile" role="tab" data-toggle="tab">Features</a></li>
-					    <li role="presentation"><a href="#videos" aria-controls="settings" role="tab" data-toggle="tab">Videos</a></li>
-					  </ul>
-
-					  <!-- Tab panes -->
-					  <div class="tab-content">
-					    <div role="tabpanel" class="tab-pane active" id="specification">
-
-					    	<div class="product_specifications">
-								<?php
-									if(!empty($product->long_description)){
-										echo $product->long_description;
-									}else{
-										echo 'No Specification yet.';
-									}
-								?>
-							</div>
-
-					    </div>
-					    <div role="tabpanel" class="tab-pane" id="features">
-					    	<?php
-								if(!empty($product->features)){
-									echo $product->features;
-								}else{
-									echo 'No Feature yet.';
-								}
-							?>
-					    </div>
-					    
-					    <div role="tabpanel" class="tab-pane" id="videos">
-					    	<div class="col-md-4">
-								<div class="home-youtube">
-									<?php
-										if(!empty($product->videos)){
-									?>
+                            </div>
+                            <div role="tabpanel" class="tab-pane active" id="tab-product-videos">
+                                    <?php
+                                        if(!empty($product->videos)){
+                                    ?>
 
                                         <iframe width="420" height="345"
                                                 src="{{ $product->videos }}">
                                         </iframe>
-									<?php
-										}else{
-											echo 'No Video yet.';
-										}
-									?>
-									
-								</div>
-							</div>
-					    </div>
-					  </div>
-				</div>
-			</div>
-		</div>
-	</div>
+                                    <?php
+                                        }else{
+                                            echo 'No Video yet.';
+                                        }
+                                    ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	<div class="pos-new-product home-new-product-container">
-		<div class="pos-new-product-title title_block">
-			<h4>Related Products</h4>
-			<ul class="productlisting">
-				@if(!empty($related_product_r))
-					@foreach($related_product_r as $related_product)
+    </div>
+</div>
 
-						<li class="newproductslider-item ajax_block_product first_item last_item_of_line ">
-							<div class="item-inner related-inner">
-								
-								<a href="{{URL::to('/')}}/{{@$related_product->slug}}" title="{{@$related_product->title}}" class="bigpic_15_newproduct123 product_image">
-									<amp-img src="{{URL::to('/')}}/{{@$related_product->image}}"  alt="{{@$related_product->title}}" width="250" height="230" layout="responsive"> </amp-img>
-								</a>
-				
-								<h5 class="s_title_block">
-									<a href="{{URL::to('/')}}/{{$related_product->slug}}" title="Malesuada mi">{{$related_product->title}}</a>
-								</h5>
-			                                            
-			                    <p class="price_container"><span class="price">${{$related_product->sell_rate}}</span></p>                                            						
-								<div class="action">						
-									<a class="exclusive ajax_add_to_cart_button" href="{{URL::to('/')}}/{{$related_product->slug}}" title="Add to Cart">&nbsp;</a>
-									<a class="lnk_more" href="{{URL::to('/')}}/{{$related_product->slug}}" title="View">&nbsp;</a>
-			                     </div>
-							</div>
-						</li>
+<div class="products mb-30">
+    <h5 class="box-tb-border">RELATED PRODUCTS</h5>
+    <div class="products-box box-tb-border-b ">
+
+        @if(count($related_product_r))
+                @foreach($related_product_r as $product)
+
+                    <div class="single-prodect custom-col-xs-6 col-sm-6 col-md-4">
+                        <div class="each-p-details">
+                            <a href="{{URL::to('/')}}/{{$product->slug}}">
+                                
+                                @if($product->sticker !='none')
+                                    
+                                    @if($product->sticker == 'Sale')
+                                        <div class="product-label sale">
+                                            &nbsp;&nbsp;{{@$product->sticker}}&nbsp;&nbsp;
+                                        </div>
+                                    @elseif($product->sticker == 'Clearance')
+                                        <div class="product-label clearance">
+                                            {{@$product->sticker}}
+                                        </div>
+                                    @elseif($product->sticker == 'In-stock')
+                                        <div class="product-label in-stock">
+                                            {{@$product->sticker}}
+                                        </div>
+                                    @elseif($product->sticker == 'Preorder')
+                                        <div class="product-label pre-order">
+                                            {{@$product->sticker}}
+                                        </div>
+                                    @else
+                                        {{@$product->sticker}}
+                                    @endif
+                                        
+                                    
+                                @endif
+
+                                <amp-img src="{{URL::to('/')}}/{{@$product->image}}"  alt="{{@$product->title}}" width="300" height="220" layout="responsive"> </amp-img>
+
+                                @if(!empty($product->old_price))
+                                    <div class="price old-price">
+                                    <span class="old_price">${{number_format(@$product->old_price, 2)}}</span>
+                                @else
+                                    <div class="price">
+                                @endif
+                                    ${{number_format(@$product->sell_rate, 2)}}
+                                </div>
+
+                                <h5>{{@$product->title}}</h5>
+                                
+                                @if(!empty($product->caption))
+
+                                    <p>{{$product->caption}}</p>
+
+                                @endif
+
+                            </a>
+                            <div class="each-p-details-optn">
+                                <a href="{{URL::to('/')}}/{{$product->slug}}"><i class="fa fa-cart-arrow-down"></i></a>
+                                <a href="{{URL::to('/')}}/{{$product->slug}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                @endforeach
+            @else
+                <p style="color: #00a4e1;text-align: center;min-height: 200px;
+    line-height: 100px;">Product not avaliable</p>
+            @endif
+
+            {!! $related_product_r->render() !!}
+
+    </div>
+</div>
 
 
-					@endforeach
-				@else
-					<p class="no_gallery_yet">No related product yet.</p>
-				@endif
-			</ul>
-		</div>
-	</div>
-
+	
 	<script>
 
 	$("#zoom_01").elevateZoom({

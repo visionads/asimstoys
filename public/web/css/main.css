@@ -1165,6 +1165,7 @@ h5.box-tb-border {
 .product-zoom-image-wrapper,
 .product-zoom-image-wrapper > .zoomWrapper {
     position: relative;
+    overflow: hidden;
 }
 
 .product-zoom-thumb-wrapper {
@@ -1229,6 +1230,13 @@ h5.box-tb-border {
     text-align: center;
 }
 
+.product-cart-card .total-price .old_price{
+    font-weight: normal;
+    color: #999999;
+    text-decoration: line-through;
+    font-size: 15px;
+}
+
 .product-cart-card .payment-way {
     padding: 6px 15px;
     background-color: #fff;
@@ -1276,6 +1284,8 @@ h5.box-tb-border {
 
 .product-cart-card .small-text {
     font-size: 8px;
+    font-weight: normal;
+    text-transform: uppercase;
 }
 
 .product-cart-card input.form-control {
