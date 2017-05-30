@@ -1467,7 +1467,7 @@ form.form select.input-right{
 
 form.form textarea{
         width: 100%;
-    height: 150px;
+    height: 100px;
     border: none;
     margin-bottom: 20px;
     padding: 15px 20px;
