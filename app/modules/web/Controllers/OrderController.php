@@ -637,9 +637,11 @@ class OrderController extends Controller
             return redirect()->route('mycart');
         }
 
+        $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
         return redirect()->route('payment_process_secure', array(
-            'order_head_id'=>$order_head->id
+            'order_head_id'=>$order_head->id,
+            'productgroup_data' => $productgroup_data
         ));
 
 
@@ -696,6 +698,8 @@ class OrderController extends Controller
         // set session in invoice number
         $request->session()->set('invoice_number_zippay', $order_head['invoice_no']);
 
+        $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
+
         return view('web::cart.paycart',[
             'title' => $title,
             'invoice_number' => $order_head['invoice_no'],
@@ -704,6 +708,7 @@ class OrderController extends Controller
             'customer_data' => $customer_data,
             'discount_price' => $discount_price?$discount_price:0,
             'net_amount' => $net_amount?$net_amount:0,
+            'productgroup_data' => $productgroup_data
         ]);
 
     }

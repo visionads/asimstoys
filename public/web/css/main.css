@@ -259,6 +259,12 @@ a:hover .fa-envelope + span:hover {
     text-align: center;
 }
 
+.modal-body{
+    width: 100%;
+    display: inline-block;
+    min-height: 150px;
+}
+
 /*------------------------------------------------
 |                  04. Menu                      |
 ------------------------------------------------*/
@@ -269,7 +275,7 @@ a:hover .fa-envelope + span:hover {
     background-color: #00aeef;
     margin: 0 0 30px 0;
     position: relative;
-    z-index: 9999;
+    z-index: 99;
 }
 
 .navbar-toggle {
@@ -1430,6 +1436,19 @@ form.form.form-2 a{
     margin-bottom: 30px;
 }
 
+.secure-payment{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.secure-payment .panel-title{
+    color: #ce2491;
+    font-weight: 700;
+}
+
+.empty_cart{
+    padding: 0 10px 30px 15px;
+}
 
 form.form input{
     width: 100%;
