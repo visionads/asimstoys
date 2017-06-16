@@ -263,6 +263,21 @@ a:hover .fa-envelope + span:hover {
     width: 100%;
     display: inline-block;
     min-height: 150px;
+    font-size: 15px;
+}
+
+.modal-body h2{
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.modal-body p{
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.modal-header .close{
+    margin-top: 8px;
 }
 
 /*------------------------------------------------
@@ -1779,6 +1794,14 @@ a.cart-continue-shopping{
 .order-detail-container .invoice-header{
     width: 100%;
     display: inline-block;
+    padding: 0 20px;
+}
+
+.order-detail-container .invoice-header h2{
+        color: darkblue;
+    padding-bottom: 0px;
+    text-align: right;
+    font-size: 20px;
 }
 
 /*Filter Value*/

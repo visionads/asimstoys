@@ -246,6 +246,7 @@ class AccountsController extends Controller
 
         $title = 'Invoice Detail';
 
+        $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
         return view('web::accounts.order_details',[
             'order' => $order,
@@ -258,6 +259,7 @@ class AccountsController extends Controller
             'paid_amount'=>$paid_amount,
             'due_amount'=>$due_amount,
             'order_head_id'=>$order_head_id,
+            'productgroup_data' => $productgroup_data
         ]);
 
 

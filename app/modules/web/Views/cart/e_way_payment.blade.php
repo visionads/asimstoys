@@ -103,7 +103,7 @@
                                      ***  If you are not happy with this agreement</a> please do not buy this item  ***
                                 </h5>
                                 <p>
-                                    <input type="checkbox" checked="checked"> <a href="{{route('terms-condition')}}">I agree with terms and condition </a>
+                                    <input type="checkbox" checked="checked"> <a style="margin-top: 26px;display: inline-block;color: #ce2491;" href="{{route('terms-condition')}}">I agree with terms and condition </a>
                                 </p>
 
                                 <div class="row">
@@ -140,9 +140,7 @@
 
 
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
+                          
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div>
