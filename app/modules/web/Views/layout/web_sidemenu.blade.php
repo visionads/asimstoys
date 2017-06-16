@@ -91,8 +91,8 @@
 
 		<div class="new-letter box-tb-border-b hidden-xs">
 			<h5 class="box-tb-border">Join Our Newsletter</h5>
-			<form id="newsletter" method="post" action="#">
-				<input type="email" placeholder="Email Address">
+			<form id="newsletter" >
+				<input type="email" name="email_newsletter" placeholder="Email Address">
 				<input type="submit">
 			</form>
 		</div>
