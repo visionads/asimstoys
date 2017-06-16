@@ -2,21 +2,16 @@
 
 @section('content')
 
-    <div class="pos-new-product home-text-container">
-        <div class="description">
+	<div class="general-container">
+		<div class="myaccount">
 
+			<div class="my-header">
+				@include('web::accounts._account_menu')
+			</div>
 
-            <div class="row">
-                <div class="col-sm-12">
+			<div class="body">
 
-                    <ul class="nav nav-tabs" role="tablist">
-                        @include('web::accounts._account_menu')
-                    </ul>
-
-                    <div class="tab-content ">
-
-
-                        @if(!empty($get_pre_order_history))
+				@if(!empty($get_pre_order_history))
 							<div class="table-responsive">
 								<table class="table">
 									<?php
@@ -91,22 +86,12 @@
 								</table>
 							</div>
                         @else
-                            <p>No order yet</p>
+                            <p style="text-align: center; padding-bottom: 40px;">No order yet</p>
                         @endif
 
+			</div>
 
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-
-
-        </div>
-    </div>
-
+		</div>
+	</div>
 
 @stop

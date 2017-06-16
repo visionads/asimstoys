@@ -1,32 +1,22 @@
 @extends('web::layout.web_master')
 
 @section('content')
-    <div class="pos-new-product home-text-container">
-        <div class="description">
 
-            
-                    <div class="row">
-                        <div class="col-sm-12">
+    <div class="general-container">
 
-                            <ul class="nav nav-tabs" role="tablist">
-                                @include('web::accounts._account_menu')
-                            </ul>
+        <div class="myaccount">
 
-                            <div class="tab-content ">
-                                <div role="tabpanel" class="tab-pane article-page-tab active" id="profile">
-                                    @include('web::accounts.profile')
-                                </div>
+            <div class="my-header">
 
-                            </div>
+                 @include('web::accounts._account_menu')
 
-                        </div>
-                        
-                    </div>
+            </div>
 
-                
-
-            
+            @include('web::accounts.profile')            
 
         </div>
+
     </div>
+
+    
 @stop

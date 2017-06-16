@@ -1776,6 +1776,11 @@ a.cart-continue-shopping{
     margin-top: 30px;
 }
 
+.order-detail-container .invoice-header{
+    width: 100%;
+    display: inline-block;
+}
+
 /*Filter Value*/
 .by-filter{
     width: 100%;

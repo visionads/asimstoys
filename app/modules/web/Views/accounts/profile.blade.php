@@ -9,151 +9,148 @@
 	</div>
 @endif
 
-<div class="accounts-billing-info">
-	<h2>Billing Information
-	
-	<a class="btn-sm btn-info pull-right" data-toggle="modal" href="#addData" title="Add">
-                    <strong>Edit</strong>
-                </a>
-	</h2>
-	<br/><br/>
-	
-	<div class="table-responsive">
-		<table class="table">
-			<tr>
-				<td>Name</td>
-				<td> {{$get_customer_data->first_name}}  {{$get_customer_data->last_name}}</td>
-			</tr>
-			<tr>
-				<td>Email</td>
-				<td> {{$get_customer_data->email}}</td>
-			</tr>
-			<tr>
-				<td>Telephone</td>
-				<td> {{$get_customer_data->telephone}}</td>
-			</tr>
-			<tr>
-				<td>Suburb</td>
-				<td> {{$get_customer_data->suburb}}</td>
-			</tr>
-			<tr>
-				<td>Postcode</td>
-				<td> {{$get_customer_data->postcode}}</td>
-			</tr>
-			<tr>
-				<td>State</td>
-				<td> {{$get_customer_data->state}}</td>
-			</tr>
-			<tr>
-				<td>Address</td>
-				<td> {{$get_customer_data->address}}</td>
-			</tr>
-			<tr>
-				<td>Country</td>
-				<td> {{$get_customer_data->country}}</td>
-			</tr>
-		</table>
+<div class="my-body">
+
+    <div class="col-md-6 col-xs-12">
+
+        <div class="billing_address">
+            <div class="header">BILLING ADDRESS</div>
+
+            <div class="details">
+            	<p>
+            		{{$get_customer_data->first_name}}  {{$get_customer_data->last_name}}
+            	</p>
+            	<p>
+            		{{$get_customer_data->email}}
+            	</p>
+            	<p>
+            		Phone :: {{$get_customer_data->telephone}}
+            	</p>
+            	<p>
+            		Suburb :: {{$get_customer_data->suburb}}
+            	</p>
+            	<p>
+            		Postcode :: {{$get_customer_data->postcode}}
+            	</p>
+            	<p>
+            		State :: {{$get_customer_data->state}}
+            	</p>
+            	<p>
+            		Address :: {{$get_customer_data->address}}
+            	</p>
+            	<p>
+            		{{$get_customer_data->country}}
+            	</p>
+            </div>
+
+        </div>
+
+        <!-- Billing Info modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".billing_info-modal">Edit</button>
+
+    </div>
+
+
+    <div class="col-md-6 col-xs-12">
+
+    	<div class="billing_address">
+
+    		<div class="header">DELIVERY ADDRESS</div>
+
+    		@if(!empty($delivery_details))
+
+    			<div class="details">
+    				<p>
+    					{{@$delivery_details->first_name}}  {{@$delivery_details->last_name}}
+    				</p>
+    				<p>
+    					{{@$delivery_details->email}}
+    				</p>
+    				<p>
+    					Phone :: {{@$delivery_details->telephone}}
+    				</p>
+    				<p>
+    					Suburb :: {{@$delivery_details->suburb}}
+    				</p>
+    				<p>
+    					PostCode :: {{@$delivery_details->postcode}}
+    				</p>
+    				<p>
+    					State :: {{@$delivery_details->state}}
+    				</p>
+    				<p>
+    					Address :: {{@$delivery_details->address}}
+    				</p>
+    				<p>
+    					{{@$delivery_details->country}}
+    				</p>
+    			</div>
+
+    		@endif
+
+    		
+
+    	</div>
+
+    	<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".delivery-info-modal">
+			@if(!empty($delivery_details))
+				Edit
+			@else
+				Add
+			@endif
+		</button>
+
+    </div>
+
+</div>
+
+
+
+<!-- Billing Info Modal -->
+
+<div class="modal fade billing_info-modal" tabindex="-1" role="dialog" aria-labelledby="">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+
+			<div class="modal-header">
+
+				<h1>Billing Info</h1>
+
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+			</div>
+
+			{!! Form::open(['route' => 'edit-billing-info', 'class' => 'form']) !!}
+               @include('web::accounts.edit_billing_info')
+            {!! Form::close() !!}
+
+		</div>
 	</div>
 </div>
 
-<div class="accounts-billing-info">
-	<h2>Delivery Information
-		<a class="btn-sm btn-info pull-right" data-toggle="modal" href="#updateData" title="Add">
-			<strong>
+<div class="modal fade delivery-info-modal" tabindex="-1" role="dialog" aria-labelledby="">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+
+			<div class="modal-header">
+
+				<h1>Delivery Info</h1>
+
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+			</div>
+
+			{!! Form::open(['route' => 'edit-delivery-info' ,'class' => 'form']) !!}
 				@if(!empty($delivery_details))
-					Edit
+					@include('web::accounts.edit_delivery_info')					
 				@else
-					Add
+					@include('web::accounts.add_delivery_info')
 				@endif
-			</strong>
-		</a>
-	</h2>
-	<br/><br/>
-		
-	@if(!empty($delivery_details))
-		<div class="table-responsive">
-			<table class="table">
-				<tr>
-					<td>Name</td>
-					<td> {{@$delivery_details->first_name}}  {{@$delivery_details->last_name}}</td>
-				</tr>
-				<tr>
-					<td>Email</td>
-					<td> {{@$delivery_details->email}}</td>
-				</tr>
-				<tr>
-					<td>Telephone</td>
-					<td> {{@$delivery_details->telephone}}</td>
-				</tr>
-				<tr>
-					<td>Suburb</td>
-					<td> {{@$delivery_details->suburb}}</td>
-				</tr>
-				<tr>
-					<td>Postcode</td>
-					<td> {{@$delivery_details->postcode}}</td>
-				</tr>
-				<tr>
-					<td>State</td>
-					<td> {{@$delivery_details->state}}</td>
-				</tr>
-				<tr>
-					<td>Address</td>
-					<td> {{@$delivery_details->address}}</td>
-				</tr>
-				<tr>
-					<td>Country</td>
-					<td> {{@$delivery_details->country}}</td>
-				</tr>
-			</table>
+               
+            {!! Form::close() !!}
+
 		</div>
-	@endif
+	</div>
 </div>
 
-
-
-<div class="modal fade" id="addData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" >
-        <div class="modal-content" style="width:100%;float:left;">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                Edit Billing Information
-            </div>
-            <div class="modal-body">
-                
-				{!! Form::open(['route' => 'edit-billing-info']) !!}
-                   @include('web::accounts.edit_billing_info')
-                {!! Form::close() !!}
-				
-            </div>
-
-        </div>
-    </div>
-</div>
-<!-- modal -->
-
-<div class="modal fade" id="updateData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width:100%;float:left;">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                Edit Delivery Information
-            </div>
-            <div class="modal-body">
-                
-				{!! Form::open(['route' => 'edit-delivery-info']) !!}
-					@if(!empty($delivery_details))
-						@include('web::accounts.edit_delivery_info')
-					@else
-						@include('web::accounts.add_delivery_info')
-					@endif
-                   
-                {!! Form::close() !!}
-				
-            </div>
-
-        </div>
-    </div>
-</div>
 <!-- update modal -->
-
