@@ -56,6 +56,9 @@ class AccountsController extends Controller
                     ->where('state',$delivery_details->state)
                     ->get(['suburb']);
 
+
+            $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
+
             return view('web::accounts.accounts',[
                 'title' => $title,               
                 'get_customer_data' => $get_customer_data,
@@ -64,7 +67,8 @@ class AccountsController extends Controller
                 'postcode_data' => $postcode_data,
                 'suburb_data' => $suburb_data,
                 'postcode_delivery_data' => $postcode_delivery_data,
-                'suburb_delivery_data' => $suburb_delivery_data
+                'suburb_delivery_data' => $suburb_delivery_data,
+                'productgroup_data' => $productgroup_data
             ]);
 
 
@@ -242,6 +246,7 @@ class AccountsController extends Controller
 
         $title = 'Invoice Detail';
 
+        $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
         return view('web::accounts.order_details',[
             'order' => $order,
@@ -254,6 +259,7 @@ class AccountsController extends Controller
             'paid_amount'=>$paid_amount,
             'due_amount'=>$due_amount,
             'order_head_id'=>$order_head_id,
+            'productgroup_data' => $productgroup_data
         ]);
 
 

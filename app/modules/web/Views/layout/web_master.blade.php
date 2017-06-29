@@ -8,66 +8,40 @@
 
         <link rel="icon" type="image/png" sizes="16x16" href="{{URL::to('')}}/web/images/favicon.png">
 
-        <link href="{{ URL::asset('web/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all"/>
-        <link href="{{ URL::asset('web/css/bootstrap-responsive.css') }}" rel="stylesheet" type="text/css" media="all" />
-        <link href="{{ URL::asset('web/css/custommenu.css') }}" rel="stylesheet" type="text/css" media="all" />
-        <link href="{{ URL::asset('web/css/jquery.fancybox.css') }}" rel="stylesheet" type="text/css" media="all" />
-        <link href="{{ URL::asset('web/css/camera.css') }}" rel="stylesheet" type="text/css" media="all" />
-        <link href="{{ URL::asset('web/css/global_red.css') }}" rel="stylesheet" type="text/css" media="all" />
+        <link href="{{ URL::asset('web/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" media="all"/>
 
-        <script type="text/javascript" src="{{ URL::asset('web/js/jquery.min.js') }}"></script>
-        <script type='text/javascript' src="{{ URL::asset('js/jquery.mobile.customized.min.js') }}"></script>
-        <script type='text/javascript' src="{{ URL::asset('web/js/jquery.easing.1.3.js') }}"></script> 
-        <script type='text/javascript' src="{{ URL::asset('web/js/camera.js') }}"></script> 
+        <link href="{{ URL::asset('web/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" media="all"/>
 
-        <script type='text/javascript' src="{{ URL::asset('web/js/jquery.fancybox.js') }}"></script> 
-        <script type='text/javascript' src="{{ URL::asset('web/js/jquery.fancybox-media.js') }}"></script> 
+        <link href="{{ URL::asset('web/vendor/normalize/css/normalize.css') }}" rel="stylesheet" type="text/css" media="all"/>
 
-        <script type='text/javascript' src="{{ URL::asset('web/js/bootstrap.min.js') }}"></script> 
+        <link href="{{ URL::asset('web/css/prettyPhoto.css') }}" rel="stylesheet" type="text/css" media="all"/>
 
-        <script type='text/javascript' src="{{ URL::asset('web/js/jquery.elevatezoom.js') }}"></script> 
-         <script>
-            jQuery(function(){
-                
-                jQuery('#camera_wrap_1').camera({
-                    thumbnails: false,
-                    pagination:false,
-                    playPause: false,
-                    fx:'scrollLeft',
-                });
+        <link href="{{ URL::asset('web/css/main.css') }}" rel="stylesheet" type="text/css" media="all"/>
 
-                $('.fancybox-media')
-                    .attr('rel', 'media-gallery')
-                    .fancybox({
-                        openEffect : 'none',
-                        closeEffect : 'none',
-                        prevEffect : 'none',
-                        nextEffect : 'none',
+        <link href="{{ URL::asset('web/vendor/layerslider/css/layerslider.css') }}" rel="stylesheet" type="text/css" media="all"/>
 
-                        arrows : false,
-                        helpers : {
-                            media : {},
-                            buttons : {}
-                        }
-                    });
+        <link href="{{ URL::asset('web/css/responsive.css') }}" rel="stylesheet" type="text/css" media="all"/>
+        
+        <script type="text/javascript" src="{{ URL::asset('web/vendor/modernizr/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
 
-                    
+        <script type="text/javascript" src="{{ URL::asset('web/js/jquery-2.1.4.min.js') }}"></script>
 
-            });
+        <script type="text/javascript" src="{{ URL::asset('web/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 
-            window.onscroll = function () { 
-                    var scrollAmount = $(window).scrollTop();
+        <script type="text/javascript" src="{{ URL::asset('web/js/super-simple-jquery-parallax-background.js') }}"></script>
 
-                        if(scrollAmount > 400 ){
-                            $('.scroll-menu-open').show();
-                            $('.scroll-menu-close').hide();
-                        }else{
-                           $('.scroll-menu-open').hide();
-                            $('.scroll-menu-close').show();
-                        }
-                     };
-        </script>
-		
+        <script type="text/javascript" src="{{ URL::asset('web/js/jquery.prettyPhoto.js') }}"></script>
+
+        <script type="text/javascript" src="{{ URL::asset('web/js/jquery.elevatezoom.js') }}"></script>
+
+        <script type="text/javascript" src="{{ URL::asset('web/vendor/layerslider/js/greensock.js') }}"></script>
+
+        <script type="text/javascript" src="{{ URL::asset('web/vendor/layerslider/js/layerslider.transitions.js') }}"></script>
+
+        <script type="text/javascript" src="{{ URL::asset('web/vendor/layerslider/js/layerslider.kreaturamedia.jquery.js') }}"></script>
+
+        <script type="text/javascript" src="{{ URL::asset('web/js/main.js') }}"></script>
+        
 		<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -107,37 +81,38 @@
     <body>
 
         <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=363042937208025";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-
-        <div id="page" class="pos_page">
-            <div class="page-inner">
+        <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+              return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=363042937208025";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));</script>
+        
+        
                 @include('web::layout.web_header')
 
-				<!--
-                <div style="background: white; padding: 20px; text-align: center">
-                    <p>&nbsp; </p>
-                    <h1 style="color: red;">Site is under maintenance !</h1>
-                </div>
-				-->
-
-
-                <div id="toppage">
+                <section id="slider" >
                     <div class="container">
+
                         <div class="row">
-                            @include('web::layout.web_sidemenu')
-                            <div class="col-md-9 padding-right-0">
+
+                            <div class="col-xs-12 col-sm-8 col-md-9 col-sm-push-4 col-md-push-3">
+
                                 @yield('content')
+
                             </div>
+
+                            @include('web::layout.web_sidemenu')
+
                         </div>
+
                     </div>
-                </div>
-            </div>
-        </div>
+                </section>
+
+            
 
         @include('web::layout.web_footer')

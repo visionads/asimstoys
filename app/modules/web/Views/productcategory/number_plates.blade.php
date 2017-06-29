@@ -2,112 +2,115 @@
 
 @section('content')
 
-<div class="pos-new-product home-text-container">
-	<h4>{{$productdata->title}}</h4>
+<div class="products mb-30">
+	<h5 class="box-tb-border">
+		{{$productdata->title}}
+	</h5>
 
-	<div class="col-md-12">
-		<div class="row">
+	<div class="products-box box-tb-border-b ">
 
-			<div class="col-md-6">
-				<div class="product_gallery_section">
-					<div class="main_open_image">
-						<img class="img-responsive" id="zoom_01" src="{{URL::to('')}}/{{$productdata->image}}" data-zoom-image="{{URL::to('')}}/{{$productdata->image}}"/>
-					</div>
-				</div>
-			</div>
+		<div class="col-md-6 col-xs-12">
 
-			<div class="col-md-6">
-				<div class="product_details">
-					<div class="availability_container">
-						<p>
-                            <span class="current_price">
-                                Price $
-                                <span id="current-price-change">
-                                    <?php echo $productdata->sell_rate; ?>
-                                </span>
-                            </span>
-                        </p>
-					</div>
-					<?php echo $productdata->short_description; ?>
-					<a class="email_us" href="#" data-toggle="modal" data-target="#myModal" >
-						<img src="{{URL::to('')}}/web/images/ask.png">
-							<br/>
-								EMAIL
-					</a>
-
-					<form method="post" action="{{URL::to('/')}}/order/add_to_cart" class="<?php if(!empty($product_variation_r)){echo 'product_details_buynow_form';}else{echo 'product_details_buynow_form product_details_buynow_form_up';} ?>">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="price_asim" value="{{@$productdata->sell_rate}}" id="price-amount">
-						<div class="form-group">
-							<input type="hidden" name="product_id" value="{{$productdata->id}}">
-							@if(!empty($product_variation_r))
-								<div class="width50">
-									@if($product_subgroup->slug =='number-plates')
-										<label>color</label>
-                                        <select name="color" >
-                                            @foreach($product_variation_r as $product_variation)
-                                                <option value="{{$product_variation->slug}}">{{$product_variation->title}}</option>
-                                            @endforeach
-
-                                        </select>
-									@else
-										<label>Price</label>
-                                        <select name="color" onchange="getval(this);">
-                                            @foreach($product_variation_r as $product_variation)
-                                                <option value="{{$product_variation->slug}}">{{$product_variation->title}}</option>
-                                            @endforeach
-
-                                        </select>
-									@endif
-									
-
-								</div>
-							@endif
-
-							@if($product_subgroup->slug =='number-plates')
-							<div class="width50">
-								<label>Background</label>
-								<select name="background">
-									<option value="Black">Black</option>
-									<option value="White">White</option>
-									<option value="Red">Red</option>
-									<option value="Blue">Blue</option>
-									<option value="Pink">Pink</option>			
-									<option value="Yellow">Yellow</option>
-									<option value="Magento">Magento</option>
-									<option value="Purple">Purple</option>
-								</select>
-							</div>
-
-                            <div class="width100">
-                                <label>Text for Plate</label>
-                                <input type="text" name="text_of_number_plate" required="required" style="padding: 10px; margin-left: -0px; margin-top: -0px; background: #efefef; border: 1px solid #efefef; width: 93%; color: black;" placeholder="type your text">
-
-                            </div>
-							@endif
-
-							<div class="width50">
-								<label>Quantity</label>
-								<select name="quantity">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>			
-								</select>
-							</div>
-
-
-						</div>
-
-						<input type="submit" name="submit" class="register_btn" value="Add to Cart" style="padding: 10px; text-align: center; margin: 30px;">
-					</form>
-				</div>
+			<div class="product_gallery_section">
+				
+				<img class="img-responsive" src="{{URL::to('')}}/{{$productdata->image}}" />
+				
 			</div>
 
 		</div>
-	</div>
 
+		<div class="col-md-6 col-xs-12">
+
+			<div class="number-plates">
+
+				<div class="product-cart-card">
+					<div class="total-price mb-10">
+						Price: $<?php echo $productdata->sell_rate; ?>
+					</div>
+				</div>
+
+				<div class="description">
+					<?php echo $productdata->short_description; ?>	
+				</div>
+				
+				<form method="post" action="{{URL::to('/')}}/order/add_to_cart" class="<?php if(!empty($product_variation_r)){echo 'product_details_buynow_form';}else{echo 'product_details_buynow_form product_details_buynow_form_up';} ?>">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="price_asim" value="{{@$productdata->sell_rate}}" id="price-amount">
+					<div class="form-group">
+						<input type="hidden" name="product_id" value="{{$productdata->id}}">
+						@if(!empty($product_variation_r))
+							<div class="col-xs-12">
+								@if($product_subgroup->slug =='number-plates')
+									<label>Color</label>
+                                    <select name="color" >
+                                        @foreach($product_variation_r as $product_variation)
+                                            <option value="{{$product_variation->slug}}">{{$product_variation->title}}</option>
+                                        @endforeach
+
+                                    </select>
+								@else
+									<label>Price</label>
+                                    <select name="color" onchange="getval(this);">
+                                        @foreach($product_variation_r as $product_variation)
+                                            <option value="{{$product_variation->slug}}">{{$product_variation->title}}</option>
+                                        @endforeach
+
+                                    </select>
+								@endif
+								
+
+							</div>
+						@endif
+
+						@if($product_subgroup->slug =='number-plates')
+						<div class="col-xs-12">
+							<label>Background</label>
+							<select name="background">
+								<option value="Black">Black</option>
+								<option value="White">White</option>
+								<option value="Red">Red</option>
+								<option value="Blue">Blue</option>
+								<option value="Pink">Pink</option>			
+								<option value="Yellow">Yellow</option>
+								<option value="Magento">Magento</option>
+								<option value="Purple">Purple</option>
+							</select>
+						</div>
+
+                        <div class="col-xs-12">
+                            <label>Text for Plate</label>
+                            <input type="text" name="text_of_number_plate" required="required" placeholder="Type your text">
+
+                        </div>
+						@endif
+
+						<div class="col-xs-12">
+							<label>Quantity</label>
+							<select name="quantity">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>			
+							</select>
+						</div>
+
+
+					</div>
+
+					<div class="col-xs-12">
+						<div class="product-cart-card">
+
+							<input type="submit" name="submit" class="add-to-cart-btn" value="Add to Cart">
+
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+
+	</div>
 </div>
 
 

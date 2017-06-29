@@ -1,6 +1,8 @@
 @extends('web::layout.web_master')
 
 @section('content')
+
+
     <div class="pos-new-product home-text-container">
         <div class="description">
 
@@ -65,7 +67,7 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="invoice_number" value="{{ $invoice_number }}">
 
-                <div class="col-md-12 margin-top-30 margin-bottom-30">
+                <div class="col-md-12 secure-payment">
                     <div class="col-md-3" style="border-right: 1px solid #aaaaaa; ">
                         <p>&nbsp;</p>
                         <p><b>Invoice Summery</b></p>
@@ -115,17 +117,13 @@
                             </label>
 
                         </div>
-						<!--
-                        <div style="padding: 0% 4%">
-                            <input type="radio" value="1" id="i_agree" checked="checked">
-                            <label for="i_agree">I agree with Terms and Condition. <a href="{{URL::to('terms-condition')}}"> Click Here for more details. </a></label>
-                        </div>-->
+						
 
                     </div>
                 </div>
 
                 <div class="col-md-3 pull-right margin-top-30 margin-bottom-30">
-                    <input type="submit" class="form-control register_btn" name="submit" value="Proceed to Pay">
+                    <input type="submit" class="cart-checkout  register_btn" name="submit" value="Proceed to Pay">
                 </div>
 
                 {!! Form::close() !!}
@@ -134,5 +132,4 @@
     </div>
 
 
-    </div>
 @stop

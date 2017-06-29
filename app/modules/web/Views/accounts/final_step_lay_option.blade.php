@@ -1,60 +1,58 @@
 @extends('web::layout.web_master')
 
 @section('content')
-    <div class="pos-new-product home-text-container">
-        <div class="description">
+    
+    <div class="general-container">
 
-            <div class="cart_container">
+        <h1 class="box-tb-border">
+            <span>
+                Payment for the Invoice (<a href="{{route('details_of_lay_by', $order_data->id)}}"> {{@$order_data->invoice_no}} </a> ) 
+            </span>
+        </h1>
+
+        <div class="order-detail-container">
+
+            <div class="col-md-12">
                 <div class="row">
-                    <div class="col-sm-12">
 
-                        <ul class="nav nav-tabs" role="tablist">
-                            @include('web::accounts._account_menu')
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row margin-top-30 margin-bottom-30">
-                    <div class="col-md-12">
-                        <div class="col-md-6">
-                            <div>
-                                <span class="panel-title"> Payment for the Invoice (<a href="{{route('details_of_lay_by', $order_data->id)}}"> {{@$order_data->invoice_no}} </a> ) </span><br>
-                                <small style="color: blue">Invoice Bill is : {{@$total_amount->total_amount}}</small>  |
-                                <small style="color: green">Paid Amount is : {{isset($paid_amount->paid_amount)?$paid_amount->paid_amount: "0.00"}}</small> |
-                                <small style="color: red">Due Amount is : {{@$due_amount}}</small>
-                            </div>
-                            <br>
-                            <div class="radio" style="margin-top: 0;">
-                                <label>
-                                    <input type="radio" name="payment_method" id="r1" value="e_way" checked="checked" class="px">
-                                    <span class="lbl">Pay now  </span><br>
-                                    <i>pay using your Credit Card. Its Secure. </i>
-                                </label><br><br>
-                            </div> <!-- / .radio -->
-                            {{--<div class="radio" style="margin-inside: 0;">
-                                <label>
-                                    <input type="radio" name="payment_method" id="r2" value="lay_by" class="px">
-                                    <span class="lbl">Bank Process</span><br>
-                                    <i>You can deposit the amount in the bank account and then fill out the form in next page </i>
-                                </label>
-                            </div>--}}
-
+                    <div class="col-md-6">
+                        <div>
+                            <span class="panel-title"> Payment for the Invoice (<a href="{{route('details_of_lay_by', $order_data->id)}}"> {{@$order_data->invoice_no}} </a> ) </span><br>
+                            <small style="color: blue">Invoice Bill is : {{@$total_amount->total_amount}}</small>  |
+                            <small style="color: green">Paid Amount is : {{isset($paid_amount->paid_amount)?$paid_amount->paid_amount: "0.00"}}</small> |
+                            <small style="color: red">Due Amount is : {{@$due_amount}}</small>
                         </div>
-                        <div class="col-md-6">
+                        <br>
+                        <div class="radio" style="margin-top: 0;">
+                            <label>
+                                <input type="radio" name="payment_method" id="r1" value="e_way" checked="checked" class="px">
+                                <span class="lbl">Pay now  </span><br>
+                                <i>pay using your Credit Card. Its Secure. </i>
+                            </label><br><br>
+                        </div> <!-- / .radio -->
+                       
+
+                    </div>
+
+
+                     <div class="col-md-6">
                             <div class="col-md-12" id="e-way-button">
-                                <h3> Secure eWay Payment </h3>
+                                <h3 style="color: #ce2491;font-size: 20px;margin-bottom: 10px;"> Secure eWay Payment </h3>
                                 <small>CC data will not be stored into our system. we will not use any data here </small><br>
 
-                                <input type="text" name="amount" id="edValue" value="{{$amount}}" class="form-control" placeholder="50.00 or more " readonly><br>
+                                <input style="margin-top: 20px;height: 40px;" type="text" name="amount" id="edValue" value="{{$amount}}" class="form-control" placeholder="50.00 or more " readonly><br>
 
-                                <div style="padding: 10%; text-align: center">
+                                <div style="padding: 5% 5% 10% 5%; text-align: center">
                                     <style>
+                                         .eway-button{
+                                            background-color: #FF8200; 
+                                         }
                                         .eway-button span{
                                             padding: 10%;
                                             width: 200px;
                                             text-align: center;
                                             height: 70px;
-                                            color: lightyellow;
+                                            color: lightyellow;                                            
                                         }
                                     </style>
 
@@ -76,7 +74,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <h2>Please note:</h2>
-                                                    <p>1.	That most of Kids ride-on products creating with a process, the process involves blowing sheets and can caused dents or very small scratches. This does not affect the strength or durability of the body. They are just minor cosmetic flaws; Asim’s Toys will not accept any returns back due to this and this no reason to claim the item as faulty.</p>
+                                                    <p>1.   That most of Kids ride-on products creating with a process, the process involves blowing sheets and can caused dents or very small scratches. This does not affect the strength or durability of the body. They are just minor cosmetic flaws; Asim’s Toys will not accept any returns back due to this and this no reason to claim the item as faulty.</p>
 
                                                     <p>2- All Our Cars are tested , Asim’s Toys  Will not accept any returns back but if we agree to accept the item Returns please note :
                                                         .  Shipping costs are non-refundable.
@@ -85,7 +83,7 @@
                                                         ***  If you are not happy with this agreement</a> please do not buy this item  ***
                                                     </h5>
                                                     <p>
-                                                        <input type="checkbox" checked="checked"> <a href="{{route('terms-condition')}}">I agree with terms and condition </a>
+                                                        <input type="checkbox" checked="checked"> <a style="margin-top: 26px;display: inline-block;color: #ce2491;" href="{{route('terms-condition')}}">I agree with terms and condition </a>
                                                     </p>
 
 
@@ -118,9 +116,7 @@
 
 
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                </div>
+                                               
                                             </div><!-- /.modal-content -->
                                         </div><!-- /.modal-dialog -->
                                     </div>
@@ -157,12 +153,15 @@
                                 {!! Form::close() !!}
                             </div>
                         </div>
-                    </div>
-                </div>
 
+                </div>
             </div>
+
         </div>
+
     </div>
+
+  
 
 
     <script style="javascript/text">

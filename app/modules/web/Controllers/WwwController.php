@@ -52,11 +52,11 @@ class WwwController extends Controller
         $home_value = "14";
         $title = "Home | Asim's Toy";
 
-        $slider_data = SliderImage::where('cat_slider_id', 1)->get();
+        $slider_data = SliderImage::where('cat_slider_id', 1)->where('status','active')->get();
         
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
-        $featured_product_data = Product::where('is_featured','Yes')->where('status','active')->get();
+        $featured_product_data = Product::where('is_featured','Yes')->where('status','active')->paginate(12);
 
         $data = Article::where('id', $home_value)->where('status', 'active')->first();
 		

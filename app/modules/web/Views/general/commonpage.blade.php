@@ -1,9 +1,14 @@
 @extends('web::layout.web_master')
 
 @section('content')
-	<div class="pos-new-product home-text-container">
-		<h4>{{$data->title}}</h4>
-		<div class="description">
+
+	<div class="general-container">
+		<h1 class="box-tb-border">
+			{{$data->title}}
+		</h1>
+
+		<div class="faq-container">
+			
 			<?php
 				if(!empty($data->desc)){
 					echo $data->desc;
@@ -11,6 +16,8 @@
 					echo 'No content yet.';
 				}
 			?>
+			
 		</div>
 	</div>
+
 @stop

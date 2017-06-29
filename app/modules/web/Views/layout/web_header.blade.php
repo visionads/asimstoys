@@ -1,97 +1,144 @@
-<div id="header">
+<!-- Top Header -->
+<div class="top-header">
     <div class="container">
-        <div class="row">
-            <div class="header-content">
-                    <amp-img class="logo pull-left" src="{{URL::to('/')}}/web/images/logo.png" ></amp-img>
-                <a id="header_logo" href="{{URL::to('/')}}">
-                    <span class="logo-right-sidebar">
-                        &nbsp;
-                        <span style="color: #CA2F95; text-shadow: 2px 2px #aaa;"> Asim's </span>
-                        <span style="color: #EEC205; text-shadow: 2px 2px #aaa;"> Toys </span> -
-                        <span style="color: #F01B20; text-shadow: 2px 2px #aaa;"> Kids </span>
-                        <span style="color: #7ECE38; text-shadow: 2px 2px #aaa;"> Ride </span> On
-                        <span style="color: #02ADEB; text-shadow: 2px 2px #aaa;"> Toys </span>
-                    </span>
-                </a>
-                
-                <div id="header_right">
-                    <ul id="header_links">
-                        <li id="header_link_contact"><a class="link-contact" href="{{URL::to('/')}}/myaccount" title="Contact">My account</a></li>
-                        <li><a class="link-mycart" href="{{URL::to('/')}}/mycart" title="My cart">My cart 
-                            (@if(Session::has('product_cart'))
+        <div class="col-xs-2 col-sm-4">
+            <a href="mailto:info@asimstoys.com.au">
+                <i class="fa fa-envelope"></i> <span class="hidden-xs">info@asimstoys.com.au</span>
+            </a>
+        </div>
+        <div class="col-xs-10 col-sm-8">
+            <ul class="top-nav pull-right">
+                <li>
+                    <a href="{{URL::to('/')}}/myaccount"><i class="fa fa-user"></i><span class="hidden-xs">My account</span></a>
+                </li>
+                <li>
+                    <a href="{{URL::to('/')}}/mycart"><i class="fa fa-shopping-cart"></i><span class="hidden-xs">My cart (@if(Session::has('product_cart'))
                                 {{count(Session::get('product_cart'))}}
                             @else
                                 0
-                            @endif)
-                        </a></li>
-                        @if(Session::has('user_id'))
-                            <li class="last"><a class="link-login" href="{{Url::to('/')}}/customerlogout" title="Login" class="login" rel="nofollow">Logout</a></li>
-                        @else
-                            <li class="last"><a class="link-login" href="{{Url::to('/')}}/customerlogin" title="Login" class="login" rel="nofollow">Login</a></li>
-                        @endif
-                        
-                    </ul>
-					
-					<div class="hot_line" >
-                    
-						<div class="hot_line_row">
-							<img src="{{URL::to('')}}/web/images/envelope.png" width="20" height="20" layout="responsive" >      
+                            @endif)</span></a>
+                </li>
 
-                            <span class="email">
-								<a href="mailto:asimstoys@gmail.com?Subject=Mail to Us" target="_top">info@asimstoys.com.au</a>
-							</span>
-						</div>
-					</div>
-                </div>
-				
-				
-				
-				
+                @if(Session::has('user_id'))
+                    <li><a href="{{Url::to('/')}}/customerlogout" title="Login" rel="nofollow"><i class="fa fa-sign-in"></i> Logout</a></li>
+                @else
+                    <li><a href="{{Url::to('/')}}/customerlogin" title="Login" rel="nofollow"><i class="fa fa-sign-in"></i> Login</a></li>
+                @endif
+
+            </ul>
+        </div>
+    </div>
+</div><!-- END / Top Header -->
+
+<!-- Logo & Main Header -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="desktop-logo-header hidden-xs">
+            <a href="{{URL::to('/')}}">
+                <img src="{{URL::to('/')}}/web/img/h-logo-desktop.png" class="img-responsive" alt="Logo
+            ">
+            </a>
+        </div>
+        <div class="visible-xs-block">
+            <div class="m-logo">
+                <a href="{{URL::to('/')}}">
+                    <img src="{{URL::to('/')}}/web/img/mobile-logo.jpg" class="img-responsive" alt="Logo">
+                </a>
+            </div>
+            <div class="m-after-logo">
+                <img src="{{URL::to('/')}}/web/img/Asim's-Toys---Kids-Ride-On-Toys.png" class="img-responsive" alt="Asim's-Toys Kids Ride On Toys">
+                <h5>Australia's largest Range of Children's Electric Ride On Toys</h5>
             </div>
         </div>
     </div>
-</div>
-<div class="nav-container ">
-    <div class="container">
-        <div class="row">
-            <div class="pt_custommenu" id="pt_custommenu">
-                <div id="pt_menu_home" class="pt_menu act">
-                    <div class="parentMenu">
-                        <a href="{{Url::to('/')}}"><span>Home</span></a>
-                    </div>
-                </div>
+</div><!-- END / Logo & Main Header -->
 
-                {{--<div id="pt_menu3" class="pt_menu nav-1 act2">
-                    <div class="parentMenu">
-                        <a href="{{Url::to('/')}}/special"><span>Special</span></a>
-                    </div>
-                </div>--}}
+<!-- Menu -->
+<section class="menu-area">
+    <div class="category mb-30 visible-xs">
+        <div class="category-btn">
+            <button type="button" class="navbar-toggle collapsed visible-xs" data-toggle="collapse" data-target="#left-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span>Catergories</span>
+        </div>
+        <div class="category-dropdown-wrapper" id="left-menu" class="collapse navbar-collapse">
+           <ul class="category-list clearfix">
+                <li class="catagory-li">
+                    <a class="orange" href="{{URL::to('')}}/product">All Products</a></li>
 
-                <div id="pt_menu3" class="pt_menu nav-1 act3">
-                    <div class="parentMenu">
-                        <a href="{{Url::to('/')}}/terms-condition"><span>Terms & Condition</span></a>
-                    </div>
-                </div>
+                @if(!empty($productgroup_data))
+                    @foreach($productgroup_data as $productgroup)
+                        <li class="catagory-li">
 
-                <div id="pt_menu3" class="pt_menu nav-1 act4">
-                    <div class="parentMenu">
-                        <a href="{{Url::to('/')}}/warranty"><span>Warranty</span></a>
-                    </div>
-                </div>
+                            @if($productgroup->id == '4')
+                                <a class="sidemenu-{{$productgroup->id}}" href="{{URL::to('')}}/pre-order">{{$productgroup->title}}</a>
+                            @elseif($productgroup->id == '5')
+                                <a class="sidemenu-{{$productgroup->id}}" href="{{URL::to('')}}/lay-by-instruction">{{$productgroup->title}}</a>
+                            @elseif($productgroup->id == '3')
+                                <a class="sidemenu-{{$productgroup->id}}" href="{{URL::to('')}}/{{$productgroup->slug}}">{{$productgroup->title}}</a>
+                            @else
+                                <a class="sidemenu-{{$productgroup->id}}" href="#">{{$productgroup->title}}
+                                </a>
+                            @endif
 
-                <div id="pt_menu3" class="pt_menu nav-1 act5">
-                    <div class="parentMenu">
-                        <a href="{{Url::to('/')}}/faq"><span>FAQ</span></a>
-                    </div>
-                </div>
+                            <?php
+                                $product_subgroup_data =  DB::table('product_subgroup')->where('product_group_id', $productgroup->id)->orderBy('sort_order','asc')->get();
+                                if(!empty($product_subgroup_data)):
+                            ?>
+                                    <ul class="submenu">
+                                        @foreach($product_subgroup_data as $product_subgroup)
+                                            <li>
+                                                <a href="{{URL::to('/')}}/{{$productgroup->slug}}/{{$product_subgroup->slug}}">{{$product_subgroup->title}}</a>
+                                                <?php
+                                                    if($product_subgroup->id == 7):
+                                                ?>
+                                                    <ul class="submenu-2">
+                                                        <li>
+                                                            <a href="{{Url::to('/')}}/{{$productgroup->slug}}/{{$product_subgroup->slug}}/by-brand">By Brands</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{Url::to('/')}}/{{$productgroup->slug}}/{{$product_subgroup->slug}}/by-seats">By Seats</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{Url::to('/')}}/{{$productgroup->slug}}/{{$product_subgroup->slug}}/by-voltage">By Voltage</a>
+                                                        </li>
+                                                    </ul>
+                                                <?php endif; ?>
+                                            </li>
+                                        @endforeach
+                                    </ul>
 
-                <div id="pt_menu3" class="pt_menu nav-1 act6">
-                    <div class="parentMenu">
-                        <a href="{{Url::to('/')}}/contact"><span>Contact</span></a>
-                    </div>
-                </div>
+                            <?php endif; ?>
+                            
+                        </li>
+                    @endforeach
+                @endif
+
                 
-            </div>
+            </ul>
         </div>
     </div>
-</div>
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav-menu">
+        <span class="sr-only">Toggle navigation</span>
+        <!--Menu-->
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <nav id="main-nav-menu" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li><a class="red" href="{{Url::to('/')}}">HOME</a></li>
+            <li><a class="pink" href="{{Url::to('/')}}/terms-condition">TERMS &<br/> CONDITIONS</a></li>
+            <li><a class="orange" href="{{Url::to('/')}}/warranty">WARRANTY</a></li>
+            <li><a class="blue" href="{{Url::to('/')}}/faq">FAQ</a></li>
+            <li><a class="green" href="{{Url::to('/')}}/contact">CONTACT</a></li>
+        </ul>
+    </nav>
+</section><!-- END / Menu -->
+
+
+

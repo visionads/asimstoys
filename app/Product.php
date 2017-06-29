@@ -13,6 +13,7 @@ class Product extends Model
         'product_group_id',
         'product_subgroup_id',
         'title',
+        'caption',
         'slug',
         'short_description',
         'long_description',

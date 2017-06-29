@@ -107,12 +107,12 @@
 									</div>
 									<p>
 										Learn about how you can buy now and pay later with
-										<a href="http://www.zippay.com.au" title="Buy Now, and Pay Later with zipPay" target="_blank" style="text-decoration: underline;">zipPay</a>
+										<a style="color: #ce2491;" href="http://www.zippay.com.au" title="Buy Now, and Pay Later with zipPay" target="_blank" style="text-decoration: underline;">zipPay</a>
 									</p>
 									
 									<div style="padding: 0% 4%">
 										<input type="radio" value="1" id="i_agree" checked="checked">
-										<label for="i_agree">I agree with Terms and Condition. <a href="{{URL::to('terms-condition')}}"> Click Here for more details. </a></label>
+										<label for="i_agree">I agree with Terms and Condition. <a style="color: #ce2491;" href="{{URL::to('terms-condition')}}"> Click Here for more details. </a></label>
 									</div>
 
 									
@@ -121,9 +121,7 @@
 
 
 								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								</div>
+								
 							</div><!-- /.modal-content -->
 						</div><!-- /.modal-dialog -->
 					</div>

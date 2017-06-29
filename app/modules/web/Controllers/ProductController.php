@@ -29,7 +29,7 @@ class ProductController extends Controller
                                 ->where('product_subgroup_id',$product->product_subgroup_id)
                                 ->whereNotIn('id',[$product->id])
                                 ->where('status','active')
-                                ->get();
+                                ->paginate(9);
 
             $product_single_gallery = DB::table('gal_image')->where('product_id',$product->id)->first();
             $product_gallery_all = DB::table('gal_image')->where('product_id',$product->id)->get();
