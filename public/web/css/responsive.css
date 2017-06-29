@@ -368,6 +368,23 @@
     .footer-container .footer-menu ul li a {
         padding: 0 6px;
     }
+
+    .contact-form{
+        padding: 25px;
+    }
+
+    form.form.form-2{
+        margin-top: 0px;
+    }
+
+    form.form{
+        padding: 5%;
+    }
+
+    form.form input.input-left,
+    form.form select.input-right{
+        width: 100%;
+    }
 }
 
 /* Lowest devices and Smartphone Portrait Screen */

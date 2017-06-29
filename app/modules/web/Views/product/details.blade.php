@@ -24,7 +24,7 @@
 
 ?>
 
-<div class="slider mb-30">
+<div class=" mb-30">
     <div class="slider-wrapper ">
 
         <h5 class="box-tb-border">{{$product->title}}</h5>
