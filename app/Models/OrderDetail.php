@@ -26,6 +26,8 @@ class OrderDetail extends Model
 		'background_color',
 		'plate_text',
         'price',
+        'state',
         'status',
+        'theme'
     ];
 }

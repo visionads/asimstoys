@@ -102,7 +102,7 @@
 									</td>
 									<td>
 										<div class="unit-price">
-											$ {{number_format($product_cart['product_price'], 2)}}
+											$ {{number_format(1*$product_cart['product_price'],2)}}
 										</div>
 									</td>
 									<td class="text-align-right">

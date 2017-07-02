@@ -77,11 +77,114 @@
 							</select>
 						</div>
 
+						<div class="col-xs-12">
+							<label>State</label>
+							<select name="state">
+								<option value="NSW">NSW</option>
+								<option value="VIC">VIC</option>
+								<option value="QLD">QLD</option>
+								<option value="SA">SA</option>
+								<option value="WA">WA</option>			
+								<option value="TAS">TAS</option>
+								<option value="NT">NT</option>
+							</select>
+						</div>
+
                         <div class="col-xs-12">
                             <label>Text for Plate</label>
                             <input type="text" name="text_of_number_plate" required="required" placeholder="Type your text">
 
                         </div>
+						@endif
+
+						@if($product_subgroup->slug =='kids-mini-driver-licence')
+
+							<div class="col-xs-12">
+	                            <label>Name</label>
+	                            <input type="text" name="text_of_number_plate" required="required" placeholder="Type your name">
+
+	                        </div>
+
+	                        <div class="col-xs-12">
+								<label>State</label>
+								<select name="state">
+									<option value="NSW">NSW</option>
+									<option value="VIC">VIC</option>
+									<option value="QLD">QLD</option>
+									<option value="SA">SA</option>
+									<option value="WA">WA</option>			
+									<option value="TAS">TAS</option>
+									<option value="NT">NT</option>
+								</select>
+							</div>
+
+							<div class="col-xs-12">
+	                            <label>Birthday</label>
+	                            <input type="text" name="color" required="required" placeholder="Type your birthday">
+
+	                        </div>
+
+	                        <div class="col-xs-12">
+	                            <label>Favourite Car</label>
+	                            <input type="text" name="background" required="required" placeholder="Type your favourite car">
+
+	                        </div>
+
+	                         <div class="col-xs-12">
+								<label>License Class</label>
+								<select name="theme">
+									<option value="Learner License">Learner License</option>
+									<option value="Provisional License">Provisional License</option>
+									<option value="Full License">Full License</option>
+									
+								</select>
+							</div>
+
+						@endif
+
+						@if($product_subgroup->slug =='kids-mini-themed-licence')
+
+							<div class="col-xs-12">
+	                            <label>Name</label>
+	                            <input type="text" name="text_of_number_plate" required="required" placeholder="Type your name">
+
+	                        </div>
+
+	                        <div class="col-xs-12">
+								<label>State</label>
+								<select name="state">
+									<option value="NSW">NSW</option>
+									<option value="VIC">VIC</option>
+									<option value="QLD">QLD</option>
+									<option value="SA">SA</option>
+									<option value="WA">WA</option>			
+									<option value="TAS">TAS</option>
+									<option value="NT">NT</option>
+								</select>
+							</div>
+
+							<div class="col-xs-12">
+	                            <label>Birthday</label>
+	                            <input type="text" name="color" required="required" placeholder="Type your birthday">
+
+	                        </div>
+
+	                        <div class="col-xs-12">
+	                            <label>Favourite Car</label>
+	                            <input type="text" name="background" required="required" placeholder="Type your favourite car">
+
+	                        </div>
+
+	                         <div class="col-xs-12">
+								<label>Theme</label>
+								<select name="theme">
+									<option value="Peppa Pig">Peppa Pig</option>
+									<option value="Princess Jasmine">Princess Jasmine</option>
+									<option value="Spiderman">Spiderman</option>
+									
+								</select>
+							</div>
+
 						@endif
 
 						<div class="col-xs-12">

@@ -106,6 +106,18 @@ class OrderController extends Controller
                 $plate_text = '';
             }
 			
+            if(isset($_POST['state'])){
+                $state_text = $_POST['state'];
+            }else{
+                $state_text = '';
+            }
+
+            if(isset($_POST['theme'])){
+                $theme_text = $_POST['theme'];
+            }else{
+                $theme_text = '';
+            }
+
             $quantity = (int) $_POST['quantity'];
 
             $product_cart1 = $request->session()->get('product_cart');
@@ -119,7 +131,9 @@ class OrderController extends Controller
                         'product_price' => $product_price,
                         'plate_text' => $plate_text,
                         'volume' => $volume,
-                        'weight' => $weight
+                        'weight' => $weight,
+                        'state'  => $state_text,
+                        'theme'  => $theme_text
                 )
             );
 
@@ -494,6 +508,8 @@ class OrderController extends Controller
                     $model->plate_text= isset($values['plate_text'])?$values['plate_text']:null;
                     $model->volume= isset($values['volume'])?$values['volume']:null;
                     $model->weight= isset($values['weight'])?$values['weight']:null;
+                    $model->state= isset($values['state'])?$values['state']:null;
+                    $model->theme= isset($values['theme'])?$values['theme']:null;
                     $model->freight_charge= isset($freight_charge)?$freight_charge:0;
                     $model->localpickup= $localpickup;
                     $model->save();
@@ -521,7 +537,6 @@ class OrderController extends Controller
 
         $product_cart_order_tmp = OrderTmp::where('user_id', $user_data->id)->get()->toArray();
 		
-
 
         return view('web::cart.finalcart',[
                 'title' => $title,
@@ -598,6 +613,8 @@ class OrderController extends Controller
                         $model_order_dt->color = $products['color']?$products['color']:null;
                         $model_order_dt->background_color = $products['background']?$products['background']:null;
                         $model_order_dt->plate_text = $products['plate_text']?$products['plate_text']:null;
+                        $model_order_dt->state = $products['state']?$products['state']:null;
+                        $model_order_dt->theme = $products['theme']?$products['theme']:null;
                         $model_order_dt->price = $products['product_price']?$products['product_price']:null; //$product->sell_rate;
                         $model_order_dt->status =1;
                         $model_order_dt->save();
@@ -644,7 +661,7 @@ class OrderController extends Controller
             'productgroup_data' => $productgroup_data
         ));
 
-
+        
     }
 
 
