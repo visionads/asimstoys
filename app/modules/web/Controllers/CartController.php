@@ -22,6 +22,7 @@ class CartController extends Controller
         $product_cart = $request->session()->get('product_cart');
 
 
+
         return view('web::cart.cart1',[
                 'title' => $title,
                 'productgroup_data' => $productgroup_data,

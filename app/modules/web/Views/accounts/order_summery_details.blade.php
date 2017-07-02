@@ -24,9 +24,11 @@
                             
                             <td>Item</td>
                             <td>Qty</td>
-                            <td>Color</td>
-                            <td>Background Color</td>
-                            <td>Plate Text</td>
+                            <td>Name /<br/> Plate Text</td>
+                            <td>State</td>
+                            <td>Birthday / <br/>Color</td>
+                            <td>Favourite Car / <br/>Background Color</td>
+                            <td>License Class / <br/>Theme</td>
                             <td>Price</td>
                             <td>Price</td>
                         </tr>
@@ -44,9 +46,12 @@
                                 </td>
                                 
                                 <td>{{$order_dt->qty}}</td>
+                                <td>{{@$order_dt->plate_text}}</td>
+                                <td>{{@$order_dt->state}}</td>
                                 <td>{{@$order_dt->product_variation_id}}</td>
                                 <td>{{@$order_dt->background_color}}</td>
-                                <td>{{@$order_dt->plate_text}}</td>
+                                <td>{{@$order_dt->theme}}</td>
+                                
                                 <td>${{number_format($order_dt->price,2 )}}</td>
                                 <td>${{number_format($order_dt->price * $order_dt->qty,2 )}}</td>
 
@@ -55,28 +60,28 @@
                         @endforeach
 
                             <tr class="sub-total-tr">
-                                <td colspan="4">
+                                <td colspan="6">
                                     &nbsp;</td>
 
                                 <td colspan="2">Total</td>
                                 <td class="text-align-right">${{number_format($order->sub_total?$order->sub_total:0, 2)}}</td>
                             </tr>
                             <tr class="sub-total-tr">
-                                <td colspan="4">
+                                <td colspan="6">
                                     &nbsp;</td>
 
                                 <td colspan="2"> Discount</td>
                                 <td class="text-align-right">${{number_format($order->total_discount_price?$order->total_discount_price:0, 2)}}</td>
                             </tr>
                             <tr class="sub-total-tr">
-                                <td colspan="4">
+                                <td colspan="6">
                                     &nbsp;</td>
 
                                 <td colspan="2">Freight Charge</td>
                                 <td class="text-align-right">${{number_format($order->freight_amount?$order->freight_amount:0, 2)}}  </td>
                             </tr>
                             <tr class="sub-total-tr">
-                                <td colspan="4">
+                                <td colspan="6">
                                     &nbsp;</td>
 
                                 <td colspan="2">Total Cost</td>

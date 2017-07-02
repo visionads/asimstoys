@@ -110,9 +110,12 @@
 							<tr>
 								<th>Invoice # </th>
 								<th>Product Name</th>
-								<th>Color</th>
-								<th>Background Color</th>
-								<th>Plate Text</th>
+								<th>Name / Plate Text</th>
+								<th>State</th>
+								<th>Birthday / Color</th>
+								<th>Favourite Car / Background Color</th>
+								<th>License Class / Theme</th>
+								
 								<th>Qty</th>
 								<th class="text-right">Price</th>
 								<th class="text-right">Total</th>
@@ -139,14 +142,21 @@
 											{{@$product->title}}
 										</td>
 										<td>
+											{{@$orderdetails->plate_text}}
+										</td>
+										<td>
+											{{@$orderdetails->state}}
+										</td>
+										<td>
 											{{@$orderdetails->color}}
 										</td>
 										<td>
 											{{@$orderdetails->background_color}}
 										</td>
 										<td>
-											{{@$orderdetails->plate_text}}
+											{{@$orderdetails->theme}}
 										</td>
+										
 										<td>
 											{{@$orderdetails->qty}}
 										</td>
@@ -163,34 +173,34 @@
 								@endforeach
 								
 								<tr>
-									<td colspan="6" class="text-right">
+									<td colspan="7" class="text-right">
 										Sub Amount
 									</td>
-									<td colspan="2" class="text-right">
+									<td colspan="3" class="text-right">
 										{{number_format(@$order_data[0]->sub_total,2)}}
 									</td>
 								</tr>
 								<tr>
-									<td colspan="6" class="text-right">
+									<td colspan="7" class="text-right">
 										Discount Amount
 									</td>
-									<td colspan="2" class="text-right">
+									<td colspan="3" class="text-right">
 										{{number_format(@$order_data[0]->total_discount_price,2 )}}
 									</td>
 								</tr>
 								<tr>
-									<td colspan="6" class="text-right">
+									<td colspan="7" class="text-right">
 										Freight Amount
 									</td>
-									<td colspan="2" class="text-right">
+									<td colspan="3" class="text-right">
 										{{number_format(@$order_data[0]->freight_amount,2 )}}
 									</td>
 								</tr>
 								<tr>
-									<td colspan="6" class="text-right">
+									<td colspan="7" class="text-right">
 										Total Amount
 									</td>
-									<td colspan="2" class="text-right">
+									<td colspan="3" class="text-right">
 										{{number_format(@$order_data[0]->net_amount, 2)}}
 									</td>
 								</tr>

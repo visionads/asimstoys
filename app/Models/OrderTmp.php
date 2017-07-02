@@ -30,7 +30,9 @@ class OrderTmp extends Model
         'volume',
         'weight',
         'freight_charge',
-        'localpickup'
+        'localpickup',
+        'state',
+        'theme'
     ];
 
 
