@@ -133,9 +133,9 @@
 	                         <div class="col-xs-12">
 								<label>License Class</label>
 								<select name="theme">
-									<option value="Learner License">Learner License</option>
-									<option value="Provisional License">Provisional License</option>
-									<option value="Full License">Full License</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
 									
 								</select>
 							</div>
@@ -178,9 +178,9 @@
 	                         <div class="col-xs-12">
 								<label>Theme</label>
 								<select name="theme">
-									<option value="Peppa Pig">Peppa Pig</option>
-									<option value="Princess Jasmine">Princess Jasmine</option>
-									<option value="Spiderman">Spiderman</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
 									
 								</select>
 							</div>
