@@ -163,12 +163,12 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('Short Specification', 'Short Description', ['class' => 'control-label']) !!}
+        {!! Form::label('Description', 'Description', ['class' => 'control-label']) !!}
         {!! Form::textarea('short_description', null, ['id'=>'short_description', 'class' => 'wysihtml5 form-control', 'cols'=>'30' , 'rows'=>'5']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('Specification', 'Full Description', ['class' => 'control-label']) !!}
+        {!! Form::label('Specification', 'Specification', ['class' => 'control-label']) !!}
         {!! Form::textarea('long_description', null, ['id'=>'long_description', 'class' => 'wysihtml5 form-control', 'cols'=>'30' , 'rows'=>'10']) !!}
     </div>
 
