@@ -13,7 +13,24 @@
 
 			<div class="product_gallery_section">
 				
-				<img class="img-responsive" src="{{URL::to('')}}/{{$productdata->image}}" />
+				<div class="product-zoom-image-wrapper">
+                            
+                   @if(!empty($productdata->image))
+                        <img class="img-responsive" id="zoom_01" src="{{URL::to('')}}/{{$productdata->image}}" data-zoom-image="{{URL::to('')}}/{{$productdata->image}}" width="100%" height="350px"  />
+                    @else
+                        <p class="no_gallery_yet">No gallery yet.</p>
+                    @endif
+
+                </div>
+                <div style="position: relative;z-index: 9;" id="gallery_01" class="product-zoom-thumb-wrapper row">
+
+                     @if(!empty($product_gallery_all))
+                        @foreach($product_gallery_all as $product_gallery)
+                            <a href="#" data-image="{{URL::to('')}}/{{$product_gallery->image}}" data-zoom-image="{{URL::to('')}}/{{$product_gallery->image}}"> <img style="width: 120px;float: left;height: 80px;margin-right: 10px;margin-bottom: 10px;" id="zoom_01" src="{{URL::to('')}}/{{$product_gallery->image}}" /> </a>
+                        @endforeach
+                    @endif
+                    
+                </div>
 				
 			</div>
 
@@ -133,9 +150,14 @@
 	                         <div class="col-xs-12">
 								<label>License Class</label>
 								<select name="theme">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
+
+									@if(!empty($product_variation_r))
+										@foreach($product_variation_r as $product_variation)
+											<option value="{{$product_variation->title}}">{{$product_variation->title}}</option>
+										@endforeach
+									@endif
+									
+									
 									
 								</select>
 							</div>
@@ -178,10 +200,11 @@
 	                         <div class="col-xs-12">
 								<label>Theme</label>
 								<select name="theme">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									
+									@if(!empty($product_variation_r))
+										@foreach($product_variation_r as $product_variation)
+											<option value="{{$product_variation->title}}">{{$product_variation->title}}</option>
+										@endforeach
+									@endif
 								</select>
 							</div>
 
@@ -224,5 +247,31 @@
             document.getElementById('price-amount').value =value;
         }
     </script>
+
+    <script>
+
+	$("#zoom_01").elevateZoom({
+		gallery:'gallery_01',
+		cursor: 'crosshair',
+		galleryActiveClass: 'active',
+		imageCrossfade: true,
+		loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif',
+		responsive:'True',
+		zoomWindowFadeIn: 500,
+		zoomWindowFadeOut: 750,
+		zoomWindowWidth:450,
+		zoomWindowHeight:350
+	});
+
+	$("#zoom_01").bind("click", function(e) { var ez = $('#zoom_01').data('elevateZoom');	$.fancybox(ez.getGalleryList()); return false; });
+  //    $('#zoom_01').elevateZoom({
+		// cursor: "crosshair",
+		// responsive:'True',
+		// zoomWindowFadeIn: 500,
+		// zoomWindowFadeOut: 750,
+		// zoomWindowWidth:410,
+		// zoomWindowHeight:378
+  //  });
+</script>
 
 @stop
