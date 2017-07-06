@@ -29,6 +29,8 @@ use Eway\Rapid;
 use Eway\Rapid\Client;
 use App\Helpers\SendMailer;
 use App\Helpers\ZipPay;
+use Image;
+use ImageResize;
 
 
 class OrderController extends Controller
@@ -77,6 +79,8 @@ class OrderController extends Controller
 
 	public function add_to_cart(Request $request){
 
+        $input = $request->all();
+
 		if(isset($_POST)){
 
 
@@ -118,6 +122,37 @@ class OrderController extends Controller
                 $theme_text = '';
             }
 
+            // license image
+            $image=Input::file('image');
+
+            $licence_image = '';
+            
+            if(count($image)>0) {
+                $file_type_required = 'png,jpeg,jpg';
+                $destinationPath = 'uploads/licence/';
+
+                $uploadfolder = 'uploads/';
+
+                if ( !file_exists($uploadfolder) ) {
+                    $oldmask = umask(0);  // helpful when used in linux server
+                    mkdir ($uploadfolder, 0777);
+                }
+
+                if ( !file_exists($destinationPath) ) {
+                    $oldmask = umask(0);  // helpful when used in linux server
+                    mkdir ($destinationPath, 0777);
+                }
+
+                $file_name =$this->image_upload($image,$file_type_required,$destinationPath);
+                if($file_name != '') {
+                    $licence_image = $file_name[0];
+                }
+                else{
+                    Session::flash('flash_message_error', 'Some thing error in image file type! Please Try again');
+                    return redirect()->back();
+                }
+            }
+           
             $quantity = (int) $_POST['quantity'];
 
             $product_cart1 = $request->session()->get('product_cart');
@@ -133,7 +168,8 @@ class OrderController extends Controller
                         'volume' => $volume,
                         'weight' => $weight,
                         'state'  => $state_text,
-                        'theme'  => $theme_text
+                        'theme'  => $theme_text,
+                        'licence_image' => $licence_image
                 )
             );
 
@@ -510,6 +546,7 @@ class OrderController extends Controller
                     $model->weight= isset($values['weight'])?$values['weight']:null;
                     $model->state= isset($values['state'])?$values['state']:null;
                     $model->theme= isset($values['theme'])?$values['theme']:null;
+                    $model->licence_image= isset($values['licence_image'])?$values['licence_image']:null;
                     $model->freight_charge= isset($freight_charge)?$freight_charge:0;
                     $model->localpickup= $localpickup;
                     $model->save();
@@ -615,6 +652,7 @@ class OrderController extends Controller
                         $model_order_dt->plate_text = $products['plate_text']?$products['plate_text']:null;
                         $model_order_dt->state = $products['state']?$products['state']:null;
                         $model_order_dt->theme = $products['theme']?$products['theme']:null;
+                        $model_order_dt->licence_image = $products['licence_image']?$products['licence_image']:null;
                         $model_order_dt->price = $products['product_price']?$products['product_price']:null; //$product->sell_rate;
                         $model_order_dt->status =1;
                         $model_order_dt->save();
@@ -1106,4 +1144,42 @@ class OrderController extends Controller
 
         return redirect()->route('order_summery_lists');
     }
+
+
+    public function image_upload($image,$file_type_required,$destinationPath)
+    {
+        if ($image != '') {
+
+            $img_name = ($_FILES['image']['name']);
+            $random_number = rand(111, 999);          
+
+            //$rules = array('image' => 'required|mimes:png,jpeg,jpg');
+            $rules = array('image' => 'required|mimes:'.$file_type_required);
+            $validator = Validator::make(array('image' => $image), $rules);
+            if ($validator->passes()) {
+                // Files destination
+                //$destinationPath = 'uploads/slider_image/';
+                // Create folders if they don't exist
+                if (!file_exists($destinationPath)) {
+                    mkdir($destinationPath, 0777, true);
+                }
+                $image_original_name = $image->getClientOriginalName();
+                $image_name = rand(111, 999) . $image_original_name;
+                $upload_success = $image->move($destinationPath, $image_name);
+
+                $file=array($destinationPath . $image_name);
+
+                if ($upload_success) {
+                    return $file_name = $file;
+                }
+                else{
+                    return $file_name = '';
+                }
+            }
+            else{
+                return $file_name = '';
+            }
+        }
+    }
+
 }

@@ -36,6 +36,15 @@ class ProductController extends Controller
             $product_variation = DB::table('product_variation')->where('product_id',$product->id)->get();
             $title =$product->title ." | Asim's Toy";
 
+
+            $state_data = DB::table('allpostcode')->distinct()->get(['state']);
+
+            $state_options = array(""=> 'Please select state');
+
+            foreach($state_data as $state){
+                $state_options[$state->state] = $state->state;
+            }
+
                 return view('web::product.details',[
                     'title' => $title,
                     'product' => $product,
@@ -43,7 +52,8 @@ class ProductController extends Controller
                     'product_single_gallery' => $product_single_gallery,
                     'product_gallery_all' => $product_gallery_all,
                     'related_product_r' => $related_product_r,
-                    'product_variation_r' => $product_variation
+                    'product_variation_r' => $product_variation,
+                    'state_data' => $state_options
                 ]);
 
         }else{

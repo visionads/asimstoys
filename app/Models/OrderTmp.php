@@ -32,7 +32,8 @@ class OrderTmp extends Model
         'freight_charge',
         'localpickup',
         'state',
-        'theme'
+        'theme',
+        'licence_image'
     ];
 
 
