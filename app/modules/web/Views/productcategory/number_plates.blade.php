@@ -50,7 +50,7 @@
 					<?php echo $productdata->short_description; ?>	
 				</div>
 				
-				<form method="post" action="{{URL::to('/')}}/order/add_to_cart" class="<?php if(!empty($product_variation_r)){echo 'product_details_buynow_form';}else{echo 'product_details_buynow_form product_details_buynow_form_up';} ?>">
+				<form enctype="multipart/form-data" method="post" action="{{URL::to('/')}}/order/add_to_cart" class="<?php if(!empty($product_variation_r)){echo 'product_details_buynow_form';}else{echo 'product_details_buynow_form product_details_buynow_form_up';} ?>">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="price_asim" value="{{@$productdata->sell_rate}}" id="price-amount">
 					<div class="form-group">
@@ -221,6 +221,33 @@
 							</select>
 						</div>
 
+						
+				        <label class="control-label col-md-12">
+				        	Image				            
+				        </label>
+
+				        <div style="margin-bottom: 20px;" class="col-md-12">
+				            <div class="fileupload fileupload-new" data-provides="fileupload">
+				                <div class="fileupload-new thumbnail" style="width: 120px; height: 120px;">
+				                    <img src="http://www.placehold.it/200x200/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+				                </div>
+				                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+				                <div>
+				               <span class="btn btn-white btn-file">
+				               <span class="fileupload-new"><i class="icon-paper-clip"></i> Select image</span>
+				               <span class="fileupload-exists"><i class="icon-undo"></i> Change</span>
+				               <input type="file" name="image" id="image" class="default" />
+				               </span>
+				                  
+				                </div>
+				            </div>
+				            <span class="label label-danger">NOTE!</span>
+					        <span>
+					         Supported Formats are jpg,png.
+					        </span>
+				        </div>
+					 
+
 
 					</div>
 
@@ -273,5 +300,17 @@
 		// zoomWindowHeight:378
   //  });
 </script>
+
+<link href="{{ URL::asset('etsb/assets/bootstrap-fileupload/bootstrap-fileupload.css') }}" rel="stylesheet" type="text/css" >
+<script type="text/javascript" src="{{ URL::asset('etsb/assets/bootstrap-fileupload/bootstrap-fileupload.js') }}"></script>
+
+<style type="text/css">
+	.fileupload .btn{
+		background-color: #239bc7;
+		border-radius:5px;
+		color: #fff;
+		cursor: pointer;
+	}
+</style>>
 
 @stop

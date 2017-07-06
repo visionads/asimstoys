@@ -82,6 +82,13 @@
 								?>
 									<tr>
 										<td>
+											@if(count($orderdetails->licence_image))
+
+	                                            <a style="width: 100%;    display: inline-block;" target="_blank" href="{{ URL::asset($orderdetails->licence_image) }}">
+	                                                <img width="50" src="{{ URL::asset($orderdetails->licence_image) }}">
+	                                            </a>
+                                            
+											@endif
 											{{@$product->title}}
 										</td>
 										<td>

@@ -28,6 +28,7 @@ class OrderDetail extends Model
         'price',
         'state',
         'status',
-        'theme'
+        'theme',
+        'licence_image'
     ];
 }

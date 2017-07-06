@@ -246,17 +246,30 @@
                             @if($product->product_group_id !=7)
                                 <div role="tabpanel" class="tab-pane {{\Session::get('active_fc')}} " id="tab-product-freight-calculation">
                                     <div class="product-cart-card">
-                                        {!! Form::open(array('url' => 'freight-cal-by-product', 'id'=>'fc-base-search')) !!}
+                                        {!! Form::open(array('url' => 'freight-cal-by-product', 'id'=>'fc-base-search', 'class' => 'form')) !!}
                                             
                                             <input type="hidden" name="product_id" value="{{$product->id}}">
 
                                             <div class="small-text mb-20">Shipping Cost and method (TNT Express) for this product SPRAY PAINT-PINK 24 VOLT BMW X7 STYLE TWO SEATS ,RUBBER WHEELS, LEATHER SEATS & REMOTE</div>
-                                            <div class="form-group">
-                                                <input type="text" name="suburb" id="" class="form-control" placeholder="Type your suburb">
+
+                                            @if(\Session::has('cal'))
+                                            <div id="freight-result" style="font-size: 16px;color: #ce2491;font-weight: bold;margin-top: -18px;text-align: center;">
+                                                <br>
+                                                {{\Session::get('cal')}}
+                                                <p>&nbsp;</p>
                                             </div>
-                                            <div class="form-group mb-20">
-                                                <input type="text" name="postcode" id="" class="form-control" placeholder="Type your post code">
-                                            </div>
+                                        @endif
+                                           
+                                            {!! Form::Select('state',$state_data,Input::old('state'),['id' => 'state_id','class'=>'','required']) !!}
+
+                                            <select class='' required="required" id="post_code" name="postcode">
+                                                <option value="">Please Select Post Code</option>
+                                            </select>
+
+                                            <select class='' required="required" id="suburb" name="suburb">
+                                                <option value="">Please Select Suburb</option>
+                                            </select>
+                                           
                                             <button class="add-to-cart-btn" type="submit">Freight Calculation</button>
                                         {!! Form::close() !!}
                                     </div>
@@ -494,5 +507,60 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
+
+    <a href="{{URL::to('')}}" id="site_url">&nbsp;</a>
+
+    <script>
+        
+
+            $("#state_id").on('change',function(e){
+
+                var state = $("#state_id").val();
+                var site_url = $('#site_url').attr("href");
+                $.ajax({
+                    url: site_url+'/www/state_ajax',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {_token: '{!! csrf_token() !!}',state:state,},
+                    success: function(response)
+                    {
+                        $("#post_code").html(response.message);
+                    }
+                });
+
+
+                return false;
+            });
+
+             $("#post_code").on('change',function(e){
+
+                var postcode = $("#post_code").val();
+                var state = $("#state_id").val();
+                
+                var site_url = $('#site_url').attr("href");
+                $.ajax({
+                    url: site_url+'/www/suburb_ajax',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {_token: '{!! csrf_token() !!}',postcode:postcode,state:state},
+                    success: function(response)
+                    {
+                        $("#suburb").html(response.message);
+                    }
+                });
+
+
+                return false;
+            });
+
+
+        
+    </script>
+
+    <style type="text/css">
+        form.form{
+            padding: 15px;
+        }
+    </style>
 
 @stop

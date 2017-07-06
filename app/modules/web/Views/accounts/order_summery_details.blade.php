@@ -39,7 +39,17 @@
                                
                                 <td>
                                     <div class="added-item-container">
+
+                                        @if(count($order_dt->licence_image))
+                                            <a target="_blank" href="{{ URL::asset($order_dt->licence_image) }}">
+                                                <img width="50" src="{{ URL::asset($order_dt->licence_image) }}">
+                                            </a>
+                                            
+
+                                        @endif
+
                                         <a class="product-name" href="#">
+                                            
                                              {{\App\Product::findOrFail($order_dt->product_id)->title}}
                                         </a>
                                     </div>
