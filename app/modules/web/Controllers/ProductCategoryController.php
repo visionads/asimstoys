@@ -109,6 +109,7 @@ class ProductCategoryController extends Controller
 
 		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
+
 		$productdata = DB::table('product')
 						->where('product_group_id',$product_group->id)
 						->where('product_subgroup_id',$product_subgroup->id)
@@ -123,8 +124,8 @@ class ProductCategoryController extends Controller
 		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
 		$title =$product_subgroup->title . " | Asim's Toy";
-
-		if($product_subgroup->slug == 'number-plates' || $product_subgroup->slug == 'gift-card' || $product_subgroup->slug == 'kids-mini-driver-licence' || $product_subgroup->slug == 'kids-mini-themed-licence'){
+		
+		if($product_subgroup->id == '10' || $product_subgroup->slug == 'gift-card' || $product_subgroup->id == '16' || $product_subgroup->id == '17'){
 			
 			$productdata = DB::table('product')
 						->where('product_group_id',$product_group->id)

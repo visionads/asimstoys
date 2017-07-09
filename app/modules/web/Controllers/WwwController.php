@@ -98,13 +98,18 @@ class WwwController extends Controller
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
         $data = Article::where('slug',$slug)->first();
 
-        $title =$data->title . " | Asim's Toy";
+        if(count($data) > 0){
+            $title =$data->title . " | Asim's Toy";
 
-        return view('web::general.commonpage', [
-            'title'=>$title,
-            'data'=>$data,
-            'productgroup_data' => $productgroup_data
-        ]);
+            return view('web::general.commonpage', [
+                'title'=>$title,
+                'data'=>$data,
+                'productgroup_data' => $productgroup_data
+            ]);
+        }else{
+            echo 'no data found';
+        }
+        
     }
 	
 	public function aboutus(){
@@ -113,13 +118,19 @@ class WwwController extends Controller
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
         $data = Article::where('id',$id)->first();
 
-        $title =$data->title . " | Asim's Toy";
+        if(count($data) > 0){
+           $title =$data->title . " | Asim's Toy";
 
-        return view('web::general.commonpage', [
-            'title'=>$title,
-            'data'=>$data,
-            'productgroup_data' => $productgroup_data
-        ]);
+            return view('web::general.commonpage', [
+                'title'=>$title,
+                'data'=>$data,
+                'productgroup_data' => $productgroup_data
+            ]); 
+        }else{
+            echo 'no data found';
+        }
+
+        
     }
 	
 	public function deliverypolicy(){
@@ -128,13 +139,21 @@ class WwwController extends Controller
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
         $data = Article::where('id',$id)->first();
 
-        $title =$data->title . " | Asim's Toy";
+        if(count($data) > 0){
 
-        return view('web::general.commonpage', [
-            'title'=>$title,
-            'data'=>$data,
-            'productgroup_data' => $productgroup_data
-        ]);
+          $title =$data->title . " | Asim's Toy";
+
+            return view('web::general.commonpage', [
+                'title'=>$title,
+                'data'=>$data,
+                'productgroup_data' => $productgroup_data
+            ]);
+
+        }else{
+            echo 'no data found';
+        }
+
+        
     }
 	
 	public function privacypolicy(){
@@ -143,29 +162,44 @@ class WwwController extends Controller
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
         $data = Article::where('id',$id)->first();
 
-        $title =$data->title . " | Asim's Toy";
+        if(count($data) > 0){
 
-        return view('web::general.commonpage', [
-            'title'=>$title,
-            'data'=>$data,
-            'productgroup_data' => $productgroup_data
-        ]);
+            $title =$data->title . " | Asim's Toy";
+
+            return view('web::general.commonpage', [
+                'title'=>$title,
+                'data'=>$data,
+                'productgroup_data' => $productgroup_data
+            ]);
+
+        }else{
+            echo 'no found data';
+        }
+        
     }
 	
 	
     public function laybyinstruction(){
-        $slug = 'lay-by';
+        $slug = 'finance-lay-by';
 
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
         $data = Article::where('slug',$slug)->first();
 
-        $title =$data->title . " | Asim's Toy";
+        if(count($data) > 0){
 
-        return view('web::general.commonpage', [
-            'title'=>$title,
-            'data'=>$data,
-            'productgroup_data' => $productgroup_data
-        ]);
+            $title =$data->title . " | Asim's Toy";
+
+            return view('web::general.commonpage', [
+                'title'=>$title,
+                'data'=>$data,
+                'productgroup_data' => $productgroup_data
+            ]);
+
+        }else{
+            echo 'no article found';
+        }
+
+        
     }
     
 
@@ -175,13 +209,21 @@ class WwwController extends Controller
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
         $data = Article::where('slug',$slug)->first();
 
-        $title =$data->title . " | Asim's Toy";
+        if(count($data) > 0){
 
-        return view('web::general.commonpage', [
-            'title'=>$title,
-            'data'=>$data,
-            'productgroup_data' => $productgroup_data
-        ]);
+            $title =$data->title . " | Asim's Toy";
+
+            return view('web::general.commonpage', [
+                'title'=>$title,
+                'data'=>$data,
+                'productgroup_data' => $productgroup_data
+            ]);
+
+        }else{
+            echo 'no found data';
+        }
+
+        
     }
 
     public function faq(){
@@ -190,13 +232,21 @@ class WwwController extends Controller
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
         $data = Article::where('slug',$slug)->first();
 
-        $title =$data->title . " | Asim's Toy";
+        if(count($data) > 0){
 
-        return view('web::general.commonpage', [
-            'title'=>$title,
-            'data'=>$data,
-            'productgroup_data' => $productgroup_data
-        ]);
+            $title =$data->title . " | Asim's Toy";
+
+            return view('web::general.commonpage', [
+                'title'=>$title,
+                'data'=>$data,
+                'productgroup_data' => $productgroup_data
+            ]);
+
+        }else{
+            echo 'no found data';
+        }
+
+        
     }
 
      public function contact(){
@@ -205,13 +255,21 @@ class WwwController extends Controller
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
         $data = Article::where('slug',$slug)->first();
 
-        $title =$data->title . " | Asim's Toy";
+        if(count($data) > 0){
 
-        return view('web::general.contact', [
-            'title'=>$title,
-            'data'=>$data,
-            'productgroup_data' => $productgroup_data
-        ]);
+            $title =$data->title . " | Asim's Toy";
+
+            return view('web::general.contact', [
+                'title'=>$title,
+                'data'=>$data,
+                'productgroup_data' => $productgroup_data
+            ]);
+
+        }else{
+            echo 'no found data';
+        }
+
+        
     }
 	
 	public function contactsubmit(Requests\ContactRequest $request){

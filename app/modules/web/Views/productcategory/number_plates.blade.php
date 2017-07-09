@@ -55,31 +55,31 @@
                     <input type="hidden" name="price_asim" value="{{@$productdata->sell_rate}}" id="price-amount">
 					<div class="form-group">
 						<input type="hidden" name="product_id" value="{{$productdata->id}}">
-						@if(!empty($product_variation_r))
-							<div class="col-xs-12">
-								@if($product_subgroup->slug =='number-plates')
-									<label>Color</label>
-                                    <select name="color" >
-                                        @foreach($product_variation_r as $product_variation)
-                                            <option value="{{$product_variation->slug}}">{{$product_variation->title}}</option>
-                                        @endforeach
+						
+						<div class="col-xs-12">
+							@if($product_subgroup->id =='10')
+								<label>Text Color</label>
+                                <select name="color" >
+                                    @foreach($product_variation_r as $product_variation)
+                                        <option value="{{$product_variation->slug}}">{{$product_variation->title}}</option>
+                                    @endforeach
 
-                                    </select>
-								@else
-									<label>Price</label>
-                                    <select name="color" onchange="getval(this);">
-                                        @foreach($product_variation_r as $product_variation)
-                                            <option value="{{$product_variation->slug}}">{{$product_variation->title}}</option>
-                                        @endforeach
+                                </select>
+							@else
+								<!-- <label>Price</label>
+                                <select name="color" onchange="getval(this);">
+                                    @foreach($product_variation_r as $product_variation)
+                                        <option value="{{$product_variation->slug}}">{{$product_variation->title}}</option>
+                                    @endforeach
 
-                                    </select>
-								@endif
-								
+                                </select> -->
+							@endif
+							
 
-							</div>
-						@endif
+						</div>
+						
 
-						@if($product_subgroup->slug =='number-plates')
+						@if($product_subgroup->id =='10')
 						<div class="col-xs-12">
 							<label>Background</label>
 							<select name="background">
@@ -114,7 +114,7 @@
                         </div>
 						@endif
 
-						@if($product_subgroup->slug =='kids-mini-driver-licence')
+						@if($product_subgroup->id =='16')
 
 							<div class="col-xs-12">
 	                            <label>Name</label>
@@ -164,7 +164,7 @@
 
 						@endif
 
-						@if($product_subgroup->slug =='kids-mini-themed-licence')
+						@if($product_subgroup->id =='17')
 
 							<div class="col-xs-12">
 	                            <label>Name</label>
@@ -221,31 +221,34 @@
 							</select>
 						</div>
 
+						@if($product_subgroup->id != '10')
 						
-				        <label class="control-label col-md-12">
-				        	Image				            
-				        </label>
+					        <label class="control-label col-md-12">
+					        	Image				            
+					        </label>
 
-				        <div style="margin-bottom: 20px;" class="col-md-12">
-				            <div class="fileupload fileupload-new" data-provides="fileupload">
-				                <div class="fileupload-new thumbnail" style="width: 120px; height: 120px;">
-				                    <img src="http://www.placehold.it/200x200/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
-				                </div>
-				                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-				                <div>
-				               <span class="btn btn-white btn-file">
-				               <span class="fileupload-new"><i class="icon-paper-clip"></i> Select image</span>
-				               <span class="fileupload-exists"><i class="icon-undo"></i> Change</span>
-				               <input type="file" name="image" id="image" class="default" />
-				               </span>
-				                  
-				                </div>
-				            </div>
-				            <span class="label label-danger">NOTE!</span>
-					        <span>
-					         Supported Formats are jpg,png.
-					        </span>
-				        </div>
+					        <div style="margin-bottom: 20px;" class="col-md-12">
+					            <div class="fileupload fileupload-new" data-provides="fileupload">
+					                <div class="fileupload-new thumbnail" style="width: 120px; height: 120px;">
+					                    <img src="http://www.placehold.it/200x200/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+					                </div>
+					                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+					                <div>
+					               <span class="btn btn-white btn-file">
+					               <span class="fileupload-new"><i class="icon-paper-clip"></i> Select image</span>
+					               <span class="fileupload-exists"><i class="icon-undo"></i> Change</span>
+					               <input type="file" name="image" id="image" class="default" />
+					               </span>
+					                  
+					                </div>
+					            </div>
+					            <span class="label label-danger">NOTE!</span>
+						        <span>
+						         Supported Formats are jpg,png.
+						        </span>
+					        </div>
+
+				        @endif
 					 
 
 

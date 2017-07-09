@@ -9,10 +9,12 @@
 Route::group(array('modules'=>'Web', 'namespace' => 'App\Modules\Web\Controllers'), function() {
     //Your routes belong to this module.
 
-/*Route::any('admin', [
-    'as' => 'admin',
-    'uses' => 'HomeController@user_login'
-]);*/
+Route::any('index/zipmoney', [
+    'as' => 'index/zipmoney',
+    'uses' => 'ZipMoneyWebHook@subscribeAction'
+]);
+
+
 
 
 
@@ -83,8 +85,8 @@ Route::any('terms-condition',[
 		'uses' => 'WwwController@termscondition'
 	]);
 
-Route::any('lay-by-instruction',[
-		'as' => 'lay-by-instruction',
+Route::any('finance-lay-by',[
+		'as' => 'finance-lay-by',
 		'uses' => 'WwwController@laybyinstruction'
 	]);
 
@@ -166,27 +168,34 @@ Route::any('remove_cart',[
         "uses" => "OrderController@redirect_e_way_d"
     ]);
 
+    /*zip pay success url */
+
+    Route::any("zippay/success", [
+        "as"   => "zippay.success",
+        "uses" => "OrderController@redirect_zipay_success"
+    ]);
+
     /* Zip pay redirect url */
     
-    Route::any("zip-pay-redirect_url/{invoice_no}", [
-        "as"   => "zip-pay-redirect_url",
+    Route::any("zippay/redirect_url", [
+        "as"   => "zippay.redirect_url",
         "uses" => "OrderController@zip_pay_redirect"
     ]);
 
-    Route::any("zip-pay-cancel/{invoice_no}", [
-        "as"   => "zip-pay-cancel",
+    Route::any("zippay.cancel", [
+        "as"   => "zippay.cancel",
         "uses" => "OrderController@zip_pay_cancel"
     ]);
-    Route::any("zip-pay-error/{invoice_no}", [
-        "as"   => "zip-pay-error",
+    Route::any("zippay/error", [
+        "as"   => "zippay.error",
         "uses" => "OrderController@zip_pay_error"
     ]);
-    Route::any("zip-pay-decline/{invoice_no}", [
-        "as"   => "zip-pay-decline",
+    Route::any("zippay/decline", [
+        "as"   => "zippay.decline",
         "uses" => "OrderController@zip_pay_decline"
     ]);
-    Route::any("zip-pay-refer/{invoice_no}", [
-        "as"   => "zip-pay-refer",
+    Route::any("zippay/refer", [
+        "as"   => "zippay.refer",
         "uses" => "OrderController@zip_pay_refer"
     ]);
 
