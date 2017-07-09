@@ -26,7 +26,7 @@
 							@if($productgroup->id == '4')
 								<a class="sidemenu-{{$productgroup->id}}" href="{{URL::to('')}}/pre-order">{{$productgroup->title}}</a>
 							@elseif($productgroup->id == '5')
-								<a class="sidemenu-{{$productgroup->id}}" href="{{URL::to('')}}/lay-by-instruction">{{$productgroup->title}}</a>
+								<a class="sidemenu-{{$productgroup->id}}" href="{{URL::to('')}}/finance-lay-by">{{$productgroup->title}}</a>
 							@elseif($productgroup->id == '3')
 								<a class="sidemenu-{{$productgroup->id}}" href="{{URL::to('')}}/{{$productgroup->slug}}">{{$productgroup->title}}<i class="fa fa-angle-right"></i></a>
 							@else

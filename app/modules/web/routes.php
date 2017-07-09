@@ -85,8 +85,8 @@ Route::any('terms-condition',[
 		'uses' => 'WwwController@termscondition'
 	]);
 
-Route::any('lay-by-instruction',[
-		'as' => 'lay-by-instruction',
+Route::any('finance-lay-by',[
+		'as' => 'finance-lay-by',
 		'uses' => 'WwwController@laybyinstruction'
 	]);
 
