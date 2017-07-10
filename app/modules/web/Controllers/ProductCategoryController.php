@@ -125,7 +125,7 @@ class ProductCategoryController extends Controller
 
 		$title =$product_subgroup->title . " | Asim's Toy";
 		
-		if($product_subgroup->id == '10' || $product_subgroup->slug == 'gift-card' || $product_subgroup->id == '16' || $product_subgroup->id == '17'){
+		if($product_subgroup->id == '10' || $product_subgroup->slug == 'gift-card' || $product_subgroup->id == '20' || $product_subgroup->id == '21'){
 			
 			$productdata = DB::table('product')
 						->where('product_group_id',$product_group->id)

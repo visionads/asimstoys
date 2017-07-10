@@ -114,7 +114,7 @@
                         </div>
 						@endif
 
-						@if($product_subgroup->id =='16')
+						@if($product_subgroup->id =='20')
 
 							<div class="col-xs-12">
 	                            <label>Name</label>
@@ -164,7 +164,7 @@
 
 						@endif
 
-						@if($product_subgroup->id =='17')
+						@if($product_subgroup->id =='21')
 
 							<div class="col-xs-12">
 	                            <label>Name</label>
