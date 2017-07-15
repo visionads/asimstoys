@@ -867,7 +867,7 @@ h5.box-tb-border {
     top: 10px;
     background-color: red;
     position: absolute;
-    z-index: 999;
+    z-index: 9;
     text-align: center;
 }
 

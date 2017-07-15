@@ -341,6 +341,10 @@
 
 /* Smartphone Landscape */
 @media (max-width: 480px) {
+    .faq-container{
+        margin: 25px 20px 25px 20px;
+        width: calc(100% - 40px);
+    }
     .m-after-logo h5 {
         font-size: 14px
     }
