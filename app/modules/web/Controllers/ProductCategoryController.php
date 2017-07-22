@@ -109,7 +109,8 @@ class ProductCategoryController extends Controller
 
 		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
-
+		echo $product_group->id .'<br/>';
+		echo $product_subgroup->id;
 		$productdata = DB::table('product')
 						->where('product_group_id',$product_group->id)
 						->where('product_subgroup_id',$product_subgroup->id)
@@ -173,17 +174,20 @@ class ProductCategoryController extends Controller
 			->where('product_subgroup_id',$product_subgroup->id)
 			->where('preorder','0')
 			->where('status','active')
+			->orderBy('id','desc')
 			->paginate(15);
 		
 		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
 		if($type == 'by-brand'){
 
+			$brand_name = 'Brand';
+
 			if(isset($_GET) && !empty($_GET['b']) ){
 
 				$brand_name = $_GET['b'];
 
-				$productdata = DB::table('product')->where('product_group_id',$product_group->id)->where('product_subgroup_id',$product_subgroup->id)->where('brand',$brand_name)->where('status','active')->paginate(15);
+				$productdata = DB::table('product')->where('product_group_id',$product_group->id)->where('product_subgroup_id',$product_subgroup->id)->where('brand',$brand_name)->where('status','active')->orderBy('id','desc')->paginate(15);
 			}
 			$branddata = DB::table('product')->where('product_group_id',$product_group->id)->where('product_subgroup_id',$product_subgroup->id)->where('status','active')->groupBy('brand')->get();
 
@@ -194,7 +198,8 @@ class ProductCategoryController extends Controller
                 'productdata' => $productdata,
                 'product_subgroup' => $product_subgroup,
                 'productgroup_data' => $productgroup_data,
-                'branddata' => $branddata
+                'branddata' => $branddata,
+                'brand_name' => $brand_name
             ]);
 		}
 
@@ -205,7 +210,7 @@ class ProductCategoryController extends Controller
 
 				$seats_name = $_GET['s'];
 
-				$productdata = DB::table('product')->where('product_group_id',$product_group->id)->where('product_subgroup_id',$product_subgroup->id)->where('seats',$seats_name)->where('status','active')->paginate(15);
+				$productdata = DB::table('product')->where('product_group_id',$product_group->id)->where('product_subgroup_id',$product_subgroup->id)->where('seats',$seats_name)->where('status','active')->orderBy('id','desc')->paginate(15);
 			}
 			$branddata = DB::table('product')->where('product_group_id',$product_group->id)->where('product_subgroup_id',$product_subgroup->id)->where('status','active')->groupBy('seats')->get();
 
@@ -227,7 +232,7 @@ class ProductCategoryController extends Controller
 
 				$voltage = $_GET['v'];
 
-				$productdata = DB::table('product')->where('product_group_id',$product_group->id)->where('product_subgroup_id',$product_subgroup->id)->where('voltage',$voltage)->where('status','active')->paginate(15);
+				$productdata = DB::table('product')->where('product_group_id',$product_group->id)->where('product_subgroup_id',$product_subgroup->id)->where('voltage',$voltage)->where('status','active')->orderBy('id','desc')->paginate(15);
 			}
 			$branddata = DB::table('product')->where('product_group_id',$product_group->id)->where('product_subgroup_id',$product_subgroup->id)->where('status','active')->groupBy('voltage')->get();
 

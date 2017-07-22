@@ -73,6 +73,8 @@
     line-height: 100px;">Product not avaliable</p>
 			@endif
 
+			{!! $productdata->render() !!}
+
 
 		</div>
 

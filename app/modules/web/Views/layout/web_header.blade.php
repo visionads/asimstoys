@@ -57,13 +57,13 @@
 <section class="menu-area">
     <div class="category mb-30 visible-xs">
         <div class="category-btn">
-            <button type="button" class="navbar-toggle collapsed visible-xs" data-toggle="collapse" data-target="#left-menu">
+            <button type="button" class="menu-one navbar-toggle collapsed visible-xs">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <span>Catergories</span>
+            <span>Categories</span>
         </div>
         <div class="category-dropdown-wrapper" id="left-menu" class="collapse navbar-collapse">
            <ul class="category-list clearfix">
@@ -122,7 +122,7 @@
             </ul>
         </div>
     </div>
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav-menu">
+    <button type="button" class="menu-two navbar-toggle collapsed" data-toggle="collapse" data-target="#">
         <span class="sr-only">Toggle navigation</span>
         <!--Menu-->
         <span class="icon-bar"></span>
