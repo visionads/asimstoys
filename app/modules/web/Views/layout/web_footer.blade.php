@@ -22,5 +22,21 @@
             </div>
         </section>
 
+        <script type="text/javascript">
+
+        $(document).ready(function () {
+            $(".menu-one").click(function(){
+                $('#main-nav-menu').hide();
+                $('#left-menu .category-list').toggle();
+            });
+
+            $(".menu-two").click(function(){                
+                $('#left-menu .category-list').hide();
+                $('#main-nav-menu').toggle();
+            });
+        });
+            
+        </script>
+
     </body>
 </html>

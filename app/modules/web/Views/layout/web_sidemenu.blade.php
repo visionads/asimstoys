@@ -7,7 +7,7 @@
 	<div class="category mb-30 hidden-xs">
 		
 		<div class="category-btn">
-			<span>Asim’s Toys Catergories</span>
+			<span>Asim’s Toys Categories</span>
 			<button type="button" class="navbar-toggle collapsed visible-xs" data-toggle="collapse" data-target=".xxxxxx">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>

@@ -56,7 +56,7 @@ class WwwController extends Controller
         
         $productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
-        $featured_product_data = Product::where('is_featured','Yes')->where('status','active')->paginate(12);
+        $featured_product_data = Product::where('is_featured','Yes')->where('status','active')->orderBy('id','desc')->paginate(12);
 
         $data = Article::where('id', $home_value)->where('status', 'active')->first();
 		

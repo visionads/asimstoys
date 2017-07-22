@@ -5,7 +5,7 @@
 	<div class="products mb-30">
 
 		<h5 class="box-tb-border">
-			{{$product_subgroup->title}} | By Brand
+			{{$product_subgroup->title}} | By {{$brand_name}}
 		</h5>
 
 		<div class="products-box box-tb-border-b ">
@@ -18,7 +18,7 @@
 						<?php
 							if(isset($_GET) && !empty($_GET['b']) ){
 						?>
-								<option <?php if($_GET['b'] == $brand->brand){echo 'selected="selected"';} ?> value="{{$brand->brand}}">{{$brand->brand}}</option>
+								<option <?php if($_GET['b'] == $brand_name){echo 'selected="selected"';} ?> value="{{$brand->brand}}">{{$brand->brand}}</option>
 						<?php
 							}else{
 						?>
@@ -99,8 +99,8 @@
 			<p style="color: #00a4e1;text-align: center;min-height: 200px;
 line-height: 100px;">Product not avaliable</p>
 		@endif
-
-		{!! $productdata->render() !!}
+		{!! $productdata->appends(array('b' => Input::get('b')))->render() !!}
+		
 
 	</div>
 
