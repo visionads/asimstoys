@@ -1,5 +1,7 @@
 # Created by .ignore support plugin (selim)
 ### Laravel template
+bootstrap/
+storage/
 /bootstrap/compiled.php
 .env.*.php
 .env.php
