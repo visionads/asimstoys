@@ -109,8 +109,7 @@ class ProductCategoryController extends Controller
 
 		$productgroup_data = ProductGroup::where('status','active')->orderby('sortorder','asc')->get();
 
-		echo $product_group->id .'<br/>';
-		echo $product_subgroup->id;
+		
 		$productdata = DB::table('product')
 						->where('product_group_id',$product_group->id)
 						->where('product_subgroup_id',$product_subgroup->id)
