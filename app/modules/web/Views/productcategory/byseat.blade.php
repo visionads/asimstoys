@@ -1,10 +1,17 @@
 @extends('web::layout.web_master')
 
 @section('content')
-
+	<img style="width: 100%;height: 270px;margin-bottom: 30px;" src="{{URL::to('')}}/web/images/holiday-notice.jpg">
 	<div class="products mb-30">
 		<h5 class="box-tb-border">
-			{{$product_subgroup->title}} | By Seats
+			{{$product_subgroup->title}} | By 
+			<?php
+				if(isset($_GET) && !empty($_GET['s']) ){
+					echo $_GET['s'];
+				}else{
+					echo 'Seats';
+				}
+			?>
 		</h5>
 
 		<div class="products-box box-tb-border-b ">
