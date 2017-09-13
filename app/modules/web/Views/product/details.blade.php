@@ -23,7 +23,7 @@
 	}
 
 ?>
-<img style="width: 100%;height: 270px;margin-bottom: 30px;" src="{{URL::to('')}}/web/images/holiday-notice.jpg">
+
 <div class=" mb-30">
     <div class="slider-wrapper ">
 
