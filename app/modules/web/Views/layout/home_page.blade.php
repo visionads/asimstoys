@@ -2,8 +2,6 @@
 
 @section('content')
 		
-		<img style="width: 100%;height: 270px;margin-bottom: 30px;" src="{{URL::to('')}}/web/images/holiday-notice.jpg">
-
         <div class="slider mb-30">
 			<div id="layerslider" class="slider-wrapper hidden-xs">
 
