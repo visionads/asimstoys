@@ -16,6 +16,10 @@
 					<a style="font-size:20px;" class="print_the_pages" href="#">
 						Print Invoice
 					</a>
+					&nbsp;&nbsp; | &nbsp;&nbsp;
+					<a style="font-size:20px;" class="" href="{{ route('zip-pay-order-invoice-mail', $order_data[0]->id) }}">
+						Invoice Mail
+					</a>
 				</div>
 			</div>
 
