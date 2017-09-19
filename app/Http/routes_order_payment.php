@@ -81,6 +81,10 @@ Route::any("lay-by-order-show/{order_head_id}", [
     "uses" => "OrderPaymentController@lay_by_order_show"
 ]);
 
+Route::any("zip-pay-order-invoice-mail/{order_head_id}", [
+    "as"   => "zip-pay-order-invoice-mail",
+    "uses" => "OrderPaymentController@zip_pay_order_invoice_mail"
+]);
 
 Route::any("cancel-lay-by-payment/{ord_trn_id}", [
     "as"   => "cancel-lay-by-payment",

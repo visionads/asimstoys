@@ -337,6 +337,45 @@ class OrderPaymentController extends Controller
     }
 
 
+    public function zip_pay_order_invoice_mail($order_head_id){
+
+            // order head
+            $order_head = OrderHead::where('id', $order_head_id)->first();
+
+            // order details
+            $product_cart_r = DB::table('order_detail')->where('order_head_id',$order_head->id)->get();
+
+            // customer information
+            $customer = Customer::where('id', $order_head->user_id)->first();
+
+            $to_email = $customer->email;
+            $to_name = $customer->first_name." ". $customer->last_name;
+
+            $subject = " Payment of invoice # ".$order_head->invoice_no. " | Asims Toys ";
+
+            // Delivery details
+            $delivery_details = DB::table('delivery_details')->where('user_id',$customer->id)->orderby('id','desc')->first();
+
+            echo $body = view('web::cart.order_details_mail',[
+                    'product_cart_r' => $product_cart_r,
+                    'order_head' => $order_head,
+                    'customer' => $customer,
+                    'delivery_details' => $delivery_details,
+                    'invoice_no' => $order_head->invoice_no
+            ]);
+
+            $mail = SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
+
+            if($mail){
+                Session::flash('flash_message', " Successfully Send Mail.");
+            }else{
+                Session::flash('flash_message_error', "Send Mail Not Send");
+            }
+
+
+            return redirect()->route('zip-pay-order');
+    }
+
     /**
      * @param $order_trn_id
      * @return \Illuminate\Http\RedirectResponse
