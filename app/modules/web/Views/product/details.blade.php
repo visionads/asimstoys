@@ -165,6 +165,26 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <span style="width: 100%;display: inline-block;text-align: center;font-weight: 700;margin: 6px;font-size: 18px;">OR</span>
+
+                                            <div class="payment-way">
+                                                <div class="row">
+                                                    <a target="_blank" href="https://asimstoys.com/product/{{$product->slug}}" style="color: #3f3f3f;">
+                                                    <div class="col-xs-5">
+                                                        <img src="{{URL::to('')}}/web/images/afterpay.png" alt="" class="img-responsive">
+                                                    </div>
+
+                                                    <div class="col-xs-7">
+                                                        <div class="row">
+                                                            Click Here to Buy <br/>
+                                                            Shop Now, Pay Later
+                                                        </div>
+                                                    </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+
                                             <div class="row mt-20">
                                       
                                                 <input type="hidden" name="weight" value="{{$product->weight}}">
