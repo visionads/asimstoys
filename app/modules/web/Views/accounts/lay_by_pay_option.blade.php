@@ -41,11 +41,11 @@
                     <div class="col-md-6">
                         <div class="" id="e-way-button">
                             <h3 style="color: #ce2491;font-size: 20px;margin-bottom: 10px;"> Secure eWay Payment </h3>
-                            <small>You may pay amount should be getter than AUD 50.00 or more. </small><br>
+                            <small>You may pay amount should be getter than AUD 100.00 or more. </small><br>
 
                             {!! Form::open(['method' =>'GET','route'=>'step_final_payment_for_layby']) !!}
                             <label style="margin-top: 15px;font-size: 15px;" for="amount">Amount (Partial or Full Payment)</label>
-                            <input type="text" name="amount" id="edValue" value="50.00" class="form-control" placeholder="50 or more "><br>
+                            <input type="text" name="amount" id="edValue" value="100.00" class="form-control" placeholder="100 or more "><br>
                             <input type="hidden" name="order_head_id" value="{{$order_data->id}}">
 
                             <input type="checkbox" value="1" name="agree" required="required" checked="checked"> I agree with <a href="{{URL::to('terms-condition')}}" style="text-decoration: underline">Terms and Condition</a> <br>
@@ -69,7 +69,7 @@
                                 <input type="hidden" name="payment_type" value="bank">
 
                                 <label for="amount">Amount (Partial or Full Payment) (required)</label>
-                                <input type="text" name="amount" value="50.00" id="pay-amount-bank" class="form-control" placeholder="50.00 or more " required><br>
+                                <input type="text" name="amount" value="100.00" id="pay-amount-bank" class="form-control" placeholder="100.00 or more " required><br>
 
                                 <label for="transaction_no">Bank Transaction NO# (required)</label>
                                 <input type="text" name="transaction_no" value=""  class="form-control" placeholder="Bank Transaction NO " required><br>
