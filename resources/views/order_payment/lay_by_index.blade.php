@@ -63,7 +63,9 @@
                                             <a href="{{ route('order-paid-cancel', $values->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Cancel?')" title="Cancel"><i class="icon-trash"></i></a>
                                         </td>
 										<td>
-											<a href="{{ route('order-complete', $values->id) }}" class="btn btn-success btn-xs" onclick="return confirm('Are you sure to Close as Complete ?')" title="Close the Order as Completed">Approved</a>
+                                            @if($values->status == 'open')
+											    <a href="{{ route('order-complete', $values->id) }}" class="btn btn-success btn-xs" onclick="return confirm('Are you sure to Close as Complete ?')" title="Close the Order as Completed">Approved</a>
+                                            @endif
 										</td>
 										<td>
 											<a href="{{ route('order-shipped', $values->id) }}" class="btn btn-success btn-xs" onclick="return confirm('Are you sure to Delivered as Complete ?')" title="Delivered the Order as Completed">Delivered</i></a>
