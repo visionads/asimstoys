@@ -32,7 +32,7 @@ class ProductController extends Controller
 	   $brand_id = [''=>'Please select']+Brand::lists('title','title')->all();
        $cat_product_id = ProductCategory::lists('title','id');
 
-       $data = Product::orderBy('id', 'DESC')->get();
+       $data = Product::orderBy('stock_unit_quantity', 'DESC')->get();
         return view('product.index',[
                 'pageTitle' => $pageTitle,
                 'cat_product_id' => $cat_product_id,
